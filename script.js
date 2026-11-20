@@ -131,7 +131,7 @@ if (searchInput && chaptersGrid) {
         noResultsMsg.className = 'no-results';
         noResultsMsg.innerHTML = `
           <p style="text-align: center; color: var(--text-secondary); padding: 2rem; font-size: 1.1rem;">
-            No chapters found for "${searchTerm}". Try a different search term.
+            找不到符合「${searchTerm}」的章節，請嘗試其他關鍵字。
           </p>
         `;
         chaptersGrid.appendChild(noResultsMsg);
@@ -260,7 +260,7 @@ function initExpandableSections() {
 
       button.setAttribute('aria-expanded', !isExpanded);
       content.style.display = isExpanded ? 'none' : 'block';
-      button.textContent = isExpanded ? '▶ Expand' : '▼ Collapse';
+      button.textContent = isExpanded ? '▶ 展開' : '▼ 收合';
     });
   });
 }
@@ -307,8 +307,8 @@ function initCodeCopy() {
     // Create copy button
     const copyButton = document.createElement('button');
     copyButton.className = 'copy-code-btn';
-    copyButton.innerHTML = '📋 Copy';
-    copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+    copyButton.innerHTML = '📋 複製';
+    copyButton.setAttribute('aria-label', '複製程式碼到剪貼簿');
 
     // Style the button
     copyButton.style.cssText = `
@@ -335,19 +335,19 @@ function initCodeCopy() {
 
       try {
         await navigator.clipboard.writeText(code);
-        copyButton.innerHTML = '✅ Copied!';
+        copyButton.innerHTML = '✅ 已複製！';
         copyButton.style.backgroundColor = 'var(--color-success)';
         copyButton.style.color = 'white';
 
         setTimeout(() => {
-          copyButton.innerHTML = '📋 Copy';
+          copyButton.innerHTML = '📋 複製';
           copyButton.style.backgroundColor = 'var(--bg-secondary)';
           copyButton.style.color = 'var(--text-primary)';
         }, 2000);
       } catch (err) {
-        copyButton.innerHTML = '❌ Failed';
+        copyButton.innerHTML = '❌ 複製失敗';
         setTimeout(() => {
-          copyButton.innerHTML = '📋 Copy';
+          copyButton.innerHTML = '📋 複製';
         }, 2000);
       }
     });
@@ -372,7 +372,7 @@ function initScrollToTop() {
   const scrollButton = document.createElement('button');
   scrollButton.innerHTML = '↑';
   scrollButton.className = 'scroll-to-top';
-  scrollButton.setAttribute('aria-label', 'Scroll to top');
+  scrollButton.setAttribute('aria-label', '回到頂端');
 
   // Style
   scrollButton.style.cssText = `
@@ -612,5 +612,5 @@ if ('performance' in window) {
   });
 }
 
-console.log('🎓 RHCSA Study Guide - DevOps ni Diary');
-console.log('💡 Keyboard shortcuts: Ctrl+K (Search), Ctrl+D (Dark Mode)');
+console.log('🎓 RHCSA 學習指南 - DevOps ni Diary');
+console.log('💡 快捷鍵：Ctrl+K（搜尋）、Ctrl+D（深色模式）');

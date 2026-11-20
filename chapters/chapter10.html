@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 10: Manage Logical Volumes - RHCSA Guide</title>
+    <title>第 10 章：管理邏輯磁區 (LVM) - RHCSA 學習指南</title>
     <link rel="stylesheet" href="/style.css">
     <!-- Vercel Web Analytics -->
     <script>
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,331 +36,331 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html" class="active">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html" class="active">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 10</span>
-                    <span class="meta-badge">⏱️ 60 min read</span>
-                    <span class="meta-badge">📚 Advanced</span>
+                    <span class="meta-badge">第 10 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 60 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
                 </div>
-                <h1>Manage Logical Volumes (LVM)</h1>
+                <h1>管理邏輯磁區 (LVM)</h1>
                 <p class="chapter-intro">
-                    Master Logical Volume Management (LVM) for flexible storage. Create and manage physical volumes, 
-                    volume groups, and logical volumes. Learn to extend, reduce, snapshot, and migrate storage dynamically.
+                    精通邏輯磁區管理 (LVM) 以實現彈性的儲存空間配置。學習建立與管理實體磁區 (PV)、磁區群組 (VG) 與邏輯磁區 (LV)，
+                    並掌握動態擴充、縮減、建立快照及遷移儲存空間的技巧。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction to LVM</a></li>
-                    <li><a href="#physical">Physical Volumes</a></li>
-                    <li><a href="#volume-groups">Volume Groups</a></li>
-                    <li><a href="#logical">Logical Volumes</a></li>
-                    <li><a href="#extending">Extending Storage</a></li>
-                    <li><a href="#reducing">Reducing Storage</a></li>
-                    <li><a href="#snapshots">LVM Snapshots</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">LVM 簡介</a></li>
+                    <li><a href="#physical">實體磁區 (PV)</a></li>
+                    <li><a href="#volume-groups">磁區群組 (VG)</a></li>
+                    <li><a href="#logical">邏輯磁區 (LV)</a></li>
+                    <li><a href="#extending">擴充儲存空間</a></li>
+                    <li><a href="#reducing">縮減儲存空間</a></li>
+                    <li><a href="#snapshots">LVM 快照</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction to LVM</h2>
+                <h2>🎯 LVM 簡介</h2>
                 <p>
-                    Logical Volume Manager (LVM) provides flexible disk management. Unlike traditional partitioning, 
-                    LVM allows you to resize volumes, create snapshots, and move data between physical disks without downtime.
+                    邏輯磁區管理程式 (Logical Volume Manager, LVM) 提供了高度彈性的磁碟管理機制。與傳統磁碟分割不同，
+                    LVM 允許您在不中斷服務的情況下調整磁區大小、建立快照，並在實體磁碟之間遷移資料。
                 </p>
 
-                <h3>LVM Architecture</h3>
-                <pre><code>Physical Disks (/dev/sdb, /dev/sdc)
+                <h3>LVM 架構</h3>
+                <pre><code>實體磁碟 (/dev/sdb, /dev/sdc)
     ↓
-Physical Volumes (PV) - pvcreate
+實體磁區 (PV) - pvcreate
     ↓
-Volume Group (VG) - vgcreate (pool of storage)
+磁區群組 (VG) - vgcreate (儲存空間集區)
     ↓
-Logical Volumes (LV) - lvcreate (virtual partitions)
+邏輯磁區 (LV) - lvcreate (虛擬分割區)
     ↓
-File Systems (mkfs, mount)</code></pre>
+檔案系統 (mkfs, mount)</code></pre>
 
-                <h3>LVM Components</h3>
+                <h3>LVM 組成元件</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Component</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Example</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">元件</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">範例</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Physical Volume (PV)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Physical disk or partition used by LVM</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>實體磁區 (PV)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">供 LVM 使用的實體磁碟或分割區</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/dev/sdb1, /dev/sdc</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Physical Extent (PE)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Smallest unit of storage (default 4MB)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">4MB blocks</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>實體延伸區 (PE)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最小儲存配置單位（預設為 4MB）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">4MB 區塊</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Volume Group (VG)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Pool of PVs</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>磁區群組 (VG)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">由多個 PV 彙整而成的儲存集區</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">vg_data, rhel</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Logical Volume (LV)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Virtual partition created from VG</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>邏輯磁區 (LV)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">從 VG 中建立的虛擬分割區</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/dev/vg_data/lv_web</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Logical Extent (LE)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">PE mapped to LV</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Same size as PE</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>邏輯延伸區 (LE)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">對應至 LV 的 PE 單位</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">與 PE 大小相同</td>
                     </tr>
                 </table>
 
-                <h3>LVM Benefits</h3>
+                <h3>LVM 的優勢</h3>
                 <ul>
-                    <li><strong>Flexible Sizing:</strong> Resize volumes online (extend XFS/ext4, shrink ext4)</li>
-                    <li><strong>Snapshots:</strong> Point-in-time backups for testing/rollback</li>
-                    <li><strong>Striping:</strong> Spread data across disks for performance</li>
-                    <li><strong>Mirroring:</strong> Data redundancy across physical volumes</li>
-                    <li><strong>Migration:</strong> Move data between disks without downtime</li>
+                    <li><strong>彈性調整容量：</strong> 支援線上調整磁區大小（擴充 XFS/ext4、縮減 ext4）</li>
+                    <li><strong>快照功能：</strong> 建立時間點副本，便於測試或災難復原</li>
+                    <li><strong>等量分割 (Striping)：</strong> 將資料分散寫入多顆磁碟以提升效能</li>
+                    <li><strong>鏡像 (Mirroring)：</strong> 跨實體磁區提供資料備援與容錯</li>
+                    <li><strong>線上遷移：</strong> 在不停機的情況下於磁碟間搬移資料</li>
                 </ul>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 LVM vs Traditional Partitions</div>
-                    <p><strong>Traditional:</strong> Fixed sizes, hard to resize, limited flexibility<br>
-                    <strong>LVM:</strong> Dynamic sizing, snapshots, pooled storage, easier management</p>
+                    <div class="info-box-title">📘 LVM 與傳統分割區比較</div>
+                    <p><strong>傳統分割區：</strong>容量固定、難以調整大小、彈性有限<br>
+                    <strong>LVM：</strong>可動態調整容量、支援快照、整合儲存集區、更易於管理</p>
                 </div>
             </section>
 
             <section id="physical" class="content-section">
-                <h2>💽 Physical Volumes (PV)</h2>
+                <h2>💽 實體磁區 (PV)</h2>
 
-                <h3>Creating Physical Volumes</h3>
-                <pre><code># Initialize partition or disk as PV
+                <h3>建立實體磁區</h3>
+                <pre><code># 將分割區或整顆磁碟初始化為 PV
 sudo pvcreate /dev/sdb1
 sudo pvcreate /dev/sdc
 
-# Initialize multiple at once
+# 一次初始化多個裝置
 sudo pvcreate /dev/sdb1 /dev/sdc /dev/sdd1
 
-# Output example:
+# 輸出範例：
   Physical volume "/dev/sdb1" successfully created.</code></pre>
 
-                <h3>Viewing Physical Volumes</h3>
-                <pre><code># List all PVs
+                <h3>檢視實體磁區</h3>
+                <pre><code># 列出所有 PV 摘要
 sudo pvs
 
-# Output:
+# 輸出範例：
   PV         VG     Fmt  Attr PSize  PFree
   /dev/sda2  rhel   lvm2 a--  19.00g    0 
   /dev/sdb1  vgdata lvm2 a--   5.00g 2.00g
 
-# Detailed information
+# 顯示詳細資訊
 sudo pvdisplay
 
-# Specific PV
+# 顯示特定 PV 的詳細資訊
 sudo pvdisplay /dev/sdb1
 
-# Show PE information
+# 顯示 PE 與詳細資訊
 sudo pvs -v
 sudo pvscan</code></pre>
 
-                <h3>Removing Physical Volumes</h3>
-                <pre><code># Remove PV from VG first (pvmove if data exists)
+                <h3>移除實體磁區</h3>
+                <pre><code># 需先將 PV 從 VG 中移除（若有資料請先執行 pvmove 搬移）
 sudo pvremove /dev/sdb1
 
-# Output:
+# 輸出：
   Labels on physical volume "/dev/sdb1" successfully wiped.</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 PV Best Practices</div>
-                    <p>Use whole disks or partitions with Linux LVM type (8e for MBR, lvm flag for GPT). 
-                    Label partitions with parted before creating PVs for clarity.</p>
+                    <div class="info-box-title">💡 PV 最佳實務</div>
+                    <p>建議使用整顆磁碟，或將分割區類型設為 Linux LVM（MBR 使用代碼 8e，GPT 請設定 lvm 旗標）。
+                    建立 PV 前先用 parted 為分割區命名，能讓磁碟用途更加明確。</p>
                 </div>
             </section>
 
             <section id="volume-groups" class="content-section">
-                <h2>🗄️ Volume Groups (VG)</h2>
+                <h2>🗄️ 磁區群組 (VG)</h2>
 
-                <h3>Creating Volume Groups</h3>
-                <pre><code># Create VG from one PV
+                <h3>建立磁區群組</h3>
+                <pre><code># 從單一 PV 建立 VG
 sudo vgcreate vg_data /dev/sdb1
 
-# Create VG from multiple PVs
+# 從多個 PV 建立 VG
 sudo vgcreate vg_data /dev/sdb1 /dev/sdc
 
-# Specify PE size (default 4MB)
+# 自訂 PE 大小（預設為 4MB）
 sudo vgcreate -s 8M vg_data /dev/sdb1
 
-# Output:
+# 輸出：
   Volume group "vg_data" successfully created</code></pre>
 
-                <h3>Viewing Volume Groups</h3>
-                <pre><code># List all VGs
+                <h3>檢視磁區群組</h3>
+                <pre><code># 列出所有 VG
 sudo vgs
 
-# Output:
+# 輸出：
   VG      #PV #LV #SN Attr   VSize  VFree
   rhel      1   2   0 wz--n- 19.00g    0 
   vg_data   2   1   0 wz--n-  9.99g 7.00g
 
-# Detailed information
+# 顯示詳細資訊
 sudo vgdisplay
 
-# Specific VG
+# 顯示特定 VG 資訊
 sudo vgdisplay vg_data
 
-# Show PVs in VG
+# 顯示 VG 內包含的 PV 名稱
 sudo vgs -o +pv_name</code></pre>
 
-                <h3>Extending Volume Groups</h3>
-                <pre><code># Add PV to existing VG
+                <h3>擴充磁區群組</h3>
+                <pre><code># 將新的 PV 加入現有 VG
 sudo vgextend vg_data /dev/sdd1
 
-# Output:
+# 輸出：
   Volume group "vg_data" successfully extended
 
-# Verify
+# 驗證結果
 sudo vgs vg_data</code></pre>
 
-                <h3>Reducing Volume Groups</h3>
-                <pre><code># Remove PV from VG (must be empty or use pvmove first)
+                <h3>縮減磁區群組</h3>
+                <pre><code># 從 VG 移除 PV（該 PV 必須為空，或先使用 pvmove 搬移資料）
 sudo vgreduce vg_data /dev/sdd1
 
-# Remove missing/failed PVs
+# 移除遺失或故障的 PV
 sudo vgreduce --removemissing vg_data</code></pre>
 
-                <h3>Removing Volume Groups</h3>
-                <pre><code># Remove VG (must delete all LVs first)
+                <h3>移除磁區群組</h3>
+                <pre><code># 移除 VG（必須先刪除其下所有 LV）
 sudo vgremove vg_data
 
-# Output:
+# 輸出：
   Volume group "vg_data" successfully removed</code></pre>
 
-                <h3>Renaming Volume Groups</h3>
-                <pre><code># Rename VG
+                <h3>重新命名磁區群組</h3>
+                <pre><code># 重新命名 VG
 sudo vgrename vg_data vg_backup
 
-# Or by path
+# 或透過裝置路徑指定
 sudo vgrename /dev/vg_data vg_backup</code></pre>
             </section>
 
             <section id="logical" class="content-section">
-                <h2>📦 Logical Volumes (LV)</h2>
+                <h2>📦 邏輯磁區 (LV)</h2>
 
-                <h3>Creating Logical Volumes</h3>
-                <pre><code># Create 2GB LV
+                <h3>建立邏輯磁區</h3>
+                <pre><code># 建立 2GB 的 LV
 sudo lvcreate -L 2G -n lv_web vg_data
 
-# Create LV using all free space
+# 使用 VG 內所有剩餘可用空間建立 LV
 sudo lvcreate -l 100%FREE -n lv_backup vg_data
 
-# Create LV with specific extents
+# 依指定 PE 數量建立 LV
 sudo lvcreate -l 512 -n lv_logs vg_data
 
-# Output:
+# 輸出：
   Logical volume "lv_web" created.</code></pre>
 
-                <h3>LV Naming</h3>
-                <pre><code># LVs are accessed via:
+                <h3>LV 命名路徑</h3>
+                <pre><code># 存取 LV 的裝置路徑格式：
 /dev/VG_NAME/LV_NAME
 /dev/vg_data/lv_web
 
-# Or via mapper:
+# 或透過 device mapper 路徑：
 /dev/mapper/VG_NAME-LV_NAME
 /dev/mapper/vg_data-lv_web</code></pre>
 
-                <h3>Viewing Logical Volumes</h3>
-                <pre><code># List all LVs
+                <h3>檢視邏輯磁區</h3>
+                <pre><code># 列出所有 LV
 sudo lvs
 
-# Output:
+# 輸出：
   LV      VG      Attr       LSize  Pool Origin Data%
   lv_web  vg_data -wi-a-----  2.00g                   
   root    rhel    -wi-ao---- 17.00g                   
   swap    rhel    -wi-ao----  2.00g                   
 
-# Detailed information
+# 顯示詳細資訊
 sudo lvdisplay
 
-# Specific LV
+# 顯示特定 LV 資訊
 sudo lvdisplay /dev/vg_data/lv_web
 
-# Show all attributes
+# 顯示所有屬性與對應裝置
 sudo lvs -a -o +devices</code></pre>
 
-                <h3>Creating Filesystem on LV</h3>
-                <pre><code># Create XFS filesystem
+                <h3>在 LV 上建立檔案系統</h3>
+                <pre><code># 建立 XFS 檔案系統
 sudo mkfs.xfs /dev/vg_data/lv_web
 
-# Create ext4 filesystem
+# 建立 ext4 檔案系統
 sudo mkfs.ext4 /dev/vg_data/lv_logs
 
-# Mount
+# 掛載使用
 sudo mkdir /web
 sudo mount /dev/vg_data/lv_web /web
 
-# Verify
+# 驗證掛載結果
 df -h /web</code></pre>
 
-                <h3>Removing Logical Volumes</h3>
-                <pre><code># Unmount first
+                <h3>移除邏輯磁區</h3>
+                <pre><code># 務必先卸載
 sudo umount /web
 
-# Remove LV
+# 移除 LV
 sudo lvremove /dev/vg_data/lv_web
 
-# Confirm:
+# 確認提示：
 Do you really want to remove active logical volume vg_data/lv_web? [y/n]: y
   Logical volume "lv_web" successfully removed</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Complete LVM Setup</h4>
+                    <h4>操作步驟：完整 LVM 建置流程</h4>
                     <ol>
-                        <li>Create partition with LVM type:
+                        <li>建立並標記為 LVM 類型的分割區：
                             <pre><code>sudo parted /dev/sdb mkpart primary 1MiB 5GiB
 sudo parted /dev/sdb set 1 lvm on</code></pre>
                         </li>
-                        <li>Create Physical Volume:
+                        <li>建立實體磁區 (PV)：
                             <pre><code>sudo pvcreate /dev/sdb1</code></pre>
                         </li>
-                        <li>Create Volume Group:
+                        <li>建立磁區群組 (VG)：
                             <pre><code>sudo vgcreate vg_data /dev/sdb1</code></pre>
                         </li>
-                        <li>Create Logical Volume (2GB):
+                        <li>建立邏輯磁區 (LV，大小 2GB)：
                             <pre><code>sudo lvcreate -L 2G -n lv_web vg_data</code></pre>
                         </li>
-                        <li>Create filesystem:
+                        <li>建立檔案系統：
                             <pre><code>sudo mkfs.xfs /dev/vg_data/lv_web</code></pre>
                         </li>
-                        <li>Mount persistently:
+                        <li>設定永久掛載：
                             <pre><code>sudo mkdir /web
 echo "/dev/vg_data/lv_web /web xfs defaults 0 2" | sudo tee -a /etc/fstab
 sudo mount -a</code></pre>
                         </li>
-                        <li>Verify:
+                        <li>驗證設定結果：
                             <pre><code>df -h /web
 sudo lvs
 sudo vgs</code></pre>
@@ -370,67 +370,67 @@ sudo vgs</code></pre>
             </section>
 
             <section id="extending" class="content-section">
-                <h2>📈 Extending Storage</h2>
+                <h2>📈 擴充儲存空間</h2>
 
-                <h3>Extending Logical Volumes</h3>
-                <pre><code># Extend by specific size
+                <h3>擴充邏輯磁區</h3>
+                <pre><code># 增加指定容量
 sudo lvextend -L +1G /dev/vg_data/lv_web
 
-# Extend to specific total size
+# 擴充至指定的總容量
 sudo lvextend -L 5G /dev/vg_data/lv_web
 
-# Extend using all free space
+# 使用所有剩餘可用空間進行擴充
 sudo lvextend -l +100%FREE /dev/vg_data/lv_web
 
-# Extend and resize filesystem in one command
+# 單一指令同時擴充 LV 與調整檔案系統大小
 sudo lvextend -r -L +1G /dev/vg_data/lv_web
 
-# Output:
+# 輸出：
   Size of logical volume vg_data/lv_web changed from 2.00 GiB to 3.00 GiB.
   Logical volume vg_data/lv_web successfully resized.</code></pre>
 
-                <h3>Extending File Systems</h3>
-                <pre><code># After extending LV, extend the filesystem:
+                <h3>擴充檔案系統</h3>
+                <pre><code># 擴充 LV 後，接著擴充檔案系統：
 
-# XFS (must be mounted)
+# XFS（必須處於已掛載狀態）
 sudo xfs_growfs /web
 
-# ext4 (can be mounted or unmounted)
+# ext4（掛載或未掛載狀態皆可）
 sudo resize2fs /dev/vg_data/lv_web
 
-# Check filesystem after extending
+# 擴充後檢查檔案系統容量
 df -h /web</code></pre>
 
-                <h3>Extending Volume Groups</h3>
-                <pre><code># If VG is out of space, add more PVs:
+                <h3>擴充磁區群組</h3>
+                <pre><code># 若 VG 空間不足，請新增更多 PV：
 
-# Create new PV
+# 建立新的 PV
 sudo pvcreate /dev/sdc1
 
-# Extend VG
+# 擴充 VG
 sudo vgextend vg_data /dev/sdc1
 
-# Now extend LV
+# 接著即可擴充 LV 與檔案系統
 sudo lvextend -L +5G /dev/vg_data/lv_web
 sudo xfs_growfs /web</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Extend LV and Filesystem</h4>
+                    <h4>操作步驟：擴充 LV 與檔案系統</h4>
                     <ol>
-                        <li>Check current size:
+                        <li>檢查目前容量：
                             <pre><code>df -h /web
 sudo lvs /dev/vg_data/lv_web</code></pre>
                         </li>
-                        <li>Check VG free space:
+                        <li>檢查 VG 剩餘可用空間：
                             <pre><code>sudo vgs vg_data</code></pre>
                         </li>
-                        <li>Extend LV by 2GB:
+                        <li>將 LV 擴充 2GB：
                             <pre><code>sudo lvextend -L +2G /dev/vg_data/lv_web</code></pre>
                         </li>
-                        <li>Extend filesystem (XFS):
+                        <li>擴充檔案系統 (XFS)：
                             <pre><code>sudo xfs_growfs /web</code></pre>
                         </li>
-                        <li>Verify:
+                        <li>驗證擴充結果：
                             <pre><code>df -h /web
 sudo lvs</code></pre>
                         </li>
@@ -438,191 +438,189 @@ sudo lvs</code></pre>
                 </div>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Quick Extend</div>
-                    <p>Use <code>lvextend -r</code> to automatically resize the filesystem after extending the LV. 
-                    This works for both XFS and ext4: <code>sudo lvextend -r -L +2G /dev/vg_data/lv_web</code></p>
+                    <div class="info-box-title">💡 快速擴充技巧</div>
+                    <p>使用 <code>lvextend -r</code> 可在擴充 LV 後自動一併調整檔案系統大小。
+                    此參數同時適用於 XFS 與 ext4：<code>sudo lvextend -r -L +2G /dev/vg_data/lv_web</code></p>
                 </div>
             </section>
 
             <section id="reducing" class="content-section">
-                <h2>📉 Reducing Storage</h2>
+                <h2>📉 縮減儲存空間</h2>
 
                 <div class="info-box danger">
-                    <div class="info-box-title">⚠️ Critical Warning</div>
-                    <p><strong>XFS cannot be reduced!</strong> Only ext4 supports shrinking. Always backup data 
-                    before reducing. Unmount the filesystem first. Risk of data loss if done incorrectly!</p>
+                    <div class="info-box-title">⚠️ 嚴重警告</div>
+                    <p><strong>XFS 無法縮減！</strong> 僅有 ext4 支援縮小容量。縮減前務必先備份資料，
+                    並先卸載檔案系統。若操作順序錯誤將導致嚴重資料遺失！</p>
                 </div>
 
-                <h3>Reducing ext4 Logical Volumes</h3>
-                <pre><code># IMPORTANT: Unmount first!
+                <h3>縮減 ext4 邏輯磁區</h3>
+                <pre><code># 重要：務必先卸載！
 sudo umount /backup
 
-# Check filesystem
+# 檢查檔案系統完整性
 sudo e2fsck -f /dev/vg_data/lv_backup
 
-# Reduce filesystem first (to 3GB)
+# 先縮減檔案系統（縮減至 3GB）
 sudo resize2fs /dev/vg_data/lv_backup 3G
 
-# Then reduce LV (to 3GB)
+# 再縮減 LV（縮減至 3GB）
 sudo lvreduce -L 3G /dev/vg_data/lv_backup
 
-# WARNING prompt:
+# 警告提示：
   WARNING: Reducing active logical volume to 3.00 GiB.
   THIS MAY DESTROY YOUR DATA (filesystem etc.)
 Do you really want to reduce vg_data/lv_backup? [y/n]: y
 
-# Remount
+# 重新掛載
 sudo mount /dev/vg_data/lv_backup /backup
 
-# Verify
+# 驗證結果
 df -h /backup
 sudo lvs</code></pre>
 
-                <h3>Safe Reduction Steps</h3>
+                <h3>安全縮減步驟</h3>
                 <ol>
-                    <li><strong>Backup data</strong> (critical!)</li>
-                    <li>Unmount the filesystem</li>
-                    <li>Check filesystem integrity (e2fsck -f)</li>
-                    <li>Reduce filesystem first (resize2fs)</li>
-                    <li>Reduce LV to same or larger size</li>
-                    <li>Remount and verify</li>
+                    <li><strong>備份資料</strong>（極為重要！）</li>
+                    <li>卸載檔案系統</li>
+                    <li>檢查檔案系統完整性 (e2fsck -f)</li>
+                    <li>先縮減檔案系統容量 (resize2fs)</li>
+                    <li>再將 LV 縮減至相同或更大的容量</li>
+                    <li>重新掛載並驗證</li>
                 </ol>
 
-                <h3>Alternative: lvreduce with -r</h3>
-                <pre><code># Reduce LV and filesystem together (ext4 only)
+                <h3>替代方案：使用 lvreduce 搭配 -r</h3>
+                <pre><code># 同時縮減 LV 與檔案系統（僅限 ext4）
 sudo umount /backup
 sudo lvreduce -r -L 3G /dev/vg_data/lv_backup
 
-# This automatically:
-# 1. Checks filesystem
-# 2. Reduces filesystem
-# 3. Reduces LV</code></pre>
+# 此指令會自動依序執行：
+# 1. 檢查檔案系統
+# 2. 縮減檔案系統
+# 3. 縮減 LV</code></pre>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Why XFS Can't Shrink</div>
-                    <p>XFS is optimized for performance and scalability, not shrinking. If you need to reduce 
-                    an XFS volume, you must: backup data → destroy LV → create smaller LV → restore data.</p>
+                    <div class="info-box-title">📘 為何 XFS 無法縮減</div>
+                    <p>XFS 的設計專注於高效能與擴展性，而不支援縮小容量。若您必須縮減 XFS 磁區，
+                    只能採用：備份資料 → 刪除原有 LV → 建立較小的 LV → 還原資料。</p>
                 </div>
             </section>
 
             <section id="snapshots" class="content-section">
-                <h2>📸 LVM Snapshots</h2>
+                <h2>📸 LVM 快照</h2>
 
                 <p>
-                    Snapshots provide point-in-time copies of logical volumes. Perfect for backups before 
-                    system changes, testing, or rollback scenarios.
+                    快照可提供邏輯磁區在特定時間點的狀態複本，非常適合在系統變更前進行備份、測試或復原 (Rollback)。
                 </p>
 
-                <h3>Creating Snapshots</h3>
-                <pre><code># Create snapshot (20% of original LV size for changes)
+                <h3>建立快照</h3>
+                <pre><code># 建立快照（配置原始 LV 容量的 20% 以記錄變更資料）
 sudo lvcreate -L 1G -s -n lv_web_snap /dev/vg_data/lv_web
 
-# Or use percentage
+# 或使用百分比指定大小
 sudo lvcreate -l 20%ORIGIN -s -n lv_web_snap /dev/vg_data/lv_web
 
-# Output:
+# 輸出：
   Logical volume "lv_web_snap" created.</code></pre>
 
-                <h3>Viewing Snapshots</h3>
-                <pre><code># List snapshots
+                <h3>檢視快照</h3>
+                <pre><code># 列出快照與原始磁區
 sudo lvs
 
-# Output shows snapshot with origin:
+# 輸出會顯示快照及其 Origin 來源：
   LV           VG      Attr       LSize  Pool Origin Data%
   lv_web       vg_data owi-aos---  5.00g                   
   lv_web_snap  vg_data swi-a-s---  1.00g      lv_web 0.02
 
-# Detailed snapshot info
+# 檢視快照詳細資訊
 sudo lvdisplay /dev/vg_data/lv_web_snap</code></pre>
 
-                <h3>Mounting Snapshots</h3>
-                <pre><code># Mount snapshot for backup
+                <h3>掛載快照</h3>
+                <pre><code># 以唯讀模式掛載快照進行備份
 sudo mkdir /snapshot
 sudo mount -o ro /dev/vg_data/lv_web_snap /snapshot
 
-# Backup from snapshot
+# 從快照進行資料備份
 sudo tar -czf /backup/web_backup.tar.gz -C /snapshot .
 
-# Unmount
+# 卸載快照
 sudo umount /snapshot</code></pre>
 
-                <h3>Restoring from Snapshots</h3>
-                <pre><code># Unmount original LV
+                <h3>從快照還原</h3>
+                <pre><code># 卸載原始 LV
 sudo umount /web
 
-# Merge snapshot back to original (reverts changes)
+# 將快照合併回原始 LV（復原變更內容）
 sudo lvconvert --merge /dev/vg_data/lv_web_snap
 
-# Remount (after reboot or LV reactivation)
+# 重新掛載（於重開機或重新啟用 LV 後）
 sudo mount /dev/vg_data/lv_web /web</code></pre>
 
-                <h3>Removing Snapshots</h3>
-                <pre><code># Remove snapshot (keeps original LV)
+                <h3>移除快照</h3>
+                <pre><code># 移除快照（不影響原始 LV）
 sudo lvremove /dev/vg_data/lv_web_snap
 
-# Confirm:
+# 確認提示：
 Do you really want to remove active logical volume vg_data/lv_web_snap? [y/n]: y</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Safe System Update with Snapshot</h4>
+                    <h4>操作步驟：使用快照安全更新系統</h4>
                     <ol>
-                        <li>Create snapshot before update:
+                        <li>在進行系統更新前建立快照：
                             <pre><code>sudo lvcreate -L 2G -s -n root_snap /dev/rhel/root</code></pre>
                         </li>
-                        <li>Perform system update:
+                        <li>執行系統更新：
                             <pre><code>sudo dnf update -y</code></pre>
                         </li>
-                        <li>Test the system. If problems occur, rollback:
-                            <pre><code># Boot to rescue mode or single user
+                        <li>測試系統狀態。若發生問題，執行復原：
+                            <pre><code># 開機進入救援模式或單人模式
 sudo umount /
 sudo lvconvert --merge /dev/rhel/root_snap
 sudo reboot</code></pre>
                         </li>
-                        <li>If update successful, remove snapshot:
+                        <li>若更新成功無誤，移除快照以釋放空間：
                             <pre><code>sudo lvremove /dev/rhel/root_snap</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Snapshot Best Practices</h3>
+                <h3>快照最佳實務</h3>
                 <ul>
-                    <li>Size snapshots at 20-30% of origin LV for typical changes</li>
-                    <li>Monitor snapshot usage (<code>lvs</code> shows Data% column)</li>
-                    <li>Remove snapshots after use to free space</li>
-                    <li>Snapshot fills = becomes invalid and is removed automatically</li>
-                    <li>Use snapshots for backups, not long-term storage</li>
+                    <li>針對一般變更，建議將快照大小設為原始 LV 的 20-30%</li>
+                    <li>定期監控快照空間使用率（<code>lvs</code> 指令中的 Data% 欄位）</li>
+                    <li>使用完畢後請即時移除快照以釋放空間</li>
+                    <li>若快照空間寫滿，快照將會失效並被系統自動移除</li>
+                    <li>快照僅適用於短期備份與測試，不可作為長期儲存用途</li>
                 </ul>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Snapshot Space</div>
-                    <p>If snapshot runs out of space (Data% reaches 100%), it becomes invalid and is 
-                    automatically removed. Monitor with <code>lvs</code> and extend if needed: 
+                    <div class="info-box-title">⚠️ 快照空間注意事項</div>
+                    <p>如果快照空間耗盡（Data% 達到 100%），快照將會失效並被自動刪除。
+                    請持續使用 <code>lvs</code> 監控，必要時可即時擴充快照空間：
                     <code>sudo lvextend -L +500M /dev/vg_data/lv_web_snap</code></p>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What is the correct order for creating LVM storage?</h4>
+                        <h4>第 1 題：建立 LVM 儲存空間的正確順序為何？</h4>
                         <ul class="quiz-options">
-                            <li>A) LV → VG → PV → filesystem</li>
-                            <li>B) PV → VG → LV → filesystem</li>
-                            <li>C) VG → PV → LV → filesystem</li>
-                            <li>D) filesystem → LV → VG → PV</li>
+                            <li>A) LV → VG → PV → 檔案系統</li>
+                            <li>B) PV → VG → LV → 檔案系統</li>
+                            <li>C) VG → PV → LV → 檔案系統</li>
+                            <li>D) 檔案系統 → LV → VG → PV</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) PV → VG → LV → filesystem</strong><br>
-                            Correct order: 1) pvcreate (Physical Volume), 2) vgcreate (Volume Group), 
-                            3) lvcreate (Logical Volume), 4) mkfs (filesystem), 5) mount. 
-                            Think: physical → pool → virtual → format → use.
+                            <strong>解答：B) PV → VG → LV → 檔案系統</strong><br>
+                            正確流程為：1) pvcreate（實體磁區）、2) vgcreate（磁區群組）、3) lvcreate（邏輯磁區）、4) mkfs（建立檔案系統）、5) mount（掛載使用）。
+                            記憶口訣：實體磁碟 → 資源集區 → 虛擬分割區 → 格式化 → 掛載使用。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: Which filesystem can be extended but NOT reduced?</h4>
+                        <h4>第 2 題：哪一種檔案系統僅支援擴充容量，而不支援縮減容量？</h4>
                         <ul class="quiz-options">
                             <li>A) ext4</li>
                             <li>B) ext3</li>
@@ -630,14 +628,14 @@ sudo reboot</code></pre>
                             <li>D) Btrfs</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) XFS</strong><br>
-                            XFS can only be extended (xfs_growfs), never reduced. Use ext4 if you need 
-                            shrinking capability. To "reduce" XFS, you must backup → delete → create smaller → restore.
+                            <strong>解答：C) XFS</strong><br>
+                            XFS 僅支援線上擴充 (<code>xfs_growfs</code>)，無法進行縮減。若需要縮減容量功能請選擇 ext4。
+                            若要「縮小」XFS，必須先備份資料 → 刪除磁區 → 建立較小的磁區 → 還原資料。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: What command extends both LV and filesystem in one step?</h4>
+                        <h4>第 3 題：哪一個指令可以單一步驟同時擴充 LV 與檔案系統？</h4>
                         <ul class="quiz-options">
                             <li>A) lvextend -L +2G /dev/vg/lv</li>
                             <li>B) lvextend -r -L +2G /dev/vg/lv</li>
@@ -645,65 +643,62 @@ sudo reboot</code></pre>
                             <li>D) vgextend -L +2G /dev/vg</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) lvextend -r -L +2G /dev/vg/lv</strong><br>
-                            The -r (or --resizefs) option automatically resizes the filesystem after extending 
-                            the LV. Without -r, you must manually run xfs_growfs or resize2fs after lvextend.
+                            <strong>解答：B) lvextend -r -L +2G /dev/vg/lv</strong><br>
+                            <code>-r</code>（或 <code>--resizefs</code>）參數會在擴充 LV 後自動調整檔案系統大小。
+                            若未加上 <code>-r</code>，則必須在執行 <code>lvextend</code> 後手動執行 <code>xfs_growfs</code> 或 <code>resize2fs</code>。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: What happens when an LVM snapshot runs out of space?</h4>
+                        <h4>第 4 題：當 LVM 快照空間用盡時會發生什麼事？</h4>
                         <ul class="quiz-options">
-                            <li>A) System crashes</li>
-                            <li>B) Snapshot becomes read-only</li>
-                            <li>C) Snapshot becomes invalid and is removed</li>
-                            <li>D) Original LV is corrupted</li>
+                            <li>A) 系統當機</li>
+                            <li>B) 快照變為唯讀狀態</li>
+                            <li>C) 快照會失效並被系統自動移除</li>
+                            <li>D) 原始 LV 資料毀損</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) Snapshot becomes invalid and is removed</strong><br>
-                            When snapshot space fills (Data% = 100%), it becomes invalid and LVM automatically 
-                            removes it. The original LV is not affected. Monitor with <code>lvs</code> and extend 
-                            snapshot if needed: <code>lvextend -L +500M /dev/vg/snap</code>
+                            <strong>解答：C) 快照會失效並被系統自動移除</strong><br>
+                            當快照空間寫滿時（Data% = 100%），快照將立即失效並由 LVM 自動移除，但不會影響原始 LV 的資料。
+                            請使用 <code>lvs</code> 持續監控，並在需要時擴充快照：<code>lvextend -L +500M /dev/vg/snap</code>
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: How do you create a 3GB logical volume named 'lv_data' in 'vg_app'?</h4>
+                        <h4>第 5 題：如何在 'vg_app' 磁區群組中建立名為 'lv_data'、大小為 3GB 的邏輯磁區？</h4>
                         <ul class="quiz-options">
                             <li>A) lvcreate -n lv_data -L 3G vg_app</li>
                             <li>B) lvcreate -L 3G -n lv_data vg_app</li>
-                            <li>C) Both A and B</li>
+                            <li>C) A 與 B 皆正確</li>
                             <li>D) vgcreate -L 3G lv_data vg_app</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) Both A and B</strong><br>
-                            Both commands are valid. Options order doesn't matter: 
-                            <code>lvcreate -L SIZE -n NAME VG</code> or <code>lvcreate -n NAME -L SIZE VG</code>. 
-                            The VG name must be last. Use -l for extents, -L for size.
+                            <strong>解答：C) A 與 B 皆正確</strong><br>
+                            這兩個指令皆完全有效。參數的先後順序不影響執行結果：<code>lvcreate -L SIZE -n NAME VG</code> 或 <code>lvcreate -n NAME -L SIZE VG</code> 皆可，
+                            但 VG 名稱必須放在最後。請留意 <code>-l</code> 是指定 PE 數量，<code>-L</code> 才是指定容量大小。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 6: What must you do before reducing an ext4 logical volume?</h4>
+                        <h4>第 6 題：在縮減 ext4 邏輯磁區之前，必須先執行什麼操作？</h4>
                         <ul class="quiz-options">
-                            <li>A) Nothing, just run lvreduce</li>
-                            <li>B) Unmount, check filesystem, reduce filesystem first</li>
-                            <li>C) Create a snapshot</li>
-                            <li>D) Extend the VG</li>
+                            <li>A) 什麼都不用做，直接執行 lvreduce</li>
+                            <li>B) 卸載、檢查檔案系統，並先縮減檔案系統容量</li>
+                            <li>C) 建立快照</li>
+                            <li>D) 擴充 VG</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Unmount, check filesystem, reduce filesystem first</strong><br>
-                            Safe reduction: 1) Backup data, 2) umount, 3) e2fsck -f, 4) resize2fs to smaller size, 
-                            5) lvreduce to same or larger size. Or use <code>lvreduce -r</code> to automate steps 3-5. 
-                            Never reduce LV before reducing filesystem = data loss!
+                            <strong>解答：B) 卸載、檢查檔案系統，並先縮減檔案系統容量</strong><br>
+                            安全縮減流程為：1) 備份資料、2) 執行 umount 卸載、3) 執行 e2fsck -f 檢查、4) 使用 resize2fs 縮小檔案系統、5) 使用 lvreduce 縮小 LV 至相同或較大空間。
+                            亦可直接使用 <code>lvreduce -r</code> 自動化完成步驟 3 至 5。切記絕對不可在縮減檔案系統前先縮減 LV，否則將造成資料毀損！
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter9.html" class="nav-button prev">Chapter 9: Basic Storage</a>
-                <a href="chapter11.html" class="nav-button next">Chapter 11: Services & Boot Process</a>
+                <a href="chapter9.html" class="nav-button prev">第 9 章：基礎儲存管理</a>
+                <a href="chapter11.html" class="nav-button next">第 11 章：服務與開機流程</a>
             </div>
         </main>
     </div>
@@ -713,11 +708,11 @@ sudo reboot</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>

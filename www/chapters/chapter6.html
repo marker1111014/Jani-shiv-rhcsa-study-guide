@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 6: Tune System Performance - RHCSA Guide</title>
+    <title>第 6 章：調校系統效能 - RHCSA 學習指南</title>
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-  <script type="module" crossorigin src="/assets/script-uyo8zlGx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/script-Bd6Bx7if.css">
+    </script>
+  <script type="module" crossorigin src="/assets/script-D3Q74Pyl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-CcFVVXfV.css">
 </head>
 <body>
     <nav class="navbar">
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,86 +36,85 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html" class="active">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html" class="active">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 6</span>
-                    <span class="meta-badge">⏱️ 45 min read</span>
-                    <span class="meta-badge">📚 Intermediate</span>
+                    <span class="meta-badge">第 6 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 45 分鐘</span>
+                    <span class="meta-badge">📚 中級</span>
                 </div>
-                <h1>Tune System Performance</h1>
+                <h1>調校系統效能</h1>
                 <p class="chapter-intro">
-                    Master system performance monitoring and tuning. Learn to use performance analysis tools, manage process priorities, 
-                    and configure tuned profiles for optimal system performance.
+                    掌握系統效能監控與調校技巧。學習使用效能分析工具、管理程序優先權，
+                    並設定 <code>tuned</code> 設定檔（Profile）以達到最佳的系統運作效能。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#monitoring">Performance Monitoring Tools</a></li>
-                    <li><a href="#processes">Process Management & Priority</a></li>
-                    <li><a href="#nice">Nice and Renice</a></li>
-                    <li><a href="#tuned">Tuned Profiles</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">簡介</a></li>
+                    <li><a href="#monitoring">效能監控工具</a></li>
+                    <li><a href="#processes">程序管理與優先權</a></li>
+                    <li><a href="#nice">Nice 與 Renice</a></li>
+                    <li><a href="#tuned">Tuned 設定檔</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction</h2>
+                <h2>🎯 簡介</h2>
                 <p>
-                    System performance tuning involves monitoring resource usage, adjusting process priorities, and applying 
-                    performance profiles to optimize system behavior for specific workloads. RHEL provides powerful tools to 
-                    monitor CPU, memory, disk, and network usage, plus the <code>tuned</code> daemon for automated performance tuning.
+                    系統效能調校包含監控資源使用狀況、調整程序優先權，以及套用效能設定檔，使系統針對特定工作負載發揮最佳表現。
+                    RHEL 提供了強大的工具來監控 CPU、記憶體、磁碟與網路使用率，並內建 <code>tuned</code> 背景服務以實現自動化效能調校。
                 </p>
-                <p>In this chapter, you'll learn to:</p>
+                <p>在本章中，你將學會：</p>
                 <ul>
-                    <li>Monitor system performance with top, ps, uptime, and other tools</li>
-                    <li>Adjust process priorities using nice and renice</li>
-                    <li>Manage tuned profiles for different workload types</li>
-                    <li>Identify performance bottlenecks</li>
-                    <li>Optimize system settings for specific use cases (desktop, server, virtual machine, etc.)</li>
+                    <li>使用 top、ps、uptime 等工具監控系統效能</li>
+                    <li>使用 nice 與 renice 調整程序優先權</li>
+                    <li>針對不同的工作負載類型管理 tuned 設定檔</li>
+                    <li>識別系統效能瓶頸</li>
+                    <li>針對特定使用情境（桌面環境、伺服器、虛擬機器等）最佳化系統設定</li>
                 </ul>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Note</div>
-                    <p>Performance tuning is about finding the right balance for your specific workload. 
-                    There's no one-size-fits-all solution.</p>
+                    <div class="info-box-title">📘 注意</div>
+                    <p>效能調校的核心在於為你的特定工作負載找到最佳平衡點。
+                    沒有一套設定能適用於所有情境。</p>
                 </div>
             </section>
 
             <section id="monitoring" class="content-section">
-                <h2>📊 Performance Monitoring Tools</h2>
+                <h2>📊 效能監控工具</h2>
 
-                <h3>top - Real-Time Process Viewer</h3>
-                <p>The <code>top</code> command provides a dynamic real-time view of running processes:</p>
-                <pre><code># Launch top
+                <h3>top - 即時程序檢視器</h3>
+                <p><code>top</code> 指令可提供系統執行中程序的動態即時檢視畫面：</p>
+                <pre><code># 啟動 top
 top
 
-# Sample output:
+# 輸出範例：
 top - 14:23:15 up  3:42,  2 users,  load average: 0.52, 0.58, 0.59
 Tasks: 234 total,   1 running, 233 sleeping,   0 stopped,   0 zombie
 %Cpu(s):  5.3 us,  2.1 sy,  0.0 ni, 92.2 id,  0.3 wa,  0.0 hi,  0.1 si,  0.0 st
@@ -126,250 +125,249 @@ MiB Swap:   2048.0 total,   2048.0 free,      0.0 used.   1234.3 avail Mem
  1234 student   20   0 1234567  89012   3456 S   2.3   2.2   0:45.67 firefox
  5678 root      20   0  123456  12345   6789 S   1.0   0.3   1:23.45 httpd</code></pre>
 
-                <h4>Understanding top Output</h4>
+                <h4>了解 top 輸出欄位</h4>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Field</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">欄位</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>load average</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1, 5, and 15-minute load averages (processes waiting for CPU)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">過去 1、5 與 15 分鐘的平均負載（等待 CPU 處理的程序數）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>us (user)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Time spent running user processes</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">執行使用者空間程序所佔用的時間百分比</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>sy (system)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Time spent in kernel space</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">執行核心空間（kernel space）作業所佔用的時間百分比</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>id (idle)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">CPU idle time</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">CPU 閒置時間百分比</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>wa (I/O wait)</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Time waiting for I/O operations (disk)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">CPU 等待 I/O 作業（例如磁碟讀寫）完成的時間百分比</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>PR</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Priority (lower is higher priority)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">優先權（數值越小代表優先權越高）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>NI</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Nice value (-20 to 19)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Nice 值（範圍為 -20 至 19）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>VIRT</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Virtual memory used (total)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">使用的虛擬記憶體總量</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>RES</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Resident memory (physical RAM)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">常駐記憶體（實際佔用的實體 RAM）</td>
                     </tr>
                 </table>
 
-                <h4>Interactive Commands in top</h4>
-                <pre><code># While top is running:
-k       # Kill a process (enter PID)
-r       # Renice a process (change priority)
-M       # Sort by memory usage
-P       # Sort by CPU usage (default)
-1       # Toggle individual CPU cores display
-h       # Help screen
-q       # Quit
+                <h4>top 互動式操作指令</h4>
+                <pre><code># 在 top 執行期間可使用的快速鍵：
+k       # 終止程序（輸入 PID）
+r       # 重新調整程序 Nice 值（變更優先權）
+M       # 依記憶體使用量排序
+P       # 依 CPU 使用率排序（預設）
+1       # 切換顯示個別 CPU 核心的負載
+h       # 顯示說明畫面
+q       # 離開 top
 
-# Start top with specific options
-top -u student      # Show only student's processes
-top -d 5            # Update every 5 seconds (default is 3)
-top -n 3            # Run 3 iterations then exit
-top -b &gt; top.log    # Batch mode for logging</code></pre>
+# 搭配特定選項啟動 top
+top -u student      # 僅顯示 student 使用者的程序
+top -d 5            # 每 5 秒更新一次畫面（預設為 3 秒）
+top -n 3            # 更新 3 次後自動結束
+top -b &gt; top.log    # 以批次模式執行以便寫入日誌檔</code></pre>
 
-                <h3>uptime - System Load</h3>
-                <pre><code># Check how long system has been running and load average
+                <h3>uptime - 系統負載</h3>
+                <pre><code># 檢查系統開機運行時間與平均負載
 uptime
 14:23:15 up 3:42, 2 users, load average: 0.52, 0.58, 0.59
 
-# Interpreting load average:
-# - Numbers represent 1, 5, and 15-minute averages
-# - On 4-core system: load of 4.0 = 100% utilization
-# - Load &gt; number of cores = system overloaded</code></pre>
+# 如何解讀平均負載（load average）：
+# - 三個數字分別代表過去 1、5 與 15 分鐘的平均值
+# - 在 4 核心系統上：負載 4.0 代表達到 100% 滿載
+# - 若負載大於 CPU 核心數，代表系統已處於過載狀態</code></pre>
 
-                <h3>free - Memory Usage</h3>
-                <pre><code># Display memory usage
+                <h3>free - 記憶體使用量</h3>
+                <pre><code># 顯示記憶體使用狀態
 free
 
-# Human-readable format
+# 以人類易讀格式顯示
 free -h
               total        used        free      shared  buff/cache   available
 Mem:          3.9Gi       2.4Gi       234Mi       156Mi       1.2Gi       1.2Gi
 Swap:         2.0Gi          0B       2.0Gi
 
-# Key fields:
-# available: estimate of memory available for starting new applications
-# buff/cache: memory used for caching (can be reclaimed if needed)</code></pre>
+# 關鍵欄位說明：
+# available：預估可用於啟動新應用程式的實際可用記憶體
+# buff/cache：用於緩衝與快取的記憶體（系統需要時可隨時回收）</code></pre>
 
-                <h3>ps - Process Status</h3>
-                <pre><code># View all processes with full details
+                <h3>ps - 程序狀態</h3>
+                <pre><code># 檢視所有程序的完整詳細資訊
 ps aux
 
-# View processes in tree format
+# 以樹狀結構檢視程序階層關係
 ps auxf
 
-# View processes for specific user
+# 檢視特定使用者的程序
 ps -u student
 
-# Custom output format
+# 自訂輸出欄位並依 CPU 使用率排序取前 10 筆
 ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head -10
 
-# Find specific process
+# 搜尋特定程序
 ps aux | grep httpd</code></pre>
 
-                <h3>vmstat - Virtual Memory Statistics</h3>
-                <pre><code># Display system statistics
+                <h3>vmstat - 虛擬記憶體統計資訊</h3>
+                <pre><code># 顯示系統統計資訊
 vmstat
 
-# Update every 2 seconds, 5 times
+# 每 2 秒更新一次，共顯示 5 次
 vmstat 2 5
 
-# Sample output:
+# 輸出範例：
 procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
  1  0      0 234567  12345 678901    0    0   123   456  789 1234  5  2 92  1  0</code></pre>
             </section>
 
             <section id="processes" class="content-section">
-                <h2>⚙️ Process Management & Priority</h2>
+                <h2>⚙️ 程序管理與優先權</h2>
 
-                <p>Linux uses a priority system to determine which processes get CPU time. Understanding and adjusting process priorities 
-                is crucial for performance tuning.</p>
+                <p>Linux 使用優先權機制來決定哪些程序能獲得 CPU 運算時間。了解並調整程序優先權是效能調校的關鍵能力。</p>
 
-                <h3>Priority and Nice Values</h3>
-                <p>Each process has two related values:</p>
+                <h3>優先權（Priority）與 Nice 值</h3>
+                <p>每個程序都有兩個相關數值：</p>
                 <ul>
-                    <li><strong>Priority (PR):</strong> Actual priority used by kernel (calculated value)</li>
-                    <li><strong>Nice (NI):</strong> User-controllable value that influences priority</li>
+                    <li><strong>優先權（Priority, PR）：</strong> 核心實際用來排程的優先權數值（由系統計算產生）</li>
+                    <li><strong>Nice 值（NI）：</strong> 可由使用者控制並用來影響優先權的數值</li>
                 </ul>
 
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Nice Value</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Priority</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Who Can Set</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Nice 值</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">優先權</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">誰可設定</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-20 (highest priority)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Most CPU time</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Root only</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-20（最高優先權）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">獲得最多 CPU 時間</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">僅限 Root</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">0 (default)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Normal priority</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Everyone</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">0（預設值）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">一般優先權</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">所有使用者</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">19 (lowest priority)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Least CPU time</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Everyone</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">19（最低優先權）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">獲得最少 CPU 時間</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">所有使用者</td>
                     </tr>
                 </table>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Understanding "Nice"</div>
-                    <p>The term "nice" reflects the concept of being "nice" to other users. A higher nice value means 
-                    the process is being nicer by using less CPU priority.</p>
+                    <div class="info-box-title">📘 注意：了解「Nice」的意義</div>
+                    <p>「nice」這個詞源自對其他使用者「友善（nice）」的概念。Nice 值越高，
+                    代表該程序越願意禮讓 CPU 資源，因此其使用的 CPU 優先權就越低。</p>
                 </div>
             </section>
 
             <section id="nice" class="content-section">
-                <h2>🎚️ Nice and Renice Commands</h2>
+                <h2>🎚️ Nice 與 Renice 指令</h2>
 
-                <h3>nice - Start Process with Different Priority</h3>
-                <p>Use <code>nice</code> to start a new process with a specific nice value:</p>
-                <pre><code># Start process with default nice (0)
+                <h3>nice - 以指定優先權啟動程序</h3>
+                <p>使用 <code>nice</code> 以指定的 Nice 值啟動新的程序：</p>
+                <pre><code># 以預設 Nice 值（0）啟動程序
 ./my_program
 
-# Start process with nice value of 10 (lower priority)
+# 以 Nice 值 10 啟動程序（較低優先權）
 nice -n 10 ./my_program
 
-# Start with nice value of -10 (higher priority, requires root)
+# 以 Nice 值 -10 啟動程序（較高優先權，需要 root 權限）
 sudo nice -n -10 ./important_program
 
-# Start background process with low priority
+# 在背景以低優先權啟動程序
 nice -n 15 ./backup_script.sh &amp;
 
-# Check the nice value
+# 檢查程序的 Nice 值
 ps -o pid,ni,cmd -p $(pgrep my_program)</code></pre>
 
-                <h3>renice - Change Priority of Running Process</h3>
-                <p>Use <code>renice</code> to change the priority of an already running process:</p>
-                <pre><code># Renice by PID
+                <h3>renice - 變更執行中程序的優先權</h3>
+                <p>使用 <code>renice</code> 變更已正在執行之程序的優先權：</p>
+                <pre><code># 依 PID 調整 Nice 值
 renice -n 5 -p 1234
 
-# Renice all processes for a user (requires root)
+# 調整特定使用者所有程序的 Nice 值（需要 root 權限）
 sudo renice -n 10 -u student
 
-# Renice all processes in a group
+# 調整特定群組內所有程序的 Nice 值
 sudo renice -n 5 -g developers
 
-# Lower priority of CPU-intensive process (nice to others)
+# 降低耗費大量 CPU 資源程序的優先權（將資源讓給其他程序）
 renice -n 19 -p $(pgrep heavy_computation)
 
-# Increase priority (requires root)
+# 提高優先權（需要 root 權限）
 sudo renice -n -5 -p 1234
 
-# Verify the change
+# 驗證變更結果
 ps -o pid,ni,cmd -p 1234</code></pre>
 
-                <h3>Practical Examples</h3>
-                <pre><code># Run backup with low priority so it doesn't slow down system
+                <h3>實務範例</h3>
+                <pre><code># 以最低優先權執行備份，避免拖慢系統回應
 nice -n 19 tar -czf /backups/home.tar.gz /home &amp;
 
-# Run database maintenance with slightly elevated priority
+# 以略高的優先權執行資料庫維護工作
 sudo nice -n -5 /usr/bin/mysql_optimize
 
-# Lower priority of someone's runaway process
+# 降低某位使用者失控程序的優先權
 sudo renice -n 15 -p $(pgrep -u problematic_user)
 
-# Start compilation with low priority
+# 以低優先權啟動編譯任務
 nice -n 10 make -j4</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Best Practices</div>
+                    <div class="info-box-title">💡 提示：最佳實務</div>
                     <ul>
-                        <li>Use nice for batch jobs and backups (nice 10-19)</li>
-                        <li>Never use nice -20 unless absolutely necessary</li>
-                        <li>Regular users can only increase nice values (lower priority)</li>
-                        <li>Only root can decrease nice values (higher priority)</li>
+                        <li>批次作業與備份任務建議使用較高的 nice 值（nice 10-19）</li>
+                        <li>非必要切勿使用 nice -20</li>
+                        <li>一般使用者只能調高 nice 值（降低優先權）</li>
+                        <li>唯有 root 才能調低 nice 值（提高優先權）</li>
                     </ul>
                 </div>
             </section>
 
             <section id="tuned" class="content-section">
-                <h2>🔧 Tuned Profiles</h2>
+                <h2>🔧 Tuned 設定檔</h2>
 
                 <p>
-                    <code>tuned</code> is a daemon that monitors system usage and adjusts settings to optimize performance 
-                    for different workload types. It provides pre-configured profiles for common scenarios.
+                    <code>tuned</code> 是一個系統監控背景服務，會根據不同的工作負載類型自動調整系統參數以最佳化效能。
+                    它針對常見的應用情境提供了多種預先設定好的設定檔（Profile）。
                 </p>
 
-                <h3>Installing and Starting Tuned</h3>
-                <pre><code># Install tuned (usually pre-installed)
+                <h3>安裝與啟動 Tuned</h3>
+                <pre><code># 安裝 tuned（通常系統已預先安裝）
 sudo dnf install tuned
 
-# Start and enable tuned service
+# 啟動並設定開機自動啟用 tuned 服務
 sudo systemctl start tuned
 sudo systemctl enable tuned
 
-# Check tuned status
+# 檢查 tuned 服務狀態
 sudo systemctl status tuned</code></pre>
 
-                <h3>Working with Tuned Profiles</h3>
-                <pre><code># List all available profiles
+                <h3>使用 Tuned 設定檔</h3>
+                <pre><code># 列出所有可用的設定檔
 tuned-adm list
 
-# Sample output:
+# 輸出範例：
 Available profiles:
 - balanced
 - desktop
@@ -382,120 +380,120 @@ Available profiles:
 - virtual-host
 Current active profile: balanced
 
-# Check current active profile
+# 檢查目前啟用的設定檔
 tuned-adm active
 
-# Get recommended profile for your system
+# 取得系統推薦的設定檔
 tuned-adm recommend
 
-# Switch to a different profile
+# 切換至不同的設定檔
 sudo tuned-adm profile throughput-performance
 
-# Switch to profile optimized for virtual guest
+# 切換至專為虛擬機器客體機最佳化的設定檔
 sudo tuned-adm profile virtual-guest
 
-# Turn off tuned (not recommended)
+# 關閉 tuned 調校（不建議）
 sudo tuned-adm off</code></pre>
 
-                <h3>Common Tuned Profiles</h3>
+                <h3>常見 Tuned 設定檔</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Profile</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Use Case</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Optimizations</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">設定檔（Profile）</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">適用情境</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">最佳化重點</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>balanced</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Default, good compromise</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Balance between performance and power saving</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">預設選項，適合一般均衡用途</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">在效能與省電之間取得平衡</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>throughput-performance</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Servers, maximum throughput</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Maximum performance, no power saving</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">伺服器、需要最大吞吐量</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最大化效能表現，不啟用省電機制</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>latency-performance</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Low-latency requirements</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Minimize latency at cost of power</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">低延遲需求的系統</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">以較高耗電為代價將延遲降至最低</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>virtual-guest</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Virtual machines (guest)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Optimized for VMs</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">虛擬機器（Guest）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">針對虛擬機器內部環境最佳化</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>virtual-host</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Hypervisor hosts</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Optimized for running VMs</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">虛擬化主機（Hypervisor）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">針對執行大量虛擬機器的實體主機最佳化</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>desktop</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Desktop/laptop systems</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Responsive, some power saving</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">桌上型電腦 / 筆記型電腦</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">介面反應靈敏，並兼顧適度省電</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>powersave</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Battery-powered devices</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Maximum power savings</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">依賴電池供電的裝置</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最大化節省電力消耗</td>
                     </tr>
                 </table>
 
-                <h3>Verifying Tuned Profile</h3>
-                <pre><code># Check which profile is active
+                <h3>驗證 Tuned 設定檔</h3>
+                <pre><code># 檢查目前啟用中的設定檔
 tuned-adm active
 Current active profile: throughput-performance
 
-# Verify profile was applied correctly
+# 驗證設定檔是否已正確套用
 tuned-adm verify
 Verification succeeded, current system settings match the preset profile.
 
-# If verification fails, it means manual changes conflict with profile
-# Reapply the profile:
+# 如果驗證失敗，代表手動修改的設定與設定檔衝突
+# 重新套用設定檔：
 sudo tuned-adm profile throughput-performance</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Optimizing a Database Server</h4>
+                    <h4>操作步驟：最佳化資料庫伺服器</h4>
                     <ol>
-                        <li>Check current profile:
+                        <li>檢查目前的設定檔：
                             <pre><code>tuned-adm active</code></pre>
                         </li>
-                        <li>Get system recommendation:
+                        <li>查看系統推薦的設定檔：
                             <pre><code>tuned-adm recommend</code></pre>
                         </li>
-                        <li>Apply throughput-performance profile:
+                        <li>套用 throughput-performance 設定檔：
                             <pre><code>sudo tuned-adm profile throughput-performance</code></pre>
                         </li>
-                        <li>Verify the change:
+                        <li>驗證設定是否生效：
                             <pre><code>tuned-adm active
 tuned-adm verify</code></pre>
                         </li>
-                        <li>Monitor database performance improvements</li>
+                        <li>持續監控資料庫效能的改善情形</li>
                     </ol>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What does a load average of 4.0 mean on a 4-core system?</h4>
+                        <h4>第 1 題：在 4 核心系統上，平均負載（load average）為 4.0 代表什麼意思？</h4>
                         <ul class="quiz-options">
-                            <li>A) System is idle</li>
-                            <li>B) System is at 100% CPU utilization</li>
-                            <li>C) System is overloaded</li>
-                            <li>D) System has 4 processes running</li>
+                            <li>A) 系統處於閒置狀態</li>
+                            <li>B) 系統的 CPU 使用率已達 100%</li>
+                            <li>C) 系統嚴重過載</li>
+                            <li>D) 系統目前僅有 4 個程序在執行</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) System is at 100% CPU utilization</strong><br>
-                            Load average represents processes waiting for CPU. On a 4-core system, a load of 4.0 means 
-                            all cores are fully utilized. Load &gt; number of cores indicates overloading.
+                            <strong>解答：B) 系統的 CPU 使用率已達 100%</strong><br>
+                            平均負載代表等待或正在使用 CPU 的程序數量。在 4 核心系統上，負載為 4.0 表示所有核心都已充分使用（100% 滿載）。
+                            當負載大於核心數時才表示系統過載。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: Which nice value gives a process the HIGHEST priority?</h4>
+                        <h4>第 2 題：哪個 Nice 值會賦予程序「最高」的優先權？</h4>
                         <ul class="quiz-options">
                             <li>A) 19</li>
                             <li>B) 0</li>
@@ -503,29 +501,29 @@ tuned-adm verify</code></pre>
                             <li>D) 10</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) -20</strong><br>
-                            Nice values range from -20 (highest priority) to 19 (lowest priority). Only root can set 
-                            negative nice values. Lower nice values = higher priority.
+                            <strong>解答：C) -20</strong><br>
+                            Nice 值的範圍從 -20（最高優先權）到 19（最低優先權）。只有 root 可以設定負數的 Nice 值。
+                            Nice 值越低，優先權越高。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: How do you permanently change a running process's priority?</h4>
+                        <h4>第 3 題：如何變更一個正在執行中的程序之優先權？</h4>
                         <ul class="quiz-options">
                             <li>A) nice -n 10 -p 1234</li>
                             <li>B) renice -n 10 -p 1234</li>
-                            <li>C) top then press 'r'</li>
-                            <li>D) Both B and C</li>
+                            <li>C) 執行 top 後按下 'r'</li>
+                            <li>D) B 與 C 皆可</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: D) Both B and C</strong><br>
-                            renice changes the priority of a running process. You can also use top's interactive 'r' command. 
-                            nice is only for starting new processes, not changing existing ones.
+                            <strong>解答：D) B 與 C 皆可</strong><br>
+                            <code>renice</code> 用於變更執行中程序的優先權，你也可以在 <code>top</code> 畫面中使用互動式指令 <code>r</code>。
+                            <code>nice</code> 只能用於啟動新程序，無法變更已執行中的程序。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: Which tuned profile is best for a virtual machine guest?</h4>
+                        <h4>第 4 題：哪一個 tuned 設定檔最適合用於虛擬機器客體機（VM Guest）？</h4>
                         <ul class="quiz-options">
                             <li>A) balanced</li>
                             <li>B) throughput-performance</li>
@@ -533,14 +531,14 @@ tuned-adm verify</code></pre>
                             <li>D) virtual-host</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) virtual-guest</strong><br>
-                            The virtual-guest profile is specifically optimized for virtual machine guests. 
-                            virtual-host is for hypervisor hosts. Apply with: sudo tuned-adm profile virtual-guest
+                            <strong>解答：C) virtual-guest</strong><br>
+                            <code>virtual-guest</code> 設定檔是專為虛擬機器客體機所最佳化的配置；
+                            <code>virtual-host</code> 則是給虛擬化主機（Hypervisor）使用。套用指令：<code>sudo tuned-adm profile virtual-guest</code>。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: What command shows the active tuned profile?</h4>
+                        <h4>第 5 題：哪個指令可以顯示目前啟用中的 tuned 設定檔？</h4>
                         <ul class="quiz-options">
                             <li>A) tuned-adm status</li>
                             <li>B) tuned-adm active</li>
@@ -548,17 +546,17 @@ tuned-adm verify</code></pre>
                             <li>D) tuned-adm list</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) tuned-adm active</strong><br>
-                            tuned-adm active shows the currently active profile. tuned-adm list shows all available profiles. 
-                            tuned-adm recommend suggests the best profile for your system.
+                            <strong>解答：B) tuned-adm active</strong><br>
+                            <code>tuned-adm active</code> 會顯示目前運作中的設定檔；<code>tuned-adm list</code> 會列出所有可用的設定檔；
+                            <code>tuned-adm recommend</code> 則會建議最適合目前系統的設定檔。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter5.html" class="nav-button prev">Chapter 5: SELinux</a>
-                <a href="chapter7.html" class="nav-button next">Chapter 7: Schedule Tasks</a>
+                <a href="chapter5.html" class="nav-button prev">第 5 章：SELinux 安全性</a>
+                <a href="chapter7.html" class="nav-button next">第 7 章：排程任務</a>
             </div>
         </main>
     </div>
@@ -568,14 +566,14 @@ tuned-adm verify</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>
-
+
 </body>
 </html>

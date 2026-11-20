@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 14: Mount Network Storage - RHCSA Guide</title>
+    <title>第 14 章：掛載網路儲存 - RHCSA 學習指南</title>
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-  <script type="module" crossorigin src="/assets/script-uyo8zlGx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/script-Bd6Bx7if.css">
+    </script>
+  <script type="module" crossorigin src="/assets/script-D3Q74Pyl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-CcFVVXfV.css">
 </head>
 <body>
     <nav class="navbar">
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,226 +36,225 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html" class="active">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html" class="active">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 14</span>
-                    <span class="meta-badge">⏱️ 55 min read</span>
-                    <span class="meta-badge">📚 Advanced</span>
+                    <span class="meta-badge">第 14 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 55 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
                 </div>
-                <h1>Mount Network Storage (NFS & AutoFS)</h1>
+                <h1>掛載網路儲存 (NFS & AutoFS)</h1>
                 <p class="chapter-intro">
-                    Master network file system mounting with NFS and automatic mounting with AutoFS. Learn to configure 
-                    NFS clients, create persistent mounts, and implement on-demand mounting with wildcard maps.
+                    精通使用 NFS 掛載網路檔案系統以及透過 AutoFS 實現自動掛載。學習如何設定
+                    NFS 用戶端、建立開機永久掛載，並使用萬用字元對應（Wildcard Maps）實現隨需掛載。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction to Network Storage</a></li>
-                    <li><a href="#nfs-client">NFS Client Configuration</a></li>
-                    <li><a href="#autofs">AutoFS - Automatic Mounting</a></li>
-                    <li><a href="#autofs-direct">Direct Maps</a></li>
-                    <li><a href="#autofs-indirect">Indirect Maps</a></li>
-                    <li><a href="#autofs-wildcard">Wildcard Maps</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">網路儲存簡介</a></li>
+                    <li><a href="#nfs-client">NFS 用戶端設定</a></li>
+                    <li><a href="#autofs">AutoFS - 自動掛載</a></li>
+                    <li><a href="#autofs-direct">直接對應 (Direct Maps)</a></li>
+                    <li><a href="#autofs-indirect">間接對應 (Indirect Maps)</a></li>
+                    <li><a href="#autofs-wildcard">萬用字元對應 (Wildcard Maps)</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction to Network Storage</h2>
+                <h2>🎯 網路儲存簡介</h2>
                 <p>
-                    Network File System (NFS) allows sharing directories over the network. AutoFS provides automatic, 
-                    on-demand mounting of NFS shares and local filesystems.
+                    網路檔案系統（Network File System, NFS）可透過網路共用目錄。AutoFS 則提供
+                    NFS 共用目錄與本機檔案系統的自動、隨需（on-demand）掛載機制。
                 </p>
 
-                <h3>NFS Versions</h3>
+                <h3>NFS 版本比較</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Version</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Features</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">版本</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">特色</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">NFSv3</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Legacy, UDP/TCP, no encryption</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">傳統版本，支援 UDP/TCP，無加密機制</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">NFSv4</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Default in RHEL 9, TCP only, Kerberos support</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">RHEL 9 預設版本，僅使用 TCP，支援 Kerberos 驗證</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">NFSv4.2</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Latest, server-side copy, sparse files</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最新版本，支援伺服器端複製、稀疏檔案（Sparse files）</td>
                     </tr>
                 </table>
 
-                <h3>NFS vs AutoFS</h3>
+                <h3>傳統 /etc/fstab 掛載 vs AutoFS</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Method</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Pros</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Cons</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">方式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">優點</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">缺點</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>/etc/fstab</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Simple, mounts at boot</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Always mounted, boot hangs if server down</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">設定簡單，開機時自動掛載</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">永遠保持掛載狀態，若伺服器離線可能導致開機卡住</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>AutoFS</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">On-demand, auto-unmount, no boot delays</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">More complex setup</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">存取時才隨需掛載、閒置自動卸載、不影響開機速度</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">設定步驟較為複雜</td>
                     </tr>
                 </table>
 
-                <h3>Required Packages</h3>
-                <pre><code># Install NFS utilities (client)
+                <h3>必要軟體套件</h3>
+                <pre><code># 安裝 NFS 公用程式（用戶端）
 sudo dnf install -y nfs-utils
 
-# Install AutoFS
+# 安裝 AutoFS
 sudo dnf install -y autofs
 
-# Verify installation
+# 驗證套件安裝
 rpm -q nfs-utils autofs</code></pre>
             </section>
 
             <section id="nfs-client" class="content-section">
-                <h2>📂 NFS Client Configuration</h2>
+                <h2>📂 NFS 用戶端設定</h2>
 
-                <h3>Discovering NFS Shares</h3>
-                <pre><code># Show exported shares from NFS server
+                <h3>探索 NFS 共用資源</h3>
+                <pre><code># 顯示 NFS 伺服器匯出的共用目錄
 showmount -e server.example.com
 
-# Output example:
+# 輸出範例：
 Export list for server.example.com:
 /shared     192.168.1.0/24
 /home/users *
 /data       client1.example.com
 
-# Check NFS server availability
+# 檢查 NFS 伺服器連線與 RPC 服務狀態
 ping server.example.com
 rpcinfo -p server.example.com</code></pre>
 
-                <h3>Manual NFS Mount</h3>
-                <pre><code># Create mount point
+                <h3>手動掛載 NFS</h3>
+                <pre><code># 建立掛載點目錄
 sudo mkdir -p /mnt/nfs
 
-# Mount NFS share (NFSv4)
+# 掛載 NFS 共用目錄（NFSv4）
 sudo mount -t nfs4 server.example.com:/shared /mnt/nfs
 
-# Mount with NFSv3
+# 指定使用 NFSv3 掛載
 sudo mount -t nfs -o vers=3 server.example.com:/shared /mnt/nfs
 
-# Verify mount
+# 驗證掛載狀態
 df -h /mnt/nfs
 mount | grep nfs
 
-# Unmount
+# 卸載
 sudo umount /mnt/nfs</code></pre>
 
-                <h3>Persistent NFS Mount (/etc/fstab)</h3>
-                <pre><code># Edit /etc/fstab
+                <h3>永久掛載 NFS（/etc/fstab）</h3>
+                <pre><code># 編輯 /etc/fstab
 sudo vi /etc/fstab
 
-# Add NFS mount (NFSv4)
+# 新增 NFS 掛載設定（NFSv4）
 server.example.com:/shared  /mnt/nfs  nfs  defaults  0  0
 
-# With options
+# 搭配網路掛載選項
 server.example.com:/shared  /mnt/nfs  nfs  defaults,_netdev  0  0
 
-# NFSv3 specific
+# 指定使用 NFSv3
 server.example.com:/shared  /mnt/nfs  nfs  defaults,_netdev,vers=3  0  0
 
-# Test before reboot
+# 重新開機前先測試掛載
 sudo mount -a
 
-# Verify
+# 驗證掛載
 df -h /mnt/nfs</code></pre>
 
-                <h3>Common NFS Mount Options</h3>
+                <h3>常見 NFS 掛載選項</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Option</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">選項</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">_netdev</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Wait for network before mounting (critical for NFS!)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">等待網路就緒後再進行掛載（NFS 掛載極為關鍵！）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">soft</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Return error if server timeout</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">伺服器連線逾時時直接回傳錯誤</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">hard</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Keep retrying (default, safer)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">持續重試連線（預設值，資料安全性較高）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">ro</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Read-only</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">唯讀（Read-only）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">rw</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Read-write</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">可讀寫（Read-write）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">vers=4</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Force NFSv4 (default)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">強制使用 NFSv4（預設）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">sec=krb5</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Use Kerberos authentication</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">使用 Kerberos 身分驗證</td>
                     </tr>
                 </table>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Always Use _netdev</div>
-                    <p>Always include <code>_netdev</code> option for NFS mounts in /etc/fstab! 
-                    Without it, system may hang at boot if network isn't ready. This ensures the system 
-                    waits for network before attempting NFS mounts.</p>
+                    <div class="info-box-title">⚠️ 務必使用 _netdev 選項</div>
+                    <p>在 <code>/etc/fstab</code> 中設定 NFS 掛載時，請務必加上 <code>_netdev</code> 選項！
+                    若未加入此選項，當網路尚未就緒時系統可能會在開機階段卡住。此選項能確保系統等待網路啟動完成後再嘗試掛載 NFS。</p>
                 </div>
 
                 <div class="procedure">
-                    <h4>Procedure: Mount NFS Share Persistently</h4>
+                    <h4>操作步驟：永久掛載 NFS 共用目錄</h4>
                     <ol>
-                        <li>Check available shares:
+                        <li>查詢可用的共用目錄：
                             <pre><code>showmount -e server.example.com</code></pre>
                         </li>
-                        <li>Create mount point:
+                        <li>建立掛載點目錄：
                             <pre><code>sudo mkdir -p /mnt/shared</code></pre>
                         </li>
-                        <li>Test manual mount:
+                        <li>測試手動掛載：
                             <pre><code>sudo mount -t nfs4 server.example.com:/shared /mnt/shared
 df -h /mnt/shared</code></pre>
                         </li>
-                        <li>Add to /etc/fstab:
+                        <li>將設定寫入 /etc/fstab：
                             <pre><code>sudo vi /etc/fstab
 server.example.com:/shared  /mnt/shared  nfs  defaults,_netdev  0  0</code></pre>
                         </li>
-                        <li>Unmount and test fstab:
+                        <li>卸載並測試 fstab 設定：
                             <pre><code>sudo umount /mnt/shared
 sudo mount -a
 df -h /mnt/shared</code></pre>
@@ -265,84 +264,84 @@ df -h /mnt/shared</code></pre>
             </section>
 
             <section id="autofs" class="content-section">
-                <h2>🔄 AutoFS - Automatic Mounting</h2>
+                <h2>🔄 AutoFS - 自動掛載</h2>
 
                 <p>
-                    AutoFS mounts filesystems automatically when accessed and unmounts after idle timeout (default 5 minutes).
+                    AutoFS 會在檔案系統被存取時自動進行掛載，並在閒置逾時後自動卸載（預設為 5 分鐘）。
                 </p>
 
-                <h3>AutoFS Configuration Files</h3>
-                <pre><code># Main configuration
-/etc/auto.master        # Master map (defines mount points)
-/etc/auto.master.d/     # Additional master map files
+                <h3>AutoFS 設定檔</h3>
+                <pre><code># 主要設定檔
+/etc/auto.master        # 主對應檔（定義掛載點與對應檔）
+/etc/auto.master.d/     # 額外的主對應設定檔目錄
 
-# Map files (define what to mount)
-/etc/auto.misc          # Default indirect map
-/etc/auto.net           # Network automount
-/etc/auto.home          # Home directories (example)</code></pre>
+# 對應檔（定義要掛載的遠端資源與選項）
+/etc/auto.misc          # 預設的間接對應檔
+/etc/auto.net           # 網路自動掛載腳本
+/etc/auto.home          # 家目錄對應檔（範例）</code></pre>
 
-                <h3>AutoFS Service</h3>
-                <pre><code># Start AutoFS
+                <h3>AutoFS 服務管理</h3>
+                <pre><code># 啟動 AutoFS 服務
 sudo systemctl start autofs
 
-# Enable at boot
+# 設定開機自動啟動並立即啟動
 sudo systemctl enable --now autofs
 
-# Restart after config changes
+# 修改設定後重新啟動服務
 sudo systemctl restart autofs
 
-# Check status
+# 檢查服務狀態
 systemctl status autofs
 
-# Reload configuration
+# 重新載入設定檔
 sudo systemctl reload autofs</code></pre>
 
-                <h3>Master Map Format</h3>
-                <pre><code># /etc/auto.master format:
-# mount-point  map-file  [options]
+                <h3>主對應檔（Master Map）格式</h3>
+                <pre><code># /etc/auto.master 格式：
+# 掛載點(mount-point)  對應檔(map-file)  [選項(options)]
 
 /mnt/auto    /etc/auto.nfs    --timeout=60
 /home        /etc/auto.home   --timeout=300</code></pre>
             </section>
 
             <section id="autofs-direct" class="content-section">
-                <h2>📍 AutoFS Direct Maps</h2>
+                <h2>📍 AutoFS 直接對應 (Direct Maps)</h2>
 
                 <p>
-                    Direct maps specify the exact mount point. Use <code>/-</code> in master map.
+                    直接對應（Direct Map）會在對應檔中直接指定精確的絕對掛載路徑。在主對應檔中使用 <code>/-</code> 作為掛載點。
                 </p>
 
                 <div class="procedure">
-                    <h4>Procedure: Configure Direct Map</h4>
+                    <h4>操作步驟：設定直接對應（Direct Map）</h4>
                     <ol>
-                        <li>Create map file:
+                        <li>建立對應檔：
                             <pre><code>sudo vi /etc/auto.direct
 
-# Add direct mount (absolute path)
+# 新增直接掛載項目（使用絕對路徑）
 /mnt/data  -rw,soft  server.example.com:/exports/data</code></pre>
                         </li>
-                        <li>Add to master map:
+                        <li>將對應檔加入主對應檔：
                             <pre><code>sudo vi /etc/auto.master
 
-# Add line:
+# 新增以下設定行：
 /-  /etc/auto.direct</code></pre>
                         </li>
-                        <li>Restart AutoFS:
+                        <li>重新啟動 AutoFS 服務：
                             <pre><code>sudo systemctl restart autofs</code></pre>
                         </li>
-                        <li>Test access (triggers mount):
+                        <li>存取目錄以觸發自動掛載：
                             <pre><code>ls /mnt/data
 df -h /mnt/data</code></pre>
                         </li>
-                        <li>Verify automount:
+                        <li>驗證自動掛載結果：
                             <pre><code>mount | grep autofs</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Direct Map Format</h3>
+                <h3>直接對應檔格式</h3>
                 <pre><code># /etc/auto.direct
-# mount-point  options  location
+# 掛載點(mount-point)  掛載選項(options)  遠端位置(location)
 
 /mnt/project  -rw,soft  nfsserver:/exports/project
 /backup       -ro       nfsserver:/backups
@@ -350,171 +349,171 @@ df -h /mnt/data</code></pre>
             </section>
 
             <section id="autofs-indirect" class="content-section">
-                <h2>📂 AutoFS Indirect Maps</h2>
+                <h2>📂 AutoFS 間接對應 (Indirect Maps)</h2>
 
                 <p>
-                    Indirect maps create subdirectories under a parent mount point. More flexible than direct maps.
+                    間接對應（Indirect Map）會在指定的父目錄下建立子目錄作為掛載點，相較於直接對應更具彈性。
                 </p>
 
                 <div class="procedure">
-                    <h4>Procedure: Configure Indirect Map</h4>
+                    <h4>操作步驟：設定間接對應（Indirect Map）</h4>
                     <ol>
-                        <li>Create map file:
+                        <li>建立對應檔：
                             <pre><code>sudo vi /etc/auto.shares
 
-# Add indirect mounts (relative paths, no leading /)
+# 新增間接掛載項目（使用相對名稱，開頭不可加 /）
 data     -rw,soft  server.example.com:/exports/data
 backup   -ro       server.example.com:/exports/backup
 docs     -rw       server.example.com:/exports/docs</code></pre>
                         </li>
-                        <li>Add to master map:
+                        <li>將設定加入主對應檔：
                             <pre><code>sudo vi /etc/auto.master
 
-# Add line (parent directory):
+# 新增設定行（指定父目錄）：
 /mnt/remote  /etc/auto.shares  --timeout=60</code></pre>
                         </li>
-                        <li>Restart AutoFS:
+                        <li>重新啟動 AutoFS 服務：
                             <pre><code>sudo systemctl restart autofs</code></pre>
                         </li>
-                        <li>Test access:
-                            <pre><code>ls /mnt/remote/data      # Mounts server:/exports/data
-ls /mnt/remote/backup    # Mounts server:/exports/backup
-ls /mnt/remote/docs      # Mounts server:/exports/docs</code></pre>
+                        <li>存取目錄進行測試：
+                            <pre><code>ls /mnt/remote/data      # 掛載 server:/exports/data
+ls /mnt/remote/backup    # 掛載 server:/exports/backup
+ls /mnt/remote/docs      # 掛載 server:/exports/docs</code></pre>
                         </li>
-                        <li>Check mounts:
+                        <li>檢查掛載狀態：
                             <pre><code>df -h | grep remote
 mount | grep autofs</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Indirect Map Format</h3>
+                <h3>間接對應檔格式</h3>
                 <pre><code># /etc/auto.shares
-# key  options  location
+# 鍵值(key)  掛載選項(options)  遠端位置(location)
 
 docs     -rw  nfsserver:/exports/documentation
 home     -rw  nfsserver:/home/&amp;
 tools    -ro  nfsserver:/opt/tools</code></pre>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Direct vs Indirect</div>
-                    <p><strong>Direct:</strong> Uses <code>/-</code> in master map, absolute paths in map file<br>
-                    <strong>Indirect:</strong> Uses parent directory in master map, relative keys in map file<br>
-                    <strong>When to use:</strong> Indirect is preferred for multiple related mounts</p>
+                    <div class="info-box-title">📘 注意：直接對應 vs 間接對應</div>
+                    <p><strong>直接對應（Direct）：</strong>在主對應檔使用 <code>/-</code>，對應檔內填寫絕對路徑<br>
+                    <strong>間接對應（Indirect）：</strong>在主對應檔指定父目錄，對應檔內填寫相對鍵值名稱<br>
+                    <strong>使用時機：</strong>當同一個父目錄下有多個相關掛載點時，建議優先使用間接對應</p>
                 </div>
             </section>
 
             <section id="autofs-wildcard" class="content-section">
-                <h2>🎯 AutoFS Wildcard Maps</h2>
+                <h2>🎯 AutoFS 萬用字元對應 (Wildcard Maps)</h2>
 
                 <p>
-                    Wildcard maps use <code>*</code> to match any key, useful for user home directories.
+                    萬用字元對應使用 <code>*</code> 來匹配任意鍵值，非常適合用於自動掛載使用者的家目錄。
                 </p>
 
-                <h3>Home Directory Automount</h3>
-                <pre><code># Create map for home directories
+                <h3>家目錄自動掛載</h3>
+                <pre><code># 建立家目錄的對應檔
 sudo vi /etc/auto.home
 
-# Wildcard entry (&amp;amp; substitutes the key)
+# 萬用字元項目（&amp; 會自動代入所存取的鍵值）
 *  -rw,soft  nfsserver:/home/&amp;amp;
 
-# Add to master map
+# 加入主對應檔
 sudo vi /etc/auto.master
 /home  /etc/auto.home  --timeout=300
 
-# Restart AutoFS
+# 重新啟動 AutoFS
 sudo systemctl restart autofs
 
-# Access user homes (auto-mounts on access)
-cd /home/john    # Mounts nfsserver:/home/john
-cd /home/alice   # Mounts nfsserver:/home/alice</code></pre>
+# 存取使用者家目錄（存取時自動掛載）
+cd /home/john    # 掛載 nfsserver:/home/john
+cd /home/alice   # 掛載 nfsserver:/home/alice</code></pre>
 
-                <h3>Wildcard Examples</h3>
-                <pre><code># Multi-user shares
+                <h3>萬用字元應用範例</h3>
+                <pre><code># 多使用者共用目錄
 sudo vi /etc/auto.users
 *  -rw  nfsserver:/users/&amp;amp;
 
-# Department shares
+# 各部門共用目錄
 sudo vi /etc/auto.dept
 *  -rw  fileserver:/departments/&amp;amp;
 
-# Access:
-ls /mnt/users/bob      # Mounts /users/bob
-ls /mnt/dept/sales     # Mounts /departments/sales</code></pre>
+# 存取方式：
+ls /mnt/users/bob      # 掛載 /users/bob
+ls /mnt/dept/sales     # 掛載 /departments/sales</code></pre>
 
-                <h3>Complex Wildcard with Subdirectories</h3>
-                <pre><code># Multi-level structure
+                <h3>搭配子目錄的進階萬用字元設定</h3>
+                <pre><code># 多層級目錄結構
 sudo vi /etc/auto.projects
 
 *  -rw  projectserver:/projects/&amp;amp;/current
 
-# Creates structure:
+# 產生的對應結構如下：
 /mnt/projects/alpha  → projectserver:/projects/alpha/current
 /mnt/projects/beta   → projectserver:/projects/beta/current</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Setup Wildcard AutoFS for User Homes</h4>
+                    <h4>操作步驟：設定使用萬用字元的 AutoFS 家目錄掛載</h4>
                     <ol>
-                        <li>Create map file with wildcard:
+                        <li>建立包含萬用字元的對應檔：
                             <pre><code>sudo vi /etc/auto.home
 *  -rw,soft,_netdev  server.example.com:/home/&amp;amp;</code></pre>
                         </li>
-                        <li>Add to master map:
+                        <li>將設定加入主對應檔：
                             <pre><code>sudo vi /etc/auto.master
 /rhome  /etc/auto.home</code></pre>
                         </li>
-                        <li>Restart AutoFS:
+                        <li>重新啟動 AutoFS 服務：
                             <pre><code>sudo systemctl restart autofs</code></pre>
                         </li>
-                        <li>Test with different users:
-                            <pre><code>ls /rhome/user1    # Auto-mounts server:/home/user1
-ls /rhome/user2    # Auto-mounts server:/home/user2</code></pre>
+                        <li>以不同使用者名稱進行測試：
+                            <pre><code>ls /rhome/user1    # 自動掛載 server:/home/user1
+ls /rhome/user2    # 自動掛載 server:/home/user2</code></pre>
                         </li>
-                        <li>Verify mounts:
+                        <li>驗證掛載結果：
                             <pre><code>df -h | grep rhome
 mount | grep autofs</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Troubleshooting AutoFS</h3>
-                <pre><code># Check AutoFS status
+                <h3>AutoFS 疑難排解</h3>
+                <pre><code># 檢查 AutoFS 服務狀態
 systemctl status autofs
 
-# View AutoFS logs
+# 檢視 AutoFS 日誌
 journalctl -u autofs -n 50
 
-# Test with verbose logging
+# 以詳細除錯輸出模式進行前景測試
 sudo automount -f -v
 
-# Check master map parsing
+# 檢查主對應檔的有效設定
 sudo cat /etc/auto.master | grep -v '^#'
 
-# Verify map file syntax
+# 驗證對應檔語法
 sudo cat /etc/auto.home
 
-# Check if mount point exists (shouldn't exist before access)
+# 檢查掛載點目錄狀態（存取前子目錄通常尚未建立）
 ls -ld /mnt/auto
 
-# Force unmount stuck AutoFS
+# 強制延遲卸載卡住的 AutoFS 掛載點
 sudo umount -l /mnt/auto/*</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 AutoFS Best Practices</div>
-                    <p>• Don't manually create AutoFS mount points (AutoFS creates them)<br>
-                    • Use indirect maps for multiple related shares<br>
-                    • Set appropriate timeout (default 300s, use --timeout= option)<br>
-                    • Always restart autofs after configuration changes<br>
-                    • Check logs if mounts don't trigger: <code>journalctl -u autofs</code></p>
+                    <div class="info-box-title">💡 AutoFS 最佳實踐</div>
+                    <p>• 不要手動建立 AutoFS 的掛載點目錄（AutoFS 會自動管理並建立）<br>
+                    • 多個相關共用目錄建議採用間接對應（Indirect Maps）<br>
+                    • 依需求設定適當的閒置逾時時間（預設 300 秒，可透過 <code>--timeout=</code> 調整）<br>
+                    • 每次修改設定後務必重新啟動 <code>autofs</code> 服務<br>
+                    • 若未觸發自動掛載，請查看日誌：<code>journalctl -u autofs</code></p>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What option is CRITICAL for NFS mounts in /etc/fstab?</h4>
+                        <h4>第 1 題：在 /etc/fstab 中設定 NFS 掛載時，哪一個選項最為關鍵？</h4>
                         <ul class="quiz-options">
                             <li>A) rw</li>
                             <li>B) _netdev</li>
@@ -522,15 +521,15 @@ sudo umount -l /mnt/auto/*</code></pre>
                             <li>D) soft</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) _netdev</strong><br>
-                            <code>_netdev</code> tells systemd to wait for network before mounting. Without it, 
-                            system can hang at boot if NFS server is unreachable. Always use: 
+                            <strong>解答：B) _netdev</strong><br>
+                            <code>_netdev</code> 會通知 systemd 等待網路就緒後再執行掛載。若缺少此選項，
+                            當 NFS 伺服器無法連線時可能會導致系統開機卡住。標準寫法如下：
                             <code>server:/share /mnt nfs defaults,_netdev 0 0</code>
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: What symbol is used in AutoFS master map for direct mounts?</h4>
+                        <h4>第 2 題：AutoFS 主對應檔（Master Map）中，直接掛載（Direct Mounts）需使用哪個符號？</h4>
                         <ul class="quiz-options">
                             <li>A) *</li>
                             <li>B) /-</li>
@@ -538,46 +537,46 @@ sudo umount -l /mnt/auto/*</code></pre>
                             <li>D) &amp;</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) /-</strong><br>
-                            Direct maps use <code>/-</code> as mount point in /etc/auto.master. 
-                            Map file then uses absolute paths. Indirect maps use a parent directory instead. 
-                            Example: <code>/-  /etc/auto.direct</code>
+                            <strong>解答：B) /-</strong><br>
+                            直接對應在 <code>/etc/auto.master</code> 中使用 <code>/-</code> 作為掛載點，
+                            並在對應檔中使用絕對路徑。間接對應則是在主對應檔指定一個父目錄。
+                            範例：<code>/-  /etc/auto.direct</code>
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: What does the "&amp;" symbol mean in AutoFS wildcard maps?</h4>
+                        <h4>第 3 題：在 AutoFS 萬用字元對應檔中，"&amp;" 符號代表什麼意義？</h4>
                         <ul class="quiz-options">
-                            <li>A) Match all files</li>
-                            <li>B) Substitute with the key (username/directory)</li>
-                            <li>C) Background process</li>
-                            <li>D) Optional parameter</li>
+                            <li>A) 匹配所有檔案</li>
+                            <li>B) 替換為所存取的鍵值（例如使用者名稱或目錄名稱）</li>
+                            <li>C) 在背景執行程序</li>
+                            <li>D) 選填參數</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Substitute with the key</strong><br>
-                            In <code>*  -rw  server:/home/&amp;</code>, the &amp; is replaced with whatever key is accessed. 
-                            Accessing /home/john mounts server:/home/john. Perfect for user home directories.
+                            <strong>解答：B) 替換為所存取的鍵值</strong><br>
+                            在 <code>*  -rw  server:/home/&amp;</code> 設定中，<code>&amp;</code> 會被自動替換為實際存取的鍵值名稱。
+                            例如存取 <code>/home/john</code> 時會自動掛載 <code>server:/home/john</code>，非常適合用於家目錄管理。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: After editing AutoFS maps, what must you do?</h4>
+                        <h4>第 4 題：編輯完成 AutoFS 對應檔後，必須執行什麼操作？</h4>
                         <ul class="quiz-options">
-                            <li>A) Reboot the system</li>
-                            <li>B) Run mount -a</li>
-                            <li>C) systemctl restart autofs</li>
-                            <li>D) Nothing, changes are automatic</li>
+                            <li>A) 重新開機</li>
+                            <li>B) 執行 mount -a</li>
+                            <li>C) 執行 systemctl restart autofs</li>
+                            <li>D) 不需任何動作，變更會自動生效</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) systemctl restart autofs</strong><br>
-                            Always restart autofs after changing configuration files: 
-                            <code>sudo systemctl restart autofs</code>. Can also use <code>reload</code> but 
-                            restart is safer. Check status: <code>systemctl status autofs</code>
+                            <strong>解答：C) 執行 systemctl restart autofs</strong><br>
+                            修改 AutoFS 設定檔後，務必重新啟動 <code>autofs</code> 服務：
+                            <code>sudo systemctl restart autofs</code>。雖然也可以使用 <code>reload</code>，但執行 restart 更為穩妥。
+                            可使用 <code>systemctl status autofs</code> 確認服務狀態。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: What command shows NFS exports from a server?</h4>
+                        <h4>第 5 題：哪個指令可以查看 NFS 伺服器所匯出的共用目錄？</h4>
                         <ul class="quiz-options">
                             <li>A) nfs-list server.example.com</li>
                             <li>B) showmount -e server.example.com</li>
@@ -585,15 +584,15 @@ sudo umount -l /mnt/auto/*</code></pre>
                             <li>D) mount | grep nfs</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) showmount -e server.example.com</strong><br>
-                            <code>showmount -e</code> queries NFS server for available exports. 
-                            <code>exportfs -v</code> is run on the NFS server to show its exports. 
-                            <code>mount | grep nfs</code> shows locally mounted NFS shares.
+                            <strong>解答：B) showmount -e server.example.com</strong><br>
+                            <code>showmount -e</code> 用於從用戶端查詢 NFS 伺服器匯出的共用清單；
+                            <code>exportfs -v</code> 則是在 NFS 伺服器端執行以檢視其匯出設定；
+                            <code>mount | grep nfs</code> 則用於檢視本機目前已掛載的 NFS 共用目錄。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 6: Indirect map: "/shares /etc/auto.data" - Where does "docs" key mount?</h4>
+                        <h4>第 6 題：間接對應設定為 "/shares /etc/auto.data"，其中的 "docs" 鍵值會掛載到哪個路徑？</h4>
                         <ul class="quiz-options">
                             <li>A) /docs</li>
                             <li>B) /shares</li>
@@ -601,18 +600,18 @@ sudo umount -l /mnt/auto/*</code></pre>
                             <li>D) /etc/auto.data/docs</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) /shares/docs</strong><br>
-                            Indirect maps create subdirectories under parent mount point. Master map shows 
-                            /shares as parent, map file has "docs" key, so mount point is /shares/docs. 
-                            Direct maps would use absolute path in map file instead.
+                            <strong>解答：C) /shares/docs</strong><br>
+                            間接對應會在主對應檔指定的父目錄下建立子目錄作為掛載點。主對應檔指定 <code>/shares</code> 為父目錄，
+                            而對應檔中定義了 "docs" 鍵值，因此實際掛載路徑為 <code>/shares/docs</code>。
+                            若是直接對應，則會在對應檔中直接寫入完整的絕對路徑。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter13.html" class="nav-button prev">Chapter 13: Configure Networking</a>
-                <a href="chapter15.html" class="nav-button next">Chapter 15: Network Security (Firewalld)</a>
+                <a href="chapter13.html" class="nav-button prev">第 13 章：網路設定</a>
+                <a href="chapter15.html" class="nav-button next">第 15 章：網路安全性 (Firewalld)</a>
             </div>
         </main>
     </div>
@@ -622,14 +621,14 @@ sudo umount -l /mnt/auto/*</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>您精通 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>
-
+
 </body>
 </html>

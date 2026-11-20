@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 7: Schedule Future Tasks - RHCSA Guide</title>
+    <title>第 7 章：排程未來任務 - RHCSA 學習指南</title>
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
-  <script type="module" crossorigin src="/assets/script-uyo8zlGx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/script-Bd6Bx7if.css">
+  <script type="module" crossorigin src="/assets/script-D3Q74Pyl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-CcFVVXfV.css">
 </head>
 <body>
     <nav class="navbar">
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,269 +36,268 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html" class="active">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html" class="active">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 7</span>
-                    <span class="meta-badge">⏱️ 40 min read</span>
-                    <span class="meta-badge">📚 Intermediate</span>
+                    <span class="meta-badge">第 7 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 40 分鐘</span>
+                    <span class="meta-badge">📚 中級</span>
                 </div>
-                <h1>Schedule Future Tasks</h1>
+                <h1>排程未來任務</h1>
                 <p class="chapter-intro">
-                    Automate system tasks using cron, anacron, at, and systemd timers. Master job scheduling for recurring 
-                    maintenance, backups, monitoring, and one-time task execution.
+                    使用 cron、anacron、at 與 systemd 計時器（Timer）來自動化系統任務。
+                    掌握定期維護、備份、監控以及一次性任務執行的排程管理技巧。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#cron">Cron & Crontab</a></li>
-                    <li><a href="#systemd-timers">Systemd Timers</a></li>
-                    <li><a href="#at">At & Batch Commands</a></li>
+                    <li><a href="#introduction">簡介</a></li>
+                    <li><a href="#cron">Cron 與 Crontab</a></li>
+                    <li><a href="#systemd-timers">Systemd 計時器</a></li>
+                    <li><a href="#at">At 與 Batch 指令</a></li>
                     <li><a href="#anacron">Anacron</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction</h2>
+                <h2>🎯 簡介</h2>
                 <p>
-                    Task scheduling is essential for system administration. Linux provides multiple tools to automate tasks 
-                    at specific times or intervals - from simple recurring jobs (backups, log rotation) to complex maintenance 
-                    schedules. Understanding these tools ensures your systems run smoothly without manual intervention.
+                    任務排程是系統管理不可或缺的一環。Linux 提供了多種工具，讓系統能在指定時間或週期自動執行任務——
+                    從簡單的定期作業（如備份、日誌輪替）到複雜的維護排程皆可勝任。熟練這些工具能確保系統在無需人工介入的情況下平穩運作。
                 </p>
 
-                <p>In this chapter, you'll master:</p>
+                <p>在本章中，你將掌握：</p>
                 <ul>
-                    <li>Cron for recurring scheduled tasks</li>
-                    <li>Systemd timers as a modern alternative to cron</li>
-                    <li>At for one-time future task execution</li>
-                    <li>Anacron for systems not running 24/7</li>
-                    <li>Access control for job scheduling</li>
+                    <li>使用 Cron 執行週期性排程任務</li>
+                    <li>將 Systemd 計時器作為 Cron 的現代化替代方案</li>
+                    <li>使用 At 執行一次性未來任務</li>
+                    <li>針對非 24 小時開機的系統使用 Anacron</li>
+                    <li>設定工作排程的使用者存取控制</li>
                 </ul>
 
-                <h3>Scheduling Tools Comparison</h3>
+                <h3>排程工具比較</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Tool</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Type</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Best For</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">工具</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">類型</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">最適用情境</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>cron</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Recurring</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Regular intervals (daily backups, hourly checks)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">週期性</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">固定時間間隔任務（每日備份、每小時檢查）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>systemd timers</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Recurring</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Modern systems, integrated logging, dependencies</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">週期性</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">現代化系統環境，支援整合日誌與服務相依性</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>at</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">One-time</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Single future execution (reboot at 2am, run report Friday)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">一次性</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">單次未來執行（例如凌晨 2 點重開機、週五產生報表）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>anacron</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Recurring</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Desktop/laptop (may not run 24/7)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">週期性</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">桌上型電腦 / 筆電（非 24 小時持續開機的設備）</td>
                     </tr>
                 </table>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Note</div>
-                    <p>On RHEL 9, systemd timers are increasingly preferred over cron for new tasks, 
-                    but cron remains widely used and is important for the RHCSA exam.</p>
+                    <div class="info-box-title">📘 注意</div>
+                    <p>在 RHEL 9 上，新建立的任務越來越傾向優先使用 systemd 計時器而非 cron，
+                    但 cron 依然在實務中被廣泛使用，也是 RHCSA 考試的重點之一。</p>
                 </div>
             </section>
 
             <section id="cron" class="content-section">
-                <h2>⏰ Cron & Crontab</h2>
+                <h2>⏰ Cron 與 Crontab</h2>
 
                 <p>
-                    Cron is the traditional Unix job scheduler that runs commands at specified times and dates. 
-                    The cron daemon (crond) checks crontab files every minute and executes matching jobs.
+                    Cron 是傳統的 Unix 工作排程器，可在指定的時間與日期自動執行指令。
+                    Cron 背景服務（<code>crond</code>）每分鐘都會檢查 crontab 檔案並執行符合時間條件的排程工作。
                 </p>
 
-                <h3>Crontab Syntax</h3>
-                <p>Each crontab entry has six fields:</p>
-                <pre><code># ┌───────────── minute (0-59)
-# │ ┌───────────── hour (0-23)
-# │ │ ┌───────────── day of month (1-31)
-# │ │ │ ┌───────────── month (1-12)
-# │ │ │ │ ┌───────────── day of week (0-6, Sunday=0)
+                <h3>Crontab 語法</h3>
+                <p>每筆 crontab 排程記錄包含六個欄位：</p>
+                <pre><code># ┌───────────── 分鐘 (0-59)
+# │ ┌───────────── 小時 (0-23)
+# │ │ ┌───────────── 日期 (1-31)
+# │ │ │ ┌───────────── 月份 (1-12)
+# │ │ │ │ ┌───────────── 星期 (0-6，週日=0)
 # │ │ │ │ │
 # │ │ │ │ │
-# * * * * * command to execute</code></pre>
+# * * * * * 要執行的指令</code></pre>
 
-                <h3>Special Characters</h3>
+                <h3>特殊字元</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Character</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Meaning</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Example</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">字元</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">意義</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">範例</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>*</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Any value</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>* * * * *</code> = every minute</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">任意值（每個單位）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>* * * * *</code> = 每分鐘執行一次</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>,</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">List of values</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0 9,17 * * *</code> = 9am and 5pm</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">列舉多個指定值</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0 9,17 * * *</code> = 每天上午 9 點與下午 5 點</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>-</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Range</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0 9-17 * * *</code> = 9am to 5pm</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">連續範圍</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0 9-17 * * *</code> = 上午 9 點到下午 5 點的每個整點</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>/</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Step values</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>*/15 * * * *</code> = every 15 minutes</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">間隔步進值</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>*/15 * * * *</code> = 每 15 分鐘執行一次</td>
                     </tr>
                 </table>
 
-                <h3>Common Crontab Examples</h3>
-                <pre><code># Run every minute
+                <h3>常見 Crontab 範例</h3>
+                <pre><code># 每分鐘執行
 * * * * * /path/to/command
 
-# Run at 3:30 AM daily
+# 每天凌晨 3:30 執行
 30 3 * * * /usr/local/bin/backup.sh
 
-# Run every hour at minute 0
+# 每小時整點（第 0 分）執行
 0 * * * * /usr/bin/check-status.sh
 
-# Run at 2:15 PM on weekdays (Mon-Fri)
+# 平日（週一至週五）下午 2:15 執行
 15 14 * * 1-5 /usr/bin/report.sh
 
-# Run on the 1st and 15th of every month at midnight
+# 每月 1 日與 15 日午夜 00:00 執行
 0 0 1,15 * * /usr/local/bin/billing.sh
 
-# Run every 15 minutes
+# 每 15 分鐘執行一次
 */15 * * * * /usr/bin/monitor.sh
 
-# Run at 11:45 PM on Sundays
+# 每週日晚上 11:45 執行
 45 23 * * 0 /usr/local/bin/weekly-cleanup.sh
 
-# Run every 6 hours
+# 每 6 小時執行一次
 0 */6 * * * /usr/bin/sync-data.sh
 
-# Run on January 1st at midnight (yearly)
+# 每年 1 月 1 日午夜執行
 0 0 1 1 * /usr/local/bin/new-year-task.sh
 
-# Run Mon-Fri at 9 AM
+# 週一至週五上午 9:00 執行
 0 9 * * 1-5 /usr/local/bin/workday-start.sh</code></pre>
 
-                <h3>Managing User Crontabs</h3>
-                <pre><code># Edit your crontab
+                <h3>管理使用者 Crontab</h3>
+                <pre><code># 編輯自己的 crontab
 crontab -e
 
-# List your crontab
+# 列出自己的 crontab 內容
 crontab -l
 
-# Remove your crontab (with confirmation)
+# 移除自己的 crontab（直接刪除）
 crontab -r
 
-# Remove crontab without confirmation
+# 移除自己的 crontab（刪除前詢問確認）
 crontab -r -i
 
-# Edit another user's crontab (as root)
+# 編輯其他使用者的 crontab（需 root 權限）
 sudo crontab -u username -e
 
-# List another user's crontab
+# 列出其他使用者的 crontab
 sudo crontab -u username -l</code></pre>
 
-                <h3>System Crontabs</h3>
-                <p>System-wide cron jobs are stored in different locations:</p>
-                <pre><code># System crontab (includes username field)
+                <h3>系統 Crontab</h3>
+                <p>系統層級的 cron 排程工作分別儲存在以下位置：</p>
+                <pre><code># 系統主 crontab（包含指定執行使用者的欄位）
 /etc/crontab
 
-# Sample /etc/crontab:
+# /etc/crontab 內容範例：
 SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
 HOME=/
 
-# minute hour day month dayofweek user command
+# 分 時 日 月 週 使用者 指令
 0 2 * * * root /usr/local/bin/daily-maintenance.sh
 
-# Drop-in directories for scripts
-/etc/cron.hourly/    # Run every hour
-/etc/cron.daily/     # Run once daily
-/etc/cron.weekly/    # Run once weekly
-/etc/cron.monthly/   # Run once monthly
+# 腳本置放目錄（Drop-in directories）
+/etc/cron.hourly/    # 每小時執行
+/etc/cron.daily/     # 每天執行一次
+/etc/cron.weekly/    # 每週執行一次
+/etc/cron.monthly/   # 每月執行一次
 
-# Additional cron jobs
-/etc/cron.d/         # Additional crontab files
+# 額外的系統 cron 排程設定檔目錄
+/etc/cron.d/         # 放置額外的 crontab 設定檔
 
-# Example: Add script to daily cron
+# 範例：將腳本加入每日排程
 sudo cp script.sh /etc/cron.daily/
 sudo chmod +x /etc/cron.daily/script.sh</code></pre>
 
-                <h3>Cron Environment Variables</h3>
-                <p>Set variables at the top of crontab:</p>
-                <pre><code># Set shell
+                <h3>Cron 環境變數</h3>
+                <p>可在 crontab 檔案頂端設定環境變數：</p>
+                <pre><code># 設定使用的 Shell
 SHELL=/bin/bash
 
-# Set PATH
+# 設定 PATH 搜尋路徑
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-# Email output to user
+# 將輸出結果寄信給指定使用者
 MAILTO=admin@example.com
 
-# Disable email
+# 停用郵件通知
 MAILTO=""
 
-# Set HOME directory
+# 設定 HOME 目錄
 HOME=/home/student
 
-# Your cron jobs below
+# 以下放置你的 cron 排程工作
 0 2 * * * /usr/local/bin/backup.sh</code></pre>
 
-                <h3>Redirecting Cron Output</h3>
-                <pre><code># Discard all output
+                <h3>重新導向 Cron 輸出</h3>
+                <pre><code># 丟棄所有輸出（標準輸出與錯誤輸出）
 0 2 * * * /usr/local/bin/quiet-task.sh &gt; /dev/null 2&gt;&amp;1
 
-# Log output to file
+# 將輸出附加寫入日誌檔
 0 2 * * * /usr/local/bin/backup.sh &gt;&gt; /var/log/backup.log 2&gt;&amp;1
 
-# Send errors only
+# 僅寄送錯誤輸出（標準輸出丟棄）
 0 2 * * * /usr/local/bin/task.sh &gt; /dev/null
 
-# Separate stdout and stderr
+# 將標準輸出與錯誤輸出分別寫入不同檔案
 0 2 * * * /usr/local/bin/task.sh &gt;&gt; /var/log/task.log 2&gt;&gt; /var/log/task-error.log</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Creating a Daily Backup Cron Job</h4>
+                    <h4>操作步驟：建立每日備份 Cron 工作</h4>
                     <ol>
-                        <li>Create the backup script:
+                        <li>建立備份腳本：
                             <pre><code>sudo vi /usr/local/bin/daily-backup.sh
 
 #!/bin/bash
@@ -307,85 +306,85 @@ DATE=$(date +%Y%m%d)
 tar -czf /backups/home-$DATE.tar.gz /home
 find /backups -name "home-*.tar.gz" -mtime +7 -delete
 
-# Make executable
+# 賦予可執行權限
 sudo chmod +x /usr/local/bin/daily-backup.sh</code></pre>
                         </li>
-                        <li>Test the script manually:
+                        <li>手動測試腳本是否正常運作：
                             <pre><code>sudo /usr/local/bin/daily-backup.sh</code></pre>
                         </li>
-                        <li>Edit crontab:
+                        <li>編輯 crontab：
                             <pre><code>sudo crontab -e</code></pre>
                         </li>
-                        <li>Add cron job (runs at 2 AM daily):
-                            <pre><code># Daily backup at 2 AM
+                        <li>新增 cron 排程（每天凌晨 2 點執行）：
+                            <pre><code># 每天凌晨 2 點執行備份
 0 2 * * * /usr/local/bin/daily-backup.sh &gt;&gt; /var/log/backup.log 2&gt;&amp;1</code></pre>
                         </li>
-                        <li>Verify crontab:
+                        <li>驗證 crontab 設定：
                             <pre><code>sudo crontab -l</code></pre>
                         </li>
-                        <li>Check cron is running:
+                        <li>確認 cron 服務正在運行：
                             <pre><code>sudo systemctl status crond</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Cron Access Control</h3>
-                <p>Control who can use cron:</p>
-                <pre><code># Allow specific users only
-/etc/cron.allow    # If exists, only listed users can use cron
-/etc/cron.deny     # If exists, listed users cannot use cron
+                <h3>Cron 存取控制</h3>
+                <p>控管哪些使用者可以使用 cron：</p>
+                <pre><code># 透過白名單或黑名單控管使用者權限
+/etc/cron.allow    # 若檔案存在，僅列於其中的使用者可使用 cron
+/etc/cron.deny     # 若檔案存在，列於其中的使用者禁止使用 cron
 
-# Example: Allow only student and admin
+# 範例：僅允許 student 與 admin 使用 cron
 echo "student" | sudo tee /etc/cron.allow
 echo "admin" | sudo tee -a /etc/cron.allow
 
-# Example: Deny specific user
+# 範例：禁止特定使用者使用 cron
 echo "baduser" | sudo tee /etc/cron.deny
 
-# If neither file exists, only root can use cron (RHEL default)
-# If both exist, cron.allow takes precedence</code></pre>
+# 若兩個檔案皆不存在，預設僅有 root 可使用 cron（RHEL 預設）
+# 若兩個檔案同時存在，以 cron.allow 優先</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Cron Best Practices</div>
+                    <div class="info-box-title">💡 提示：Cron 最佳實務</div>
                     <ul>
-                        <li>Always use absolute paths in cron jobs</li>
-                        <li>Test scripts manually before adding to cron</li>
-                        <li>Redirect output or set MAILTO to avoid email spam</li>
-                        <li>Use meaningful comments in crontab</li>
-                        <li>For complex schedules, consider systemd timers</li>
+                        <li>在 cron 排程中務必使用絕對路徑</li>
+                        <li>加入 crontab 前請先手動測試腳本執行無誤</li>
+                        <li>適當地重新導向輸出或設定 MAILTO，避免產生大量通知郵件</li>
+                        <li>在 crontab 中加上清楚易懂的註解</li>
+                        <li>對於較複雜的排程需求，建議改用 systemd 計時器</li>
                     </ul>
                 </div>
             </section>
 
             <section id="systemd-timers" class="content-section">
-                <h2>⏲️ Systemd Timers</h2>
+                <h2>⏲️ Systemd 計時器</h2>
 
                 <p>
-                    Systemd timers are the modern alternative to cron. They integrate with systemd services, 
-                    provide better logging, support dependencies, and offer more flexible scheduling options.
+                    Systemd 計時器（Timers）是取代 cron 的現代化排程機制。它能與 systemd 服務緊密整合，
+                    提供更完整的日誌記錄、支援服務相依性，並具備更彈性的排程選項。
                 </p>
 
-                <h3>Why Use Systemd Timers?</h3>
+                <h3>為什麼使用 Systemd 計時器？</h3>
                 <ul>
-                    <li><strong>Integration:</strong> Works with systemd services and dependencies</li>
-                    <li><strong>Logging:</strong> Full journald integration for debugging</li>
-                    <li><strong>Flexibility:</strong> Run on boot, relative to other units, with randomization</li>
-                    <li><strong>Resource control:</strong> Can use systemd resource limits</li>
-                    <li><strong>Accuracy:</strong> Better precision for time-critical tasks</li>
+                    <li><strong>深度整合：</strong> 可直接搭配 systemd 服務單元與相依性設定運作</li>
+                    <li><strong>日誌追蹤：</strong> 完整整合 journald 日誌系統，便於除錯與檢視紀錄</li>
+                    <li><strong>高度彈性：</strong> 支援開機後觸發、相對於其他單元觸發，以及隨機延遲功能</li>
+                    <li><strong>資源控管：</strong> 可套用 systemd 資源使用限制</li>
+                    <li><strong>精準度高：</strong> 針對時間敏感的任務提供更佳的觸發精確度</li>
                 </ul>
 
-                <h3>Timer Components</h3>
-                <p>A systemd timer requires two files:</p>
+                <h3>計時器組成元件</h3>
+                <p>一個 systemd 計時器需要兩個單元設定檔：</p>
                 <ol>
-                    <li><strong>Service unit</strong> (.service) - Defines what to run</li>
-                    <li><strong>Timer unit</strong> (.timer) - Defines when to run it</li>
+                    <li><strong>服務單元（Service unit, <code>.service</code>）</strong> - 定義「要執行什麼」</li>
+                    <li><strong>計時器單元（Timer unit, <code>.timer</code>）</strong> - 定義「何時執行」</li>
                 </ol>
 
-                <h3>Creating a Systemd Timer</h3>
+                <h3>建立 Systemd 計時器</h3>
                 <div class="procedure">
-                    <h4>Example: Daily Cleanup Timer</h4>
+                    <h4>範例：每日清理計時器</h4>
                     <ol>
-                        <li>Create the service file:
+                        <li>建立服務單元檔案：
                             <pre><code>sudo vi /etc/systemd/system/cleanup.service
 
 [Unit]
@@ -399,7 +398,7 @@ ExecStart=/usr/local/bin/cleanup.sh
 [Install]
 WantedBy=multi-user.target</code></pre>
                         </li>
-                        <li>Create the timer file:
+                        <li>建立計時器單元檔案：
                             <pre><code>sudo vi /etc/systemd/system/cleanup.timer
 
 [Unit]
@@ -414,106 +413,106 @@ Persistent=true
 [Install]
 WantedBy=timers.target</code></pre>
                         </li>
-                        <li>Reload systemd:
+                        <li>重新載入 systemd 設定：
                             <pre><code>sudo systemctl daemon-reload</code></pre>
                         </li>
-                        <li>Enable and start the timer:
+                        <li>啟用並立即啟動計時器：
                             <pre><code>sudo systemctl enable cleanup.timer
 sudo systemctl start cleanup.timer</code></pre>
                         </li>
-                        <li>Verify the timer:
+                        <li>驗證計時器狀態：
                             <pre><code>sudo systemctl status cleanup.timer
 sudo systemctl list-timers cleanup.timer</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Timer Scheduling Syntax</h3>
-                <p>OnCalendar accepts various formats:</p>
-                <pre><code># Simple intervals
-OnCalendar=hourly     # Every hour
-OnCalendar=daily      # Every day at midnight
-OnCalendar=weekly     # Every week on Monday
-OnCalendar=monthly    # Every month on the 1st
-OnCalendar=yearly     # Every year on January 1st
+                <h3>計時器排程語法</h3>
+                <p><code>OnCalendar</code> 支援多種時間格式：</p>
+                <pre><code># 簡易週期關鍵字
+OnCalendar=hourly     # 每小時
+OnCalendar=daily      # 每天午夜
+OnCalendar=weekly     # 每週一午夜
+OnCalendar=monthly    # 每月 1 日午夜
+OnCalendar=yearly     # 每年 1 月 1 日午夜
 
-# Specific times
-OnCalendar=*-*-* 02:30:00           # Daily at 2:30 AM
-OnCalendar=Mon *-*-* 09:00:00       # Mondays at 9 AM
-OnCalendar=Mon..Fri *-*-* 18:00:00  # Weekdays at 6 PM
+# 指定特定時間
+OnCalendar=*-*-* 02:30:00           # 每天凌晨 2:30
+OnCalendar=Mon *-*-* 09:00:00       # 每週一上午 9:00
+OnCalendar=Mon..Fri *-*-* 18:00:00  # 週一至週五下午 6:00
 
-# Multiple times
-OnCalendar=*-*-* 06:00:00           # 6 AM
-OnCalendar=*-*-* 18:00:00           # 6 PM
+# 多個觸發時間
+OnCalendar=*-*-* 06:00:00           # 早上 6:00
+OnCalendar=*-*-* 18:00:00           # 晚上 6:00
 
-# Every 15 minutes
+# 每 15 分鐘執行一次
 OnCalendar=*:0/15
 
-# Test calendar expression
+# 測試行事曆時間表示式是否正確
 systemd-analyze calendar "Mon..Fri *-*-* 09:00:00"</code></pre>
 
-                <h3>Timer Options</h3>
+                <h3>計時器選項</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Option</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">選項</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>OnCalendar=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Real-time (wall clock) scheduling</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">依真實行事曆時鐘時間排程</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>OnBootSec=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Time after boot</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">系統開機後經過的時間</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>OnActiveSec=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Time after timer activation</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">計時器啟動後經過的時間</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>OnUnitActiveSec=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Time after service last ran</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">對應服務上次執行後經過的時間</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Persistent=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Run missed timers on boot</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">若關機錯過執行時間，於下次開機後立即補跑</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>AccuracySec=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Accuracy window (default 1min)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">計時器精確度容許窗口（預設為 1 分鐘）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>RandomizedDelaySec=</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Random delay before execution</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">執行前加上隨機延遲時間</td>
                     </tr>
                 </table>
 
-                <h3>Managing Timers</h3>
-                <pre><code># List all timers
+                <h3>管理計時器</h3>
+                <pre><code># 列出所有啟用中的計時器
 systemctl list-timers
 
-# List all timers (including inactive)
+# 列出所有計時器（包含未啟用者）
 systemctl list-timers --all
 
-# Check timer status
+# 檢查計時器狀態
 systemctl status cleanup.timer
 
-# View timer details
+# 檢視計時器詳細屬性
 systemctl show cleanup.timer
 
-# Check when timer will run next
+# 檢查計時器下次執行的時間
 systemctl list-timers cleanup.timer
 
-# Manually trigger the service
+# 手動立即觸發對應的服務
 sudo systemctl start cleanup.service
 
-# View service logs
+# 檢視服務執行日誌
 sudo journalctl -u cleanup.service
 
-# View timer logs
+# 檢視計時器日誌
 sudo journalctl -u cleanup.timer</code></pre>
 
-                <h3>Example: Hourly System Check</h3>
+                <h3>範例：每小時系統檢查</h3>
                 <pre><code># /etc/systemd/system/syscheck.service
 [Unit]
 Description=Hourly System Health Check
@@ -535,75 +534,75 @@ AccuracySec=1s
 [Install]
 WantedBy=timers.target
 
-# Enable and start
+# 啟用並立即啟動計時器
 sudo systemctl daemon-reload
 sudo systemctl enable --now syscheck.timer</code></pre>
             </section>
 
             <section id="at" class="content-section">
-                <h2>📅 At & Batch Commands</h2>
+                <h2>📅 At 與 Batch 指令</h2>
 
                 <p>
-                    The <code>at</code> command schedules one-time tasks to run at a specific time in the future. 
-                    Unlike cron (recurring), at jobs run once and are then removed.
+                    <code>at</code> 指令用於排程在未來特定時間執行的一次性任務。
+                    不同於 cron（週期性重複執行），<code>at</code> 工作在執行一次後就會從排程佇列中移除。
                 </p>
 
-                <h3>Installing At</h3>
-                <pre><code># Install at package
+                <h3>安裝 At</h3>
+                <pre><code># 安裝 at 套件
 sudo dnf install at
 
-# Start and enable atd service
+# 啟動並設定開機自動啟用 atd 服務
 sudo systemctl enable --now atd
 
-# Verify service
+# 驗證服務狀態
 sudo systemctl status atd</code></pre>
 
-                <h3>Scheduling Jobs with At</h3>
-                <pre><code># Run job at specific time
+                <h3>使用 At 排程工作</h3>
+                <pre><code># 在指定時間執行工作
 at 10:00 PM
 &gt; /usr/local/bin/backup.sh
 &gt; &lt;Ctrl+D&gt;
 
-# Run job tomorrow at 9 AM
+# 在明天上午 9 點執行工作
 at 9am tomorrow
 &gt; echo "Daily report" | mail -s "Report" admin@example.com
 &gt; &lt;Ctrl+D&gt;
 
-# Run job at specific date and time
+# 在指定日期與時間執行工作
 at 2:30 PM December 25
 &gt; /usr/local/bin/christmas-task.sh
 &gt; &lt;Ctrl+D&gt;
 
-# Run job in 30 minutes
+# 在 30 分鐘後執行工作
 at now + 30 minutes
 &gt; /usr/local/bin/quick-task.sh
 &gt; &lt;Ctrl+D&gt;
 
-# Run job in 2 hours
+# 在 2 小時後執行工作
 at now + 2 hours
 &gt; systemctl restart httpd
 &gt; &lt;Ctrl+D&gt;
 
-# Run job next week
+# 在下週同時間或指定時間執行工作
 at 10am next week
 &gt; /usr/local/bin/weekly-report.sh
 &gt; &lt;Ctrl+D&gt;
 
-# Run job from file
+# 從檔案讀取要執行的工作內容
 at 2am tomorrow -f /usr/local/bin/script.sh
 
-# Run job using here document
+# 使用 Here Document 排程工作
 at now + 5 minutes &lt;&lt;EOF
 echo "Task started at $(date)" &gt;&gt; /var/log/tasks.log
 /usr/local/bin/my-task.sh
 echo "Task completed at $(date)" &gt;&gt; /var/log/tasks.log
 EOF</code></pre>
 
-                <h3>At Time Specifications</h3>
+                <h3>At 時間格式說明</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Format</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Example</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">格式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">範例</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">HH:MM</td>
@@ -614,7 +613,7 @@ EOF</code></pre>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">noon tomorrow</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">now + time</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">now + 時間</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">now + 30 minutes</td>
                     </tr>
                     <tr>
@@ -623,71 +622,71 @@ EOF</code></pre>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">MMDDYY</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">122524 (Dec 25, 2024)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">122524（2024 年 12 月 25 日）</td>
                     </tr>
                 </table>
 
-                <h3>Managing At Jobs</h3>
-                <pre><code># List scheduled jobs
+                <h3>管理 At 工作</h3>
+                <pre><code># 列出已排程的工作
 atq
-# or
+# 或
 at -l
 
-# Output example:
+# 輸出範例：
 # 1	Thu Nov 14 22:00:00 2025 a student
 # 2	Fri Nov 15 09:00:00 2025 a student
 
-# View job contents
-at -c 1    # Show job number 1
+# 檢視工作內容
+at -c 1    # 顯示編號 1 的工作詳細內容
 
-# Remove job
-atrm 1     # Remove job number 1
-# or
+# 移除指定工作
+atrm 1     # 移除編號 1 的工作
+# 或
 at -d 1
 
-# Remove all jobs for current user
+# 移除目前使用者的所有工作
 atrm $(atq | cut -f1)
 
-# Remove specific user's jobs (as root)
+# 移除特定使用者的所有工作（需 root 權限）
 sudo atrm $(atq -u username | cut -f1)</code></pre>
 
-                <h3>Batch Command</h3>
-                <p>Similar to at, but runs only when system load is low:</p>
-                <pre><code># Run when load average drops below 1.5 (default)
+                <h3>Batch 指令</h3>
+                <p>與 <code>at</code> 類似，但僅在系統負載較低時才會執行：</p>
+                <pre><code># 當系統平均負載低於 1.5（預設值）時才執行
 batch
 &gt; /usr/local/bin/resource-intensive-task.sh
 &gt; &lt;Ctrl+D&gt;
 
-# Batch jobs appear in atq
+# batch 工作同樣會出現在 atq 佇列中
 atq</code></pre>
 
-                <h3>At Access Control</h3>
-                <pre><code># Control who can use at
-/etc/at.allow    # If exists, only listed users can use at
-/etc/at.deny     # If exists, listed users cannot use at
+                <h3>At 存取控制</h3>
+                <pre><code># 控管哪些使用者可以使用 at
+/etc/at.allow    # 若檔案存在，僅列於其中的使用者可使用 at
+/etc/at.deny     # 若檔案存在，列於其中的使用者禁止使用 at
 
-# Example: Allow specific users
+# 範例：允許特定使用者使用 at
 echo "student" | sudo tee /etc/at.allow
 echo "admin" | sudo tee -a /etc/at.allow
 
-# If neither file exists, only root can use at</code></pre>
+# 若兩個檔案皆不存在，預設僅有 root 可使用 at</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Schedule System Reboot</h4>
+                    <h4>操作步驟：排程系統重新開機</h4>
                     <ol>
-                        <li>Schedule reboot for 2 AM:
+                        <li>排程在明天凌晨 2 點重新開機：
                             <pre><code>sudo at 2am tomorrow
 at&gt; systemctl reboot
 at&gt; &lt;Ctrl+D&gt;
 job 3 at Fri Nov 15 02:00:00 2025</code></pre>
                         </li>
-                        <li>Verify scheduled job:
+                        <li>驗證已排程的工作：
                             <pre><code>sudo atq</code></pre>
                         </li>
-                        <li>View job details:
+                        <li>檢視工作詳細內容：
                             <pre><code>sudo at -c 3</code></pre>
                         </li>
-                        <li>To cancel if needed:
+                        <li>若需要取消排程：
                             <pre><code>sudo atrm 3</code></pre>
                         </li>
                     </ol>
@@ -698,172 +697,172 @@ job 3 at Fri Nov 15 02:00:00 2025</code></pre>
                 <h2>🔄 Anacron</h2>
 
                 <p>
-                    Anacron runs commands periodically but doesn't assume the system is always on. Unlike cron 
-                    (which skips missed jobs), anacron ensures jobs run eventually - perfect for desktops and laptops.
+                    Anacron 用於定期執行指令，但它不會假設系統一直處於開機狀態。
+                    不同於 cron（關機期間錯過的排程會直接跳過），anacron 能確保錯過的任務在系統開機後補執行——非常適合桌上型電腦與筆記型電腦。
                 </p>
 
-                <h3>Anacron vs Cron</h3>
+                <h3>Anacron 與 Cron 比較</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Feature</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">特性</th>
                         <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Cron</th>
                         <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Anacron</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Minimum interval</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1 minute</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1 day</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最小執行間隔</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1 分鐘</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1 天</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Missed jobs</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Skipped</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Run on next boot</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">錯過的任務</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">直接略過</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">於下次開機時補執行</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Best for</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Servers (always on)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Desktops/laptops</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最適用環境</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">伺服器（24 小時運行）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">桌上型電腦 / 筆電</td>
                     </tr>
                 </table>
 
-                <h3>Anacron Configuration</h3>
-                <p>Main configuration file: <code>/etc/anacrontab</code></p>
-                <pre><code># /etc/anacrontab example
+                <h3>Anacron 設定</h3>
+                <p>主要設定檔為：<code>/etc/anacrontab</code></p>
+                <pre><code># /etc/anacrontab 範例
 SHELL=/bin/sh
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
-RANDOM_DELAY=45        # Maximum random delay in minutes
-START_HOURS_RANGE=3-22 # Only run between 3am-10pm
+RANDOM_DELAY=45        # 最大隨機延遲分鐘數
+START_HOURS_RANGE=3-22 # 僅於凌晨 3 點至晚上 10 點之間執行
 
-# period  delay  job-identifier  command
+# 週期    延遲    工作識別名稱     指令
 1         5      cron.daily      nice run-parts /etc/cron.daily
 7         25     cron.weekly     nice run-parts /etc/cron.weekly
 @monthly  45     cron.monthly    nice run-parts /etc/cron.monthly
 
-# Format:
-# period    = days between runs
-# delay     = minutes to wait before running
-# identifier = unique job name
-# command   = command to execute</code></pre>
+# 欄位格式說明：
+# period     = 兩次執行之間的間隔天數
+# delay      = 執行前需等待的延遲分鐘數
+# identifier = 唯一的工作識別名稱
+# command    = 要執行的指令</code></pre>
 
-                <h3>How Anacron Works</h3>
+                <h3>Anacron 運作原理</h3>
                 <ol>
-                    <li>Anacron checks timestamp files in <code>/var/spool/anacron/</code></li>
-                    <li>If a job hasn't run in its specified period, it's scheduled</li>
-                    <li>Jobs wait for their delay period, then execute</li>
-                    <li>Timestamp is updated after successful execution</li>
+                    <li>Anacron 會檢查位於 <code>/var/spool/anacron/</code> 的時間戳記檔案</li>
+                    <li>若某項工作在指定週期內尚未執行過，便會將其排入執行</li>
+                    <li>工作會先等待設定的延遲時間（delay），再開始執行</li>
+                    <li>成功執行完成後，系統會更新對應的時間戳記檔案</li>
                 </ol>
 
-                <h3>Managing Anacron</h3>
-                <pre><code># Manually run anacron (checks all jobs)
+                <h3>管理 Anacron</h3>
+                <pre><code># 手動執行 anacron（檢查所有工作）
 sudo anacron
 
-# Force run all jobs now (ignore timestamps)
+# 立即強制執行所有工作（忽略時間戳記）
 sudo anacron -f
 
-# Run specific job
+# 僅強制執行特定工作
 sudo anacron -f cron.daily
 
-# Test mode (don't actually run)
+# 測試模式（在前景測試而不實際在背景執行）
 sudo anacron -d -n
 
-# Update timestamps without running
+# 僅更新時間戳記而不實際執行工作
 sudo anacron -u
 
-# Check timestamp files
+# 檢查時間戳記檔案
 ls -l /var/spool/anacron/</code></pre>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Anacron Integration</div>
-                    <p>On RHEL, anacron is integrated with cron. The cron.daily, cron.weekly, and cron.monthly 
-                    directories are managed by anacron to ensure they run even if the system was off.</p>
+                    <div class="info-box-title">📘 注意：Anacron 整合機制</div>
+                    <p>在 RHEL 系統上，anacron 已與 cron 整合。<code>cron.daily</code>、<code>cron.weekly</code> 與 <code>cron.monthly</code> 
+                    目錄中的腳本實際上是由 anacron 負責管理，以確保即使系統曾經關機，這些維護工作仍會確實執行。</p>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What does this crontab entry do? <code>30 2 * * 1-5</code></h4>
+                        <h4>第 1 題：這筆 crontab 設定代表何種執行時間？ <code>30 2 * * 1-5</code></h4>
                         <ul class="quiz-options">
-                            <li>A) Run at 2:30 AM on weekends</li>
-                            <li>B) Run at 2:30 AM on weekdays</li>
-                            <li>C) Run every 30 minutes between 2-5 AM</li>
-                            <li>D) Run on the 30th of every month</li>
+                            <li>A) 週末凌晨 2:30 執行</li>
+                            <li>B) 平日（週一至週五）凌晨 2:30 執行</li>
+                            <li>C) 凌晨 2 點至 5 點之間每 30 分鐘執行一次</li>
+                            <li>D) 每月 30 日凌晨 2 點執行</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Run at 2:30 AM on weekdays</strong><br>
-                            Format is minute(30) hour(2) day(*) month(*) weekday(1-5 = Mon-Fri). 
-                            So this runs at 2:30 AM Monday through Friday.
+                            <strong>解答：B) 平日（週一至週五）凌晨 2:30 執行</strong><br>
+                            Crontab 欄位格式為：分鐘(30) 小時(2) 日(*) 月(*) 星期(1-5 = 週一至週五)。
+                            因此此排程會在週一到週五的凌晨 2:30 執行。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: How do you schedule a one-time job to run in 4 hours?</h4>
+                        <h4>第 2 題：如何排程一個在 4 小時後執行一次性的任務？</h4>
                         <ul class="quiz-options">
-                            <li>A) crontab -e and add job</li>
+                            <li>A) 使用 crontab -e 新增工作</li>
                             <li>B) at now + 4 hours</li>
                             <li>C) systemctl start task.timer</li>
                             <li>D) anacron -t 4h</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) at now + 4 hours</strong><br>
-                            The at command is for one-time future execution. Usage: at now + 4 hours, 
-                            then enter commands, press Ctrl+D. Cron is for recurring tasks.
+                            <strong>解答：B) at now + 4 hours</strong><br>
+                            <code>at</code> 指令專用於一次性的未來任務執行。用法：輸入 <code>at now + 4 hours</code>，
+                            接著輸入要執行的指令，最後按下 Ctrl+D 完成排程。<code>cron</code> 則是用於週期性重複任務。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: What file controls which users can create cron jobs?</h4>
+                        <h4>第 3 題：哪個檔案用來控管哪些使用者可以建立 cron 排程工作？</h4>
                         <ul class="quiz-options">
                             <li>A) /etc/cron.access</li>
-                            <li>B) /etc/cron.allow or /etc/cron.deny</li>
+                            <li>B) /etc/cron.allow 或 /etc/cron.deny</li>
                             <li>C) /etc/crontab</li>
                             <li>D) ~/.cron.conf</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) /etc/cron.allow or /etc/cron.deny</strong><br>
-                            If /etc/cron.allow exists, only listed users can use cron. If /etc/cron.deny exists, 
-                            listed users cannot use cron. If neither exists, only root can use cron.
+                            <strong>解答：B) /etc/cron.allow 或 /etc/cron.deny</strong><br>
+                            若 <code>/etc/cron.allow</code> 存在，僅清單中的使用者可使用 cron；若 <code>/etc/cron.deny</code> 存在，
+                            則清單中的使用者無法使用 cron；若兩者皆不存在，僅 root 可使用 cron。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: Which command lists all pending at jobs?</h4>
+                        <h4>第 4 題：哪個指令可以列出所有等待執行的 at 工作？</h4>
                         <ul class="quiz-options">
-                            <li>A) at -l or atq</li>
+                            <li>A) at -l 或 atq</li>
                             <li>B) crontab -l</li>
                             <li>C) systemctl list-timers</li>
                             <li>D) at --list</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: A) at -l or atq</strong><br>
-                            Both 'at -l' and 'atq' list scheduled at jobs. Use 'atrm jobnumber' to remove a job. 
-                            crontab -l lists cron jobs, not at jobs.
+                            <strong>解答：A) at -l 或 atq</strong><br>
+                            <code>at -l</code> 與 <code>atq</code> 皆可用來列出已排程的 at 工作；若要移除工作請使用 <code>atrm 工作編號</code>。
+                            <code>crontab -l</code> 列出的是 cron 排程，而非 at 工作。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: What's the advantage of systemd timers over cron?</h4>
+                        <h4>第 5 題：相較於 cron，systemd 計時器有什麼主要優勢？</h4>
                         <ul class="quiz-options">
-                            <li>A) Easier syntax</li>
-                            <li>B) Better integration with journald logging and systemd services</li>
-                            <li>C) Can run more frequently</li>
-                            <li>D) Doesn't require root access</li>
+                            <li>A) 語法比較簡短</li>
+                            <li>B) 能與 journald 日誌系統及 systemd 服務深度整合</li>
+                            <li>C) 可以設定更高的執行頻率</li>
+                            <li>D) 不需要系統管理員權限即可管理系統任務</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Better integration with journald logging and systemd services</strong><br>
-                            Systemd timers integrate with journald for logging, support service dependencies, 
-                            offer more scheduling flexibility (OnBootSec, Persistent, etc.), and are the modern approach on RHEL 9.
+                            <strong>解答：B) 能與 journald 日誌系統及 systemd 服務深度整合</strong><br>
+                            Systemd 計時器會將日誌整合至 journald、支援服務相依性管理、提供更彈性的排程選項（如 <code>OnBootSec</code>、<code>Persistent</code> 等），
+                            是 RHEL 9 上建議採用的現代化排程方式。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter6.html" class="nav-button prev">Chapter 6: Performance</a>
-                <a href="chapter8.html" class="nav-button next">Chapter 8: Software Packages</a>
+                <a href="chapter6.html" class="nav-button prev">第 6 章：效能調校</a>
+                <a href="chapter8.html" class="nav-button next">第 8 章：軟體套件管理</a>
             </div>
         </main>
     </div>
@@ -873,15 +872,14 @@ ls -l /var/spool/anacron/</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>
 
 </body>
 </html>
-

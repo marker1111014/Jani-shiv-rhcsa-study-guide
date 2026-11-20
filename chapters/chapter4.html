@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 4: Control Access to Files - RHCSA Guide</title>
+    <title>第 4 章：控制檔案存取權限 - RHCSA 學習指南</title>
     <link rel="stylesheet" href="/style.css">
     <!-- Vercel Web Analytics -->
     <script>
@@ -19,14 +19,14 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
-                <button id="themeToggle" class="theme-toggle">🌙</button>
+                <button id="themeToggle" class="theme-toggle" aria-label="切換深色模式">🌙</button>
             </div>
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span><span></span><span></span>
@@ -36,183 +36,181 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html" class="active">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html" class="active">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 4</span>
-                    <span class="meta-badge">⏱️ 50 min read</span>
-                    <span class="meta-badge">📚 Intermediate</span>
+                    <span class="meta-badge">第 4 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 50 分鐘</span>
+                    <span class="meta-badge">📚 中級</span>
                 </div>
-                <h1>Control Access to Files</h1>
+                <h1>控制檔案存取權限</h1>
                 <p class="chapter-intro">
-                    Master Linux file permissions and ownership. Learn to use chmod, chown, umask, and Access Control Lists (ACLs) 
-                    to secure files and implement granular access control policies.
+                    精通 Linux 檔案權限與擁有權設定。學習使用 chmod、chown、umask 以及存取控制清單（ACLs），
+                    保護檔案安全並實作細粒度的存取控制原則。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#permissions">File Permissions</a></li>
-                    <li><a href="#ownership">File Ownership</a></li>
-                    <li><a href="#special-perms">Special Permissions</a></li>
-                    <li><a href="#umask">Default Permissions with umask</a></li>
-                    <li><a href="#acls">Access Control Lists</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">簡介</a></li>
+                    <li><a href="#permissions">檔案權限</a></li>
+                    <li><a href="#ownership">檔案擁有權</a></li>
+                    <li><a href="#special-perms">特殊權限</a></li>
+                    <li><a href="#umask">使用 umask 設定預設權限</a></li>
+                    <li><a href="#acls">存取控制清單（ACLs）</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction</h2>
+                <h2>🎯 簡介</h2>
                 <p>
-                    File permissions are the foundation of Linux security. Every file and directory has an owner, 
-                    a group, and a set of permissions that determine who can read, write, or execute it. Understanding 
-                    and managing these permissions is critical for maintaining system security and proper access control.
+                    檔案權限是 Linux 安全性的核心基礎。每個檔案與目錄都有所屬的擁有者、群組以及一組權限，
+                    用以決定誰可以讀取、寫入或執行該項目。了解並妥善管理這些權限，對於維持系統安全性與正確的存取控制至關重要。
                 </p>
-                <p>In this chapter, you'll learn to:</p>
+                <p>在本章中，您將學會：</p>
                 <ul>
-                    <li>Interpret and modify file permissions using symbolic and octal notation</li>
-                    <li>Change file and directory ownership with chown and chgrp</li>
-                    <li>Apply special permissions (SUID, SGID, sticky bit) for advanced scenarios</li>
-                    <li>Set default permissions using umask</li>
-                    <li>Implement fine-grained access control with Access Control Lists (ACLs)</li>
-                    <li>Troubleshoot permission-related issues</li>
+                    <li>使用符號表示法與八進位表示法解讀並修改檔案權限</li>
+                    <li>使用 chown 與 chgrp 變更檔案與目錄的擁有權</li>
+                    <li>在進階情境中套用特殊權限（SUID、SGID、Sticky Bit）</li>
+                    <li>使用 umask 設定預設權限</li>
+                    <li>透過存取控制清單（ACLs）實作細粒度的存取控制</li>
+                    <li>排除與權限相關的常見問題</li>
                 </ul>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Note</div>
-                    <p>File permissions work in conjunction with SELinux on RHEL systems. Both must be correctly 
-                    configured for proper access control.</p>
+                    <div class="info-box-title">📘 注意</div>
+                    <p>在 RHEL 系統上，檔案權限會與 SELinux 協同運作。兩者皆必須正確設定，才能確保完整的存取控制正常生效。</p>
                 </div>
             </section>
 
             <section id="permissions" class="content-section">
-                <h2>🔒 File Permissions</h2>
+                <h2>🔒 檔案權限</h2>
                 
-                <h3>Understanding Permission Types</h3>
-                <p>Linux uses three types of permissions applied to three categories of users:</p>
+                <h3>認識權限類型</h3>
+                <p>Linux 使用三種權限類型，並套用至三種不同的使用者類別：</p>
                 
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Permission</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Symbol</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Octal</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">On Files</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">On Directories</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">權限</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">符號</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">八進位</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">對檔案的作用</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">對目錄的作用</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Read</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">讀取（Read）</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>r</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">4</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">View file contents</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">List directory contents</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">檢視檔案內容</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">列出目錄內容</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Write</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">寫入（Write）</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>w</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">2</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Modify file contents</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Create/delete files in directory</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">修改檔案內容</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">在目錄中建立／刪除檔案</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Execute</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">執行（Execute）</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>x</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Run file as program</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Enter directory (cd)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">將檔案作為程式執行</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">進入目錄（cd）</td>
                     </tr>
                 </table>
 
-                <h3>Reading Permission Strings</h3>
-                <p>When you run <code>ls -l</code>, you see permission information:</p>
+                <h3>解讀權限字串</h3>
+                <p>當您執行 <code>ls -l</code> 時，將會看到如下的權限資訊：</p>
                 <pre><code>-rwxr-xr--. 1 student developers 1234 Nov 14 10:30 script.sh
 │││││││││││
-│││││││││└└─ Other permissions (r--)
-││││││└┴┴─── Group permissions (r-x)
-│││└┴┴───── Owner permissions (rwx)
-│└───────── File type indicator
-└────────── SELinux context present (dot)</code></pre>
+│││││││││└└─ 其他使用者權限 (r--)
+││││││└┴┴─── 群組權限 (r-x)
+│││└┴┴───── 擁有者權限 (rwx)
+│└───────── 檔案類型指示符
+└────────── 具備 SELinux 安全脈絡（句點）</code></pre>
 
-                <h4>File Type Indicators</h4>
+                <h4>檔案類型指示符</h4>
                 <ul>
-                    <li><code>-</code> Regular file</li>
-                    <li><code>d</code> Directory</li>
-                    <li><code>l</code> Symbolic link</li>
-                    <li><code>c</code> Character device</li>
-                    <li><code>b</code> Block device</li>
-                    <li><code>s</code> Socket</li>
-                    <li><code>p</code> Named pipe (FIFO)</li>
+                    <li><code>-</code> 一般檔案（Regular file）</li>
+                    <li><code>d</code> 目錄（Directory）</li>
+                    <li><code>l</code> 符號連結（Symbolic link）</li>
+                    <li><code>c</code> 字元裝置（Character device）</li>
+                    <li><code>b</code> 區塊裝置（Block device）</li>
+                    <li><code>s</code> 通訊端（Socket）</li>
+                    <li><code>p</code> 具名管線（Named pipe，FIFO）</li>
                 </ul>
 
-                <h3>chmod - Change Mode (Permissions)</h3>
+                <h3>chmod - 變更權限模式（Change Mode）</h3>
                 
-                <h4>Symbolic Method</h4>
-                <p>Use letters to modify permissions:</p>
-                <pre><code># Add execute permission for owner (user)
+                <h4>符號表示法</h4>
+                <p>使用英文字母與運算子來修改權限：</p>
+                <pre><code># 為擁有者（user）新增執行權限
 chmod u+x file.sh
 
-# Remove write permission for group
+# 移除群組的寫入權限
 chmod g-w file.txt
 
-# Set exact permissions for others
+# 精確設定其他使用者的權限
 chmod o=r file.txt
 
-# Add read permission for all (user, group, other)
+# 為所有類別（擁有者、群組、其他人）新增讀取權限
 chmod a+r file.txt
 
-# Multiple changes at once
+# 一次套用多項權限變更
 chmod u+x,g-w,o-r file.sh
 
-# Recursive change
+# 遞迴變更目錄內所有項目的權限
 chmod -R u+w directory/</code></pre>
 
-                <p>Symbolic notation syntax:</p>
+                <p>符號表示法語法：</p>
                 <ul>
-                    <li><strong>Who:</strong> <code>u</code> (user/owner), <code>g</code> (group), <code>o</code> (others), <code>a</code> (all)</li>
-                    <li><strong>Operator:</strong> <code>+</code> (add), <code>-</code> (remove), <code>=</code> (set exactly)</li>
-                    <li><strong>Permission:</strong> <code>r</code> (read), <code>w</code> (write), <code>x</code> (execute)</li>
+                    <li><strong>對象（Who）：</strong> <code>u</code>（使用者／擁有者）、<code>g</code>（群組）、<code>o</code>（其他人）、<code>a</code>（全部）</li>
+                    <li><strong>運算子（Operator）：</strong> <code>+</code>（新增）、<code>-</code>（移除）、<code>=</code>（精確設定）</li>
+                    <li><strong>權限（Permission）：</strong> <code>r</code>（讀取）、<code>w</code>（寫入）、<code>x</code>（執行）</li>
                 </ul>
 
-                <h4>Octal (Numeric) Method</h4>
-                <p>Use three-digit numbers where each digit represents owner, group, and others:</p>
-                <pre><code># Common permission sets
-chmod 755 script.sh    # rwxr-xr-x (owner: full, group/others: read+execute)
-chmod 644 file.txt     # rw-r--r-- (owner: read+write, others: read-only)
-chmod 600 secret.txt   # rw------- (owner: read+write, others: no access)
-chmod 777 public/      # rwxrwxrwx (all permissions for everyone - DANGEROUS!)
-chmod 700 private/     # rwx------ (owner: full access, others: no access)
-chmod 640 config.conf  # rw-r----- (owner: read+write, group: read, others: none)</code></pre>
+                <h4>八進位（數字）表示法</h4>
+                <p>使用三位數的數字，每位數依序代表擁有者、群組與其他使用者：</p>
+                <pre><code># 常見權限設定組合
+chmod 755 script.sh    # rwxr-xr-x（擁有者：完整權限；群組／其他人：讀取+執行）
+chmod 644 file.txt     # rw-r--r--（擁有者：讀取+寫入；其他人：唯讀）
+chmod 600 secret.txt   # rw-------（擁有者：讀取+寫入；其他人：無權限）
+chmod 777 public/      # rwxrwxrwx（所有人皆具備完整權限 - 極度危險！）
+chmod 700 private/     # rwx------（擁有者：完整存取權限；其他人：無權限）
+chmod 640 config.conf  # rw-r-----（擁有者：讀取+寫入；群組：唯讀；其他人：無權限）</code></pre>
 
-                <h4>Calculating Octal Values</h4>
-                <pre><code># Each permission has a value:
-# r (read)    = 4
-# w (write)   = 2
-# x (execute) = 1
+                <h4>計算八進位數值</h4>
+                <pre><code># 各項權限對應的數值：
+# r (讀取)    = 4
+# w (寫入)    = 2
+# x (執行)    = 1
 
-# Add them together for each user category:
+# 將每個使用者類別的權限數值相加：
 # rwx = 4+2+1 = 7
 # rw- = 4+2+0 = 6
 # r-x = 4+0+1 = 5
@@ -223,548 +221,542 @@ chmod 640 config.conf  # rw-r----- (owner: read+write, group: read, others: none
 # --- = 0+0+0 = 0</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Tip</div>
-                    <p>Use symbolic notation when making incremental changes (<code>chmod g+w</code>). 
-                    Use octal notation when setting complete permission sets (<code>chmod 644</code>).</p>
+                    <div class="info-box-title">💡 提示</div>
+                    <p>進行漸進式微調時適合使用符號表示法（<code>chmod g+w</code>）；當需要一次性設定完整權限組合時，則適合使用八進位表示法（<code>chmod 644</code>）。</p>
                 </div>
 
-                <h3>Common Permission Scenarios</h3>
+                <h3>常見權限情境</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Octal</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Symbolic</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Use Case</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">八進位</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">符號表示法</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">使用情境</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>755</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>rwxr-xr-x</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Executable scripts, directories</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">可執行腳本、一般目錄</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>644</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>rw-r--r--</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Regular files, text files</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">一般檔案、純文字檔案</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>600</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>rw-------</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Private files, SSH keys</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">私密檔案、SSH 私鑰</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>700</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>rwx------</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Private scripts, .ssh directory</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">私密腳本、.ssh 目錄</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>775</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>rwxrwxr-x</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Shared team directories</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">團隊共用目錄</td>
                     </tr>
                 </table>
             </section>
 
             <section id="ownership" class="content-section">
-                <h2>👤 File Ownership</h2>
+                <h2>👤 檔案擁有權</h2>
 
-                <p>Every file and directory has two types of owners:</p>
+                <p>每個檔案與目錄都具備兩種擁有者身份：</p>
                 <ul>
-                    <li><strong>User (Owner):</strong> The user who owns the file</li>
-                    <li><strong>Group:</strong> The group that owns the file</li>
+                    <li><strong>使用者（擁有者，Owner）：</strong>擁有該檔案的使用者帳號</li>
+                    <li><strong>群組（Group）：</strong>擁有該檔案的群組</li>
                 </ul>
 
-                <h3>chown - Change Owner</h3>
-                <pre><code># Change owner only
+                <h3>chown - 變更擁有者</h3>
+                <pre><code># 僅變更擁有者
 sudo chown john file.txt
 
-# Change owner and group
+# 同時變更擁有者與群組
 sudo chown john:developers file.txt
 
-# Change group only (using colon)
+# 僅變更群組（使用冒號開頭）
 sudo chown :developers file.txt
 
-# Recursive ownership change
+# 遞迴變更目錄內所有項目的擁有權
 sudo chown -R john:developers directory/
 
-# Use reference file for ownership
+# 參照範本檔案設定擁有權
 sudo chown --reference=template.txt newfile.txt
 
-# Verbose output
+# 顯示詳細輸出
 sudo chown -v john file.txt
 
-# Change from specific owner to new owner
+# 僅當目前擁有者符合指定條件時才變更為新擁有者
 sudo chown --from=alice:users john:developers file.txt</code></pre>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Warning</div>
-                    <p>Only root can change file ownership. Regular users cannot give away their files to other users. 
-                    This prevents security issues and quota circumvention.</p>
+                    <div class="info-box-title">⚠️ 警告</div>
+                    <p>只有 root 能夠變更檔案的擁有者。一般使用者無法將自己的檔案轉讓給其他使用者，這是為了防止安全性風險與規避磁碟配額（Quota）限制。</p>
                 </div>
 
-                <h3>chgrp - Change Group</h3>
-                <pre><code># Change group
+                <h3>chgrp - 變更群組</h3>
+                <pre><code># 變更群組
 sudo chgrp developers file.txt
 
-# Recursive group change
+# 遞迴變更群組
 sudo chgrp -R developers project/
 
-# Verbose output
+# 顯示詳細輸出
 sudo chgrp -v developers *.txt
 
-# Use reference file
+# 參照範本檔案設定群組
 sudo chgrp --reference=template.txt newfile.txt</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Setting Up a Shared Project Directory</h4>
+                    <h4>操作步驟：設定共用專案目錄</h4>
                     <ol>
-                        <li>Create the directory:
+                        <li>建立專案目錄：
                             <pre><code>sudo mkdir /shared/projects</code></pre>
                         </li>
-                        <li>Create a group for the team:
+                        <li>為團隊建立群組：
                             <pre><code>sudo groupadd developers</code></pre>
                         </li>
-                        <li>Add users to the group:
+                        <li>將使用者加入該群組：
                             <pre><code>sudo usermod -aG developers alice
 sudo usermod -aG developers bob
 sudo usermod -aG developers charlie</code></pre>
                         </li>
-                        <li>Set group ownership:
+                        <li>設定目錄的群組擁有權：
                             <pre><code>sudo chgrp developers /shared/projects</code></pre>
                         </li>
-                        <li>Set appropriate permissions:
+                        <li>設定適當權限（含 SGID 位元）：
                             <pre><code>sudo chmod 2775 /shared/projects</code></pre>
                         </li>
-                        <li>Verify the configuration:
+                        <li>驗證設定結果：
                             <pre><code>ls -ld /shared/projects
-# Should show: drwxrwsr-x. 2 root developers ...</code></pre>
+# 應顯示為：drwxrwsr-x. 2 root developers ...</code></pre>
                         </li>
                     </ol>
                 </div>
             </section>
 
             <section id="special-perms" class="content-section">
-                <h2>⭐ Special Permissions</h2>
+                <h2>⭐ 特殊權限</h2>
 
-                <p>Beyond basic read, write, and execute permissions, Linux supports three special permission bits:</p>
+                <p>除了基本的讀取、寫入與執行權限之外，Linux 還支援三種特殊權限位元：</p>
 
-                <h3>1. SUID (Set User ID) - Bit 4</h3>
-                <p>When set on an executable file, the program runs with the privileges of the file's owner, not the user who executes it.</p>
+                <h3>1. SUID（Set User ID）- 位元值 4</h3>
+                <p>當設定在可執行檔上時，該程式會以檔案擁有者的權限執行，而非執行該程式的使用者權限。</p>
 
-                <pre><code># Set SUID using symbolic notation
+                <pre><code># 使用符號表示法設定 SUID
 sudo chmod u+s /usr/local/bin/program
 
-# Set SUID using octal notation (4 prefix)
+# 使用八進位表示法設定 SUID（前綴數字為 4）
 sudo chmod 4755 /usr/local/bin/program
 
-# Example: passwd command uses SUID
+# 範例：passwd 指令使用了 SUID
 ls -l /usr/bin/passwd
 -rwsr-xr-x. 1 root root 27856 /usr/bin/passwd
-#   ↑ Notice the 's' instead of 'x'</code></pre>
+#   ↑ 注意這裡顯示 's' 而非 'x'</code></pre>
 
-                <p><strong>Use cases:</strong></p>
+                <p><strong>常見應用情境：</strong></p>
                 <ul>
-                    <li><code>passwd</code> - Allows users to change their password (requires root to modify /etc/shadow)</li>
-                    <li><code>ping</code> - Requires root privileges to create raw network sockets</li>
-                    <li><code>sudo</code> - Executes commands as root</li>
+                    <li><code>passwd</code> - 允許一般使用者變更自己的密碼（因修改 /etc/shadow 需要 root 權限）</li>
+                    <li><code>ping</code> - 需要 root 權限才能建立原始網路通訊端（Raw Socket）</li>
+                    <li><code>sudo</code> - 以 root 身分執行指令</li>
                 </ul>
 
                 <div class="info-box danger">
-                    <div class="info-box-title">⚠️ Security Warning</div>
-                    <p>SUID on executables owned by root is a significant security risk if the program is vulnerable. 
-                    Regularly audit SUID files:</p>
+                    <div class="info-box-title">⚠️ 安全警告</div>
+                    <p>如果擁有者為 root 的執行檔設定了 SUID，一旦該程式存在漏洞，就會造成嚴重的安全風險。請定期稽核系統中的 SUID 檔案：</p>
                     <pre><code>sudo find / -perm -4000 -type f -ls 2&gt;/dev/null</code></pre>
                 </div>
 
-                <h3>2. SGID (Set Group ID) - Bit 2</h3>
-                <p><strong>On executable files:</strong> Process runs with the group privileges of the file's group.</p>
-                <p><strong>On directories:</strong> New files inherit the directory's group ownership (not the creator's primary group).</p>
+                <h3>2. SGID（Set Group ID）- 位元值 2</h3>
+                <p><strong>在可執行檔上：</strong>程序會以該檔案所屬群組的權限執行。</p>
+                <p><strong>在目錄上：</strong>在該目錄中新建立的檔案，會自動繼承此目錄的群組擁有權（而非建立者的主要群組）。</p>
 
-                <pre><code># Set SGID on directory (most common use)
+                <pre><code># 在目錄上設定 SGID（最常見的用法）
 sudo chmod g+s /shared/projects
 sudo chmod 2775 /shared/projects
 
-# Set SGID on executable
+# 在可執行檔上設定 SGID
 sudo chmod g+s /usr/local/bin/tool
 
-# Verify SGID on directory
+# 驗證目錄上的 SGID 設定
 ls -ld /shared/projects
 drwxrwsr-x. 2 root developers 4096 /shared/projects
-#      ↑ Notice the 's' in group execute position</code></pre>
+#      ↑ 注意群組執行權限位置上的 's'</code></pre>
 
-                <p><strong>Why use SGID on directories:</strong></p>
+                <p><strong>為什麼要在目錄上使用 SGID：</strong></p>
                 <ul>
-                    <li>Ensures all files in shared directory have consistent group ownership</li>
-                    <li>Team members can collaborate without permission issues</li>
-                    <li>New files automatically belong to the project group</li>
+                    <li>確保共用目錄中的所有檔案都具有一致的群組擁有權</li>
+                    <li>讓團隊成員協作時不會遇到權限不足的問題</li>
+                    <li>新建立的檔案會自動歸屬於專案群組</li>
                 </ul>
 
-                <h3>3. Sticky Bit - Bit 1</h3>
-                <p>When set on a directory, only the file owner, directory owner, or root can delete or rename files within that directory.</p>
+                <h3>3. 黏滯位元（Sticky Bit）- 位元值 1</h3>
+                <p>當設定在目錄上時，只有檔案擁有者、目錄擁有者或 root 才能刪除或重新命名該目錄內的檔案。</p>
 
-                <pre><code># Set sticky bit using symbolic notation
+                <pre><code># 使用符號表示法設定 Sticky Bit
 sudo chmod o+t /shared/public
 
-# Set sticky bit using octal notation (1 prefix)
+# 使用八進位表示法設定 Sticky Bit（前綴數字為 1）
 sudo chmod 1777 /shared/public
 
-# Example: /tmp directory uses sticky bit
+# 範例：/tmp 目錄使用了 Sticky Bit
 ls -ld /tmp
 drwxrwxrwt. 15 root root 4096 /tmp
-#        ↑ Notice the 't' in other execute position</code></pre>
+#        ↑ 注意其他使用者執行權限位置上的 't'</code></pre>
 
-                <p><strong>Use cases:</strong></p>
+                <p><strong>常見應用情境：</strong></p>
                 <ul>
-                    <li><code>/tmp</code> - Users can create files but cannot delete others' files</li>
-                    <li><code>/var/tmp</code> - Same protection as /tmp</li>
-                    <li>Shared upload directories where users should not delete each other's files</li>
+                    <li><code>/tmp</code> - 所有使用者皆可建立檔案，但無法刪除他人的檔案</li>
+                    <li><code>/var/tmp</code> - 與 /tmp 具備相同的保護機制</li>
+                    <li>不允許使用者刪除彼此檔案的共用上傳目錄</li>
                 </ul>
 
-                <h3>Special Permissions Summary</h3>
+                <h3>特殊權限總結</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Permission</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Symbolic</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Octal</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Display</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Effect</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">權限</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">符號表示法</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">八進位</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">顯示方式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">效果</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SUID</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>u+s</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">4</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">s or S in owner execute</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Run as file owner</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">擁有者執行欄位顯示 s 或 S</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">以檔案擁有者身分執行</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SGID</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>g+s</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">2</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">s or S in group execute</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Run as file group / inherit group</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">群組執行欄位顯示 s 或 S</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">以檔案群組身分執行／繼承目錄群組</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Sticky</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>o+t</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">t or T in other execute</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Restrict deletion</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">其他人執行欄位顯示 t 或 T</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">限制刪除與重新命名權限</td>
                     </tr>
                 </table>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Note on Uppercase vs Lowercase</div>
-                    <p><strong>Lowercase (s, t):</strong> Special permission + execute permission is set<br>
-                    <strong>Uppercase (S, T):</strong> Special permission set but execute permission is NOT set</p>
-                    <pre><code>-rwSr--r--  # SUID set, but owner has no execute permission (unusual)
-drwxrwsrwx  # SGID set with execute permission (normal)</code></pre>
+                    <div class="info-box-title">📘 注意：大寫與小寫的差異</div>
+                    <p><strong>小寫（s、t）：</strong>已設定特殊權限，且原本的執行權限（x）也已開啟<br>
+                    <strong>大寫（S、T）：</strong>已設定特殊權限，但原本的執行權限（x）並未開啟</p>
+                    <pre><code>-rwSr--r--  # 已設定 SUID，但擁有者沒有執行權限（不常見）
+drwxrwsrwx  # 已設定 SGID 且具備執行權限（正常情況）</code></pre>
                 </div>
             </section>
 
             <section id="umask" class="content-section">
-                <h2>🎭 Default Permissions with umask</h2>
+                <h2>🎭 使用 umask 設定預設權限</h2>
 
                 <p>
-                    The <code>umask</code> (user file-creation mode mask) determines the default permissions for newly created 
-                    files and directories. It works by subtracting permissions from the system's default maximum permissions.
+                    <code>umask</code>（使用者建立檔案模式遮罩）決定新建立的檔案與目錄預設會擁有哪些權限。
+                    它的運作方式是從系統預設的最大權限中扣除（遮罩）對應的權限位元。
                 </p>
 
-                <h3>How umask Works</h3>
-                <pre><code># System default maximum permissions:
-# Files:       666 (rw-rw-rw-)  - no execute by default
-# Directories: 777 (rwxrwxrwx)  - full permissions
+                <h3>umask 運作原理</h3>
+                <pre><code># 系統預設的最大權限：
+# 檔案：       666 (rw-rw-rw-)  - 預設不包含執行權限
+# 目錄：       777 (rwxrwxrwx)  - 完整權限
 
-# With umask 0022:
-# Files:       666 - 022 = 644 (rw-r--r--)
-# Directories: 777 - 022 = 755 (rwxr-xr-x)</code></pre>
+# 當 umask 為 0022 時：
+# 檔案：       666 - 022 = 644 (rw-r--r--)
+# 目錄：       777 - 022 = 755 (rwxr-xr-x)</code></pre>
 
-                <h3>Viewing and Setting umask</h3>
-                <pre><code># View current umask (octal)
+                <h3>檢視與設定 umask</h3>
+                <pre><code># 檢視目前的 umask（八進位）
 umask
 0022
 
-# View current umask (symbolic)
+# 檢視目前的 umask（符號表示法，顯示將賦予的權限）
 umask -S
 u=rwx,g=rx,o=rx
 
-# Set umask temporarily (current session only)
+# 暫時設定 umask（僅在目前工作階段生效）
 umask 0027
 
-# Set umask using symbolic notation
+# 使用符號表示法設定 umask
 umask u=rwx,g=rx,o=</code></pre>
 
-                <h3>Common umask Values</h3>
+                <h3>常見 umask 數值</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
                         <th style="padding: 0.75rem; border: 1px solid var(--border-color);">umask</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Files Created</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Directories Created</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Use Case</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">新建檔案權限</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">新建目錄權限</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">使用情境</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0022</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">644 (rw-r--r--)</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">755 (rwxr-xr-x)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Default for most users</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">多數使用者的預設設定</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0002</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">664 (rw-rw-r--)</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">775 (rwxrwxr-x)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Group collaboration</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">群組協作開發</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0077</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">600 (rw-------)</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">700 (rwx------)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Maximum privacy</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最高隱私保護</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>0027</code></td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">640 (rw-r-----)</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">750 (rwxr-x---)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Secure group sharing</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">安全的群組共享</td>
                     </tr>
                 </table>
 
-                <h3>Making umask Permanent</h3>
-                <p>To make umask settings permanent, add them to shell configuration files:</p>
+                <h3>讓 umask 設定永久生效</h3>
+                <p>若要讓 umask 設定永久保留，請將其加入 Shell 的設定檔中：</p>
 
-                <pre><code># For individual user (add to ~/.bashrc or ~/.bash_profile)
+                <pre><code># 針對個別使用者（加入 ~/.bashrc 或 ~/.bash_profile）
 echo "umask 0027" &gt;&gt; ~/.bashrc
 
-# For all users (add to /etc/bashrc or /etc/profile)
+# 針對系統所有使用者（加入 /etc/bashrc 或 /etc/profile）
 sudo vi /etc/bashrc
-# Add: umask 0027
+# 加入：umask 0027
 
-# Reload configuration
+# 重新載入設定檔
 source ~/.bashrc</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Tip</div>
-                    <p>Root typically has a more restrictive umask (0022 or 0027) than regular users to enhance security.</p>
+                    <div class="info-box-title">💡 提示</div>
+                    <p>為了提升安全性，root 使用者通常會配置比一般使用者更嚴格的 umask（如 0022 或 0027）。</p>
                 </div>
             </section>
 
             <section id="acls" class="content-section">
-                <h2>🎯 Access Control Lists (ACLs)</h2>
+                <h2>🎯 存取控制清單（ACLs）</h2>
                 
                 <p>
-                    Access Control Lists (ACLs) provide fine-grained access control beyond the traditional 
-                    user/group/other permission model. ACLs allow you to grant permissions to specific users 
-                    or groups without changing the file's owner or group.
+                    存取控制清單（Access Control Lists，ACLs）提供超越傳統「擁有者／群組／其他人」權限模型的細粒度存取控制。
+                    透過 ACL，您無需變更檔案的擁有者或擁有群組，即可直接賦予特定使用者或群組專屬權限。
                 </p>
 
-                <h3>When to Use ACLs</h3>
+                <h3>何時使用 ACL</h3>
                 <ul>
-                    <li>Need to give specific users access without adding them to groups</li>
-                    <li>Multiple groups need different levels of access to the same file</li>
-                    <li>Complex permission scenarios beyond owner/group/other</li>
-                    <li>Temporary access grants to specific users</li>
+                    <li>需要賦予特定使用者存取權限，但不想將他們加入群組</li>
+                    <li>多個不同群組需要對同一個檔案擁有不同層級的存取權限</li>
+                    <li>超越「擁有者／群組／其他人」模型所能處理的複雜權限情境</li>
+                    <li>暫時授權給特定使用者存取資源</li>
                 </ul>
 
-                <h3>Viewing ACLs - getfacl</h3>
-                <pre><code># View ACLs on a file
+                <h3>檢視 ACL - getfacl</h3>
+                <pre><code># 檢視檔案的 ACL 設定
 getfacl file.txt
 
-# Sample output:
+# 輸出範例：
 # file: file.txt
 # owner: student
 # group: developers
-user::rw-              # Owner permissions
-user:john:r--          # Specific user 'john' has read
-user:alice:rw-         # Specific user 'alice' has read+write
-group::r--             # Owning group permissions
-group:managers:r--     # Specific group 'managers' has read
-mask::rw-              # Maximum effective permissions
-other::---             # Other users permissions
+user::rw-              # 擁有者權限
+user:john:r--          # 特定使用者 'john' 具備讀取權限
+user:alice:rw-         # 特定使用者 'alice' 具備讀寫權限
+group::r--             # 擁有群組權限
+group:managers:r--     # 特定群組 'managers' 具備讀取權限
+mask::rw-              # 最大有效權限遮罩
+other::---             # 其他使用者權限
 
-# View ACLs for directory and contents
+# 遞迴檢視目錄及其內容的 ACL
 getfacl -R /project
 
-# View only files with ACLs
+# 透過 ls -la 識別設有 ACL 的檔案
 ls -la
 -rw-r--r--+ 1 student developers 1234 Nov 14 10:30 file.txt
-#        ↑ Plus sign indicates ACL is set</code></pre>
+#        ↑ 加號 (+) 表示此檔案已設定 ACL</code></pre>
 
-                <h3>Setting ACLs - setfacl</h3>
+                <h3>設定 ACL - setfacl</h3>
                 
-                <h4>Grant Permissions</h4>
-                <pre><code># Give user 'john' read access
+                <h4>賦予權限</h4>
+                <pre><code># 賦予使用者 'john' 讀取權限
 setfacl -m u:john:r file.txt
 
-# Give user 'alice' read+write access
+# 賦予使用者 'alice' 讀寫權限
 setfacl -m u:alice:rw file.txt
 
-# Give group 'managers' read+execute on directory
+# 賦予群組 'managers' 對目錄的讀取與執行權限
 setfacl -m g:managers:rx /project
 
-# Multiple ACL entries at once
+# 一次套用多筆 ACL 設定
 setfacl -m u:john:rw,u:jane:r,g:team:rx file.txt
 
-# Recursive ACL application
+# 遞迴套用 ACL 至目錄與所有子項目
 setfacl -R -m u:john:rx /project</code></pre>
 
-                <h4>Remove Permissions</h4>
-                <pre><code># Remove specific user ACL
+                <h4>移除權限</h4>
+                <pre><code># 移除特定使用者的 ACL
 setfacl -x u:john file.txt
 
-# Remove specific group ACL
+# 移除特定群組的 ACL
 setfacl -x g:managers file.txt
 
-# Remove all ACLs (restore to basic permissions)
+# 移除所有 ACL（還原為基本權限）
 setfacl -b file.txt
 
-# Remove all ACLs recursively
+# 遞迴移除所有 ACL
 setfacl -R -b /project</code></pre>
 
-                <h3>Default ACLs</h3>
-                <p>Default ACLs apply to directories and are inherited by newly created files and subdirectories:</p>
+                <h3>預設 ACL（Default ACLs）</h3>
+                <p>預設 ACL 套用於目錄上，並會自動被該目錄內新建的檔案與子目錄繼承：</p>
 
-                <pre><code># Set default ACL for new files in directory
+                <pre><code># 為目錄中新建的檔案設定預設 ACL
 setfacl -d -m g:developers:rwx /project
 
-# Set default ACL for specific user
+# 為特定使用者設定預設 ACL
 setfacl -d -m u:john:rx /project
 
-# View default ACLs
+# 檢視預設 ACL
 getfacl /project
-# Will show entries like: default:user:john:r-x
+# 輸出中將包含類似項目：default:user:john:r-x
 
-# Set both current and default ACLs
+# 同時設定目前的存取權限與預設 ACL
 setfacl -m d:g:developers:rwx,g:developers:rwx /project</code></pre>
 
-                <h3>ACL Mask</h3>
-                <p>The mask defines the maximum effective permissions for named users and groups:</p>
+                <h3>ACL 遮罩（Mask）</h3>
+                <p>遮罩（Mask）定義了具名使用者與具名群組所能達到的最大有效權限：</p>
 
-                <pre><code># Set mask to limit permissions
+                <pre><code># 設定遮罩以限制最大有效權限
 setfacl -m m::rx file.txt
 
-# Even if a user has rwx in their ACL entry,
-# the mask limits them to r-x maximum
+# 即使某個使用者在自己的 ACL 項目中擁有 rwx，
+# 遮罩仍會將其有效權限限制在 r-x 以內
 
-# View effective permissions
+# 檢視實際有效權限
 getfacl file.txt
 user:john:rwx      #effective:r-x
-#         ↑ ACL     ↑ Limited by mask
+#         ↑ ACL     ↑ 受遮罩限制
 
-# Recalculate mask automatically
+# 重新計算／調整遮罩權限
 setfacl -m m::rwx file.txt</code></pre>
 
-                <h3>Copying and Backing Up ACLs</h3>
-                <pre><code># Copy ACLs from one file to another
+                <h3>複製與備份 ACL</h3>
+                <pre><code># 將 ACL 從一個檔案複製到另一個檔案
 getfacl file1.txt | setfacl --set-file=- file2.txt
 
-# Backup ACLs to file
+# 將目錄的 ACL 備份至檔案
 getfacl -R /project &gt; project_acls.txt
 
-# Restore ACLs from backup
+# 從備份檔案還原 ACL
 setfacl --restore=project_acls.txt
 
-# Preserve ACLs when copying files
+# 複製檔案時一併保留 ACL
 cp -a --preserve=all source.txt dest.txt
-# or
+# 或
 cp --preserve=mode,ownership,timestamps,xattr source.txt dest.txt</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Implementing ACLs for Project Directory</h4>
+                    <h4>操作步驟：為專案目錄實作 ACL</h4>
                     <ol>
-                        <li>Create project directory:
+                        <li>建立專案目錄：
                             <pre><code>sudo mkdir /project/webapp
 sudo chown root:developers /project/webapp
 sudo chmod 750 /project/webapp</code></pre>
                         </li>
-                        <li>Add specific user access:
-                            <pre><code># Give manager read access
+                        <li>新增特定使用者的存取權限：
+                            <pre><code># 賦予經理讀取與執行權限
 sudo setfacl -m u:manager:rx /project/webapp
 
-# Give auditor read-only access
+# 賦予稽核員唯讀權限
 sudo setfacl -m u:auditor:r /project/webapp</code></pre>
                         </li>
-                        <li>Add specific group access:
-                            <pre><code># Give QA team read+execute
+                        <li>新增特定群組的存取權限：
+                            <pre><code># 賦予 QA 團隊讀取與執行權限
 sudo setfacl -m g:qa_team:rx /project/webapp</code></pre>
                         </li>
-                        <li>Set default ACLs for new files:
-                            <pre><code># Developers get full access on new files
+                        <li>為新建檔案設定預設 ACL：
+                            <pre><code># 開發人員對新建立的檔案擁有完整權限
 sudo setfacl -d -m g:developers:rwx /project/webapp
 
-# Manager gets read on new files
+# 經理對新建立的檔案擁有讀取與執行權限
 sudo setfacl -d -m u:manager:rx /project/webapp</code></pre>
                         </li>
-                        <li>Verify configuration:
+                        <li>驗證設定結果：
                             <pre><code>getfacl /project/webapp
 
-# Expected output shows both current and default ACLs</code></pre>
+# 預期輸出將同時顯示目前的 ACL 與預設 ACL</code></pre>
                         </li>
-                        <li>Test by creating a new file:
+                        <li>建立新檔案測試繼承效果：
                             <pre><code>sudo -u developer touch /project/webapp/test.txt
 getfacl /project/webapp/test.txt
-# Should show inherited ACLs from parent directory</code></pre>
+# 應顯示從上層目錄繼承而來的 ACL</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>ACL Examples for Common Scenarios</h3>
-                <pre><code># Scenario 1: Give temp contractor access for 1 month
+                <h3>常見情境的 ACL 範例</h3>
+                <pre><code># 情境 1：賦予約聘人員為期 1 個月的暫時存取權限
 setfacl -m u:contractor:rx /data
-# (Remove after project: setfacl -x u:contractor /data)
+# (專案結束後移除：setfacl -x u:contractor /data)
 
-# Scenario 2: Multiple teams need different access
+# 情境 2：多個團隊需要不同層級的存取權限
 setfacl -m g:dev_team:rwx,g:qa_team:rx,g:managers:r /project
 
-# Scenario 3: Shared directory where everyone can write but not delete others' files
+# 情境 3：共用目錄中所有人皆可寫入，但無法刪除他人的檔案
 chmod 1777 /shared/dropbox
 setfacl -m d:u::rwx,d:g::rwx,d:o::rwx /shared/dropbox
 
-# Scenario 4: Log directory readable by specific users
+# 情境 4：讓特定使用者可讀取應用程式日誌
 setfacl -m u:alice:r,u:bob:r /var/log/application.log</code></pre>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Important Considerations</div>
+                    <div class="info-box-title">⚠️ 重要注意事項</div>
                     <ul>
-                        <li>ACLs are stored as extended attributes - ensure filesystem supports them (most modern filesystems do)</li>
-                        <li>Backup tools must preserve ACLs (use <code>tar --acls</code> or <code>rsync -A</code>)</li>
-                        <li>The <code>+</code> sign in <code>ls -l</code> output indicates ACLs are present</li>
-                        <li>ACLs work in addition to SELinux, not instead of it</li>
+                        <li>ACL 是以延伸屬性（Extended Attributes）的形式儲存，請確認檔案系統支援該功能（多數現代檔案系統皆預設支援）</li>
+                        <li>備份工具必須支援保留 ACL（例如使用 <code>tar --acls</code> 或 <code>rsync -A</code>）</li>
+                        <li><code>ls -l</code> 輸出中的 <code>+</code> 符號表示該項目已套用 ACL</li>
+                        <li>ACL 是與 SELinux 搭配疊加運作，而非取代 SELinux</li>
                     </ul>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What permissions does chmod 755 set?</h4>
+                        <h4>第 1 題：chmod 755 會設定什麼樣的權限？</h4>
                         <ul class="quiz-options">
-                            <li>A) rwxr-xr-x (owner: full, group: r-x, other: r-x)</li>
-                            <li>B) rw-r--r-- (owner: rw, group: r, other: r)</li>
-                            <li>C) rwxrwxrwx (full access for all)</li>
-                            <li>D) r-xr-xr-x (read+execute for all)</li>
+                            <li>A) rwxr-xr-x（擁有者：完整權限，群組：r-x，其他人：r-x）</li>
+                            <li>B) rw-r--r--（擁有者：rw，群組：r，其他人：r）</li>
+                            <li>C) rwxrwxrwx（所有人皆有完整存取權限）</li>
+                            <li>D) r-xr-xr-x（所有人皆為讀取+執行）</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: A) rwxr-xr-x</strong><br>
-                            7=rwx (4+2+1), 5=r-x (4+0+1), 5=r-x (4+0+1). Owner has full control (read, write, execute), 
-                            while group and others can read and execute but cannot write.
+                            <strong>解答：A) rwxr-xr-x</strong><br>
+                            7=rwx (4+2+1)，5=r-x (4+0+1)，5=r-x (4+0+1)。擁有者擁有完整控制權（讀取、寫入、執行），而群組與其他使用者僅可讀取與執行，無法寫入。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: What does the sticky bit do on a directory?</h4>
+                        <h4>第 2 題：在目錄上設定黏滯位元（Sticky Bit）有什麼作用？</h4>
                         <ul class="quiz-options">
-                            <li>A) Makes files read-only</li>
-                            <li>B) Only file owners can delete their own files</li>
-                            <li>C) Prevents directory from being deleted</li>
-                            <li>D) Makes all files executable</li>
+                            <li>A) 讓檔案變成唯讀</li>
+                            <li>B) 只有檔案擁有者可以刪除自己的檔案</li>
+                            <li>C) 防止目錄被刪除</li>
+                            <li>D) 讓目錄中的所有檔案變成可執行</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Only file owners can delete their own files</strong><br>
-                            The sticky bit prevents users from deleting or renaming files they don't own, even if they 
-                            have write permission on the directory. This is why /tmp uses the sticky bit (1777).
+                            <strong>解答：B) 只有檔案擁有者可以刪除自己的檔案</strong><br>
+                            即使使用者對該目錄擁有寫入權限，Sticky Bit 也能防止使用者刪除或重新命名不屬於自己的檔案。這正是 /tmp 目錄使用 Sticky Bit（1777）的原因。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: How do you give user 'john' read access to a file using ACLs?</h4>
+                        <h4>第 3 題：如何使用 ACL 賦予使用者 'john' 對檔案的讀取權限？</h4>
                         <ul class="quiz-options">
                             <li>A) chmod u+r:john file.txt</li>
                             <li>B) setfacl -m u:john:r file.txt</li>
@@ -772,49 +764,44 @@ setfacl -m u:alice:r,u:bob:r /var/log/application.log</code></pre>
                             <li>D) acl john read file.txt</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) setfacl -m u:john:r file.txt</strong><br>
-                            setfacl with -m (modify) is the correct command for setting ACL permissions. 
-                            The syntax is: setfacl -m u:username:permissions file
+                            <strong>解答：B) setfacl -m u:john:r file.txt</strong><br>
+                            搭配 -m（修改，modify）選項的 setfacl 是設定 ACL 權限的正確指令。其語法為：setfacl -m u:username:permissions file
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: What is the effect of umask 0027?</h4>
+                        <h4>第 4 題：umask 0027 的效果是什麼？</h4>
                         <ul class="quiz-options">
-                            <li>A) New files: 640, Directories: 750</li>
-                            <li>B) New files: 644, Directories: 755</li>
-                            <li>C) New files: 600, Directories: 700</li>
-                            <li>D) New files: 666, Directories: 777</li>
+                            <li>A) 新建立的檔案：640，新建立的目錄：750</li>
+                            <li>B) 新建立的檔案：644，新建立的目錄：755</li>
+                            <li>C) 新建立的檔案：600，新建立的目錄：700</li>
+                            <li>D) 新建立的檔案：666，新建立的目錄：777</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: A) New files: 640, Directories: 750</strong><br>
-                            With umask 0027: Files are created as 666-027=640 (rw-r-----), 
-                            Directories as 777-027=750 (rwxr-x---). This provides good security while 
-                            allowing group read access.
+                            <strong>解答：A) 新建立的檔案：640，新建立的目錄：750</strong><br>
+                            使用 umask 0027 時：新建檔案權限為 666-027=640 (rw-r-----)，新建目錄則為 777-027=750 (rwxr-x---)。這能在維持良好安全性的同時，允許同群組成員進行讀取。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: What does SGID on a directory do?</h4>
+                        <h4>第 5 題：在目錄上設定 SGID 有什麼作用？</h4>
                         <ul class="quiz-options">
-                            <li>A) Makes directory executable</li>
-                            <li>B) New files inherit the directory's group ownership</li>
-                            <li>C) Only root can access the directory</li>
-                            <li>D) Encrypts all files in the directory</li>
+                            <li>A) 讓目錄變成可執行</li>
+                            <li>B) 新建立的檔案會繼承該目錄的群組擁有權</li>
+                            <li>C) 只有 root 可以存取該目錄</li>
+                            <li>D) 加密目錄中的所有檔案</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) New files inherit the directory's group ownership</strong><br>
-                            SGID on directories ensures that new files are created with the directory's group ownership 
-                            rather than the creator's primary group. This is essential for shared project directories 
-                            where team members need consistent group ownership (chmod 2775 /shared/project).
+                            <strong>解答：B) 新建立的檔案會繼承該目錄的群組擁有權</strong><br>
+                            在目錄上設定 SGID 可確保新建立的檔案以該目錄的群組作為擁有群組，而非採用建立者的主要群組。這對於需要團隊成員保持一致群組擁有權的共用專案目錄至關重要（chmod 2775 /shared/project）。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter3.html" class="nav-button prev">Chapter 3: Users & Groups</a>
-                <a href="chapter5.html" class="nav-button next">Chapter 5: SELinux</a>
+                <a href="chapter3.html" class="nav-button prev">第 3 章：使用者與群組</a>
+                <a href="chapter5.html" class="nav-button next">第 5 章：SELinux 安全性</a>
             </div>
         </main>
     </div>
@@ -824,11 +811,11 @@ setfacl -m u:alice:r,u:bob:r /var/log/application.log</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>您精通 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>

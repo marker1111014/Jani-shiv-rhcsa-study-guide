@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 13: Configure Networking - RHCSA Guide</title>
+    <title>第 13 章：設定網路連線 - RHCSA 學習指南</title>
     <link rel="stylesheet" href="/style.css">
     <!-- Vercel Web Analytics -->
     <script>
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,180 +36,180 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html" class="active">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html" class="active">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 13</span>
-                    <span class="meta-badge">⏱️ 60 min read</span>
-                    <span class="meta-badge">📚 Advanced</span>
+                    <span class="meta-badge">第 13 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 60 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
                 </div>
-                <h1>Configure Networking</h1>
+                <h1>設定網路連線</h1>
                 <p class="chapter-intro">
-                    Master network configuration with NetworkManager and nmcli. Learn to configure IP addresses, 
-                    manage connections, set hostnames, and troubleshoot network issues.
+                    精通使用 NetworkManager 與 nmcli 進行網路組態設定。學習如何設定 IP 位址、
+                    管理網路連線、設定主機名稱，並進行網路疑難排解。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction to Networking</a></li>
-                    <li><a href="#nmcli">nmcli - NetworkManager CLI</a></li>
-                    <li><a href="#ip-config">IP Configuration</a></li>
-                    <li><a href="#hostname">Hostname Management</a></li>
-                    <li><a href="#dns">DNS Configuration</a></li>
-                    <li><a href="#troubleshooting">Network Troubleshooting</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">網路設定簡介</a></li>
+                    <li><a href="#nmcli">nmcli - NetworkManager 命令列工具</a></li>
+                    <li><a href="#ip-config">IP 組態設定</a></li>
+                    <li><a href="#hostname">主機名稱管理</a></li>
+                    <li><a href="#dns">DNS 設定</a></li>
+                    <li><a href="#troubleshooting">網路疑難排解</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction to Networking</h2>
+                <h2>🎯 網路設定簡介</h2>
                 <p>
-                    RHEL 9 uses NetworkManager to manage all network configurations. The primary command-line tool 
-                    is <code>nmcli</code> (NetworkManager Command Line Interface).
+                    RHEL 9 使用 NetworkManager 管理所有的網路組態設定。主要的命令列管理工具有
+                    <code>nmcli</code>（NetworkManager Command Line Interface）。
                 </p>
 
-                <h3>NetworkManager Components</h3>
+                <h3>NetworkManager 核心元件</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Component</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">元件</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Device</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Network interface (eth0, ens33, wlan0)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Device（裝置）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">網路介面卡（例如 eth0、ens33、wlan0）</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Connection</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Network configuration profile</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Connection（連線）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">網路組態設定檔</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>nmcli</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Command-line tool</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">命令列管理工具</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>nmtui</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Text-based UI tool</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">文字介面（TUI）工具</td>
                     </tr>
                 </table>
 
-                <h3>Configuration Files</h3>
-                <pre><code># Connection profiles (managed by NetworkManager)
+                <h3>設定檔位置</h3>
+                <pre><code># 連線設定檔（由 NetworkManager 管理）
 /etc/NetworkManager/system-connections/
 
-# Legacy network scripts (deprecated in RHEL 9)
+# 傳統網路腳本（在 RHEL 9 中已棄用）
 /etc/sysconfig/network-scripts/
 
-# Hostname
+# 主機名稱
 /etc/hostname
 
-# DNS resolution
-/etc/resolv.conf  # Managed by NetworkManager
-/etc/hosts        # Static host mappings</code></pre>
+# DNS 解析
+/etc/resolv.conf  # 由 NetworkManager 管理
+/etc/hosts        # 靜態主機名稱對應</code></pre>
 
-                <h3>Basic Network Information</h3>
-                <pre><code># Show IP addresses
+                <h3>基本網路資訊查詢</h3>
+                <pre><code># 顯示 IP 位址
 ip addr show
 ip a
 
-# Show routing table
+# 顯示路由表
 ip route show
 ip r
 
-# Show specific interface
+# 顯示指定網路介面
 ip addr show ens33
 
-# Legacy commands (still work)
-ifconfig  # May need net-tools package
+# 傳統指令（仍可使用）
+ifconfig  # 可能需要安裝 net-tools 套件
 route -n</code></pre>
             </section>
 
             <section id="nmcli" class="content-section">
-                <h2>🔧 nmcli - NetworkManager CLI</h2>
+                <h2>🔧 nmcli - NetworkManager 命令列工具</h2>
 
-                <h3>Viewing Network Status</h3>
-                <pre><code># Show all devices
+                <h3>檢視網路狀態</h3>
+                <pre><code># 顯示所有網路裝置
 nmcli device status
 nmcli dev status
 
-# Output example:
+# 輸出範例：
 DEVICE  TYPE      STATE      CONNECTION
 ens33   ethernet  connected  ens33
 lo      loopback  unmanaged  --
 
-# Show all connections
+# 顯示所有連線設定
 nmcli connection show
 nmcli con show
 
-# Output example:
+# 輸出範例：
 NAME   UUID                                  TYPE      DEVICE
 ens33  abc123-def4-5678-9abc-def012345678   ethernet  ens33
 
-# Show connection details
+# 顯示連線詳細資訊
 nmcli con show ens33
 
-# Show device details
+# 顯示裝置詳細資訊
 nmcli dev show ens33</code></pre>
 
-                <h3>Managing Connections</h3>
-                <pre><code># Activate connection
+                <h3>管理連線</h3>
+                <pre><code># 啟用連線
 nmcli con up ens33
 
-# Deactivate connection
+# 停用連線
 nmcli con down ens33
 
-# Reload connections
+# 重新載入連線設定
 nmcli con reload
 
-# Delete connection
+# 刪除連線
 nmcli con delete ens33
 
-# Rename connection
+# 重新命名連線
 nmcli con modify ens33 connection.id "LAN"</code></pre>
 
-                <h3>Connection Types</h3>
-                <pre><code># Ethernet connection
+                <h3>連線類型</h3>
+                <pre><code># 乙太網路連線
 nmcli con add type ethernet con-name eth0 ifname eth0
 
-# WiFi connection
+# Wi-Fi 連線
 nmcli dev wifi connect "SSID" password "password"
 
-# List available WiFi networks
+# 列出可用的 Wi-Fi 網路
 nmcli dev wifi list
 
-# Team/Bond (advanced)
+# Team/Bond（進階設定）
 nmcli con add type team con-name team0 ifname team0
 nmcli con add type bridge con-name br0 ifname br0</code></pre>
             </section>
 
             <section id="ip-config" class="content-section">
-                <h2>🌐 IP Configuration</h2>
+                <h2>🌐 IP 組態設定</h2>
 
-                <h3>Static IP Configuration</h3>
-                <pre><code># Create new connection with static IP
+                <h3>靜態 IP 設定</h3>
+                <pre><code># 建立使用靜態 IP 的新連線
 nmcli con add \
   con-name static-ens33 \
   ifname ens33 \
@@ -219,134 +219,134 @@ nmcli con add \
   ipv4.dns "8.8.8.8 8.8.4.4" \
   ipv4.method manual
 
-# Activate the connection
+# 啟用該連線
 nmcli con up static-ens33
 
-# Verify
+# 驗證設定
 ip addr show ens33</code></pre>
 
-                <h3>Modify Existing Connection</h3>
-                <pre><code># Change to static IP
+                <h3>修改現有連線</h3>
+                <pre><code># 變更為靜態 IP
 nmcli con mod ens33 \
   ipv4.addresses 192.168.1.100/24 \
   ipv4.gateway 192.168.1.1 \
   ipv4.dns "8.8.8.8 8.8.4.4" \
   ipv4.method manual
 
-# Add second IP address
+# 新增第二個 IP 位址
 nmcli con mod ens33 +ipv4.addresses 192.168.1.101/24
 
-# Remove IP address
+# 移除 IP 位址
 nmcli con mod ens33 -ipv4.addresses 192.168.1.101/24
 
-# Apply changes
+# 套用變更
 nmcli con up ens33</code></pre>
 
-                <h3>DHCP Configuration</h3>
-                <pre><code># Create DHCP connection
+                <h3>DHCP 設定</h3>
+                <pre><code># 建立 DHCP 連線
 nmcli con add \
   con-name dhcp-ens33 \
   ifname ens33 \
   type ethernet \
   ipv4.method auto
 
-# Change existing to DHCP
+# 將現有連線變更為 DHCP
 nmcli con mod ens33 ipv4.method auto
 
-# Remove static settings
+# 清除靜態設定
 nmcli con mod ens33 \
   ipv4.addresses "" \
   ipv4.gateway "" \
   ipv4.dns ""
 
-# Apply
+# 套用設定
 nmcli con up ens33</code></pre>
 
-                <h3>IPv6 Configuration</h3>
-                <pre><code># Static IPv6
+                <h3>IPv6 設定</h3>
+                <pre><code># 靜態 IPv6
 nmcli con mod ens33 \
   ipv6.addresses 2001:db8::1/64 \
   ipv6.gateway 2001:db8::ffff \
   ipv6.method manual
 
-# Auto (SLAAC)
+# 自動取得（SLAAC）
 nmcli con mod ens33 ipv6.method auto
 
-# Disable IPv6
+# 停用 IPv6
 nmcli con mod ens33 ipv6.method disabled
 
-# Apply
+# 套用設定
 nmcli con up ens33</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Configure Static IP Address</h4>
+                    <h4>操作步驟：設定靜態 IP 位址</h4>
                     <ol>
-                        <li>Check current configuration:
+                        <li>檢查目前的組態設定：
                             <pre><code>nmcli con show
 ip addr show</code></pre>
                         </li>
-                        <li>Modify connection for static IP:
+                        <li>修改連線設定以使用靜態 IP：
                             <pre><code>sudo nmcli con mod ens33 \
   ipv4.addresses 192.168.1.100/24 \
   ipv4.gateway 192.168.1.1 \
   ipv4.dns "8.8.8.8 8.8.4.4" \
   ipv4.method manual</code></pre>
                         </li>
-                        <li>Activate changes:
+                        <li>啟用連線以套用變更：
                             <pre><code>sudo nmcli con up ens33</code></pre>
                         </li>
-                        <li>Verify configuration:
+                        <li>驗證網路組態：
                             <pre><code>ip addr show ens33
 ip route show
 cat /etc/resolv.conf</code></pre>
                         </li>
-                        <li>Test connectivity:
+                        <li>測試網路連線能力：
                             <pre><code>ping -c 4 8.8.8.8
 ping -c 4 google.com</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Common nmcli Options</h3>
+                <h3>常用 nmcli 設定選項</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Setting</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">設定項目</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">ipv4.method</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">auto (DHCP), manual (static), disabled</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">auto（DHCP）、manual（靜態）、disabled（停用）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">ipv4.addresses</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">IP/prefix (192.168.1.100/24)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">IP 位址與子網路遮罩長度（如 192.168.1.100/24）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">ipv4.gateway</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Default gateway IP</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">預設閘道 IP 位址</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">ipv4.dns</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">DNS servers (space-separated)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">DNS 伺服器（多筆以空白分隔）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">connection.autoconnect</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">yes/no (auto-activate at boot)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">yes/no（開機時是否自動啟用連線）</td>
                     </tr>
                 </table>
             </section>
 
             <section id="hostname" class="content-section">
-                <h2>🏷️ Hostname Management</h2>
+                <h2>🏷️ 主機名稱管理</h2>
 
-                <h3>Setting Hostname</h3>
-                <pre><code># Set hostname (persistent)
+                <h3>設定主機名稱</h3>
+                <pre><code># 設定主機名稱（永久生效）
 sudo hostnamectl set-hostname server1.example.com
 
-# View hostname details
+# 檢視主機名稱詳細資訊
 hostnamectl
 
-# Output example:
+# 輸出範例：
  Static hostname: server1.example.com
        Icon name: computer-vm
          Chassis: vm
@@ -358,78 +358,78 @@ Operating System: Red Hat Enterprise Linux 9.0 (Plow)
           Kernel: Linux 5.14.0-70.el9.x86_64
     Architecture: x86-64
 
-# View just the hostname
+# 僅檢視主機名稱
 hostname
 hostnamectl hostname</code></pre>
 
-                <h3>Hostname Types</h3>
-                <pre><code># Static hostname (permanent)
+                <h3>主機名稱類型</h3>
+                <pre><code># 靜態主機名稱（永久）
 sudo hostnamectl set-hostname server1.example.com
 
-# Pretty hostname (descriptive)
+# 易讀主機名稱（Pretty hostname，描述性名稱）
 sudo hostnamectl set-hostname "Web Server 1" --pretty
 
-# Transient hostname (temporary, lost on reboot)
+# 暫時性主機名稱（重開機後失效）
 sudo hostnamectl set-hostname temp-name --transient
 
-# View all types
+# 檢視所有類型的主機名稱
 hostnamectl status</code></pre>
 
-                <h3>Manual Hostname Configuration</h3>
-                <pre><code># Edit hostname file
+                <h3>手動設定主機名稱</h3>
+                <pre><code># 編輯主機名稱設定檔
 sudo vi /etc/hostname
 server1.example.com
 
-# Or use nmcli
+# 或使用 nmcli 設定
 sudo nmcli general hostname server1.example.com
 
-# Update /etc/hosts for local resolution
+# 更新 /etc/hosts 以進行本機解析
 sudo vi /etc/hosts
 127.0.0.1   localhost localhost.localdomain
 192.168.1.100   server1.example.com server1</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Hostname Best Practices</div>
-                    <p>Use FQDN (Fully Qualified Domain Name) for static hostname: server1.example.com<br>
-                    Update /etc/hosts to include the hostname for local resolution<br>
-                    Avoid special characters, use only letters, numbers, hyphens, and dots</p>
+                    <div class="info-box-title">💡 提示：主機名稱最佳實踐</div>
+                    <p>靜態主機名稱建議使用 FQDN（完整網域名稱）：server1.example.com<br>
+                    更新 /etc/hosts 加入主機名稱以供本機解析<br>
+                    避免使用特殊字元，僅使用英文字母、數字、連字號（-）與點號（.）</p>
                 </div>
             </section>
 
             <section id="dns" class="content-section">
-                <h2>🔍 DNS Configuration</h2>
+                <h2>🔍 DNS 設定</h2>
 
-                <h3>Configuring DNS with nmcli</h3>
-                <pre><code># Set DNS servers
+                <h3>使用 nmcli 設定 DNS</h3>
+                <pre><code># 設定 DNS 伺服器
 sudo nmcli con mod ens33 ipv4.dns "8.8.8.8 8.8.4.4"
 
-# Add additional DNS server
+# 新增額外的 DNS 伺服器
 sudo nmcli con mod ens33 +ipv4.dns 1.1.1.1
 
-# Set DNS search domains
+# 設定 DNS 搜尋網域
 sudo nmcli con mod ens33 ipv4.dns-search "example.com lab.local"
 
-# Ignore auto DNS (use manual only)
+# 忽略自動取得的 DNS（僅使用手動設定）
 sudo nmcli con mod ens33 ipv4.ignore-auto-dns yes
 
-# Apply changes
+# 套用變更
 sudo nmcli con up ens33
 
-# Verify
+# 驗證設定
 cat /etc/resolv.conf</code></pre>
 
                 <h3>/etc/resolv.conf</h3>
-                <pre><code># View DNS configuration (managed by NetworkManager)
+                <pre><code># 檢視 DNS 設定（由 NetworkManager 管理）
 cat /etc/resolv.conf
 
-# Output example:
+# 輸出範例：
 # Generated by NetworkManager
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 search example.com lab.local</code></pre>
 
                 <h3>/etc/hosts</h3>
-                <pre><code># Static hostname to IP mappings
+                <pre><code># 靜態主機名稱與 IP 位址對應
 sudo vi /etc/hosts
 
 127.0.0.1   localhost localhost.localdomain
@@ -437,163 +437,163 @@ sudo vi /etc/hosts
 192.168.1.10   server1.example.com server1
 192.168.1.20   server2.example.com server2
 
-# Test host resolution
+# 測試主機名稱解析
 getent hosts server1
 ping server1</code></pre>
 
-                <h3>Name Resolution Order</h3>
-                <pre><code># Configure resolution order
+                <h3>名稱解析順序</h3>
+                <pre><code># 設定解析順序的檔案
 /etc/nsswitch.conf
 
-# Default line:
+# 預設設定行：
 hosts: files dns myhostname
 
-# files = /etc/hosts first
-# dns = DNS servers second
-# myhostname = systemd hostname resolution</code></pre>
+# files = 優先查詢 /etc/hosts
+# dns = 其次查詢 DNS 伺服器
+# myhostname = systemd 本機主機名稱解析</code></pre>
 
-                <h3>Testing DNS</h3>
-                <pre><code># Test name resolution
+                <h3>測試 DNS 解析</h3>
+                <pre><code># 測試網域名稱解析
 nslookup google.com
 dig google.com
 host google.com
 
-# Specific DNS server
+# 指定特定的 DNS 伺服器查詢
 nslookup google.com 8.8.8.8
 dig @8.8.8.8 google.com
 
-# Reverse DNS lookup
+# 反向 DNS 查詢
 nslookup 8.8.8.8
 dig -x 8.8.8.8
 
-# Check which DNS server is being used
+# 檢查目前使用的 DNS 伺服器
 systemd-resolve --status</code></pre>
             </section>
 
             <section id="troubleshooting" class="content-section">
-                <h2>🔧 Network Troubleshooting</h2>
+                <h2>🔧 網路疑難排解</h2>
 
-                <h3>Connectivity Tests</h3>
-                <pre><code># Ping gateway
+                <h3>連線能力測試</h3>
+                <pre><code># Ping 預設閘道
 ping -c 4 192.168.1.1
 
-# Ping external IP
+# Ping 外部 IP
 ping -c 4 8.8.8.8
 
-# Ping hostname (tests DNS)
+# Ping 主機名稱（同時測試 DNS）
 ping -c 4 google.com
 
-# Traceroute
+# 路由追蹤
 traceroute google.com
 tracepath google.com
 
-# Check listening ports
+# 檢查正在監聽的連接埠
 ss -tulpn
-netstat -tulpn  # Legacy</code></pre>
+netstat -tulpn  # 傳統指令</code></pre>
 
-                <h3>Interface Troubleshooting</h3>
-                <pre><code># Check link status
+                <h3>網路介面疑難排解</h3>
+                <pre><code># 檢查介面連線狀態
 ip link show ens33
 
-# Bring interface up
+# 啟用網路介面
 sudo ip link set ens33 up
 
-# Bring interface down
+# 停用網路介面
 sudo ip link set ens33 down
 
-# Check driver/hardware info
+# 檢查網卡驅動程式與硬體資訊
 ethtool ens33
 
-# View connection status
+# 檢視連線狀態
 nmcli con show ens33
 
-# Restart NetworkManager
+# 重新啟動 NetworkManager
 sudo systemctl restart NetworkManager</code></pre>
 
-                <h3>Route Troubleshooting</h3>
-                <pre><code># Show routing table
+                <h3>路由疑難排解</h3>
+                <pre><code># 顯示路由表
 ip route show
 
-# Show specific route
+# 顯示前往特定目標的路由
 ip route get 8.8.8.8
 
-# Add temporary route
+# 新增暫時性路由
 sudo ip route add 10.0.0.0/8 via 192.168.1.1
 
-# Delete route
+# 刪除路由
 sudo ip route del 10.0.0.0/8
 
-# Add persistent route with nmcli
+# 使用 nmcli 新增永久路由
 sudo nmcli con mod ens33 +ipv4.routes "10.0.0.0/8 192.168.1.1"</code></pre>
 
-                <h3>Common Network Issues</h3>
+                <h3>常見網路問題</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Problem</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Check</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">問題狀況</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">檢查項目</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">No IP address</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Check DHCP, verify ipv4.method, restart connection</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">沒有取得 IP 位址</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">檢查 DHCP 服務、確認 ipv4.method 設定、重新啟用連線</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Can't ping gateway</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Check cable, ip link status, firewall</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">無法 ping 通預設閘道</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">檢查實體網路線、ip link 介面狀態、防火牆規則</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Can't ping external IP</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Check gateway, routing table, firewall</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">無法 ping 通外部 IP</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">檢查預設閘道、路由表、防火牆設定</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Can't resolve names</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Check /etc/resolv.conf, DNS servers, /etc/hosts</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">無法解析網域名稱</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">檢查 /etc/resolv.conf、DNS 伺服器設定、/etc/hosts</td>
                     </tr>
                 </table>
 
-                <h3>Diagnostic Commands</h3>
-                <pre><code># Show socket statistics
-ss -tuln  # TCP/UDP listening
-ss -ta    # All TCP connections
+                <h3>診斷指令</h3>
+                <pre><code># 顯示 Socket 統計資訊
+ss -tuln  # 監聽中的 TCP/UDP 連接埠
+ss -ta    # 所有 TCP 連線
 
-# Network statistics
-ip -s link show ens33  # Interface statistics
+# 網路介面統計資訊
+ip -s link show ens33  # 介面封包統計資訊
 
-# ARP table (address resolution)
+# ARP 表（位址解析快取）
 ip neigh show
 
-# Check NetworkManager status
+# 檢查 NetworkManager 服務狀態
 systemctl status NetworkManager
 
-# View NetworkManager logs
+# 檢視 NetworkManager 日誌
 journalctl -u NetworkManager -n 50</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Network Troubleshooting Workflow</h4>
+                    <h4>操作步驟：網路疑難排解工作流程</h4>
                     <ol>
-                        <li>Check interface status:
+                        <li>檢查網路介面狀態：
                             <pre><code>ip link show
 nmcli dev status</code></pre>
                         </li>
-                        <li>Check IP configuration:
+                        <li>檢查 IP 組態設定：
                             <pre><code>ip addr show
 nmcli con show ens33</code></pre>
                         </li>
-                        <li>Test local connectivity:
-                            <pre><code>ping -c 4 127.0.0.1  # Loopback
-ping -c 4 $(ip route | grep default | awk '{print $3}')  # Gateway</code></pre>
+                        <li>測試本機連線：
+                            <pre><code>ping -c 4 127.0.0.1  # 本機迴環介面 (Loopback)
+ping -c 4 $(ip route | grep default | awk '{print $3}')  # 預設閘道</code></pre>
                         </li>
-                        <li>Test external connectivity:
+                        <li>測試外部網路連線：
                             <pre><code>ping -c 4 8.8.8.8  # Google DNS</code></pre>
                         </li>
-                        <li>Test DNS resolution:
+                        <li>測試 DNS 名稱解析：
                             <pre><code>ping -c 4 google.com
 nslookup google.com</code></pre>
                         </li>
-                        <li>Check routing:
+                        <li>檢查路由路徑：
                             <pre><code>ip route show
 tracepath google.com</code></pre>
                         </li>
-                        <li>Check logs:
+                        <li>檢查系統服務日誌：
                             <pre><code>journalctl -u NetworkManager -n 50</code></pre>
                         </li>
                     </ol>
@@ -602,42 +602,42 @@ tracepath google.com</code></pre>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What command sets a static IP with nmcli?</h4>
+                        <h4>第 1 題：使用 nmcli 設定靜態 IP 的正確指令為何？</h4>
                         <ul class="quiz-options">
                             <li>A) nmcli con mod ens33 ipv4.method manual ipv4.addresses 192.168.1.100/24</li>
                             <li>B) ip addr add 192.168.1.100/24 dev ens33</li>
                             <li>C) ifconfig ens33 192.168.1.100 netmask 255.255.255.0</li>
-                            <li>D) Both B and C</li>
+                            <li>D) B 與 C 皆可</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: A)</strong><br>
-                            nmcli is the proper RHEL 9 method for persistent configuration. Must set ipv4.method to 
-                            "manual" for static IP. Commands B and C are temporary (lost on reboot). Don't forget to 
-                            run <code>nmcli con up ens33</code> to apply changes.
+                            <strong>解答：A)</strong><br>
+                            在 RHEL 9 中，<code>nmcli</code> 是建立永久網路設定的標準方式。設定靜態 IP 時必須將
+                            <code>ipv4.method</code> 設為 "manual"。指令 B 與 C 僅為暫時性設定（重開機後會失效）。
+                            修改完成後別忘了執行 <code>nmcli con up ens33</code> 以套用變更。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: How do you set the hostname permanently?</h4>
+                        <h4>第 2 題：如何永久設定系統的主機名稱？</h4>
                         <ul class="quiz-options">
                             <li>A) hostname server1.example.com</li>
                             <li>B) hostnamectl set-hostname server1.example.com</li>
                             <li>C) echo "server1" &gt; /etc/hostname</li>
-                            <li>D) Both B and C</li>
+                            <li>D) B 與 C 皆可</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: D) Both B and C</strong><br>
-                            <code>hostnamectl set-hostname</code> is the recommended method (updates multiple files). 
-                            Editing /etc/hostname also works but requires reboot or hostnamectl reload. 
-                            Command A sets hostname temporarily (lost on reboot).
+                            <strong>解答：D) B 與 C 皆可</strong><br>
+                            <code>hostnamectl set-hostname</code> 是最推薦的方法（會同步更新相關設定檔並立即生效）。
+                            直接編輯 <code>/etc/hostname</code> 也能永久生效，但需要重新開機或重新載入 hostnamectl。
+                            指令 A 僅會暫時變更主機名稱（重開機後失效）。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: What file contains DNS server configuration?</h4>
+                        <h4>第 3 題：哪一個檔案包含 DNS 伺服器的設定？</h4>
                         <ul class="quiz-options">
                             <li>A) /etc/resolv.conf</li>
                             <li>B) /etc/hosts</li>
@@ -645,31 +645,31 @@ tracepath google.com</code></pre>
                             <li>D) /etc/sysconfig/network</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: A) /etc/resolv.conf</strong><br>
-                            /etc/resolv.conf contains nameserver entries (managed by NetworkManager in RHEL 9). 
-                            /etc/hosts is for static hostname mappings. /etc/nsswitch.conf defines resolution order. 
-                            Don't manually edit /etc/resolv.conf - use nmcli instead.
+                            <strong>解答：A) /etc/resolv.conf</strong><br>
+                            <code>/etc/resolv.conf</code> 包含 nameserver 設定項目（在 RHEL 9 中由 NetworkManager 管理）。
+                            <code>/etc/hosts</code> 用於靜態主機名稱與 IP 對應；<code>/etc/nsswitch.conf</code> 定義名稱解析的順序。
+                            請勿手動編輯 <code>/etc/resolv.conf</code>，應改用 <code>nmcli</code> 進行設定。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: What command shows active network connections?</h4>
+                        <h4>第 4 題：哪個指令可以顯示目前作用中的網路連線？</h4>
                         <ul class="quiz-options">
                             <li>A) nmcli connection show</li>
                             <li>B) nmcli con show --active</li>
                             <li>C) nmcli dev status</li>
-                            <li>D) All of the above</li>
+                            <li>D) 以上皆是</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: D) All of the above</strong><br>
-                            All three commands show active connections/devices. <code>nmcli con show</code> lists all 
-                            connections (active highlighted). <code>nmcli con show --active</code> filters to active only. 
-                            <code>nmcli dev status</code> shows device state. Use <code>nmcli -t -f</code> for scripting.
+                            <strong>解答：D) 以上皆是</strong><br>
+                            這三個指令都能檢視作用中的連線或裝置狀態。<code>nmcli con show</code> 會列出所有連線（作用中的會以醒目顏色標示）；
+                            <code>nmcli con show --active</code> 只過濾出作用中的連線；<code>nmcli dev status</code> 則顯示網路裝置的狀態。
+                            撰寫自動化腳本時可搭配 <code>nmcli -t -f</code> 使用。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: How do you add a second DNS server to existing configuration?</h4>
+                        <h4>第 5 題：如何在現有連線組態中新增第二組 DNS 伺服器？</h4>
                         <ul class="quiz-options">
                             <li>A) nmcli con mod ens33 ipv4.dns 8.8.4.4</li>
                             <li>B) nmcli con mod ens33 +ipv4.dns 8.8.4.4</li>
@@ -677,34 +677,33 @@ tracepath google.com</code></pre>
                             <li>D) nmcli con add dns 8.8.4.4</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) nmcli con mod ens33 +ipv4.dns 8.8.4.4</strong><br>
-                            The <code>+</code> prefix adds to existing values. Without <code>+</code>, it replaces all 
-                            DNS servers. Use <code>-</code> to remove a specific DNS server. Don't manually edit 
-                            /etc/resolv.conf as NetworkManager will overwrite it.
+                            <strong>解答：B) nmcli con mod ens33 +ipv4.dns 8.8.4.4</strong><br>
+                            使用 <code>+</code> 前綴會在現有值後方新增項目。若未加上 <code>+</code>，將會覆蓋並取代原本所有的 DNS 伺服器。
+                            使用 <code>-</code> 則可移除指定的 DNS 伺服器。請勿手動修改 <code>/etc/resolv.conf</code>，因為 NetworkManager 會覆寫它。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 6: What's the first step in network troubleshooting?</h4>
+                        <h4>第 6 題：進行網路疑難排解的第一個步驟為何？</h4>
                         <ul class="quiz-options">
                             <li>A) Ping google.com</li>
-                            <li>B) Check link status with ip link show</li>
-                            <li>C) Restart NetworkManager</li>
-                            <li>D) Check /etc/resolv.conf</li>
+                            <li>B) 使用 ip link show 檢查網路介面連線狀態</li>
+                            <li>C) 重新啟動 NetworkManager</li>
+                            <li>D) 檢查 /etc/resolv.conf</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Check link status with ip link show</strong><br>
-                            Start with physical layer: verify interface is UP. Then check IP (ip addr), then gateway 
-                            (ping), then DNS. Follow OSI model bottom-up: Physical → Link → Network → Application. 
-                            Use <code>nmcli dev status</code> for quick overview.
+                            <strong>解答：B) 使用 ip link show 檢查網路介面連線狀態</strong><br>
+                            應從底層開始檢查：先確認介面是否為 UP 狀態，接著檢查 IP 位址（<code>ip addr</code>），再測試預設閘道（<code>ping</code>），最後檢查 DNS 解析。
+                            依循 OSI 模型由下而上的原則排查：實體層 → 資料連結層 → 網路層 → 應用層。
+                            也可使用 <code>nmcli dev status</code> 快速掌握整體概況。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter12.html" class="nav-button prev">Chapter 12: System Logs</a>
-                <a href="chapter14.html" class="nav-button next">Chapter 14: Network Storage (NFS/AutoFS)</a>
+                <a href="chapter12.html" class="nav-button prev">第 12 章：系統日誌</a>
+                <a href="chapter14.html" class="nav-button next">第 14 章：網路儲存 (NFS/AutoFS)</a>
             </div>
         </main>
     </div>
@@ -714,11 +713,11 @@ tracepath google.com</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>您精通 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 5: Manage SELinux Security - RHCSA Guide</title>
+    <title>第 5 章：管理 SELinux 安全性 - RHCSA 學習指南</title>
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-  <script type="module" crossorigin src="/assets/script-uyo8zlGx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/script-Bd6Bx7if.css">
+    </script>
+  <script type="module" crossorigin src="/assets/script-D3Q74Pyl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-CcFVVXfV.css">
 </head>
 <body>
     <nav class="navbar">
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,145 +36,144 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html" class="active">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html" class="active">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 5</span>
-                    <span class="meta-badge">⏱️ 60 min read</span>
-                    <span class="meta-badge">📚 Advanced</span>
+                    <span class="meta-badge">第 5 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 60 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
                 </div>
-                <h1>Manage SELinux Security</h1>
+                <h1>管理 SELinux 安全性</h1>
                 <p class="chapter-intro">
-                    Master Security-Enhanced Linux (SELinux), a mandatory access control (MAC) security mechanism. 
-                    Learn to configure SELinux modes, manage contexts, work with booleans, and troubleshoot access denials.
+                    掌握強制存取控制（MAC）安全機制 SELinux（Security-Enhanced Linux）。
+                    學習設定 SELinux 模式、管理安全脈絡（Context）、設定布林值（Boolean），以及排除存取拒絕問題。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction to SELinux</a></li>
-                    <li><a href="#modes">SELinux Modes</a></li>
-                    <li><a href="#contexts">SELinux Contexts</a></li>
-                    <li><a href="#booleans">SELinux Booleans</a></li>
-                    <li><a href="#troubleshooting">Troubleshooting SELinux</a></li>
-                    <li><a href="#port-labeling">Port Labeling</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">SELinux 簡介</a></li>
+                    <li><a href="#modes">SELinux 模式</a></li>
+                    <li><a href="#contexts">SELinux 安全脈絡</a></li>
+                    <li><a href="#booleans">SELinux 布林值</a></li>
+                    <li><a href="#troubleshooting">SELinux 疑難排解</a></li>
+                    <li><a href="#port-labeling">連接埠標記</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🛡️ Introduction to SELinux</h2>
+                <h2>🛡️ SELinux 簡介</h2>
                 
                 <p>
-                    SELinux (Security-Enhanced Linux) is a mandatory access control (MAC) security system developed by the NSA. 
-                    Unlike traditional discretionary access control (DAC) based on file permissions, SELinux enforces security 
-                    policies that cannot be overridden by users, even root.
+                    SELinux（Security-Enhanced Linux）是由美國國家安全局（NSA）開發的強制存取控制（MAC）安全系統。
+                    不同於傳統基於檔案權限的自主存取控制（DAC），SELinux 會強制執行安全原則，即使是使用者或 root 也無法任意覆寫繞過。
                 </p>
 
-                <h3>Why SELinux?</h3>
+                <h3>為什麼使用 SELinux？</h3>
                 <ul>
-                    <li><strong>Defense in Depth:</strong> Additional security layer beyond traditional permissions</li>
-                    <li><strong>Least Privilege:</strong> Processes run with minimum necessary permissions</li>
-                    <li><strong>Containment:</strong> Compromised processes are restricted to their security context</li>
-                    <li><strong>Compliance:</strong> Required for many security standards (PCI-DSS, HIPAA, etc.)</li>
+                    <li><strong>縱深防禦（Defense in Depth）：</strong> 在傳統權限之外提供額外的安全防護層</li>
+                    <li><strong>最小權限原則（Least Privilege）：</strong> 程序僅以執行所需的最小權限運作</li>
+                    <li><strong>損害隔離（Containment）：</strong> 遭入侵的程序會被限制在其所屬的安全脈絡中</li>
+                    <li><strong>法規合規（Compliance）：</strong> 許多資安標準（如 PCI-DSS、HIPAA 等）的必要規範</li>
                 </ul>
 
-                <h3>SELinux Architecture</h3>
-                <p>SELinux operates on the principle of labeling everything:</p>
+                <h3>SELinux 架構</h3>
+                <p>SELinux 基於「萬物皆有標籤」的原則運作：</p>
                 <ul>
-                    <li><strong>Subjects:</strong> Processes (labeled with security contexts)</li>
-                    <li><strong>Objects:</strong> Files, directories, ports, devices (also labeled)</li>
-                    <li><strong>Policy:</strong> Rules defining which subjects can access which objects</li>
+                    <li><strong>主體（Subjects）：</strong> 程序（標記有安全脈絡）</li>
+                    <li><strong>客體（Objects）：</strong> 檔案、目錄、連接埠、裝置（同樣標記有安全脈絡）</li>
+                    <li><strong>原則（Policy）：</strong> 定義哪些主體可以存取哪些客體的規則</li>
                 </ul>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 SELinux vs Traditional Permissions</div>
-                    <p><strong>Traditional:</strong> If you're the owner or root, you can access the file<br>
-                    <strong>SELinux:</strong> Even root must follow the SELinux policy rules</p>
+                    <div class="info-box-title">📘 注意：SELinux 與傳統權限比較</div>
+                    <p><strong>傳統權限：</strong> 只要你是檔案擁有者或 root，就可以存取該檔案<br>
+                    <strong>SELinux：</strong> 即使是 root 也必須遵守 SELinux 安全原則的規則</p>
                 </div>
 
-                <h3>Key Concepts</h3>
+                <h3>核心概念</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Term</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">術語</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Context</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Security label on files/processes (user:role:type:level)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>安全脈絡（Context）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">檔案或程序上的安全標籤（user:role:type:level）</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Type</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Most important part of context; defines what can access what</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>類型（Type）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">安全脈絡中最重要的部分；定義誰可以存取什麼</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Boolean</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">On/off switch to enable/disable specific policy features</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>布林值（Boolean）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">用於啟用或停用特定原則功能的開關</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Policy</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Set of rules (RHEL uses 'targeted' policy by default)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>原則（Policy）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">規則集合（RHEL 預設使用「targeted」原則）</td>
                     </tr>
                 </table>
             </section>
 
             <section id="modes" class="content-section">
-                <h2>⚙️ SELinux Modes</h2>
+                <h2>⚙️ SELinux 模式</h2>
 
-                <p>SELinux can operate in three modes:</p>
+                <p>SELinux 可在以下三種模式下運作：</p>
 
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Mode</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Behavior</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Use Case</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">模式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">行為</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">適用情境</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Enforcing</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux enforces policy; denials are logged and blocked</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Production systems (default)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Enforcing（強制）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux 強制執行原則；會記錄並阻擋違規存取</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">正式環境系統（預設）</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Permissive</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux logs denials but allows access</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Troubleshooting, testing policies</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Permissive（寬容）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux 僅記錄拒絕事件但仍允許存取</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">疑難排解、測試原則</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Disabled</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux is turned off</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Not recommended (requires reboot)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Disabled（停用）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">完全關閉 SELinux</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">不建議使用（需重新開機生效）</td>
                     </tr>
                 </table>
 
-                <h3>Checking SELinux Status</h3>
-                <pre><code># Check current SELinux status
+                <h3>檢查 SELinux 狀態</h3>
+                <pre><code># 檢查目前的 SELinux 狀態
 getenforce
 Enforcing
 
-# Detailed status information
+# 檢視詳細狀態資訊
 sestatus
 SELinux status:                 enabled
 SELinuxfs mount:                /sys/fs/selinux
@@ -187,30 +186,30 @@ Policy deny_unknown status:     allowed
 Memory protection checking:     actual (secure)
 Max kernel policy version:      33</code></pre>
 
-                <h3>Changing SELinux Modes</h3>
+                <h3>切換 SELinux 模式</h3>
 
-                <h4>Temporary Change (Runtime - Lost on Reboot)</h4>
-                <pre><code># Switch to permissive mode (temporary)
+                <h4>暫時變更（執行階段，重新開機後失效）</h4>
+                <pre><code># 切換為 permissive 模式（暫時）
 sudo setenforce 0
-# or
+# 或
 sudo setenforce Permissive
 
-# Switch to enforcing mode (temporary)
+# 切換為 enforcing 模式（暫時）
 sudo setenforce 1
-# or
+# 或
 sudo setenforce Enforcing
 
-# Verify the change
+# 驗證變更結果
 getenforce</code></pre>
 
-                <h4>Permanent Change (Survives Reboot)</h4>
-                <pre><code># Edit SELinux configuration file
+                <h4>永久變更（重新開機後依然有效）</h4>
+                <pre><code># 編輯 SELinux 設定檔
 sudo vi /etc/selinux/config
 
-# Set SELINUX variable:
-SELINUX=enforcing    # or permissive or disabled
+# 設定 SELINUX 變數：
+SELINUX=enforcing    # 可設為 enforcing、permissive 或 disabled
 
-# Example config file:
+# 設定檔範例：
 # This file controls the state of SELinux on the system.
 # SELINUX= can take one of these three values:
 #     enforcing - SELinux security policy is enforced.
@@ -223,181 +222,181 @@ SELINUX=enforcing
 #     mls - Multi Level Security protection.
 SELINUXTYPE=targeted
 
-# Reboot to apply changes (required for disabled mode)
+# 重新開機以套用變更（切換至 disabled 模式時必須重開機）
 sudo reboot</code></pre>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Warning: Changing from Disabled to Enforcing</div>
-                    <p>When enabling SELinux on a system where it was disabled, all files must be relabeled. 
-                    This happens automatically on reboot but can take significant time:</p>
-                    <pre><code># Force relabeling on next boot
+                    <div class="info-box-title">⚠️ 警告：從 Disabled 切換至 Enforcing</div>
+                    <p>在原先停用 SELinux 的系統上重新啟用時，必須為所有檔案重新標記安全脈絡。
+                    這會在重新開機時自動執行，但可能需要花費相當長的時間：</p>
+                    <pre><code># 強制在下次開機時重新標記所有檔案
 sudo touch /.autorelabel
 sudo reboot
 
-# System will relabel all files on boot (may take 5-30 minutes)</code></pre>
+# 系統將在開機時重新標記所有檔案（可能需要 5-30 分鐘）</code></pre>
                 </div>
 
-                <h3>Per-Domain Permissive Mode</h3>
-                <p>You can set specific domains to permissive while keeping the system in enforcing mode:</p>
-                <pre><code># Make httpd_t domain permissive (troubleshooting web server)
+                <h3>個別網域寬容模式（Per-Domain Permissive Mode）</h3>
+                <p>你可以將特定網域設為寬容模式，同時讓整個系統維持在強制（enforcing）模式：</p>
+                <pre><code># 將 httpd_t 網域設為寬容模式（用於排解網頁伺服器問題）
 sudo semanage permissive -a httpd_t
 
-# List permissive domains
+# 列出所有設為寬容模式的網域
 sudo semanage permissive -l
 
-# Remove permissive setting
+# 移除寬容模式設定
 sudo semanage permissive -d httpd_t</code></pre>
             </section>
 
             <section id="contexts" class="content-section">
-                <h2>🏷️ SELinux Contexts</h2>
+                <h2>🏷️ SELinux 安全脈絡</h2>
 
                 <p>
-                    Every file, process, and port has an SELinux context (label). The context format is:<br>
+                    每個檔案、程序與連接埠都有一個 SELinux 安全脈絡（標籤）。安全脈絡的格式為：<br>
                     <strong>user:role:type:level</strong>
                 </p>
 
-                <h3>Context Components</h3>
+                <h3>安全脈絡組成要素</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Component</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Example</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">組成要素</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">範例</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>User</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux user (not Linux user)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>User（使用者）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux 使用者（非 Linux 系統使用者）</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">system_u, unconfined_u</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Role</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Role-based access control</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Role（角色）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">角色型存取控制（RBAC）</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">object_r, system_r</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Type</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Most important; used in policy rules</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Type（類型）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最重要的部分；用於原則規則判斷</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">httpd_sys_content_t, user_home_t</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Level</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">MLS/MCS security level</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Level（安全等級）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">MLS/MCS 安全等級</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">s0, s0-s0:c0.c1023</td>
                     </tr>
                 </table>
 
-                <h3>Viewing Contexts</h3>
-                <pre><code># View file contexts with ls -Z
+                <h3>檢視安全脈絡</h3>
+                <pre><code># 使用 ls -Z 檢視檔案安全脈絡
 ls -Z /var/www/html/
 -rw-r--r--. root root unconfined_u:object_r:httpd_sys_content_t:s0 index.html
 
-# View process contexts with ps -Z
+# 使用 ps -Z 檢視程序安全脈絡
 ps -eZ | grep httpd
 system_u:system_r:httpd_t:s0    1234 ?        00:00:01 httpd
 
-# View current process context
+# 檢視目前程序的安全脈絡
 id -Z
 unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
 
-# View port contexts
+# 檢視連接埠安全脈絡
 sudo semanage port -l | grep http
 http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
 http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000</code></pre>
 
-                <h3>Changing File Contexts</h3>
+                <h3>變更檔案安全脈絡</h3>
 
-                <h4>Temporary Context Change (chcon)</h4>
-                <p>Use <code>chcon</code> for temporary changes that will be reset by relabeling:</p>
-                <pre><code># Change type only
+                <h4>暫時變更安全脈絡（chcon）</h4>
+                <p>使用 <code>chcon</code> 進行暫時性變更，但檔案系統重新標記時將會被重置：</p>
+                <pre><code># 僅變更類型（Type）
 sudo chcon -t httpd_sys_content_t /var/www/html/index.html
 
-# Change entire context
+# 變更完整安全脈絡
 sudo chcon -u system_u -r object_r -t httpd_sys_content_t /var/www/html/index.html
 
-# Copy context from reference file
+# 複製參考檔案的安全脈絡
 sudo chcon --reference=/var/www/html/template.html /var/www/html/newfile.html
 
-# Recursive change
+# 遞迴變更目錄內所有檔案的安全脈絡
 sudo chcon -R -t httpd_sys_content_t /var/www/html/</code></pre>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ chcon vs semanage fcontext</div>
-                    <p><strong>chcon:</strong> Temporary change, lost when filesystem is relabeled<br>
-                    <strong>semanage fcontext:</strong> Permanent change, survives relabeling (preferred)</p>
+                    <div class="info-box-title">⚠️ 警告：chcon 與 semanage fcontext 的差異</div>
+                    <p><strong>chcon：</strong> 暫時性變更，檔案系統重新標記後就會遺失<br>
+                    <strong>semanage fcontext：</strong> 永久性變更，重新標記後依然保留（建議使用）</p>
                 </div>
 
-                <h4>Permanent Context Change (semanage fcontext)</h4>
-                <p>Use <code>semanage fcontext</code> for permanent changes:</p>
-                <pre><code># Add file context rule
+                <h4>永久變更安全脈絡（semanage fcontext）</h4>
+                <p>使用 <code>semanage fcontext</code> 進行永久性設定：</p>
+                <pre><code># 新增檔案脈絡規則
 sudo semanage fcontext -a -t httpd_sys_content_t "/web/html(/.*)?"
 
-# Apply the new context (restorecon)
+# 套用新的安全脈絡（restorecon）
 sudo restorecon -Rv /web/html/
 
-# Verify the context
+# 驗證安全脈絡
 ls -Zd /web/html/
 
-# List all custom file context rules
+# 列出所有自訂檔案脈絡規則
 sudo semanage fcontext -l -C
 
-# Modify existing rule
+# 修改現有規則
 sudo semanage fcontext -m -t httpd_sys_rw_content_t "/web/uploads(/.*)?"
 
-# Delete custom rule
+# 刪除自訂規則
 sudo semanage fcontext -d "/web/html(/.*)?"</code></pre>
 
-                <h3>Restoring Default Contexts</h3>
-                <pre><code># Restore context for single file
+                <h3>還原預設安全脈絡</h3>
+                <pre><code># 還原單一檔案的安全脈絡
 sudo restorecon -v /var/www/html/index.html
 
-# Restore context recursively
+# 遞迴還原整個目錄的安全脈絡
 sudo restorecon -Rv /var/www/html/
 
-# Preview what would be changed (no actual changes)
+# 預覽將會變更的項目（不實際修改）
 sudo restorecon -Rvn /var/www/html/
 
-# Restore context for entire filesystem (useful after enabling SELinux)
+# 還原整個檔案系統的安全脈絡（啟用 SELinux 後非常實用）
 sudo restorecon -Rv /
 
-# Force reset to default (ignore current context)
+# 強制重置為預設值（忽略目前的安全脈絡）
 sudo restorecon -Fv /path/to/file</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Setting Up Custom Web Directory</h4>
+                    <h4>操作步驟：設定自訂網頁目錄</h4>
                     <ol>
-                        <li>Create custom web directory:
+                        <li>建立自訂網頁目錄：
                             <pre><code>sudo mkdir -p /custom/website</code></pre>
                         </li>
-                        <li>Create test file:
+                        <li>建立測試檔案：
                             <pre><code>sudo echo "Hello from custom location" &gt; /custom/website/index.html</code></pre>
                         </li>
-                        <li>Check current context (wrong):
+                        <li>檢查目前的安全脈絡（此時為錯誤的預設類型）：
                             <pre><code>ls -Zd /custom/website
 drwxr-xr-x. root root unconfined_u:object_r:default_t:s0 /custom/website</code></pre>
                         </li>
-                        <li>Add permanent context rule:
+                        <li>新增永久安全脈絡規則：
                             <pre><code>sudo semanage fcontext -a -t httpd_sys_content_t "/custom/website(/.*)?"</code></pre>
                         </li>
-                        <li>Apply the context:
+                        <li>套用安全脈絡：
                             <pre><code>sudo restorecon -Rv /custom/website</code></pre>
                         </li>
-                        <li>Verify the change:
+                        <li>驗證變更結果：
                             <pre><code>ls -Zd /custom/website
 drwxr-xr-x. root root unconfined_u:object_r:httpd_sys_content_t:s0 /custom/website</code></pre>
                         </li>
-                        <li>Configure Apache to use the directory:
+                        <li>設定 Apache 使用該目錄：
                             <pre><code>sudo vi /etc/httpd/conf.d/custom.conf
-# Add DocumentRoot /custom/website</code></pre>
+# 新增 DocumentRoot /custom/website</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Common SELinux Types for Services</h3>
+                <h3>常見服務的 SELinux 類型</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Service</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Type for Content</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Process Type</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">服務</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">內容安全類型</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">程序類型</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Apache (httpd)</td>
@@ -423,25 +422,25 @@ drwxr-xr-x. root root unconfined_u:object_r:httpd_sys_content_t:s0 /custom/websi
             </section>
 
             <section id="booleans" class="content-section">
-                <h2>🔘 SELinux Booleans</h2>
+                <h2>🔘 SELinux 布林值</h2>
 
                 <p>
-                    SELinux booleans are on/off switches that enable or disable specific features in the SELinux policy 
-                    without requiring policy recompilation. They provide a flexible way to adjust policy behavior.
+                    SELinux 布林值（Booleans）是一種開關機制，可啟用或停用 SELinux 原則中的特定功能，
+                    而無需重新編譯原則檔案，為調整原則行為提供了極大的彈性。
                 </p>
 
-                <h3>Working with Booleans</h3>
-                <pre><code># List all booleans
+                <h3>操作布林值</h3>
+                <pre><code># 列出所有布林值
 sudo getsebool -a
 
-# List booleans with descriptions
+# 列出布林值與詳細說明
 sudo semanage boolean -l
 
-# Check specific boolean
+# 檢查特定布林值狀態
 getsebool httpd_can_network_connect
 httpd_can_network_connect --&gt; off
 
-# Search for related booleans
+# 搜尋相關的布林值
 sudo getsebool -a | grep httpd
 httpd_anon_write --&gt; off
 httpd_builtin_scripting --&gt; on
@@ -455,114 +454,114 @@ httpd_enable_homedirs --&gt; off
 httpd_use_nfs --&gt; off
 httpd_use_cifs --&gt; off</code></pre>
 
-                <h3>Setting Booleans</h3>
-                <pre><code># Set boolean temporarily (runtime only)
+                <h3>設定布林值</h3>
+                <pre><code># 暫時設定布林值（僅在本次執行階段有效）
 sudo setsebool httpd_can_network_connect on
 
-# Set boolean permanently (survives reboot)
+# 永久設定布林值（重新開機後依然有效）
 sudo setsebool -P httpd_can_network_connect on
 
-# Turn off a boolean
+# 關閉布林值
 sudo setsebool -P httpd_enable_homedirs off
 
-# Set multiple booleans at once
+# 一次設定多個布林值
 sudo setsebool -P httpd_can_network_connect=on httpd_can_network_connect_db=on</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Always Use -P Flag</div>
-                    <p>In practice, always use <code>setsebool -P</code> to make changes permanent. 
-                    Temporary changes are lost on reboot and can cause confusion.</p>
+                    <div class="info-box-title">💡 提示：務必加上 -P 參數</div>
+                    <p>在實務操作中，請務必使用 <code>setsebool -P</code> 讓變更永久生效。
+                    未加 <code>-P</code> 的暫時性變更會在重新開機後遺失，容易造成後續維運上的困擾。</p>
                 </div>
 
-                <h3>Common SELinux Booleans</h3>
+                <h3>常見 SELinux 布林值</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Boolean</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Purpose</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">布林值</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">用途</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>httpd_can_network_connect</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Allow httpd to make network connections (proxy, API calls)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許 httpd 發起對外網路連線（如反向代理、API 呼叫）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>httpd_can_network_connect_db</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Allow httpd to connect to databases</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許 httpd 連線至資料庫伺服器</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>httpd_enable_homedirs</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Allow httpd to access user home directories</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許 httpd 存取使用者的家目錄</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>httpd_use_nfs</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Allow httpd to access NFS mounted files</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許 httpd 存取掛載於 NFS 上的檔案</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>ftpd_anon_write</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Allow anonymous FTP users to upload files</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許匿名 FTP 使用者上傳檔案</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>samba_enable_home_dirs</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Allow Samba to share home directories</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許 Samba 分享使用者家目錄</td>
                     </tr>
                 </table>
 
-                <h3>Finding the Right Boolean</h3>
-                <pre><code># Search by service name
+                <h3>尋找適用的布林值</h3>
+                <pre><code># 依服務名稱搜尋
 sudo getsebool -a | grep httpd
 sudo getsebool -a | grep ftp
 sudo getsebool -a | grep nfs
 
-# Get boolean description
+# 取得布林值說明
 sudo semanage boolean -l | grep httpd_can_network_connect
 
-# Use man pages for service-specific booleans
+# 查閱特定服務的 SELinux 線上手冊（man page）
 man httpd_selinux
 man ftpd_selinux
 man samba_selinux</code></pre>
             </section>
 
             <section id="troubleshooting" class="content-section">
-                <h2>🔧 Troubleshooting SELinux</h2>
+                <h2>🔧 SELinux 疑難排解</h2>
 
-                <p>When applications fail due to SELinux, follow this systematic approach:</p>
+                <p>當應用程式因 SELinux 而無法正常運作時，請依照以下系統化步驟進行排查：</p>
 
-                <h3>Step 1: Confirm SELinux is the Issue</h3>
-                <pre><code># Temporarily set SELinux to permissive
+                <h3>步驟 1：確認是否為 SELinux 造成的問題</h3>
+                <pre><code># 暫時將 SELinux 設為 permissive 模式
 sudo setenforce 0
 
-# Test if application works now
-# If yes, SELinux is blocking it
-# If no, problem is elsewhere
+# 測試應用程式現在是否能正常運作
+# 如果可以正常運作，表示確實是 SELinux 阻擋了存取
+# 如果依然失敗，則問題出在其他地方
 
-# Remember to re-enable enforcing
+# 測試完成後切記恢復為 enforcing 模式
 sudo setenforce 1</code></pre>
 
-                <h3>Step 2: Check AVC Denials</h3>
-                <p>SELinux logs denials as AVC (Access Vector Cache) messages:</p>
-                <pre><code># View recent denials in audit log
+                <h3>步驟 2：檢查 AVC 存取拒絕記錄</h3>
+                <p>SELinux 會將存取拒絕事件記錄為 AVC（Access Vector Cache）訊息：</p>
+                <pre><code># 檢視稽核日誌中最近的拒絕記錄
 sudo ausearch -m AVC -ts recent
 
-# View denials from last 10 minutes
+# 檢視最近 10 分鐘內的拒絕記錄並轉換為易讀格式
 sudo ausearch -m AVC -ts recent -i
 
-# Search for specific service denials
+# 搜尋今天特定服務的拒絕記錄
 sudo ausearch -m AVC -c httpd -ts today
 
-# Tail audit log in real-time
+# 即時監看稽核日誌
 sudo tail -f /var/log/audit/audit.log | grep AVC</code></pre>
 
-                <h3>Step 3: Use sealert for Analysis</h3>
-                <p>The <code>sealert</code> tool provides human-readable analysis and suggestions:</p>
-                <pre><code># Install setroubleshoot tools if not present
+                <h3>步驟 3：使用 sealert 進行分析</h3>
+                <p><code>sealert</code> 工具可提供人類易讀的詳細分析與修復建議：</p>
+                <pre><code># 若尚未安裝，先安裝 setroubleshoot 工具套件
 sudo dnf install setroubleshoot-server
 
-# Analyze all denials
+# 分析稽核日誌中的所有拒絕記錄
 sudo sealert -a /var/log/audit/audit.log
 
-# Analyze specific denial by ID
+# 依 Alert ID 分析特定拒絕事件
 sudo sealert -l &lt;alert-id&gt;
 
-# Example output:
+# 輸出範例：
 SELinux is preventing httpd from name_connect access on the tcp_socket port 8080.
 
 ***** Plugin catchall_boolean (47.5 confidence) suggests *******************
@@ -583,145 +582,145 @@ Do
 # ausearch -c 'httpd' --raw | audit2allow -M my-httpd
 # semodule -X 300 -i my-httpd.pp</code></pre>
 
-                <h3>Step 4: Common Solutions</h3>
+                <h3>步驟 4：常見解決方案</h3>
 
-                <h4>Solution 1: Fix File Contexts</h4>
-                <pre><code># Restore default contexts
+                <h4>方案 1：修正檔案安全脈絡</h4>
+                <pre><code># 還原預設安全脈絡
 sudo restorecon -Rv /var/www/html/
 
-# Or set custom context
+# 或設定自訂安全脈絡
 sudo semanage fcontext -a -t httpd_sys_content_t "/custom/path(/.*)?"
 sudo restorecon -Rv /custom/path/</code></pre>
 
-                <h4>Solution 2: Enable Boolean</h4>
-                <pre><code># Enable required boolean
+                <h4>方案 2：啟用布林值</h4>
+                <pre><code># 啟用所需的布林值
 sudo setsebool -P httpd_can_network_connect on</code></pre>
 
-                <h4>Solution 3: Add Port Label</h4>
-                <pre><code># Allow httpd to bind to custom port
+                <h4>方案 3：新增連接埠標籤</h4>
+                <pre><code># 允許 httpd 繫結至自訂連接埠
 sudo semanage port -a -t http_port_t -p tcp 8080</code></pre>
 
-                <h4>Solution 4: Create Custom Policy Module</h4>
-                <p>When no other solution works, create a custom policy:</p>
-                <pre><code># Generate policy from audit log
+                <h4>方案 4：建立自訂原則模組</h4>
+                <p>當上述方法皆不適用時，再建立自訂原則模組：</p>
+                <pre><code># 從稽核日誌產生原則模組
 sudo ausearch -m AVC -ts recent | audit2allow -M mypolicy
 
-# Review the generated policy
+# 檢視產生的原則內容
 cat mypolicy.te
 
-# Install the policy module
+# 安裝原則模組
 sudo semodule -i mypolicy.pp
 
-# List installed modules
+# 列出已安裝的模組
 sudo semodule -l | grep mypolicy
 
-# Remove module if needed
+# 視需要移除模組
 sudo semodule -r mypolicy</code></pre>
 
                 <div class="info-box danger">
-                    <div class="info-box-title">⚠️ Custom Policies: Last Resort</div>
-                    <p>Custom policy modules should be a last resort. They can create security holes if not properly reviewed. 
-                    Always try file context changes, booleans, or port labeling first.</p>
+                    <div class="info-box-title">⚠️ 警告：自訂原則為最後手段</div>
+                    <p>自訂原則模組應作為最後的手段。若未經妥善審查，可能會產生安全漏洞。
+                    請務必優先嘗試修改檔案安全脈絡、調整布林值或設定連接埠標記。</p>
                 </div>
 
-                <h3>Troubleshooting Workflow</h3>
+                <h3>疑難排解工作流程</h3>
                 <div class="procedure">
                     <ol>
-                        <li><strong>Identify the problem:</strong> Service fails, application can't access file, etc.</li>
-                        <li><strong>Confirm SELinux:</strong> Check if <code>setenforce 0</code> fixes it</li>
-                        <li><strong>Find AVC denials:</strong> <code>ausearch -m AVC -ts recent</code></li>
-                        <li><strong>Analyze with sealert:</strong> <code>sealert -a /var/log/audit/audit.log</code></li>
-                        <li><strong>Try suggested fix:</strong> Boolean, context, port, or policy</li>
-                        <li><strong>Test the solution:</strong> Verify application works</li>
-                        <li><strong>Re-enable enforcing:</strong> <code>setenforce 1</code></li>
+                        <li><strong>辨識問題：</strong> 服務啟動失敗、應用程式無法存取檔案等。</li>
+                        <li><strong>確認是否為 SELinux 導致：</strong> 檢查執行 <code>setenforce 0</code> 後問題是否解決。</li>
+                        <li><strong>尋找 AVC 拒絕記錄：</strong> 執行 <code>ausearch -m AVC -ts recent</code>。</li>
+                        <li><strong>使用 sealert 分析：</strong> 執行 <code>sealert -a /var/log/audit/audit.log</code>。</li>
+                        <li><strong>套用建議的修正方案：</strong> 調整布林值、安全脈絡、連接埠標籤或原則。</li>
+                        <li><strong>測試解決方案：</strong> 驗證應用程式是否已能正常運作。</li>
+                        <li><strong>重新啟用強制模式：</strong> 執行 <code>setenforce 1</code>。</li>
                     </ol>
                 </div>
 
-                <h3>Useful Troubleshooting Commands</h3>
-                <pre><code># Check which process is being denied
+                <h3>實用的疑難排解指令</h3>
+                <pre><code># 檢查哪個程序被拒絕存取
 sudo ausearch -m AVC -c httpd -ts recent
 
-# Find all denials for a specific file
+# 尋找特定檔案的所有存取拒絕記錄
 sudo ausearch -m AVC -f /var/www/html/index.html
 
-# Generate allow rules from recent denials
+# 根據最近的拒絕記錄產生允許規則（不直接建立模組檔）
 sudo ausearch -m AVC -ts recent | audit2allow
 
-# Check if a specific boolean would help
+# 檢查是否有相關的布林值可解決問題
 sudo getsebool -a | grep httpd
 
-# Verify file has correct context
+# 驗證檔案是否具有正確的安全脈絡
 matchpathcon /var/www/html/index.html
 ls -Z /var/www/html/index.html</code></pre>
             </section>
 
             <section id="port-labeling" class="content-section">
-                <h2>🔌 Port Labeling</h2>
+                <h2>🔌 連接埠標記</h2>
 
                 <p>
-                    SELinux controls which ports services can bind to. Each port is labeled with a type, 
-                    and only processes with matching types can use those ports.
+                    SELinux 會控管服務可以繫結（bind）使用哪些網路連接埠。每個連接埠都會標記一個安全類型，
+                    唯有具備對應類型的程序才能使用這些連接埠。
                 </p>
 
-                <h3>Viewing Port Labels</h3>
-                <pre><code># List all port labels
+                <h3>檢視連接埠標籤</h3>
+                <pre><code># 列出所有連接埠標籤
 sudo semanage port -l
 
-# Search for specific service ports
+# 搜尋特定服務的連接埠
 sudo semanage port -l | grep http
 http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
 http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000
 
-# Check if a port is labeled
+# 檢查特定連接埠是否已標記
 sudo semanage port -l | grep 8080</code></pre>
 
-                <h3>Adding Port Labels</h3>
-                <pre><code># Allow httpd to bind to port 8080
+                <h3>新增連接埠標籤</h3>
+                <pre><code># 允許 httpd 繫結至連接埠 8080
 sudo semanage port -a -t http_port_t -p tcp 8080
 
-# Allow httpd to bind to port range
+# 允許 httpd 繫結至連接埠範圍
 sudo semanage port -a -t http_port_t -p tcp 8080-8090
 
-# Add UDP port
+# 新增 UDP 連接埠標籤
 sudo semanage port -a -t dns_port_t -p udp 5353</code></pre>
 
-                <h3>Modifying Port Labels</h3>
-                <pre><code># Change port type
+                <h3>修改連接埠標籤</h3>
+                <pre><code># 變更連接埠類型
 sudo semanage port -m -t http_cache_port_t -p tcp 8080
 
-# List custom port definitions only
+# 僅列出自訂的連接埠定義
 sudo semanage port -l -C</code></pre>
 
-                <h3>Removing Port Labels</h3>
-                <pre><code># Remove custom port label
+                <h3>移除連接埠標籤</h3>
+                <pre><code># 移除自訂連接埠標籤
 sudo semanage port -d -t http_port_t -p tcp 8080
 
-# Remove port range
+# 移除連接埠範圍標籤
 sudo semanage port -d -t http_port_t -p tcp 8080-8090</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Configuring Apache on Custom Port</h4>
+                    <h4>操作步驟：設定 Apache 使用自訂連接埠</h4>
                     <ol>
-                        <li>Edit Apache config:
+                        <li>編輯 Apache 設定檔：
                             <pre><code>sudo vi /etc/httpd/conf/httpd.conf
-# Change: Listen 8888</code></pre>
+# 修改為：Listen 8888</code></pre>
                         </li>
-                        <li>Try to start Apache:
+                        <li>嘗試啟動 Apache：
                             <pre><code>sudo systemctl start httpd
-# Fails with "Permission denied" in SELinux enforcing mode</code></pre>
+# 在 SELinux enforcing 模式下會因「Permission denied」而失敗</code></pre>
                         </li>
-                        <li>Check audit log:
+                        <li>檢查稽核日誌：
                             <pre><code>sudo ausearch -m AVC -c httpd -ts recent
-# Shows denial for name_bind on tcp_socket port 8888</code></pre>
+# 顯示 tcp_socket port 8888 的 name_bind 遭到拒絕</code></pre>
                         </li>
-                        <li>Add port label:
+                        <li>新增連接埠標籤：
                             <pre><code>sudo semanage port -a -t http_port_t -p tcp 8888</code></pre>
                         </li>
-                        <li>Start Apache successfully:
+                        <li>成功啟動 Apache：
                             <pre><code>sudo systemctl start httpd
 sudo systemctl status httpd</code></pre>
                         </li>
-                        <li>Verify:
+                        <li>驗證服務運作狀態：
                             <pre><code>sudo ss -tlnp | grep 8888
 curl http://localhost:8888</code></pre>
                         </li>
@@ -731,25 +730,25 @@ curl http://localhost:8888</code></pre>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: How do you permanently change SELinux to permissive mode?</h4>
+                        <h4>第 1 題：如何永久將 SELinux 變更為寬容（permissive）模式？</h4>
                         <ul class="quiz-options">
                             <li>A) setenforce 0</li>
-                            <li>B) Edit /etc/selinux/config, set SELINUX=permissive, reboot</li>
+                            <li>B) 編輯 /etc/selinux/config，設定 SELINUX=permissive 並重新開機</li>
                             <li>C) systemctl disable selinux</li>
                             <li>D) chmod 000 /sys/fs/selinux</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Edit /etc/selinux/config, set SELINUX=permissive, reboot</strong><br>
-                            setenforce 0 is temporary (lost on reboot). Permanent changes require editing /etc/selinux/config 
-                            and setting SELINUX=permissive, then rebooting.
+                            <strong>解答：B) 編輯 /etc/selinux/config，設定 SELINUX=permissive 並重新開機</strong><br>
+                            <code>setenforce 0</code> 僅為暫時變更（重新開機後即失效）。永久變更必須編輯 <code>/etc/selinux/config</code>，
+                            將 <code>SELINUX=permissive</code> 設定妥當後重新開機。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: Which command permanently sets a file's SELinux context?</h4>
+                        <h4>第 2 題：哪個指令可以永久設定檔案的 SELinux 安全脈絡？</h4>
                         <ul class="quiz-options">
                             <li>A) chcon -t httpd_sys_content_t /var/www/html/file.html</li>
                             <li>B) semanage fcontext -a -t httpd_sys_content_t "/path(/.*)?" && restorecon -Rv /path</li>
@@ -757,14 +756,14 @@ curl http://localhost:8888</code></pre>
                             <li>D) setfacl -m t:httpd_sys_content_t file.html</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) semanage fcontext -a -t httpd_sys_content_t "/path(/.*)?" && restorecon -Rv /path</strong><br>
-                            semanage fcontext creates a permanent rule in the SELinux policy database. restorecon applies it. 
-                            chcon makes temporary changes that are lost when the filesystem is relabeled.
+                            <strong>解答：B) semanage fcontext -a -t httpd_sys_content_t "/path(/.*)?" && restorecon -Rv /path</strong><br>
+                            <code>semanage fcontext</code> 會在 SELinux 原則資料庫中建立永久規則，再由 <code>restorecon</code> 套用該規則。
+                            <code>chcon</code> 所做的只是暫時變更，當檔案系統重新標記時就會遺失。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: How do you allow httpd to connect to network databases permanently?</h4>
+                        <h4>第 3 題：如何永久允許 httpd 連線至網路資料庫？</h4>
                         <ul class="quiz-options">
                             <li>A) setsebool httpd_can_network_connect_db on</li>
                             <li>B) setsebool -P httpd_can_network_connect_db on</li>
@@ -772,14 +771,14 @@ curl http://localhost:8888</code></pre>
                             <li>D) getenforce -s httpd_can_network_connect_db</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) setsebool -P httpd_can_network_connect_db on</strong><br>
-                            The -P flag makes the boolean change persistent across reboots. Without -P, 
-                            the change is temporary and lost on reboot.
+                            <strong>解答：B) setsebool -P httpd_can_network_connect_db on</strong><br>
+                            <code>-P</code> 參數可讓布林值的變更在重新開機後依然生效。若未加上 <code>-P</code>，
+                            變更僅為暫時性，重開機後就會還原。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: What tool provides human-readable SELinux denial explanations?</h4>
+                        <h4>第 4 題：哪個工具能針對 SELinux 拒絕存取事件提供人類易讀的說明與建議？</h4>
                         <ul class="quiz-options">
                             <li>A) ausearch</li>
                             <li>B) sealert</li>
@@ -787,14 +786,14 @@ curl http://localhost:8888</code></pre>
                             <li>D) getenforce</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) sealert</strong><br>
-                            sealert analyzes audit logs and provides detailed, human-readable explanations of SELinux denials 
-                            with suggested solutions. Usage: sealert -a /var/log/audit/audit.log
+                            <strong>解答：B) sealert</strong><br>
+                            <code>sealert</code> 會分析稽核日誌，並提供詳細、易讀的 SELinux 拒絕原因說明及建議解決方案。
+                            用法：<code>sealert -a /var/log/audit/audit.log</code>。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: How do you allow Apache to bind to port 8080?</h4>
+                        <h4>第 5 題：如何允許 Apache 繫結並監聽 TCP 連接埠 8080？</h4>
                         <ul class="quiz-options">
                             <li>A) firewall-cmd --add-port=8080/tcp</li>
                             <li>B) semanage port -a -t http_port_t -p tcp 8080</li>
@@ -802,17 +801,17 @@ curl http://localhost:8888</code></pre>
                             <li>D) chcon -t http_port_t 8080</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) semanage port -a -t http_port_t -p tcp 8080</strong><br>
-                            semanage port adds a port label allowing httpd (http_port_t type) to bind to the specified port. 
-                            This is separate from firewall configuration.
+                            <strong>解答：B) semanage port -a -t http_port_t -p tcp 8080</strong><br>
+                            <code>semanage port</code> 可新增連接埠標籤，允許 httpd（使用 <code>http_port_t</code> 類型）繫結至指定的連接埠。
+                            這與防火牆設定屬於不同層面的控管。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter4.html" class="nav-button prev">Chapter 4: File Access</a>
-                <a href="chapter6.html" class="nav-button next">Chapter 6: Performance</a>
+                <a href="chapter4.html" class="nav-button prev">第 4 章：檔案存取控制</a>
+                <a href="chapter6.html" class="nav-button next">第 6 章：效能調校</a>
             </div>
         </main>
     </div>
@@ -822,14 +821,14 @@ curl http://localhost:8888</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>
-
+
 </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 8: Manage Software Packages - RHCSA Guide</title>
+    <title>第 8 章：管理軟體套件 - RHCSA 學習指南</title>
     <link rel="stylesheet" href="/style.css">
     <!-- Vercel Web Analytics -->
     <script>
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,336 +36,335 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html" class="active">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html" class="active">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 8</span>
-                    <span class="meta-badge">⏱️ 50 min read</span>
-                    <span class="meta-badge">📚 Intermediate</span>
+                    <span class="meta-badge">第 8 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 50 分鐘</span>
+                    <span class="meta-badge">📚 中級</span>
                 </div>
-                <h1>Manage Software Packages</h1>
+                <h1>管理軟體套件</h1>
                 <p class="chapter-intro">
-                    Master software management using DNF/YUM. Learn to install, update, remove packages, manage repositories, 
-                    work with package groups, and handle AppStream module streams on RHEL 9.
+                    掌握使用 DNF/YUM 管理軟體套件的技巧。學習安裝、更新與移除套件、管理套件庫（Repository）、
+                    操作套件群組，以及在 RHEL 9 上處理 AppStream 模組串流（Module Streams）。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction</a></li>
-                    <li><a href="#dnf-basics">DNF/YUM Basics</a></li>
-                    <li><a href="#repositories">Managing Repositories</a></li>
-                    <li><a href="#groups">Package Groups</a></li>
-                    <li><a href="#modules">AppStream Modules</a></li>
-                    <li><a href="#rpm">RPM Commands</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#introduction">簡介</a></li>
+                    <li><a href="#dnf-basics">DNF/YUM 基礎操作</a></li>
+                    <li><a href="#repositories">管理套件庫</a></li>
+                    <li><a href="#groups">套件群組</a></li>
+                    <li><a href="#modules">AppStream 模組</a></li>
+                    <li><a href="#rpm">RPM 指令</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction</h2>
+                <h2>🎯 簡介</h2>
                 <p>
-                    Package management is a core skill for Red Hat administrators. RHEL uses RPM (Red Hat Package Manager) 
-                    format packages managed by DNF (Dandified YUM) - the successor to YUM. DNF handles dependency resolution, 
-                    repository management, and transaction history.
+                    套件管理是 Red Hat 系統管理員的核心技能。RHEL 使用 RPM（Red Hat Package Manager）格式的軟體套件，
+                    並透過 DNF（Dandified YUM，即 YUM 的後繼者）來進行管理。DNF 負責處理套件相依性解析、套件庫管理以及交易紀錄追蹤。
                 </p>
 
-                <h3>Key Concepts</h3>
+                <h3>核心概念</h3>
                 <ul>
-                    <li><strong>RPM Package:</strong> Pre-compiled software bundle (.rpm file)</li>
-                    <li><strong>Repository:</strong> Collection of packages with metadata</li>
-                    <li><strong>DNF/YUM:</strong> High-level package managers (handle dependencies)</li>
-                    <li><strong>rpm:</strong> Low-level tool (no automatic dependency resolution)</li>
-                    <li><strong>AppStream:</strong> RHEL 9 repository with multiple software versions</li>
-                    <li><strong>BaseOS:</strong> Core operating system packages</li>
+                    <li><strong>RPM 套件：</strong> 預先編譯完成的軟體封裝檔（<code>.rpm</code> 檔案）</li>
+                    <li><strong>套件庫（Repository）：</strong> 包含眾多套件及其中繼資料（Metadata）的集中儲存庫</li>
+                    <li><strong>DNF/YUM：</strong> 高階套件管理工具（可自動處理套件相依性）</li>
+                    <li><strong>rpm：</strong> 低階套件管理工具（不會自動解析相依性）</li>
+                    <li><strong>AppStream：</strong> RHEL 9 套件庫，提供同一軟體的多種版本供選擇</li>
+                    <li><strong>BaseOS：</strong> 提供作業系統核心基礎套件的套件庫</li>
                 </ul>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 DNF vs YUM</div>
-                    <p>On RHEL 9, <code>yum</code> is a symbolic link to <code>dnf</code>. Both commands work identically. 
-                    DNF is faster, more efficient, and has better dependency resolution than YUM.</p>
+                    <div class="info-box-title">📘 注意：DNF 與 YUM 比較</div>
+                    <p>在 RHEL 9 上，<code>yum</code> 實際上是指向 <code>dnf</code> 的符號連結，兩個指令的運作方式完全相同。
+                    DNF 擁有更快的執行速度、更高的效能以及更優異的相依性解析能力。</p>
                 </div>
 
-                <h3>RHEL 9 Repository Structure</h3>
+                <h3>RHEL 9 套件庫架構</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Repository</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Content</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">套件庫</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">內容</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>BaseOS</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Core OS packages (kernel, systemd, bash)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">核心作業系統套件（kernel、systemd、bash）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>AppStream</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Applications, languages, databases (multiple versions)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">應用程式、程式語言、資料庫（支援多版本切換）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Extras</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Additional tools and utilities</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">額外的輔助工具與公用程式</td>
                     </tr>
                 </table>
             </section>
 
             <section id="dnf-basics" class="content-section">
-                <h2>📦 DNF/YUM Basics</h2>
+                <h2>📦 DNF/YUM 基礎操作</h2>
 
-                <h3>Installing Packages</h3>
-                <pre><code># Install a package
+                <h3>安裝套件</h3>
+                <pre><code># 安裝單一套件
 sudo dnf install httpd
 
-# Install multiple packages
+# 一次安裝多個套件
 sudo dnf install httpd mariadb-server php
 
-# Install without confirmation
+# 自動確認安裝（不顯示詢問提示）
 sudo dnf install -y nginx
 
-# Install specific version
+# 安裝指定版本的套件
 sudo dnf install httpd-2.4.51
 
-# Download package without installing
+# 僅下載套件而不進行安裝
 sudo dnf download httpd
 
-# Install downloaded RPM with dependencies
+# 安裝本機已下載的 RPM 檔並自動解析相依性
 sudo dnf install ./httpd-2.4.51-7.el9.x86_64.rpm
 
-# Reinstall a package
+# 重新安裝套件
 sudo dnf reinstall httpd</code></pre>
 
-                <h3>Updating Packages</h3>
-                <pre><code># Check for updates
+                <h3>更新套件</h3>
+                <pre><code># 檢查可用的套件更新
 sudo dnf check-update
 
-# Update all packages
+# 更新所有已安裝套件
 sudo dnf update
 
-# Update specific package
+# 更新指定套件
 sudo dnf update httpd
 
-# Update to latest security patches only
+# 僅安裝安全性更新修補程式
 sudo dnf update --security
 
-# Update without updating kernel
+# 更新所有套件但排除核心（kernel）套件
 sudo dnf update --exclude=kernel*
 
-# Download updates without installing
+# 僅下載更新而不進行安裝
 sudo dnf update --downloadonly</code></pre>
 
-                <h3>Removing Packages</h3>
-                <pre><code># Remove a package
+                <h3>移除套件</h3>
+                <pre><code># 移除指定套件
 sudo dnf remove httpd
 
-# Remove with dependencies
+# 移除套件並一併清理不再使用的相依套件
 sudo dnf autoremove httpd
 
-# Clean up unused dependencies
+# 清理系統中所有不再需要的相依套件
 sudo dnf autoremove
 
-# Remove old kernel versions (keep latest 3)
+# 移除舊版核心（只保留最新的 3 個版本）
 sudo dnf remove --oldinstallonly --setopt installonly_limit=3</code></pre>
 
-                <h3>Searching and Querying</h3>
-                <pre><code># Search for package
+                <h3>搜尋與查詢</h3>
+                <pre><code># 搜尋套件
 dnf search nginx
 dnf search web server
 
-# Find which package provides a file
+# 查詢哪個套件提供特定的檔案或指令
 dnf provides /usr/sbin/httpd
 dnf provides */semanage
 
-# Show package information
+# 顯示套件詳細資訊
 dnf info httpd
 
-# List all packages
+# 列出所有套件（含已安裝與可安裝）
 dnf list all
 
-# List installed packages
+# 列出所有已安裝的套件
 dnf list installed
 
-# List available packages
+# 列出所有可安裝的套件
 dnf list available
 
-# List recent packages
+# 列出最近新增至套件庫的套件
 dnf list recent
 
-# Show package groups
+# 列出套件群組
 dnf group list
 
-# Check if package is installed
+# 檢查特定套件是否已安裝
 dnf list installed httpd</code></pre>
 
-                <h3>Package Information</h3>
-                <pre><code># Display package details
+                <h3>套件資訊</h3>
+                <pre><code># 顯示套件詳細資訊
 dnf info httpd
 
-# Show dependencies
+# 顯示該套件所依賴的套件
 dnf repoquery --requires httpd
 
-# Show what depends on this package
+# 顯示有哪些套件依賴此套件
 dnf repoquery --whatrequires httpd
 
-# List files in package
+# 列出套件內包含的所有檔案
 dnf repoquery -l httpd
 
-# Show changelog
+# 顯示套件的變更日誌（Changelog）
 dnf changelog httpd</code></pre>
 
-                <h3>DNF History</h3>
-                <pre><code># Show transaction history
+                <h3>DNF 交易紀錄</h3>
+                <pre><code># 顯示 DNF 操作交易歷史紀錄
 sudo dnf history
 
-# Show details of specific transaction
+# 顯示特定交易編號的詳細資訊
 sudo dnf history info 5
 
-# Undo a transaction
+# 復原（Undo）特定交易的操作
 sudo dnf history undo 5
 
-# Redo a transaction
+# 重做（Redo）特定交易的操作
 sudo dnf history redo 5
 
-# Rollback to specific transaction
+# 回復（Rollback）至特定交易編號當時的狀態
 sudo dnf history rollback 10
 
-# List all transaction IDs
+# 列出所有交易編號清單
 sudo dnf history list</code></pre>
 
-                <h3>Cleaning Up</h3>
-                <pre><code># Clean cache
+                <h3>清理快取</h3>
+                <pre><code># 清理所有快取資料
 sudo dnf clean all
 
-# Clean only metadata
+# 僅清理中繼資料（Metadata）快取
 sudo dnf clean metadata
 
-# Clean packages
+# 僅清理已下載的套件快取
 sudo dnf clean packages
 
-# Remove duplicate packages
+# 移除重複安裝的套件
 sudo dnf remove --duplicates
 
-# Check for problems
+# 檢查 RPM 資料庫是否有潛在問題
 sudo dnf check</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Pro Tips</div>
+                    <div class="info-box-title">💡 提示：實用技巧</div>
                     <ul>
-                        <li>Use <code>dnf whatprovides</code> to find which package provides a command</li>
-                        <li>Add <code>-y</code> to skip confirmation prompts in scripts</li>
-                        <li>Use <code>dnf history</code> to track and undo package changes</li>
-                        <li>The <code>dnf repoquery</code> command is powerful for package research</li>
+                        <li>使用 <code>dnf whatprovides</code>（或 <code>dnf provides</code>）找出哪個套件提供特定指令</li>
+                        <li>在自動化腳本中加上 <code>-y</code> 參數以略過確認提示</li>
+                        <li>善用 <code>dnf history</code> 追蹤並在必要時復原套件變更</li>
+                        <li><code>dnf repoquery</code> 指令非常適合用來深入查詢套件細節</li>
                     </ul>
                 </div>
             </section>
 
             <section id="repositories" class="content-section">
-                <h2>🗄️ Managing Repositories</h2>
+                <h2>🗄️ 管理套件庫</h2>
 
-                <h3>Viewing Repositories</h3>
-                <pre><code># List all enabled repositories
+                <h3>檢視套件庫</h3>
+                <pre><code># 列出所有已啟用的套件庫
 dnf repolist
 
-# List all repositories (enabled and disabled)
+# 列出所有套件庫（包含已啟用與已停用）
 dnf repolist all
 
-# Show detailed repo information
+# 顯示所有套件庫的詳細資訊
 dnf repoinfo
 
-# Show specific repository
+# 顯示特定套件庫的詳細資訊
 dnf repoinfo baseos</code></pre>
 
-                <h3>Repository Configuration Files</h3>
-                <p>Repository configurations are stored in:</p>
+                <h3>套件庫設定檔</h3>
+                <p>套件庫設定檔儲存於以下路徑：</p>
                 <ul>
-                    <li><code>/etc/yum.repos.d/*.repo</code> - Repository definition files</li>
-                    <li><code>/etc/dnf/dnf.conf</code> - Main DNF configuration</li>
+                    <li><code>/etc/yum.repos.d/*.repo</code> - 各別套件庫定義檔</li>
+                    <li><code>/etc/dnf/dnf.conf</code> - DNF 全域主要設定檔</li>
                 </ul>
 
-                <h3>Repository File Format</h3>
-                <pre><code># Example: /etc/yum.repos.d/example.repo
+                <h3>套件庫設定檔格式</h3>
+                <pre><code># 範例：/etc/yum.repos.d/example.repo
 [repository-id]
 name=Repository Name
 baseurl=https://repo.example.com/rhel9/
-# or
+# 或使用
 metalink=https://mirrors.example.com/metalink?repo=rhel9
-# or
+# 或使用
 mirrorlist=https://mirrors.example.com/mirrorlist?repo=rhel9
 enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-example</code></pre>
 
-                <h3>Common Repository Operations</h3>
-                <pre><code># Enable a repository temporarily (one command)
+                <h3>常見套件庫操作</h3>
+                <pre><code># 單次指令暫時啟用特定套件庫
 sudo dnf install httpd --enablerepo=extras
 
-# Disable a repository temporarily
+# 單次指令暫時停用特定套件庫
 sudo dnf install httpd --disablerepo=appstream
 
-# Enable a repository permanently
+# 永久啟用套件庫
 sudo dnf config-manager --set-enabled extras
 
-# Disable a repository permanently
+# 永久停用套件庫
 sudo dnf config-manager --set-disabled extras
 
-# Add a new repository
+# 新增套件庫設定檔
 sudo dnf config-manager --add-repo https://example.com/repo/rhel9.repo
 
-# Install config-manager if not present
+# 若找不到 config-manager 指令，請先安裝 dnf-plugins-core
 sudo dnf install dnf-plugins-core</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Adding EPEL Repository</h4>
+                    <h4>操作步驟：新增 EPEL 套件庫</h4>
                     <ol>
-                        <li>Install EPEL release package:
+                        <li>安裝 EPEL 發行版本設定套件：
                             <pre><code>sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm</code></pre>
                         </li>
-                        <li>Verify repository is enabled:
+                        <li>驗證套件庫已成功啟用：
                             <pre><code>dnf repolist | grep epel</code></pre>
                         </li>
-                        <li>Search for EPEL packages:
+                        <li>搜尋 EPEL 提供的套件：
                             <pre><code>dnf search htop</code></pre>
                         </li>
-                        <li>Install package from EPEL:
+                        <li>從 EPEL 安裝套件：
                             <pre><code>sudo dnf install htop</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Creating a Local Repository</h3>
-                <pre><code># Install required tools
+                <h3>建立本機套件庫</h3>
+                <pre><code># 安裝建立套件庫所需的工具
 sudo dnf install createrepo
 
-# Create directory for packages
+# 建立存放套件的目錄
 sudo mkdir -p /var/local-repo
 
-# Copy RPM files
+# 複製 RPM 檔案至該目錄
 sudo cp *.rpm /var/local-repo/
 
-# Create repository metadata
+# 產生套件庫中繼資料
 sudo createrepo /var/local-repo/
 
-# Create repo file
+# 建立套件庫設定檔
 sudo vi /etc/yum.repos.d/local.repo
 
 [local]
@@ -374,15 +373,15 @@ baseurl=file:///var/local-repo
 enabled=1
 gpgcheck=0
 
-# Clean and update cache
+# 清理快取並驗證套件庫
 sudo dnf clean all
 sudo dnf repolist</code></pre>
 
-                <h3>Repository Priority</h3>
-                <pre><code># Install priority plugin
+                <h3>套件庫優先權</h3>
+                <pre><code># 安裝優先權外掛（若需要）
 sudo dnf install dnf-plugin-priorities
 
-# Set priority in repo file (lower number = higher priority)
+# 在 .repo 檔案中設定優先權（數字越小代表優先權越高）
 [high-priority-repo]
 name=High Priority Repo
 baseurl=https://repo.example.com/
@@ -395,194 +394,194 @@ baseurl=https://other.example.com/
 enabled=1
 priority=10</code></pre>
 
-                <h3>GPG Key Management</h3>
-                <pre><code># Import GPG key
+                <h3>GPG 金鑰管理</h3>
+                <pre><code># 匯入 GPG 公鑰
 sudo rpm --import https://example.com/RPM-GPG-KEY
 
-# List imported keys
+# 列出已匯入的 GPG 金鑰
 rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --&gt; %{summary}\n'
 
-# Verify package signature
+# 驗證 RPM 套件簽章
 rpm --checksig package.rpm
 
-# Install package without GPG check (not recommended)
+# 略過 GPG 簽章檢查直接安裝套件（不建議使用）
 sudo dnf install --nogpgcheck package.rpm</code></pre>
             </section>
 
             <section id="groups" class="content-section">
-                <h2>📚 Package Groups</h2>
+                <h2>📚 套件群組</h2>
 
-                <p>Package groups are collections of related packages that can be installed together.</p>
+                <p>套件群組（Package Groups）是將多個相關聯的套件打包在一起的集合，方便一次完整安裝。</p>
 
-                <h3>Working with Groups</h3>
-                <pre><code># List all groups
+                <h3>操作套件群組</h3>
+                <pre><code># 列出所有套件群組
 dnf group list
 
-# List all groups (including hidden)
+# 列出所有套件群組（包含隱藏群組）
 dnf group list --hidden
 
-# Show group information
+# 顯示特定套件群組的詳細資訊與包含套件
 dnf group info "Development Tools"
 
-# Install a group
+# 安裝套件群組
 sudo dnf group install "Development Tools"
 
-# Install group without optional packages
+# 安裝套件群組並一併安裝選用套件
 sudo dnf group install --with-optional "Server with GUI"
 
-# Remove a group
+# 移除套件群組
 sudo dnf group remove "Development Tools"
 
-# Update a group
+# 更新套件群組
 sudo dnf group update "System Tools"
 
-# Mark group as installed (without installing packages)
+# 將群組標記為已安裝（不實際安裝套件）
 sudo dnf group mark install "Development Tools"</code></pre>
 
-                <h3>Common Package Groups</h3>
+                <h3>常見套件群組</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Group Name</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Purpose</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">群組名稱</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">用途</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Development Tools</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Compilers, make, gcc, git</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">編譯器、make、gcc、git 等開發工具</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">System Tools</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Administrative tools</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">系統管理工具集合</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Server with GUI</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Graphical environment for servers</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">含圖形化桌面環境的伺服器套件</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Workstation</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Desktop applications</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">桌面工作站應用程式</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Virtualization Host</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">KVM, libvirt, QEMU</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">KVM、libvirt、QEMU 虛擬化主機套件</td>
                     </tr>
                 </table>
 
-                <h3>Environment Groups</h3>
-                <pre><code># List environments
+                <h3>環境群組</h3>
+                <pre><code># 列出環境群組及其 ID
 dnf group list --ids
 
-# Show environment details
+# 顯示環境群組詳細資訊
 dnf group info "Server with GUI"
 
-# Install environment
+# 安裝環境群組
 sudo dnf install @"Server with GUI"
 
-# Switch to graphical target
+# 將預設開機目標切換為圖形化介面
 sudo systemctl set-default graphical.target</code></pre>
             </section>
 
             <section id="modules" class="content-section">
-                <h2>🔧 AppStream Modules</h2>
+                <h2>🔧 AppStream 模組</h2>
 
                 <p>
-                    AppStream provides multiple versions of software through module streams. This allows you to choose 
-                    specific versions of applications (e.g., Python 3.9 vs 3.11, PostgreSQL 13 vs 15).
+                    AppStream 透過模組串流（Module Streams）在單一套件庫中提供同款軟體的多個版本。
+                    這讓你能夠自由選擇特定版本的應用程式（例如 Python 3.9 或 3.11、PostgreSQL 13 或 15）。
                 </p>
 
-                <h3>Module Concepts</h3>
+                <h3>模組概念</h3>
                 <ul>
-                    <li><strong>Module:</strong> Collection of packages (e.g., postgresql)</li>
-                    <li><strong>Stream:</strong> Version of the module (e.g., 13, 15)</li>
-                    <li><strong>Profile:</strong> Subset of packages for a use case (e.g., server, client)</li>
+                    <li><strong>模組（Module）：</strong> 一組相關套件的集合（例如 <code>postgresql</code>）</li>
+                    <li><strong>串流（Stream）：</strong> 該模組的特定版本線（例如 <code>13</code>、<code>15</code>）</li>
+                    <li><strong>設定檔（Profile）：</strong> 針對特定使用情境安裝的套件子集合（例如 <code>server</code>、<code>client</code>）</li>
                 </ul>
 
-                <h3>Working with Modules</h3>
-                <pre><code># List all modules
+                <h3>檢視模組</h3>
+                <pre><code># 列出所有可用模組
 dnf module list
 
-# List specific module streams
+# 列出特定模組的可用串流
 dnf module list postgresql
 
-# Show module information
+# 顯示模組詳細資訊
 dnf module info postgresql
 
-# Show specific stream
+# 顯示特定串流的詳細資訊
 dnf module info postgresql:15
 
-# List installed modules
+# 列出目前已安裝的模組
 dnf module list --installed</code></pre>
 
-                <h3>Enabling and Installing Modules</h3>
-                <pre><code># Enable a module stream (doesn't install packages)
+                <h3>啟用與安裝模組</h3>
+                <pre><code># 僅啟用模組串流（尚未安裝套件）
 sudo dnf module enable postgresql:15
 
-# Install default profile of enabled stream
+# 安裝已啟用串流的預設 Profile
 sudo dnf module install postgresql:15
 
-# Install specific profile
+# 安裝指定的 Profile
 sudo dnf module install postgresql:15/server
 
-# Enable and install in one command
+# 以單一指令同時啟用並安裝指定模組串流與 Profile
 sudo dnf install @postgresql:15/server
 
-# Install multiple profiles
+# 一次安裝多個 Profile
 sudo dnf module install postgresql:15/{server,client}</code></pre>
 
-                <h3>Switching Module Streams</h3>
-                <pre><code># Check current stream
+                <h3>切換模組串流</h3>
+                <pre><code># 檢查目前的模組串流狀態
 dnf module list postgresql
 
-# Reset module
+# 重置模組狀態
 sudo dnf module reset postgresql
 
-# Switch to different stream
+# 切換至不同的串流並同步套件版本
 sudo dnf module enable postgresql:13
 sudo dnf distro-sync
 
-# Alternative: remove and install different stream
+# 另一種做法：先移除舊串流套件、重置模組，再安裝新串流
 sudo dnf module remove postgresql:15
 sudo dnf module reset postgresql
 sudo dnf module install postgresql:13</code></pre>
 
-                <h3>Module Management</h3>
-                <pre><code># Disable a module
+                <h3>模組管理</h3>
+                <pre><code># 停用模組
 sudo dnf module disable postgresql
 
-# Remove installed module
+# 移除已安裝的模組
 sudo dnf module remove postgresql:15
 
-# Reset module state
+# 重置模組狀態
 sudo dnf module reset postgresql
 
-# Show module profiles
+# 顯示模組串流包含的 Profile 內容
 dnf module info --profile postgresql:15</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Installing Python 3.11 Module</h4>
+                    <h4>操作步驟：安裝 Python 3.11 模組</h4>
                     <ol>
-                        <li>List available Python versions:
+                        <li>列出可用的 Python 版本：
                             <pre><code>dnf module list python3*</code></pre>
                         </li>
-                        <li>View Python 3.11 module details:
+                        <li>檢視 Python 3.11 模組詳細資訊：
                             <pre><code>dnf module info python39:3.11</code></pre>
                         </li>
-                        <li>Enable Python 3.11 stream:
+                        <li>啟用 Python 3.11 串流：
                             <pre><code>sudo dnf module enable python39:3.11</code></pre>
                         </li>
-                        <li>Install Python 3.11:
+                        <li>安裝 Python 3.11：
                             <pre><code>sudo dnf install python3</code></pre>
                         </li>
-                        <li>Verify installation:
+                        <li>驗證安裝版本：
                             <pre><code>python3 --version</code></pre>
                         </li>
                     </ol>
                 </div>
 
-                <h3>Common Modules</h3>
+                <h3>常見模組</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Module</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Common Streams</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">模組</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">常見串流版本</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">postgresql</td>
@@ -603,108 +602,108 @@ dnf module info --profile postgresql:15</code></pre>
                 </table>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Module Stream Limitation</div>
-                    <p>Only one stream of a module can be enabled at a time. To switch streams, you must first 
-                    reset or disable the current stream.</p>
+                    <div class="info-box-title">⚠️ 警告：模組串流限制</div>
+                    <p>同一個模組在同一時間只能啟用一個串流（Stream）。若要切換版本串流，
+                    必須先重置（reset）或停用目前的串流。</p>
                 </div>
             </section>
 
             <section id="rpm" class="content-section">
-                <h2>⚙️ RPM Commands</h2>
+                <h2>⚙️ RPM 指令</h2>
 
-                <p>The <code>rpm</code> command is the low-level package manager. It doesn't handle dependencies automatically.</p>
+                <p><code>rpm</code> 是底層的套件管理工具，它不會自動處理套件之間的相依性。</p>
 
-                <h3>Querying Packages</h3>
-                <pre><code># List all installed packages
+                <h3>查詢套件</h3>
+                <pre><code># 列出系統中所有已安裝的套件
 rpm -qa
 
-# Query specific package
+# 查詢特定套件是否已安裝
 rpm -q httpd
 
-# Show package information
+# 顯示已安裝套件的詳細資訊
 rpm -qi httpd
 
-# List files in package
+# 列出套件安裝的所有檔案
 rpm -ql httpd
 
-# List documentation files
+# 列出套件的文件檔案
 rpm -qd httpd
 
-# List configuration files
+# 列出套件的設定檔
 rpm -qc httpd
 
-# Show package dependencies
+# 顯示套件的相依性需求
 rpm -qR httpd
 
-# Find which package owns a file
+# 查詢某個檔案屬於哪一個已安裝套件
 rpm -qf /usr/sbin/httpd
 
-# Query package file (not installed)
+# 查詢尚未安裝的本機 RPM 檔案資訊
 rpm -qip package.rpm
 rpm -qlp package.rpm</code></pre>
 
-                <h3>Installing/Removing with RPM</h3>
-                <pre><code># Install RPM package (no dependency resolution)
+                <h3>使用 RPM 安裝與移除</h3>
+                <pre><code># 安裝 RPM 套件（不自動解析相依性）
 sudo rpm -ivh package.rpm
-# i = install, v = verbose, h = hash marks (progress)
+# i = 安裝 (install), v = 顯示詳細過程 (verbose), h = 顯示進度符號 (hash marks)
 
-# Upgrade package
+# 升級套件
 sudo rpm -Uvh package.rpm
-# U = upgrade (install if not present)
+# U = 升級 (upgrade，若尚未安裝則直接安裝)
 
-# Freshen (upgrade only if already installed)
+# 更新（僅在系統已安裝該套件時才進行升級）
 sudo rpm -Fvh package.rpm
 
-# Remove package
+# 移除套件
 sudo rpm -e httpd
 
-# Force remove (ignore dependencies - dangerous!)
+# 強制移除（忽略相依性檢查——非常危險！）
 sudo rpm -e --nodeps httpd
 
-# Install without running scripts
+# 安裝套件但不執行內含的安裝腳本
 sudo rpm -ivh --noscripts package.rpm</code></pre>
 
-                <h3>Verifying Packages</h3>
-                <pre><code># Verify all installed packages
+                <h3>驗證套件</h3>
+                <pre><code># 驗證系統中所有已安裝套件的檔案完整性
 sudo rpm -Va
 
-# Verify specific package
+# 驗證特定套件的檔案
 sudo rpm -V httpd
 
-# Verify files from package
+# 驗證特定檔案所屬套件的完整性
 sudo rpm -Vf /usr/sbin/httpd
 
-# Output codes:
-# S = Size differs
-# M = Mode differs (permissions)
-# 5 = MD5 sum differs
-# D = Device differs
-# L = Link differs
-# U = User ownership differs
-# G = Group ownership differs
-# T = mTime differs
-# P = capabilities differ</code></pre>
+# 驗證結果代碼說明：
+# S = 檔案大小不同
+# M = 權限模式或檔案類型不同
+# 5 = MD5 雜湊值不同
+# D = 裝置主次編號不同
+# L = 符號連結路徑不同
+# U = 擁有者不同
+# G = 群組擁有者不同
+# T = 修改時間 (mTime) 不同
+# P = 權能 (Capabilities) 不同</code></pre>
 
-                <h3>Extracting RPM Contents</h3>
-                <pre><code># Extract files from RPM without installing
+                <h3>解壓縮 RPM 內容</h3>
+                <pre><code># 在不安裝的情況下解壓縮 RPM 檔案內容
 rpm2cpio package.rpm | cpio -idmv
 
-# Extract specific file
+# 僅解壓縮 RPM 內的特定檔案
 rpm2cpio package.rpm | cpio -idmv ./usr/bin/command</code></pre>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 RPM vs DNF</div>
-                    <p><strong>Use DNF when:</strong> Installing, updating, or removing packages (handles dependencies)<br>
-                    <strong>Use RPM when:</strong> Querying installed packages, verifying, or low-level operations</p>
+                    <div class="info-box-title">💡 提示：RPM 與 DNF 比較</div>
+                    <p><strong>使用 DNF 的時機：</strong> 安裝、更新或移除套件（可自動解析與處理相依性）<br>
+                    <strong>使用 RPM 的時機：</strong> 查詢已安裝套件、驗證檔案完整性或執行底層套件操作</p>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What command installs httpd and all its dependencies?</h4>
+                        <h4>第 1 題：哪個指令能安裝 httpd 並自動處理其所有相依套件？</h4>
                         <ul class="quiz-options">
                             <li>A) rpm -ivh httpd</li>
                             <li>B) dnf install httpd</li>
@@ -712,14 +711,14 @@ rpm2cpio package.rpm | cpio -idmv ./usr/bin/command</code></pre>
                             <li>D) rpm -Uvh httpd</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) dnf install httpd</strong><br>
-                            DNF (and YUM) automatically resolve and install dependencies. RPM commands (rpm -ivh) 
-                            do NOT handle dependencies automatically and will fail if dependencies are missing.
+                            <strong>解答：B) dnf install httpd</strong><br>
+                            DNF（與 YUM）會自動解析並安裝所有必要的相依套件。RPM 指令（如 <code>rpm -ivh</code>）
+                            不會自動處理相依性，若缺少相依套件將會安裝失敗。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: How do you find which package provides the /usr/sbin/semanage command?</h4>
+                        <h4>第 2 題：如何查詢哪一個套件提供了 /usr/sbin/semanage 指令？</h4>
                         <ul class="quiz-options">
                             <li>A) dnf search semanage</li>
                             <li>B) dnf provides /usr/sbin/semanage</li>
@@ -727,14 +726,14 @@ rpm2cpio package.rpm | cpio -idmv ./usr/bin/command</code></pre>
                             <li>D) dnf info semanage</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) dnf provides /usr/sbin/semanage</strong><br>
-                            dnf provides (or dnf whatprovides) searches for which package provides a specific file. 
-                            rpm -qf only works if the package is already installed. You can also use: dnf provides */semanage
+                            <strong>解答：B) dnf provides /usr/sbin/semanage</strong><br>
+                            <code>dnf provides</code>（或 <code>dnf whatprovides</code>）可用來搜尋哪個套件提供指定的檔案，即使尚未安裝也能查到。
+                            <code>rpm -qf</code> 僅在該套件已經安裝於系統時才有效。你也可以使用 <code>dnf provides */semanage</code>。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: What's the correct way to switch from PostgreSQL 13 to PostgreSQL 15?</h4>
+                        <h4>第 3 題：從 PostgreSQL 13 切換至 PostgreSQL 15 的正確步驟為何？</h4>
                         <ul class="quiz-options">
                             <li>A) dnf install postgresql:15</li>
                             <li>B) dnf module reset postgresql && dnf module install postgresql:15</li>
@@ -742,14 +741,14 @@ rpm2cpio package.rpm | cpio -idmv ./usr/bin/command</code></pre>
                             <li>D) dnf module enable postgresql:15</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) dnf module reset postgresql && dnf module install postgresql:15</strong><br>
-                            To switch module streams, you must first reset the current stream, then install the new one. 
-                            Alternatively: dnf module remove postgresql:13, then reset, then install postgresql:15.
+                            <strong>解答：B) dnf module reset postgresql && dnf module install postgresql:15</strong><br>
+                            切換模組串流時，必須先重置（reset）目前的模組串流，接著再安裝新的串流。
+                            或者先執行 <code>dnf module remove postgresql:13</code>，再重置後安裝 <code>postgresql:15</code>。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: How do you list all files installed by the httpd package?</h4>
+                        <h4>第 4 題：如何列出 httpd 套件在系統中安裝的所有檔案？</h4>
                         <ul class="quiz-options">
                             <li>A) dnf list httpd</li>
                             <li>B) rpm -ql httpd</li>
@@ -757,32 +756,32 @@ rpm2cpio package.rpm | cpio -idmv ./usr/bin/command</code></pre>
                             <li>D) rpm -qa httpd</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) rpm -ql httpd</strong><br>
-                            rpm -ql (query list) shows all files from a package. You can also use: dnf repoquery -l httpd. 
-                            rpm -qa lists all installed packages, not files.
+                            <strong>解答：B) rpm -ql httpd</strong><br>
+                            <code>rpm -ql</code>（query list）會列出該套件所包含的所有檔案。你也可以使用 <code>dnf repoquery -l httpd</code>。
+                            <code>rpm -qa</code> 則是列出所有已安裝的套件名稱，而非檔案清單。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: What does 'dnf group install "Development Tools"' do?</h4>
+                        <h4>第 5 題：「dnf group install "Development Tools"」這個指令會做什麼？</h4>
                         <ul class="quiz-options">
-                            <li>A) Installs only the group metadata</li>
-                            <li>B) Installs gcc, make, git, and other development packages</li>
-                            <li>C) Lists available development tools</li>
-                            <li>D) Creates a development environment</li>
+                            <li>A) 僅安裝套件群組的中繼資料</li>
+                            <li>B) 安裝 gcc、make、git 與其他開發相關套件</li>
+                            <li>C) 僅列出可用的開發工具</li>
+                            <li>D) 僅建立一個空的開發環境設定</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) Installs gcc, make, git, and other development packages</strong><br>
-                            Package groups bundle related packages. "Development Tools" includes compilers (gcc), 
-                            build tools (make), version control (git), and libraries needed for software development.
+                            <strong>解答：B) 安裝 gcc、make、git 與其他開發相關套件</strong><br>
+                            套件群組將相關聯的套件打包在一起。「Development Tools」包含編譯器（gcc）、
+                            建置工具（make）、版本控制工具（git）及軟體開發所需的函式庫。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter7.html" class="nav-button prev">Chapter 7: Schedule Tasks</a>
-                <a href="chapter9.html" class="nav-button next">Chapter 9: Basic Storage</a>
+                <a href="chapter7.html" class="nav-button prev">第 7 章：排程任務</a>
+                <a href="chapter9.html" class="nav-button next">第 9 章：基礎儲存管理</a>
             </div>
         </main>
     </div>
@@ -792,11 +791,11 @@ rpm2cpio package.rpm | cpio -idmv ./usr/bin/command</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>

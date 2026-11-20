@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 11: Manage Services & Boot Process - RHCSA Guide</title>
+    <title>第 11 章：管理服務與開機流程 - RHCSA 學習指南</title>
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-  <script type="module" crossorigin src="/assets/script-uyo8zlGx.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/script-Bd6Bx7if.css">
+    </script>
+  <script type="module" crossorigin src="/assets/script-D3Q74Pyl.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/script-CcFVVXfV.css">
 </head>
 <body>
     <nav class="navbar">
@@ -19,12 +19,12 @@
                 <span class="logo-text">DevOps ni Diary</span>
             </div>
             <div class="nav-search">
-                <input type="text" id="searchInput" placeholder="Search chapters...">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
                 <span class="search-icon">🔍</span>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="../index.html#chapters" class="nav-link">Chapters</a>
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
                 <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
                 <button id="themeToggle" class="theme-toggle">🌙</button>
             </div>
@@ -36,134 +36,134 @@
 
     <div class="chapter-page">
         <aside class="sidebar">
-            <h3 class="sidebar-title">All Chapters</h3>
+            <h3 class="sidebar-title">所有章節</h3>
             <ul class="sidebar-nav">
-                <li><a href="chapter1.html">Ch 1: Access Systems</a></li>
-                <li><a href="chapter2.html">Ch 2: Manage Files</a></li>
-                <li><a href="chapter3.html">Ch 3: Users & Groups</a></li>
-                <li><a href="chapter4.html">Ch 4: File Access</a></li>
-                <li><a href="chapter5.html">Ch 5: SELinux</a></li>
-                <li><a href="chapter6.html">Ch 6: Performance</a></li>
-                <li><a href="chapter7.html">Ch 7: Schedule Tasks</a></li>
-                <li><a href="chapter8.html">Ch 8: Software Packages</a></li>
-                <li><a href="chapter9.html">Ch 9: Basic Storage</a></li>
-                <li><a href="chapter10.html">Ch 10: Storage Stack</a></li>
-                <li><a href="chapter11.html" class="active">Ch 11: Services & Boot</a></li>
-                <li><a href="chapter12.html">Ch 12: Logs</a></li>
-                <li><a href="chapter13.html">Ch 13: Networking</a></li>
-                <li><a href="chapter14.html">Ch 14: Network Storage</a></li>
-                <li><a href="chapter15.html">Ch 15: Network Security</a></li>
-                <li><a href="chapter16.html">Ch 16: Containers</a></li>
-                <li><a href="chapter17.html">Ch 17: Review</a></li>
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html" class="active">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
             <div class="chapter-header">
                 <div class="chapter-meta">
-                    <span class="meta-badge">Chapter 11</span>
-                    <span class="meta-badge">⏱️ 65 min read</span>
-                    <span class="meta-badge">📚 Advanced</span>
+                    <span class="meta-badge">第 11 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 65 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
                 </div>
-                <h1>Manage Services & Boot Process</h1>
+                <h1>管理服務與開機流程</h1>
                 <p class="chapter-intro">
-                    Master systemd service management and boot process control. Learn to start, stop, enable services, 
-                    understand systemd targets, troubleshoot boot issues, and reset the root password.
+                    精通 systemd 服務管理與系統開機流程控制。學習啟動、停止與開機自動啟用服務、理解 systemd Target 運作機制、
+                    排解開機疑難問題，以及重設 root 密碼的標準程序。
                 </p>
             </div>
 
             <div class="table-of-contents">
-                <h2>📋 Table of Contents</h2>
+                <h2>📋 本章目錄</h2>
                 <ul class="toc-list">
-                    <li><a href="#introduction">Introduction to systemd</a></li>
-                    <li><a href="#services">Managing Services</a></li>
+                    <li><a href="#introduction">systemd 簡介</a></li>
+                    <li><a href="#services">管理系統服務</a></li>
                     <li><a href="#targets">Systemd Targets</a></li>
-                    <li><a href="#boot">Boot Process</a></li>
-                    <li><a href="#troubleshooting">Troubleshooting Boot</a></li>
-                    <li><a href="#root-password">Reset Root Password</a></li>
-                    <li><a href="#practice">Practice Questions</a></li>
+                    <li><a href="#boot">開機流程</a></li>
+                    <li><a href="#troubleshooting">開機問題疑難排解</a></li>
+                    <li><a href="#root-password">重設 Root 密碼</a></li>
+                    <li><a href="#practice">練習題</a></li>
                 </ul>
             </div>
 
             <section id="introduction" class="content-section">
-                <h2>🎯 Introduction to systemd</h2>
+                <h2>🎯 systemd 簡介</h2>
                 <p>
-                    systemd is the init system and service manager for RHEL 9. It replaces the older SysV init 
-                    system and provides parallel service startup, dependency management, and advanced logging.
+                    systemd 是 RHEL 9 的初始化系統 (init system) 與服務管理程式。它取代了傳統的 SysV init 系統，
+                    提供平行啟動服務、相依性管理以及進階的日誌記錄功能。
                 </p>
 
-                <h3>systemd Features</h3>
+                <h3>systemd 特色功能</h3>
                 <ul>
-                    <li><strong>Parallel Startup:</strong> Start services concurrently for faster boot</li>
-                    <li><strong>Service Dependencies:</strong> Automatically handle service relationships</li>
-                    <li><strong>Socket Activation:</strong> Start services on-demand when accessed</li>
-                    <li><strong>Targets:</strong> Group services like runlevels (multi-user, graphical)</li>
-                    <li><strong>Journal Logging:</strong> Integrated logging with journalctl</li>
-                    <li><strong>Resource Control:</strong> Limit CPU, memory, I/O per service</li>
+                    <li><strong>平行啟動：</strong> 同時啟動多個服務以大幅加快開機速度</li>
+                    <li><strong>服務相依性：</strong> 自動處理服務之間的相依關係</li>
+                    <li><strong>Socket 啟動機制 (Socket Activation)：</strong> 當收到連線請求時才隨需啟動服務</li>
+                    <li><strong>Targets：</strong> 將多個單元群組化，類似傳統的 Runlevel（例如 multi-user、graphical）</li>
+                    <li><strong>Journal 日誌記錄：</strong> 整合 journalctl 進行系統日誌管理</li>
+                    <li><strong>資源控管：</strong> 可針對個別服務限制 CPU、記憶體與 I/O 使用量</li>
                 </ul>
 
-                <h3>systemd Components</h3>
+                <h3>systemd 核心元件</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Component</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">元件</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>systemctl</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Control systemd services and system</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">控制 systemd 服務與系統狀態</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>journalctl</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Query systemd journal logs</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">查詢 systemd journal 系統日誌</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>systemd-analyze</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Analyze boot performance</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">分析開機效能與服務啟動耗時</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Unit Files</strong></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Service configuration files (.service, .target, .mount)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>單元檔 (Unit Files)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">服務與系統單元設定檔（.service、.target、.mount）</td>
                     </tr>
                 </table>
 
-                <h3>Unit Types</h3>
-                <pre><code># Common unit types:
-.service    # Services (sshd, httpd)
-.target     # Groups of units (multi-user.target)
-.mount      # Mount points
-.socket     # IPC sockets
-.timer      # Scheduled tasks
-.path       # File/directory monitoring
-.device     # Hardware devices</code></pre>
+                <h3>單元類型 (Unit Types)</h3>
+                <pre><code># 常見單元類型：
+.service    # 系統服務 (sshd, httpd)
+.target     # 單元群組 (multi-user.target)
+.mount      # 掛載點
+.socket     # IPC 通訊插槽 (Socket)
+.timer      # 排程任務計時器
+.path       # 檔案或目錄監控
+.device     # 硬體裝置</code></pre>
             </section>
 
             <section id="services" class="content-section">
-                <h2>⚙️ Managing Services</h2>
+                <h2>⚙️ 管理系統服務</h2>
 
-                <h3>Basic Service Commands</h3>
-                <pre><code># Start a service
+                <h3>基本服務操作指令</h3>
+                <pre><code># 啟動服務
 sudo systemctl start httpd
 
-# Stop a service
+# 停止服務
 sudo systemctl stop httpd
 
-# Restart a service
+# 重新啟動服務
 sudo systemctl restart httpd
 
-# Reload configuration (without restart)
+# 重新載入設定檔（不中斷服務進行重啟）
 sudo systemctl reload httpd
 
-# Restart if running, start if stopped
+# 若服務正在執行則重啟，若已停止則不啟動
 sudo systemctl try-restart httpd
 
-# Reload config, or restart if reload not supported
+# 重新載入設定檔；若該服務不支援 reload，則執行 restart
 sudo systemctl reload-or-restart httpd</code></pre>
 
-                <h3>Service Status</h3>
-                <pre><code># Check service status
+                <h3>檢視服務狀態</h3>
+                <pre><code># 檢查服務詳細狀態
 systemctl status httpd
 
-# Output example:
+# 輸出範例：
 ● httpd.service - The Apache HTTP Server
      Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
      Active: active (running) since Mon 2025-01-13 10:30:15 EST; 2h 15min ago
@@ -177,98 +177,98 @@ systemctl status httpd
              ├─1234 /usr/sbin/httpd -DFOREGROUND
              └─1235 /usr/sbin/httpd -DFOREGROUND
 
-# Quick status (just active/inactive)
+# 快速檢查是否運行中（僅回傳 active/inactive）
 systemctl is-active httpd
 
-# Check if enabled
+# 檢查是否設定開機自動啟動
 systemctl is-enabled httpd
 
-# Check if failed
+# 檢查是否處於失敗狀態
 systemctl is-failed httpd</code></pre>
 
-                <h3>Enable/Disable Services</h3>
-                <pre><code># Enable service (start at boot)
+                <h3>開機自動啟用 / 停用服務</h3>
+                <pre><code># 設定開機自動啟動服務
 sudo systemctl enable httpd
-# Creates symlink in /etc/systemd/system/multi-user.target.wants/
+# 會在 /etc/systemd/system/multi-user.target.wants/ 建立符號連結
 
-# Disable service (don't start at boot)
+# 取消開機自動啟動
 sudo systemctl disable httpd
 
-# Enable and start now
+# 設定開機自動啟動並立即啟動服務
 sudo systemctl enable --now httpd
 
-# Disable and stop now
+# 取消開機自動啟動並立即停止服務
 sudo systemctl disable --now httpd
 
-# Mask service (prevent starting completely)
+# 遮蔽服務 (Mask，徹底禁止啟動，包含手動啟動)
 sudo systemctl mask httpd
 
-# Unmask service
+# 解除服務遮蔽
 sudo systemctl unmask httpd</code></pre>
 
-                <h3>Listing Services</h3>
-                <pre><code># List all loaded units
+                <h3>列出服務清單</h3>
+                <pre><code># 列出所有已載入的單元
 systemctl list-units
 
-# List all services
+# 列出所有執行中的服務
 systemctl list-units --type=service
 
-# List all services (including inactive)
+# 列出所有服務（包含未啟動或非運行中的服務）
 systemctl list-units --type=service --all
 
-# List enabled services
+# 列出所有設定為開機啟用的服務
 systemctl list-unit-files --state=enabled
 
-# List failed services
+# 列出啟動失敗的服務
 systemctl --failed
 
-# Show service dependencies
+# 顯示服務相依性樹狀圖
 systemctl list-dependencies httpd</code></pre>
 
-                <h3>Viewing Service Configuration</h3>
-                <pre><code># Show unit file
+                <h3>檢視與編輯服務設定</h3>
+                <pre><code># 顯示完整單元設定檔內容
 systemctl cat httpd
 
-# Edit unit file (creates override)
+# 編輯單元設定（建立覆寫檔 override）
 sudo systemctl edit httpd
-# Creates: /etc/systemd/system/httpd.service.d/override.conf
+# 會建立設定檔：/etc/systemd/system/httpd.service.d/override.conf
 
-# Edit full unit file
+# 編輯完整單元檔複本
 sudo systemctl edit --full httpd
 
-# Show all properties
+# 顯示該單元的所有屬性
 systemctl show httpd
 
-# Show specific property
+# 顯示特定屬性值
 systemctl show httpd -p ActiveState</code></pre>
 
                 <div class="procedure">
-                    <h4>Procedure: Installing and Enabling Apache</h4>
+                    <h4>操作步驟：安裝並啟用 Apache 服務</h4>
                     <ol>
-                        <li>Install Apache:
+                        <li>安裝 Apache 網頁伺服器：
                             <pre><code>sudo dnf install -y httpd</code></pre>
                         </li>
-                        <li>Start the service:
+                        <li>立即啟動服務：
                             <pre><code>sudo systemctl start httpd</code></pre>
                         </li>
-                        <li>Enable at boot:
+                        <li>設定於開機時自動啟動：
                             <pre><code>sudo systemctl enable httpd</code></pre>
                         </li>
-                        <li>Verify status:
+                        <li>驗證服務狀態與啟用設定：
                             <pre><code>systemctl status httpd
 systemctl is-enabled httpd</code></pre>
                         </li>
-                        <li>Test (if firewall open):
+                        <li>測試服務是否正常回應（需防火牆已放行）：
                             <pre><code>curl http://localhost</code></pre>
                         </li>
                     </ol>
                 </div>
 
                 <div class="info-box tip">
-                    <div class="info-box-title">💡 Enable vs Start</div>
-                    <p><strong>enable:</strong> Service starts automatically at boot<br>
-                    <strong>start:</strong> Service starts now (but won't persist reboot)<br>
-                    <strong>enable --now:</strong> Both enable and start in one command</p>
+                    <div class="info-box-title">💡 Enable 與 Start 的差異</div>
+                    <p><strong>enable：</strong>設定服務在開機時自動啟動<br>
+                    <strong>start：</strong>立即啟動服務（但重開機後不會自動啟動）<br>
+                    <strong>enable --now：</strong>單一指令同時完成開機啟用與立即啟動</p>
                 </div>
             </section>
 
@@ -276,298 +276,298 @@ systemctl is-enabled httpd</code></pre>
                 <h2>🎯 Systemd Targets</h2>
 
                 <p>
-                    Targets are groups of units that define system states, similar to old SysV runlevels.
+                    Target 是定義系統運作狀態的單元群組，其功能類似於傳統的 SysV Runlevel（執行層級）。
                 </p>
 
-                <h3>Common Targets</h3>
+                <h3>常見 Targets</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
                         <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Target</th>
                         <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Runlevel</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Description</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">poweroff.target</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">0</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Shut down system</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">關閉系統電源</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">rescue.target</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Single-user mode (root shell)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">單人救援模式（提供 root Shell）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">multi-user.target</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">3</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Multi-user, no GUI</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">多使用者文字模式（無圖形介面）</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">graphical.target</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">5</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Multi-user with GUI</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">多使用者圖形介面模式 (GUI)</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">reboot.target</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">6</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Reboot system</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">重新啟動系統</td>
                     </tr>
                     <tr>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">emergency.target</td>
                         <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Minimal shell (before rescue)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">最小化 Shell 環境（比救援模式更精簡）</td>
                     </tr>
                 </table>
 
-                <h3>Managing Targets</h3>
-                <pre><code># Show default target
+                <h3>管理 Targets</h3>
+                <pre><code># 顯示目前預設的開機 Target
 systemctl get-default
 
-# Set default target
+# 設定開機預設 Target
 sudo systemctl set-default multi-user.target
 sudo systemctl set-default graphical.target
 
-# Switch to target immediately
+# 立即切換至指定的 Target
 sudo systemctl isolate multi-user.target
 sudo systemctl isolate graphical.target
 
-# List available targets
+# 列出可用的 Targets
 systemctl list-units --type=target
 
-# Show target dependencies
+# 顯示 Target 的相依性清單
 systemctl list-dependencies graphical.target</code></pre>
 
-                <h3>System State Commands</h3>
-                <pre><code># Reboot system
+                <h3>系統電源與狀態指令</h3>
+                <pre><code># 重新啟動系統
 sudo systemctl reboot
 
-# Power off system
+# 關閉系統電源
 sudo systemctl poweroff
 
-# Halt system
+# 停止系統運作 (Halt)
 sudo systemctl halt
 
-# Suspend (sleep)
+# 暫停系統（睡眠模式）
 sudo systemctl suspend
 
-# Hibernate
+# 系統休眠 (Hibernate)
 sudo systemctl hibernate
 
-# Enter rescue mode
+# 進入救援模式
 sudo systemctl rescue
 
-# Enter emergency mode
+# 進入緊急模式
 sudo systemctl emergency</code></pre>
 
                 <div class="info-box note">
-                    <div class="info-box-title">📘 Rescue vs Emergency</div>
-                    <p><strong>rescue.target:</strong> Mounts filesystems, minimal services, prompts for root password<br>
-                    <strong>emergency.target:</strong> Root filesystem mounted read-only, no services, single-user shell</p>
+                    <div class="info-box-title">📘 Rescue 與 Emergency 模式比較</div>
+                    <p><strong>rescue.target：</strong>會掛載本機檔案系統、啟動基本服務，並要求輸入 root 密碼<br>
+                    <strong>emergency.target：</strong>僅將根檔案系統以唯讀模式掛載、不啟動任何服務，直接進入單人 Shell</p>
                 </div>
             </section>
 
             <section id="boot" class="content-section">
-                <h2>🚀 Boot Process</h2>
+                <h2>🚀 開機流程</h2>
 
-                <h3>RHEL 9 Boot Sequence</h3>
+                <h3>RHEL 9 開機順序</h3>
                 <ol>
-                    <li><strong>UEFI/BIOS:</strong> Hardware initialization, POST</li>
-                    <li><strong>Bootloader (GRUB2):</strong> Load kernel and initramfs</li>
-                    <li><strong>Kernel:</strong> Initialize hardware, mount root filesystem</li>
-                    <li><strong>systemd:</strong> First process (PID 1), start services</li>
-                    <li><strong>Default Target:</strong> Reach multi-user.target or graphical.target</li>
-                    <li><strong>Login Prompt:</strong> System ready</li>
+                    <li><strong>UEFI/BIOS：</strong>硬體初始化、開機自我檢測 (POST)</li>
+                    <li><strong>開機載入程式 (GRUB2)：</strong>載入 Linux 核心與 initramfs</li>
+                    <li><strong>核心 (Kernel)：</strong>初始化硬體裝置並掛載根檔案系統</li>
+                    <li><strong>systemd：</strong>系統第一個行程 (PID 1)，啟動各項系統服務</li>
+                    <li><strong>預設 Target：</strong>抵達 multi-user.target 或 graphical.target</li>
+                    <li><strong>登入畫面：</strong>系統啟動完成並可供登入</li>
                 </ol>
 
-                <h3>Analyzing Boot Performance</h3>
-                <pre><code># Show boot time
+                <h3>分析開機效能</h3>
+                <pre><code># 顯示總開機耗時統計
 systemd-analyze
 
-# Output:
+# 輸出範例：
 Startup finished in 1.234s (kernel) + 5.678s (initrd) + 15.432s (userspace) = 22.344s
 graphical.target reached after 15.123s in userspace
 
-# Show service startup times
+# 顯示各服務啟動所花費的時間
 systemd-analyze blame
 
-# Output (slowest first):
+# 輸出（耗時最長的服務排在最前面）：
 5.234s NetworkManager-wait-online.service
 2.123s kdump.service
 1.456s firewalld.service
 
-# Critical chain (what blocked boot)
+# 顯示關鍵路徑相依鏈（找出拖慢開機的瓶頸服務）
 systemd-analyze critical-chain
 
-# Visualize boot (create SVG)
+# 產生開機過程時間軸視覺化圖表 (SVG)
 systemd-analyze plot &gt; boot.svg</code></pre>
 
-                <h3>GRUB2 Boot Menu</h3>
-                <pre><code># GRUB2 configuration
-/boot/grub2/grub.cfg        # Main config (DO NOT EDIT)
-/etc/default/grub           # User settings
-/etc/grub.d/                # Config scripts
+                <h3>GRUB2 開機選單</h3>
+                <pre><code># GRUB2 設定檔路徑
+/boot/grub2/grub.cfg        # 主要設定檔（請勿直接手動編輯）
+/etc/default/grub           # 使用者自訂設定檔
+/etc/grub.d/                # 設定產生腳本目錄
 
-# Modify GRUB settings
+# 修改 GRUB 設定
 sudo vi /etc/default/grub
 
-# Example settings:
+# 設定範例：
 GRUB_TIMEOUT=5
 GRUB_CMDLINE_LINUX="rhgb quiet"
 
-# Regenerate GRUB config
+# 重新產生 GRUB 設定檔（BIOS 系統）
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-# For UEFI systems:
+# 重新產生 GRUB 設定檔（UEFI 系統）：
 sudo grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg</code></pre>
 
-                <h3>Kernel Command Line</h3>
-                <pre><code># View current kernel parameters
+                <h3>核心開機參數 (Kernel Command Line)</h3>
+                <pre><code># 檢視目前開機所使用的核心參數
 cat /proc/cmdline
 
-# Common kernel parameters:
-rhgb               # Red Hat Graphical Boot (splash screen)
-quiet              # Minimal boot messages
-systemd.unit=      # Boot to specific target
-rd.break           # Break into initramfs shell
-init=/bin/bash     # Boot to bash (dangerous!)
-selinux=0          # Disable SELinux temporarily</code></pre>
+# 常見核心開機參數：
+rhgb               # Red Hat 圖形化開機畫面 (Splash screen)
+quiet              # 隱藏大多數開機過程訊息
+systemd.unit=      # 指定開機進入特定的 Target
+rd.break           # 中斷開機流程並進入 initramfs Shell
+init=/bin/bash     # 直接開機進入 bash（風險較高，需謹慎使用）
+selinux=0          # 暫時停用 SELinux</code></pre>
             </section>
 
             <section id="troubleshooting" class="content-section">
-                <h2>🔧 Troubleshooting Boot Issues</h2>
+                <h2>🔧 開機問題疑難排解</h2>
 
-                <h3>Boot to Rescue Mode</h3>
+                <h3>開機進入救援模式 (Rescue Mode)</h3>
                 <ol>
-                    <li>Reboot the system</li>
-                    <li>Press <kbd>e</kbd> at GRUB menu</li>
-                    <li>Find line starting with <code>linux</code> or <code>linux16</code></li>
-                    <li>Append to end: <code>systemd.unit=rescue.target</code></li>
-                    <li>Press <kbd>Ctrl+x</kbd> to boot</li>
-                    <li>Enter root password</li>
+                    <li>重新啟動系統</li>
+                    <li>在 GRUB 開機選單按 <kbd>e</kbd> 鍵</li>
+                    <li>找到以 <code>linux</code> 或 <code>linux16</code> 開頭的那一行</li>
+                    <li>在該行末端加上：<code>systemd.unit=rescue.target</code></li>
+                    <li>按下 <kbd>Ctrl+x</kbd> 啟動系統</li>
+                    <li>輸入 root 密碼登入</li>
                 </ol>
 
-                <h3>Boot to Emergency Mode</h3>
+                <h3>開機進入緊急模式 (Emergency Mode)</h3>
                 <ol>
-                    <li>Same as rescue, but append: <code>systemd.unit=emergency.target</code></li>
-                    <li>Root filesystem mounted read-only</li>
-                    <li>Remount read-write: <code>mount -o remount,rw /</code></li>
+                    <li>步驟與救援模式相同，但改為加上：<code>systemd.unit=emergency.target</code></li>
+                    <li>此時根檔案系統預設為唯讀掛載</li>
+                    <li>手動將根目錄重新掛載為讀寫模式：<code>mount -o remount,rw /</code></li>
                 </ol>
 
-                <h3>Break into initramfs</h3>
-                <pre><code># At GRUB, add to kernel line:
+                <h3>中斷進入 initramfs 階段</h3>
+                <pre><code># 在 GRUB 編輯畫面中，於核心參數行末端加上：
 rd.break
 
-# You'll get a shell before root is mounted
-# Root is at /sysroot (read-only)
+# 系統會在掛載真實根檔案系統之前提供一個 Shell
+# 此時真實系統的根目錄位於 /sysroot（為唯讀狀態）
 
-# Remount read-write
+# 將 /sysroot 重新掛載為讀寫模式
 mount -o remount,rw /sysroot
 
-# Chroot into system
+# 使用 chroot 切換至系統環境
 chroot /sysroot
 
-# Make changes, then:
+# 完成修改作業後，依序離開並重新開機：
 exit
 reboot -f</code></pre>
 
-                <h3>Common Boot Problems</h3>
+                <h3>常見開機問題與解決方式</h3>
                 <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
                     <tr style="background-color: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Problem</th>
-                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Solution</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">問題描述</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">解決方式</th>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Bad /etc/fstab entry</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Boot to emergency, fix fstab</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/etc/fstab 設定錯誤</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">開機進入緊急模式並修正 fstab 設定檔</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Forgotten root password</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">rd.break, reset password</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">忘記 root 密碼</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">利用 rd.break 中斷開機並重設密碼</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Service fails at boot</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Disable service, check logs</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">開機時特定服務啟動失敗</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">暫時停用該服務並檢查系統日誌以排查錯誤</td>
                     </tr>
                     <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux prevents boot</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Add selinux=0 to kernel line</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux 阻擋系統開機</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">於核心啟動參數行加上 selinux=0 進行排查</td>
                     </tr>
                 </table>
             </section>
 
             <section id="root-password" class="content-section">
-                <h2>🔑 Reset Root Password</h2>
+                <h2>🔑 重設 Root 密碼</h2>
 
                 <div class="procedure">
-                    <h4>Procedure: Reset Root Password (RHCSA Exam Critical!)</h4>
+                    <h4>操作步驟：重設 Root 密碼（RHCSA 考試必考重點！）</h4>
                     <ol>
-                        <li>Reboot the system</li>
-                        <li>At GRUB menu, press <kbd>e</kbd> to edit</li>
-                        <li>Find line starting with <code>linux</code></li>
-                        <li>Add <code>rd.break</code> to end of line:
+                        <li>重新啟動系統</li>
+                        <li>在 GRUB 開機選單畫面按下 <kbd>e</kbd> 鍵進入編輯模式</li>
+                        <li>找到以 <code>linux</code> 開頭的那一行</li>
+                        <li>在該行末端加上 <code>rd.break</code>：
                             <pre><code>linux ($root)/vmlinuz-... root=UUID=... rhgb quiet rd.break</code></pre>
                         </li>
-                        <li>Press <kbd>Ctrl+x</kbd> to boot</li>
-                        <li>You'll get a <code>switch_root:/#</code> prompt</li>
-                        <li>Remount /sysroot as read-write:
+                        <li>按下 <kbd>Ctrl+x</kbd> 繼續開機</li>
+                        <li>系統將會進入 <code>switch_root:/#</code> 提示字元</li>
+                        <li>將 /sysroot 重新掛載為讀寫模式：
                             <pre><code>mount -o remount,rw /sysroot</code></pre>
                         </li>
-                        <li>Chroot into system:
+                        <li>切換根目錄 (chroot) 至系統環境：
                             <pre><code>chroot /sysroot</code></pre>
                         </li>
-                        <li>Change root password:
+                        <li>變更 root 使用者密碼：
                             <pre><code>passwd root
-# Enter new password twice</code></pre>
+# 輸入兩次新密碼</code></pre>
                         </li>
-                        <li><strong>Critical for SELinux:</strong> Relabel on next boot:
+                        <li><strong>SELinux 關鍵步驟：</strong>設定於下次開機時自動重新標記檔案標籤：
                             <pre><code>touch /.autorelabel</code></pre>
                         </li>
-                        <li>Exit chroot and reboot:
+                        <li>離開 chroot 環境並強制重新開機：
                             <pre><code>exit
 reboot -f</code></pre>
                         </li>
-                        <li>System will relabel (may take time), then boot normally</li>
+                        <li>系統會自動執行檔案安全脈絡重新標記（可能需要幾分鐘），完成後即會正常開機</li>
                     </ol>
                 </div>
 
                 <div class="info-box danger">
-                    <div class="info-box-title">⚠️ Critical: Don't Forget .autorelabel</div>
-                    <p>If you don't create <code>/.autorelabel</code>, SELinux will prevent login after password change! 
-                    The system will relabel files on next boot. This is REQUIRED for exam success!</p>
+                    <div class="info-box-title">⚠️ 關鍵提醒：切勿遺忘 .autorelabel</div>
+                    <p>如果您沒有建立 <code>/.autorelabel</code> 檔案，SELinux 將會阻擋您在變更密碼後登入系統！
+                    系統會在下次開機時自動重新標記檔案的安全脈絡。這是 RHCSA 考試中絕對不可遺漏的必要步驟！</p>
                 </div>
 
-                <h3>Alternative: Boot with init=/bin/bash</h3>
-                <pre><code># At GRUB, replace 'rhgb quiet' with:
+                <h3>替代方案：使用 init=/bin/bash 開機</h3>
+                <pre><code># 在 GRUB 編輯畫面中，將 'rhgb quiet' 替換為：
 init=/bin/bash
 
-# System boots directly to bash (no systemd)
-# Root filesystem is read-only
+# 系統會直接開機進入 bash（不啟動 systemd）
+# 此時根檔案系統為唯讀狀態
 
-# Remount read-write
+# 重新掛載為讀寫模式
 mount -o remount,rw /
 
-# Change password
+# 變更密碼
 passwd root
 
-# Create autorelabel
+# 建立 autorelabel 標記檔
 touch /.autorelabel
 
-# Sync and reboot
+# 將資料寫回磁碟並強制重開機
 sync
 reboot -f</code></pre>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">⚠️ Security Consideration</div>
-                    <p>Physical access = root access. Protect GRUB with password or use BIOS/UEFI password 
-                    to prevent unauthorized password resets. Also consider full disk encryption.</p>
+                    <div class="info-box-title">⚠️ 安全性考量</div>
+                    <p>能夠實體接觸主機就等同於取得 root 存取權限。請務必為 GRUB 設定保護密碼或啟用 BIOS/UEFI 密碼，
+                    以防止未經授權的人員重設密碼。此外，亦可考慮採用全磁碟加密 (LUKS) 提升安全性。</p>
                 </div>
             </section>
 
             <section id="practice" class="content-section">
                 <div class="quiz-section">
-                    <h2>📝 Practice Questions</h2>
+                    <h2>📝 練習題</h2>
                     
                     <div class="quiz-question">
-                        <h4>Question 1: What command enables httpd to start at boot?</h4>
+                        <h4>第 1 題：哪一個指令可以設定 httpd 服務在開機時自動啟動？</h4>
                         <ul class="quiz-options">
                             <li>A) systemctl start httpd</li>
                             <li>B) systemctl enable httpd</li>
@@ -575,15 +575,14 @@ reboot -f</code></pre>
                             <li>D) systemctl boot httpd</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) systemctl enable httpd</strong><br>
-                            <code>enable</code> creates symlink in target.wants directory for automatic startup. 
-                            <code>start</code> only starts now (doesn't persist reboot). Use <code>enable --now</code> 
-                            to both enable and start immediately.
+                            <strong>解答：B) systemctl enable httpd</strong><br>
+                            <code>enable</code> 會在對應 target 的 <code>.wants</code> 目錄中建立符號連結，使服務於開機時自動啟動。
+                            <code>start</code> 僅會立即啟動服務（不會在重開機後維持啟動）。可使用 <code>enable --now</code> 同時設定開機啟用並立即啟動服務。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 2: Which target is equivalent to runlevel 3 (multi-user, no GUI)?</h4>
+                        <h4>第 2 題：哪一個 Target 相當於傳統的 Runlevel 3（多使用者文字模式，無 GUI）？</h4>
                         <ul class="quiz-options">
                             <li>A) graphical.target</li>
                             <li>B) multi-user.target</li>
@@ -591,31 +590,29 @@ reboot -f</code></pre>
                             <li>D) default.target</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) multi-user.target</strong><br>
-                            multi-user.target = runlevel 3 (text mode). graphical.target = runlevel 5 (GUI). 
-                            rescue.target = runlevel 1 (single user). Set default: 
-                            <code>systemctl set-default multi-user.target</code>
+                            <strong>解答：B) multi-user.target</strong><br>
+                            <code>multi-user.target</code> 等同於 Runlevel 3（文字介面模式）；<code>graphical.target</code> 為 Runlevel 5（圖形介面）；
+                            <code>rescue.target</code> 為 Runlevel 1（單人救援模式）。設定預設 Target 指令：<code>systemctl set-default multi-user.target</code>
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 3: What's the CRITICAL step when resetting root password with rd.break?</h4>
+                        <h4>第 3 題：使用 rd.break 重設 root 密碼時，最關鍵的步驟為何？</h4>
                         <ul class="quiz-options">
-                            <li>A) Run passwd root</li>
-                            <li>B) Mount -o remount,rw /sysroot</li>
-                            <li>C) touch /.autorelabel</li>
-                            <li>D) chroot /sysroot</li>
+                            <li>A) 執行 passwd root</li>
+                            <li>B) 執行 mount -o remount,rw /sysroot</li>
+                            <li>C) 執行 touch /.autorelabel</li>
+                            <li>D) 執行 chroot /sysroot</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) touch /.autorelabel</strong><br>
-                            All steps are required, but <code>touch /.autorelabel</code> is CRITICAL for SELinux systems. 
-                            Without it, SELinux prevents login after password change. System will relabel on next boot. 
-                            This is a common exam mistake!
+                            <strong>解答：C) 執行 touch /.autorelabel</strong><br>
+                            雖然所有步驟都不可或缺，但 <code>touch /.autorelabel</code> 在啟用 SELinux 的系統上極為關鍵。
+                            若缺少此步驟，更改後的 <code>/etc/shadow</code> 安全脈絡標籤將不正確，導致系統阻擋登入。這也是考試中最常見的失分原因！
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 4: How do you prevent a service from starting (even manually)?</h4>
+                        <h4>第 4 題：如何徹底阻止服務啟動（即使是手動啟動也不允許）？</h4>
                         <ul class="quiz-options">
                             <li>A) systemctl disable httpd</li>
                             <li>B) systemctl stop httpd</li>
@@ -623,15 +620,14 @@ reboot -f</code></pre>
                             <li>D) systemctl isolate httpd</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: C) systemctl mask httpd</strong><br>
-                            <code>mask</code> creates symlink to /dev/null, preventing start completely (even manually). 
-                            <code>disable</code> only prevents automatic boot start. <code>unmask</code> reverses masking. 
-                            Useful for conflicting services.
+                            <strong>解答：C) systemctl mask httpd</strong><br>
+                            <code>mask</code> 會將服務單元連結至 <code>/dev/null</code>，使其完全無法被啟動（包含手動執行 start）。
+                            <code>disable</code> 僅取消開機自動啟動。若要解除遮蔽請使用 <code>unmask</code>，這常用於避免服務相互衝突。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 5: Which mode provides minimal shell before mounting filesystems?</h4>
+                        <h4>第 5 題：哪一種模式會在不啟動系統服務的情況下提供最小化 Shell（根目錄為唯讀）？</h4>
                         <ul class="quiz-options">
                             <li>A) rescue.target</li>
                             <li>B) emergency.target</li>
@@ -639,15 +635,15 @@ reboot -f</code></pre>
                             <li>D) rd.break</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) emergency.target</strong><br>
-                            emergency.target: root filesystem read-only, minimal shell, no services. 
-                            rescue.target: filesystems mounted, basic services, root password prompt. 
-                            rd.break: interrupts before switching to real root, gives initramfs shell.
+                            <strong>解答：B) emergency.target</strong><br>
+                            <code>emergency.target</code> 會將根檔案系統以唯讀模式掛載，僅提供最小化 Shell 且不啟動任何服務。
+                            <code>rescue.target</code> 則會掛載所有本機檔案系統、啟動基本服務並要求輸入 root 密碼。
+                            而 <code>rd.break</code> 則是在切換至真實根檔案系統前中斷並進入 initramfs Shell。
                         </div>
                     </div>
 
                     <div class="quiz-question">
-                        <h4>Question 6: What command shows which services delayed boot the most?</h4>
+                        <h4>第 6 題：哪個指令可以顯示是哪些服務拖慢了開機速度？</h4>
                         <ul class="quiz-options">
                             <li>A) systemctl --failed</li>
                             <li>B) systemd-analyze blame</li>
@@ -655,18 +651,17 @@ reboot -f</code></pre>
                             <li>D) systemctl list-units</li>
                         </ul>
                         <div class="quiz-answer">
-                            <strong>Answer: B) systemd-analyze blame</strong><br>
-                            <code>systemd-analyze blame</code> lists services by startup time (slowest first). 
-                            <code>systemd-analyze</code> shows total boot time. <code>systemd-analyze critical-chain</code> 
-                            shows dependency chain that blocked boot.
+                            <strong>解答：B) systemd-analyze blame</strong><br>
+                            <code>systemd-analyze blame</code> 會依服務啟動耗時由長到短列出清單。
+                            <code>systemd-analyze</code> 顯示開機總耗時；<code>systemd-analyze critical-chain</code> 則可顯示造成開機阻塞的相依性關鍵路徑。
                         </div>
                     </div>
                 </div>
             </section>
 
             <div class="chapter-navigation">
-                <a href="chapter10.html" class="nav-button prev">Chapter 10: Storage Stack (LVM)</a>
-                <a href="chapter12.html" class="nav-button next">Chapter 12: System Logs</a>
+                <a href="chapter10.html" class="nav-button prev">第 10 章：進階儲存堆疊 (LVM)</a>
+                <a href="chapter12.html" class="nav-button next">第 12 章：系統日誌</a>
             </div>
         </main>
     </div>
@@ -676,14 +671,14 @@ reboot -f</code></pre>
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>DevOps ni Diary</h3>
-                    <p>Your complete guide to mastering RHCSA certification.</p>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DevOps ni Diary. Educational resource for RHCSA certification preparation.</p>
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
             </div>
         </div>
     </footer>
-
+
 </body>
 </html>

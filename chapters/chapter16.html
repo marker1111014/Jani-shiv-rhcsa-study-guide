@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 16 章：執行容器 - RHCSA 學習指南</title>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+  <script type="module" crossorigin src="../assets/script-ir5N7YRr.js"></script>
+  <link rel="stylesheet" crossorigin href="../assets/script-CcFVVXfV.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">DevOps ni Diary</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
+                <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-page">
+        <aside class="sidebar">
+            <h3 class="sidebar-title">所有章節</h3>
+            <ul class="sidebar-nav">
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html" class="active">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="chapter-header">
+                <div class="chapter-meta">
+                    <span class="meta-badge">第 16 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 55 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
+                </div>
+                <h1>執行容器 (Podman)</h1>
+                <p class="chapter-intro">
+                    精通使用 Podman 進行容器管理。學習如何以無根（Rootless）使用者身分搜尋、拉取、執行與管理容器，
+                    並設定永久儲存空間（Persistent Storage）及與 systemd 整合以實現開機自動啟動。
+                </p>
+            </div>
+
+            <div class="table-of-contents">
+                <h2>📋 本章目錄</h2>
+                <ul class="toc-list">
+                    <li><a href="#introduction">Podman 簡介</a></li>
+                    <li><a href="#images">管理映像檔</a></li>
+                    <li><a href="#containers">執行容器</a></li>
+                    <li><a href="#storage">永久儲存空間</a></li>
+                    <li><a href="#systemd">Systemd 整合</a></li>
+                    <li><a href="#practice">練習題</a></li>
+                </ul>
+            </div>
+
+            <section id="introduction" class="content-section">
+                <h2>🎯 Podman 簡介</h2>
+                <p>
+                    Podman 是一款無守護程式（Daemonless）的 OCI 標準容器引擎。它與 Docker 指令高度相容，
+                    且預設支援以無根（Rootless）權限執行容器，大幅提升了系統安全性。
+                </p>
+
+                <h3>Podman vs Docker</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">特性</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Podman</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">Docker</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>守護程式 (Daemon)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">不需背景守護程式</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">需執行 dockerd 背景程式</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Root 權限</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">預設支援無根（Rootless）執行</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">預設需具備 root 權限</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Systemd</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">原生整合 systemd 單元產生</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">需搭配額外工具設定</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Pods 支援</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">原生支援 Pod 概念</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">需透過 Compose 或 Swarm</td>
+                    </tr>
+                </table>
+
+                <h3>安裝 Podman</h3>
+                <pre><code># 安裝 podman
+sudo dnf install -y podman
+
+# 安裝額外輔助工具
+sudo dnf install -y podman-docker  # 提供 docker 指令相容性
+sudo dnf install -y buildah         # 容器映像檔建置工具
+sudo dnf install -y skopeo          # 映像檔檢視與搬移工具
+
+# 驗證安裝結果
+podman --version
+podman info</code></pre>
+
+                <h3>映像檔倉庫（Registry）設定</h3>
+                <pre><code># 檢視已設定的映像檔倉庫
+cat /etc/containers/registries.conf
+
+# 常見的公開映像檔倉庫
+# registry.access.redhat.com (Red Hat 官方倉庫)
+# docker.io (Docker Hub)
+# quay.io (Red Hat Quay)
+
+# 搜尋映像檔
+podman search nginx
+podman search --limit 5 httpd
+
+# 搜尋指定倉庫中的映像檔
+podman search quay.io/nginx</code></pre>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 提示：無根容器（Rootless Containers）</div>
+                    <p>Podman 可由一般使用者直接執行而不需 root 權限。一般使用者的容器資料儲存於
+                    <code>~/.local/share/containers</code>，而 root 容器（<code>sudo podman</code>）則儲存於
+                    <code>/var/lib/containers</code>，兩者完全隔離獨立！</p>
+                </div>
+            </section>
+
+            <section id="images" class="content-section">
+                <h2>💿 管理映像檔</h2>
+
+                <p>
+                    容器映像檔（Container Images）是用來建立容器的唯讀範本。
+                </p>
+
+                <h3>拉取（Pull）映像檔</h3>
+                <pre><code># 拉取最新版本映像檔
+podman pull nginx
+podman pull docker.io/library/nginx
+
+# 拉取指定版本標籤（Tag）
+podman pull nginx:1.24
+podman pull registry.access.redhat.com/ubi9/ubi:latest
+
+# 從特定倉庫拉取映像檔
+podman pull quay.io/podman/hello
+
+# 驗證已下載的映像檔
+podman images</code></pre>
+
+                <h3>列出與檢視映像檔</h3>
+                <pre><code># 列出所有本機映像檔
+podman images
+
+# 自訂輸出格式列出映像檔
+podman images --format "{{.Repository}}:{{.Tag}}"
+
+# 顯示映像檔詳細中繼資料
+podman inspect nginx
+
+# 顯示映像檔建置層（Layers）歷史紀錄
+podman history nginx
+
+# 顯示映像檔大小表格
+podman images --format "table {{.Repository}}\t{{.Tag}}\t{{.Size}}"</code></pre>
+
+                <h3>移除映像檔</h3>
+                <pre><code># 移除指定的映像檔
+podman rmi nginx
+
+# 依據映像檔 ID 移除
+podman rmi 12345678
+
+# 清除所有未使用的映像檔
+podman image prune
+
+# 移除本機所有映像檔（操作前請謹慎確認！）
+podman rmi --all</code></pre>
+
+                <h3>標記（Tagging）映像檔</h3>
+                <pre><code># 為映像檔建立新標籤
+podman tag nginx:latest mynginx:v1
+
+# 為私有倉庫建立標籤
+podman tag nginx localhost:5000/mynginx:v1
+
+# 列出所有映像檔與標籤
+podman images</code></pre>
+
+                <div class="info-box note">
+                    <div class="info-box-title">📘 注意：映像檔完整命名格式</div>
+                    <p>完整格式：<code>registry/namespace/repository:tag</code><br>
+                    範例：<code>quay.io/podman/hello:latest</code><br>
+                    預設倉庫：docker.io<br>
+                    預設標籤：latest</p>
+                </div>
+            </section>
+
+            <section id="containers" class="content-section">
+                <h2>🐳 執行容器</h2>
+
+                <h3>基本容器操作</h3>
+                <pre><code># 執行容器（互動式終端機模式）
+podman run -it ubi9 /bin/bash
+
+# 執行容器（背景分離模式 Detached）
+podman run -d nginx
+
+# 指定自訂容器名稱
+podman run -d --name webserver nginx
+
+# 搭配連接埠對應執行容器
+podman run -d -p 8080:80 --name web nginx
+
+# 傳入環境變數執行容器
+podman run -d -e MYSQL_ROOT_PASSWORD=secret mysql
+
+# 執行完畢離開後自動刪除容器
+podman run --rm -it ubi9 /bin/bash</code></pre>
+
+                <h3>管理執行中的容器</h3>
+                <pre><code># 列出目前執行中的容器
+podman ps
+
+# 列出所有容器（包含已停止的容器）
+podman ps -a
+
+# 顯示容器詳細資訊
+podman inspect webserver
+
+# 檢視容器輸出日誌
+podman logs webserver
+podman logs -f webserver  # 即時追蹤日誌輸出
+
+# 查看容器內執行的程序
+podman top webserver
+
+# 查看容器即時資源使用率
+podman stats webserver</code></pre>
+
+                <h3>容器生命週期管理</h3>
+                <pre><code># 停止容器
+podman stop webserver
+
+# 啟動已停止的容器
+podman start webserver
+
+# 重新啟動容器
+podman restart webserver
+
+# 強制終止容器（Kill）
+podman kill webserver
+
+# 暫停容器
+podman pause webserver
+
+# 恢復暫停中的容器
+podman unpause webserver
+
+# 移除容器
+podman rm webserver
+
+# 強制移除執行中的容器
+podman rm -f webserver</code></pre>
+
+                <h3>在容器內執行指令</h3>
+                <pre><code># 在執行中的容器內執行指定指令
+podman exec webserver ls /usr/share/nginx/html
+
+# 在執行中的容器內開啟互動式 Shell
+podman exec -it webserver /bin/bash
+
+# 以指定使用者身分執行指令
+podman exec -u nginx webserver whoami
+
+# 帶入環境變數執行指令
+podman exec -e VAR=value webserver env</code></pre>
+
+                <h3>連接埠對應（Port Mapping）</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">參數格式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">範例</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>-p HOST:CONTAINER</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">將主機連接埠對應至容器內部連接埠</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-p 8080:80</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>-p IP:HOST:CONTAINER</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">繫結至主機指定的 IP 位址</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-p 127.0.0.1:8080:80</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>-p CONTAINER</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">隨機分配一個主機連接埠</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-p 80</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>-P</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">公開並隨機對應映像檔暴露的所有連接埠</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">-P</td>
+                    </tr>
+                </table>
+
+                <div class="procedure">
+                    <h4>操作步驟：執行 Nginx 網頁伺服器容器</h4>
+                    <ol>
+                        <li>拉取 nginx 映像檔：
+                            <pre><code>podman pull nginx</code></pre>
+                        </li>
+                        <li>啟動容器並設定連接埠對應：
+                            <pre><code>podman run -d --name webserver -p 8080:80 nginx</code></pre>
+                        </li>
+                        <li>驗證容器是否正常運作：
+                            <pre><code>podman ps</code></pre>
+                        </li>
+                        <li>檢查容器日誌：
+                            <pre><code>podman logs webserver</code></pre>
+                        </li>
+                        <li>測試網頁伺服器回應：
+                            <pre><code>curl http://localhost:8080</code></pre>
+                        </li>
+                        <li>停止並移除容器：
+                            <pre><code>podman stop webserver
+podman rm webserver</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="storage" class="content-section">
+                <h2>💾 永久儲存空間</h2>
+
+                <p>
+                    預設情況下，容器內的資料屬於暫時性（Ephemeral），容器刪除後資料就會遺失。若需保留資料，請使用資料卷（Volumes）或繫結掛載（Bind Mounts）。
+                </p>
+
+                <h3>儲存卷類型</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">類型</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">適用場景</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>繫結掛載 (Bind Mount)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">將主機目錄直接掛載至容器內</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">開發測試、掛載設定檔與靜態網頁資料</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>資料卷 (Volume)</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">由 Podman 管理的儲存空間</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">資料庫儲存、永久化應用程式資料</td>
+                    </tr>
+                </table>
+
+                <h3>繫結掛載 (Bind Mounts)</h3>
+                <pre><code># 建立主機端目錄
+mkdir -p ~/web-content
+
+# 搭配繫結掛載執行容器
+podman run -d --name web \
+  -v ~/web-content:/usr/share/nginx/html:Z \
+  -p 8080:80 nginx
+
+# :Z 會自動設定專屬的 SELinux 脈絡標籤（在 RHEL 上極為重要！）
+# 若未加上 :Z，SELinux 將會阻擋容器存取主機目錄
+
+# 唯讀繫結掛載
+podman run -d --name web \
+  -v ~/web-content:/usr/share/nginx/html:ro,Z \
+  nginx
+
+# 同時掛載多個目錄
+podman run -d --name web \
+  -v ~/web-content:/usr/share/nginx/html:Z \
+  -v ~/web-logs:/var/log/nginx:Z \
+  nginx</code></pre>
+
+                <h3>具名資料卷 (Named Volumes)</h3>
+                <pre><code># 建立具名資料卷
+podman volume create mysql-data
+
+# 列出所有資料卷
+podman volume ls
+
+# 檢視資料卷詳細資訊
+podman volume inspect mysql-data
+
+# 搭配具名資料卷執行容器
+podman run -d --name db \
+  -v mysql-data:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=secret \
+  mysql
+
+# 移除資料卷
+podman volume rm mysql-data
+
+# 清除所有未使用的資料卷
+podman volume prune</code></pre>
+
+                <h3>資料卷的 SELinux 脈絡選項</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">選項</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>:z</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">共用內容標籤（允許複數個容器共同存取同一個目錄）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>:Z</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">私有內容標籤（僅限單一容器專屬存取）</td>
+                    </tr>
+                </table>
+
+                <div class="info-box warning">
+                    <div class="info-box-title">⚠️ SELinux 與資料卷掛載</div>
+                    <p>在啟用 SELinux Enforcing 模式的 RHEL 系統上，掛載主機目錄時請「務必」加上 <code>:Z</code> 或 <code>:z</code>！
+                    若未加上此標籤，容器將會因權限不足而無法讀取或寫入檔案。單一容器專用請用 <code>:Z</code>，多容器共用則用 <code>:z</code>。</p>
+                </div>
+
+                <div class="procedure">
+                    <h4>操作步驟：設定永久化網站內容</h4>
+                    <ol>
+                        <li>建立網頁內容目錄與測試檔案：
+                            <pre><code>mkdir -p ~/webdata
+echo "&amp;lt;h1&amp;gt;Hello Podman&amp;lt;/h1&amp;gt;" &gt; ~/webdata/index.html</code></pre>
+                        </li>
+                        <li>搭配繫結掛載執行 nginx 容器：
+                            <pre><code>podman run -d --name myweb \
+  -v ~/webdata:/usr/share/nginx/html:Z \
+  -p 8080:80 nginx</code></pre>
+                        </li>
+                        <li>測試網頁存取：
+                            <pre><code>curl http://localhost:8080</code></pre>
+                        </li>
+                        <li>更新主機端檔案內容（容器內會即時反映變更）：
+                            <pre><code>echo "&amp;lt;h1&amp;gt;Updated!&amp;lt;/h1&amp;gt;" &gt; ~/webdata/index.html
+curl http://localhost:8080</code></pre>
+                        </li>
+                        <li>刪除容器（主機上的資料依然完整保留）：
+                            <pre><code>podman rm -f myweb
+ls ~/webdata  # 檔案依然存在！</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="systemd" class="content-section">
+                <h2>⚙️ Systemd 整合</h2>
+
+                <p>
+                    將容器與 systemd 服務整合，實現開機自動啟動並以系統服務的方式統一管理。
+                </p>
+
+                <h3>產生 Systemd 單元檔</h3>
+                <pre><code># 先建立並執行容器
+podman run -d --name webserver -p 8080:80 nginx
+
+# 產生 systemd 單元檔
+podman generate systemd --name webserver --files --new
+
+# 這會建立檔案：container-webserver.service
+
+# 移動至使用者的 systemd 服務目錄
+mkdir -p ~/.config/systemd/user
+mv container-webserver.service ~/.config/systemd/user/
+
+# 重新載入使用者 systemd 設定
+systemctl --user daemon-reload
+
+# 設定登入時自動啟用
+systemctl --user enable container-webserver.service
+
+# 啟動服務
+systemctl --user start container-webserver.service
+
+# 檢查服務狀態
+systemctl --user status container-webserver.service</code></pre>
+
+                <h3>常用產生參數選項</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">選項</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>--new</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">每次啟動服務時建立新容器（而非重複使用舊容器）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>--files</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">將單元檔內容輸出成檔案（而非僅印在標準輸出）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>--name</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">使用容器名稱而非容器 ID 作為識別</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>--restart-policy</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">設定重新啟動策略（always、on-failure、no）</td>
+                    </tr>
+                </table>
+
+                <h3>啟用使用者常駐（Linger）模式（Rootless）</h3>
+                <pre><code># 允許使用者的容器在未登入的情況下也能於開機時自動啟動
+sudo loginctl enable-linger $(whoami)
+
+# 檢查 Linger 啟用狀態
+loginctl show-user $(whoami) | grep Linger
+
+# 現在即使使用者尚未登入，容器也會在系統開機時自動啟動</code></pre>
+
+                <h3>系統級容器 vs 使用者級容器</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">比較項目</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">系統級 (Root)</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">使用者級 (Rootless)</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>執行指令</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">sudo podman</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">podman</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Systemd 指令</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">systemctl (root)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">systemctl --user</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>單元檔路徑</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/etc/systemd/system/</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">~/.config/systemd/user/</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>連接埠限制</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">可使用 1-1024 特權連接埠</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">必須使用 1024 以上的連接埠</td>
+                    </tr>
+                </table>
+
+                <div class="procedure">
+                    <h4>操作步驟：將容器設定為開機自動啟動的 Systemd 服務</h4>
+                    <ol>
+                        <li>建立並測試容器：
+                            <pre><code>podman run -d --name myapp -p 8080:80 nginx</code></pre>
+                        </li>
+                        <li>產生 systemd 單元檔：
+                            <pre><code>cd ~
+podman generate systemd --name myapp --files --new</code></pre>
+                        </li>
+                        <li>停止並移除原本手動建立的容器：
+                            <pre><code>podman stop myapp
+podman rm myapp</code></pre>
+                        </li>
+                        <li>安裝 systemd 單元檔：
+                            <pre><code>mkdir -p ~/.config/systemd/user
+mv container-myapp.service ~/.config/systemd/user/
+systemctl --user daemon-reload</code></pre>
+                        </li>
+                        <li>啟用 Linger（確保開機即可啟動）：
+                            <pre><code>sudo loginctl enable-linger $(whoami)</code></pre>
+                        </li>
+                        <li>啟用並立即啟動服務：
+                            <pre><code>systemctl --user enable --now container-myapp.service</code></pre>
+                        </li>
+                        <li>驗證服務運作狀態：
+                            <pre><code>systemctl --user status container-myapp.service
+curl http://localhost:8080</code></pre>
+                        </li>
+                        <li>測試重開機後的持久性：
+                            <pre><code>sudo reboot
+# 重新開機後檢查狀態
+systemctl --user status container-myapp.service</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="practice" class="content-section">
+                <div class="quiz-section">
+                    <h2>📝 練習題</h2>
+                    
+                    <div class="quiz-question">
+                        <h4>第 1 題：如何讓容器在背景執行？</h4>
+                        <ul class="quiz-options">
+                            <li>A) podman run -b nginx</li>
+                            <li>B) podman run -d nginx</li>
+                            <li>C) podman run --background nginx</li>
+                            <li>D) podman start nginx</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) podman run -d nginx</strong><br>
+                            <code>-d</code>（detached）參數會讓容器在背景執行並回傳容器 ID。
+                            可使用 <code>podman ps</code> 查看執行中的容器。<code>-it</code> 則是用於啟動前景互動式終端機。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 2 題：在繫結掛載（Bind Mount）時，哪個 SELinux 選項最為關鍵？</h4>
+                        <ul class="quiz-options">
+                            <li>A) -v /host:/container</li>
+                            <li>B) -v /host:/container:Z</li>
+                            <li>C) -v /host:/container:selinux</li>
+                            <li>D) -v /host:/container:secure</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) -v /host:/container:Z</strong><br>
+                            <code>:Z</code> 會為單一容器設定專屬的 SELinux 脈絡標籤；若未加上，SELinux 將會阻擋容器存取。
+                            若多個容器需要共用同一目錄，則使用小寫的 <code>:z</code>。這在啟用 SELinux Enforcing 的 RHEL 系統上極為關鍵！
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 3 題：如何將主機連接埠 8080 對應至容器連接埠 80？</h4>
+                        <ul class="quiz-options">
+                            <li>A) -p 80:8080</li>
+                            <li>B) -p 8080:80</li>
+                            <li>C) --port 8080:80</li>
+                            <li>D) --expose 8080:80</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) -p 8080:80</strong><br>
+                            對應格式為 <code>-p HOST:CONTAINER</code>。透過 <code>http://host:8080</code> 連線時，
+                            流量會被轉發至容器內的 80 埠。請注意，Rootless 使用者在主機端只能繫結 1024 以上的連接埠。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 4 題：哪個指令可以產生容器的 systemd 單元檔？</h4>
+                        <ul class="quiz-options">
+                            <li>A) podman systemd --name myapp --files</li>
+                            <li>B) podman generate systemd --name myapp --files --new</li>
+                            <li>C) podman create-service myapp</li>
+                            <li>D) systemctl generate myapp</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B)</strong><br>
+                            <code>podman generate systemd --name myapp --files --new</code>。
+                            <code>--new</code> 表示每次啟動服務時都會建立全新容器，<code>--files</code> 則會輸出為設定檔。
+                            產生後將檔案移至 <code>~/.config/systemd/user/</code> 並執行 <code>systemctl --user daemon-reload</code>。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 5 題：如何設定無根（Rootless）容器於系統開機時自動啟動？</h4>
+                        <ul class="quiz-options">
+                            <li>A) systemctl --user enable container-name</li>
+                            <li>B) sudo loginctl enable-linger $USER</li>
+                            <li>C) podman enable container-name</li>
+                            <li>D) A 與 B 皆需執行</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：D) A 與 B 皆需執行</strong><br>
+                            兩個步驟缺一不可：必須先執行 <code>systemctl --user enable container-name</code> 啟用服務，
+                            「並且」執行 <code>sudo loginctl enable-linger $USER</code> 允許使用者服務在未登入時執行。
+                            若未啟用 linger，容器只有在該使用者登入系統時才會啟動。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 6 題：無根（Rootless）容器的映像檔儲存在哪個路徑？</h4>
+                        <ul class="quiz-options">
+                            <li>A) /var/lib/containers</li>
+                            <li>B) ~/.local/share/containers</li>
+                            <li>C) ~/podman/images</li>
+                            <li>D) /home/containers</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) ~/.local/share/containers</strong><br>
+                            無根（一般使用者）容器資料儲存在 <code>~/.local/share/containers</code>，
+                            而 root 容器則儲存在 <code>/var/lib/containers</code>。兩者完全分開管理，
+                            一般使用者與 root 可以各自擁有同名的映像檔而互不衝突。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="chapter-navigation">
+                <a href="chapter15.html" class="nav-button prev">第 15 章：網路安全性</a>
+                <a href="chapter17.html" class="nav-button next">第 17 章：綜合複習</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DevOps ni Diary</h3>
+                    <p>您精通 RHCSA 認證的完整學習指南。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 1 章：存取系統與取得支援 - RHCSA 學習指南</title>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+  <script type="module" crossorigin src="../assets/script-ir5N7YRr.js"></script>
+  <link rel="stylesheet" crossorigin href="../assets/script-CcFVVXfV.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">DevOps ni Diary</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
+                <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
+                <button id="themeToggle" class="theme-toggle" aria-label="切換深色模式">🌙</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-page">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">所有章節</h3>
+            <ul class="sidebar-nav">
+                <li><a href="chapter1.html" class="active">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chapter Header -->
+            <div class="chapter-header">
+                <div class="chapter-meta">
+                    <span class="meta-badge">第 1 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 45 分鐘</span>
+                    <span class="meta-badge">📚 入門</span>
+                </div>
+                <h1>存取系統與取得支援</h1>
+                <p class="chapter-intro">
+                    學習如何透過本機與遠端終端機存取並操作 Linux 系統。
+                    本章涵蓋使用 SSH 連線至 RHEL 系統、操作命令列介面，以及查閱系統文件等核心技能。
+                </p>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="table-of-contents">
+                <h2>📋 本章目錄</h2>
+                <ul class="toc-list">
+                    <li><a href="#introduction">簡介</a></li>
+                    <li><a href="#local-access">存取本機系統</a></li>
+                    <li><a href="#ssh-access">使用 SSH 存取遠端系統</a></li>
+                    <li><a href="#bash-basics">Bash Shell 基礎</a></li>
+                    <li><a href="#documentation">存取系統文件</a></li>
+                    <li><a href="#practice">練習題</a></li>
+                </ul>
+            </div>
+
+            <!-- Introduction -->
+            <section id="introduction" class="content-section">
+                <h2>🎯 簡介</h2>
+                <p>
+                    能夠存取並操作 Linux 系統是系統管理最基本的能力。
+                    身為系統管理員，您會需要從本機（實體主機端）以及遠端（透過網路使用 SSH）連線至伺服器。
+                    了解這些存取方式並知道如何在需要時尋找說明資源，是邁向 RHCSA 認證的重要第一步。
+                </p>
+                <p>
+                    本章將帶您掌握以下核心技能：
+                </p>
+                <ul>
+                    <li>使用虛擬主控台登入 Linux 系統</li>
+                    <li>使用 SSH 安全地連線至遠端系統</li>
+                    <li>操作 Bash Shell 環境</li>
+                    <li>查閱系統內建的文件與說明資源</li>
+                    <li>了解指令語法與選項結構</li>
+                </ul>
+
+                <div class="info-box note">
+                    <div class="info-box-title">📘 注意</div>
+                    <p>在本指南中，指令都會搭配輸出範例進行說明。建議您在自己的 RHEL 9 系統上實際練習這些指令，以加深學習印象。</p>
+                </div>
+            </section>
+
+            <!-- Local Access -->
+            <section id="local-access" class="content-section">
+                <h2>🖥️ 存取本機系統</h2>
+                
+                <h3>虛擬主控台（Virtual Consoles）</h3>
+                <p>
+                    RHEL 9 提供多個虛擬主控台，讓您可以在單一實體系統上同時擁有多個獨立的登入工作階段。
+                    預設情況下，系統會提供六個文字介面的虛擬主控台。
+                </p>
+
+                <h4>切換虛擬主控台</h4>
+                <p>請使用以下鍵盤快捷鍵在各個虛擬主控台之間切換：</p>
+                <ul>
+                    <li><code>Ctrl+Alt+F1</code> 至 <code>Ctrl+Alt+F6</code> - 存取文字主控台 1 至 6</li>
+                    <li><code>Ctrl+Alt+F1</code> - 返回圖形化桌面環境（若有安裝）</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 提示</div>
+                    <p>當圖形介面無回應，或是您需要同時開啟多個工作階段時，虛擬主控台是進行疑難排解的絕佳工具。</p>
+                </div>
+
+                <h3>登入流程</h3>
+                <p>當您進入虛擬主控台時，將會看到登入提示畫面：</p>
+                <pre><code>Red Hat Enterprise Linux 9.3 (Plow)
+Kernel 5.14.0-362.el9.x86_64 on an x86_64
+
+localhost login: _</code></pre>
+
+                <div class="procedure">
+                    <h4>操作步驟：登入虛擬主控台</h4>
+                    <ol>
+                        <li>按下 <code>Ctrl+Alt+F2</code> 切換至第 2 個虛擬主控台</li>
+                        <li>在登入提示處輸入您的使用者名稱，並按下 <code>Enter</code></li>
+                        <li>輸入您的密碼並按下 <code>Enter</code>（輸入時螢幕上不會顯示密碼字元）</li>
+                        <li>登入成功後，您將會看到命令提示字元</li>
+                    </ol>
+                </div>
+
+                <pre><code>[student@localhost ~]$ _</code></pre>
+
+                <div class="info-box warning">
+                    <div class="info-box-title">⚠️ 警告</div>
+                    <p>密碼區分大小寫。輸入密碼時請確認 Caps Lock 大寫鎖定鍵已關閉。</p>
+                </div>
+            </section>
+
+            <!-- SSH Access -->
+            <section id="ssh-access" class="content-section">
+                <h2>🔐 使用 SSH 存取遠端系統</h2>
+                
+                <h3>什麼是 SSH？</h3>
+                <p>
+                    安全外殼協定（Secure Shell，簡稱 SSH）是一種加密網路協定，可在不安全的網路中提供安全的傳輸通道。
+                    SSH 會加密所有傳輸流量（包含密碼在內），以防範網路竊聽與連線劫持。
+                </p>
+
+                <h3>基本 SSH 語法</h3>
+                <pre><code>ssh username@hostname</code></pre>
+
+                <p>或者使用 IP 位址連線：</p>
+                <pre><code>ssh username@192.168.1.100</code></pre>
+
+                <h3>SSH 連線範例</h3>
+                <pre><code>[student@workstation ~]$ ssh user@servera.example.com
+The authenticity of host 'servera.example.com (192.168.1.10)' can't be established.
+ECDSA key fingerprint is SHA256:1A2B3C4D5E6F7G8H9I0J.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'servera.example.com' (ECDSA) to the list of known hosts.
+user@servera.example.com's password: 
+[user@servera ~]$ </code></pre>
+
+                <div class="info-box note">
+                    <div class="info-box-title">📘 注意</div>
+                    <p>首次連線至某部主機時，SSH 會要求您驗證該主機的指紋（Fingerprint），以防止中間人攻擊。請輸入 "yes" 繼續連線。</p>
+                </div>
+
+                <h3>SSH 金鑰驗證</h3>
+                <p>
+                    為了提升安全性與操作便利性，您可以使用 SSH 金鑰來取代密碼登入。這需要先建立一組公鑰／私鑰金鑰對。
+                </p>
+
+                <div class="procedure">
+                    <h4>操作步驟：設定 SSH 金鑰驗證</h4>
+                    <ol>
+                        <li>產生 SSH 金鑰對：
+                            <pre><code>ssh-keygen -t rsa -b 4096</code></pre>
+                        </li>
+                        <li>按下 Enter 接受預設的儲存路徑（~/.ssh/id_rsa）</li>
+                        <li>可依需求選擇是否輸入密語（Passphrase）以增加安全性</li>
+                        <li>將公鑰複製到遠端伺服器：
+                            <pre><code>ssh-copy-id user@servera.example.com</code></pre>
+                        </li>
+                        <li>測試連線（此時應不會再要求輸入密碼）：
+                            <pre><code>ssh user@servera.example.com</code></pre>
+                        </li>
+                    </ol>
+                </div>
+
+                <h3>常用 SSH 選項</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color); text-align: left;">選項</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color); text-align: left;">說明</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>-p PORT</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">連線至指定的連接埠</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>-v</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">詳細輸出模式（有助於疑難排解）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>-X</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">啟用 X11 轉發以執行遠端圖形應用程式</td>
+                    </tr>
+                </table>
+
+                <h3>結束 SSH 工作階段</h3>
+                <p>若要中斷 SSH 連線，可使用下列任一方式：</p>
+                <pre><code>exit
+# 或
+logout
+# 或按
+Ctrl+D</code></pre>
+            </section>
+
+            <!-- Bash Basics -->
+            <section id="bash-basics" class="content-section">
+                <h2>⌨️ Bash Shell 基礎</h2>
+                
+                <h3>認識命令提示字元</h3>
+                <p>預設的 Bash 命令提示字元會顯示許多實用資訊：</p>
+                <pre><code>[student@localhost ~]$</code></pre>
+
+                <p>各部分說明如下：</p>
+                <ul>
+                    <li><code>student</code> - 目前的使用者名稱</li>
+                    <li><code>localhost</code> - 系統的主機名稱</li>
+                    <li><code>~</code> - 目前所在的目錄（~ 代表家目錄）</li>
+                    <li><code>$</code> - 一般使用者的提示字元（root 使用者則顯示為 #）</li>
+                </ul>
+
+                <h3>基本指令結構</h3>
+                <pre><code>command [options] [arguments]</code></pre>
+
+                <p>範例：</p>
+                <pre><code>ls -l /etc</code></pre>
+                <ul>
+                    <li><code>ls</code> - 指令（列出目錄內容）</li>
+                    <li><code>-l</code> - 選項（長格式顯示）</li>
+                    <li><code>/etc</code> - 參數（要列出內容的目標目錄）</li>
+                </ul>
+
+                <h3>常用 Bash 快捷鍵</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color); text-align: left;">快捷鍵</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color); text-align: left;">操作</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Tab</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">自動補齊指令與檔案名稱</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Ctrl+C</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">取消目前正在執行的指令</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Ctrl+D</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">結束並離開目前的 Shell</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Ctrl+A</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">移動游標至該行開頭</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Ctrl+E</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">移動游標至該行結尾</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>↑/↓</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">瀏覽歷史執行過的指令</td>
+                    </tr>
+                </table>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 提示</div>
+                    <p>Tab 自動補齊是 Bash 中最實用的功能之一。按一次 Tab 可自動補齊名稱，連按兩次則可列出所有可能的補齊項目。</p>
+                </div>
+            </section>
+
+            <!-- Documentation -->
+            <section id="documentation" class="content-section">
+                <h2>📚 存取系統文件</h2>
+                
+                <h3>Man 手冊頁（Man Pages）</h3>
+                <p>
+                    線上手冊（Manual pages，簡稱 man pages）是 Linux 指令與系統呼叫最主要的文件來源。
+                </p>
+
+                <h4>基本用法</h4>
+                <pre><code>man command_name</code></pre>
+
+                <p>範例：</p>
+                <pre><code>man ls</code></pre>
+
+                <h4>瀏覽 Man 手冊頁</h4>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color); text-align: left;">按鍵</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color); text-align: left;">操作</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>Space</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">向下捲動一頁</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>b</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">向上捲動一頁</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>/pattern</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">搜尋指定字串樣式</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>n</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">跳至下一個搜尋結果</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>q</code></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">離開 man 手冊頁</td>
+                    </tr>
+                </table>
+
+                <h3>Man 手冊頁章節分類</h3>
+                <p>Man 手冊頁共分為以下幾個章節：</p>
+                <ol>
+                    <li>使用者指令（User commands）</li>
+                    <li>系統呼叫（System calls）</li>
+                    <li>函式庫函式（Library functions）</li>
+                    <li>特殊檔案（裝置檔案）</li>
+                    <li>檔案格式與設定檔（File formats）</li>
+                    <li>遊戲（Games）</li>
+                    <li>雜項（Miscellaneous）</li>
+                    <li>系統管理指令（System administration commands）</li>
+                </ol>
+
+                <p>若要存取特定章節的手冊頁：</p>
+                <pre><code>man 5 passwd    # 檢視 passwd 檔案格式說明
+man 1 passwd    # 檢視 passwd 指令說明</code></pre>
+
+                <h3>Info 文件頁（Info Pages）</h3>
+                <p>部分指令提供更詳細的 Info 格式文件：</p>
+                <pre><code>info command_name</code></pre>
+
+                <h3>--help 選項</h3>
+                <p>大多數指令都支援 --help 選項，可快速檢視使用摘要：</p>
+                <pre><code>ls --help
+mkdir --help</code></pre>
+
+                <h3>/usr/share/doc 中的文件</h3>
+                <p>套件隨附的額外詳細文件通常存放在此目錄：</p>
+                <pre><code>ls /usr/share/doc/</code></pre>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 提示</div>
+                    <p>使用 <code>man -k keyword</code> 可依關鍵字搜尋相關指令。例如：<code>man -k network</code></p>
+                </div>
+            </section>
+
+            <!-- Practice Questions -->
+            <section id="practice" class="content-section">
+                <div class="quiz-section">
+                    <h2>📝 練習題</h2>
+                    
+                    <div class="quiz-question">
+                        <h4>第 1 題：哪一個鍵盤快捷鍵可以切換到第 3 個虛擬主控台？</h4>
+                        <ul class="quiz-options">
+                            <li>A) Ctrl+Alt+F1</li>
+                            <li>B) Ctrl+Alt+F2</li>
+                            <li>C) Ctrl+Alt+F3</li>
+                            <li>D) Alt+F3</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) Ctrl+Alt+F3</strong><br>
+                            虛擬主控台 1 至 6 可透過 Ctrl+Alt+F1 到 Ctrl+Alt+F6 進行切換。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 2 題：哪一個指令可以建立 4096 位元 RSA 加密的 SSH 金鑰對？</h4>
+                        <ul class="quiz-options">
+                            <li>A) ssh-keygen</li>
+                            <li>B) ssh-keygen -t rsa</li>
+                            <li>C) ssh-keygen -t rsa -b 4096</li>
+                            <li>D) ssh-create-key -rsa 4096</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) ssh-keygen -t rsa -b 4096</strong><br>
+                            -t 旗標用來指定金鑰類型（rsa），-b 則用來指定金鑰位元數（4096）。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 3 題：哪一個指令可以顯示 passwd 指令的使用手冊？</h4>
+                        <ul class="quiz-options">
+                            <li>A) help passwd</li>
+                            <li>B) man passwd</li>
+                            <li>C) info passwd</li>
+                            <li>D) passwd --man</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) man passwd</strong><br>
+                            man 指令可用於顯示各個指令與系統呼叫的線上手冊（Manual Pages）。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 4 題：Bash 提示字元中的 ~ 符號代表什麼？</h4>
+                        <ul class="quiz-options">
+                            <li>A) 根目錄</li>
+                            <li>B) 家目錄</li>
+                            <li>C) 目前目錄</li>
+                            <li>D) 上層目錄</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) 家目錄</strong><br>
+                            波浪號（~）是目前使用者家目錄的簡寫表示法。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 5 題：哪一個按鍵組合可以取消終端機中正在執行的指令？</h4>
+                        <ul class="quiz-options">
+                            <li>A) Ctrl+X</li>
+                            <li>B) Ctrl+C</li>
+                            <li>C) Ctrl+Z</li>
+                            <li>D) Ctrl+D</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) Ctrl+C</strong><br>
+                            Ctrl+C 會傳送中斷訊號以取消目前正在執行的指令。Ctrl+D 用於結束並離開 Shell，而 Ctrl+Z 則會將程序暫停。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter Navigation -->
+            <div class="chapter-navigation">
+                <a href="../index.html" class="nav-button prev">首頁</a>
+                <a href="chapter2.html" class="nav-button next">第 2 章：管理檔案</a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DevOps ni Diary</h3>
+                    <p>您精通 RHCSA 認證與 Linux 系統管理的完整學習指南。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速連結</h4>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">首頁</a></li>
+                        <li><a href="../index.html#chapters">所有章節</a></li>
+                        <li><a href="https://youtube.com/@DevOpsniDiary" target="_blank">YouTube 頻道</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

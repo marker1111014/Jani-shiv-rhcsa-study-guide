@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 12 章：分析系統日誌 - RHCSA 學習指南</title>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+  <script type="module" crossorigin src="../assets/script-ir5N7YRr.js"></script>
+  <link rel="stylesheet" crossorigin href="../assets/script-CcFVVXfV.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">DevOps ni Diary</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
+                <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-page">
+        <aside class="sidebar">
+            <h3 class="sidebar-title">所有章節</h3>
+            <ul class="sidebar-nav">
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html" class="active">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="chapter-header">
+                <div class="chapter-meta">
+                    <span class="meta-badge">第 12 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 50 分鐘</span>
+                    <span class="meta-badge">📚 中級</span>
+                </div>
+                <h1>分析系統日誌</h1>
+                <p class="chapter-intro">
+                    精通使用 journalctl 與 rsyslog 分析及管理系統日誌。學習查詢 systemd journal、設定持久性日誌儲存、
+                    分析開機過程日誌，以及管理傳統的 syslog 文字日誌檔案。
+                </p>
+            </div>
+
+            <div class="table-of-contents">
+                <h2>📋 本章目錄</h2>
+                <ul class="toc-list">
+                    <li><a href="#introduction">系統日誌簡介</a></li>
+                    <li><a href="#journalctl">journalctl - systemd Journal</a></li>
+                    <li><a href="#persistent">持久性 Journal 儲存</a></li>
+                    <li><a href="#rsyslog">rsyslog - 傳統日誌系統</a></li>
+                    <li><a href="#logrotate">日誌輪替 (Log Rotation)</a></li>
+                    <li><a href="#practice">練習題</a></li>
+                </ul>
+            </div>
+
+            <section id="introduction" class="content-section">
+                <h2>🎯 系統日誌簡介</h2>
+                <p>
+                    RHEL 9 使用兩套系統日誌架構：<code>systemd-journald</code>（二進位格式日誌）與 <code>rsyslog</code>（純文字檔案）。
+                    兩者相互配合運作，為系統提供完整且詳盡的日誌記錄能力。
+                </p>
+
+                <h3>日誌系統架構</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">日誌系統</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">格式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">儲存位置</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">查詢工具</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">systemd-journald</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">二進位 (Binary)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/run/log/journal (揮發性)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">journalctl</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">rsyslog</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">純文字 (Text)</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/*</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">less, grep, tail</td>
+                    </tr>
+                </table>
+
+                <h3>常見日誌檔案 (rsyslog)</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">檔案路徑</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">記錄內容</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/messages</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">一般系統訊息</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/secure</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">身分驗證與授權安全日誌</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/audit/audit.log</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SELinux 稽核事件記錄</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/cron</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Cron 排程工作執行日誌</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/boot.log</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">系統開機過程訊息</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">/var/log/maillog</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">郵件伺服器日誌</td>
+                    </tr>
+                </table>
+
+                <h3>日誌優先層級 (Priority Levels)</h3>
+                <pre><code># 由最高至最低嚴重層級排列：
+0 emerg    # 系統已無法運作
+1 alert    # 必須立即採取行動
+2 crit     # 嚴重緊急狀況
+3 err      # 錯誤狀況
+4 warning  # 警告狀況
+5 notice   # 正常但值得注意的事件
+6 info     # 一般資訊性訊息
+7 debug    # 除錯偵錯訊息</code></pre>
+            </section>
+
+            <section id="journalctl" class="content-section">
+                <h2>📜 journalctl - systemd Journal</h2>
+
+                <h3>基本 journalctl 指令</h3>
+                <pre><code># 檢視所有 journal 日誌（最舊的排在最前面）
+journalctl
+
+# 反向檢視（最新的排在最前面）
+journalctl -r
+
+# 即時追蹤最新日誌（類似 tail -f）
+journalctl -f
+
+# 僅顯示核心 (Kernel) 訊息
+journalctl -k
+# 或
+journalctl --dmesg
+
+# 顯示最近 N 筆日誌項目
+journalctl -n 50
+
+# 不使用分頁器（一次輸出所有內容）
+journalctl --no-pager</code></pre>
+
+                <h3>依時間條件篩選</h3>
+                <pre><code># 顯示自上次開機以來的日誌
+journalctl -b
+
+# 顯示前一次開機的日誌
+journalctl -b -1
+
+# 列出所有有記錄的開機歷史清單
+journalctl --list-boots
+
+# 查詢特定起始時間之後的日誌
+journalctl --since "2025-01-13 10:00:00"
+journalctl --since "1 hour ago"
+journalctl --since yesterday
+journalctl --since today
+
+# 查詢特定結束時間之前的日誌
+journalctl --until "2025-01-13 12:00:00"
+
+# 查詢指定時間區間內的日誌
+journalctl --since "2025-01-13 09:00" --until "2025-01-13 17:00"</code></pre>
+
+                <h3>依服務 / 單元篩選</h3>
+                <pre><code># 顯示特定服務的日誌
+journalctl -u sshd
+journalctl -u httpd.service
+
+# 同時查詢多個單元
+journalctl -u sshd -u httpd
+
+# 顯示特定服務自本次開機以來的日誌
+journalctl -u sshd -b
+
+# 即時追蹤特定服務的日誌
+journalctl -u httpd -f</code></pre>
+
+                <h3>依優先層級篩選</h3>
+                <pre><code># 僅顯示錯誤及以上層級 (emerg, alert, crit, err)
+journalctl -p err
+
+# 顯示警告及以上層級
+journalctl -p warning
+
+# 指定特定層級代碼
+journalctl -p 3  # err 層級
+
+# 指定層級範圍
+journalctl -p err -p warning</code></pre>
+
+                <h3>依行程 / 使用者篩選</h3>
+                <pre><code># 依行程編號 (PID) 篩選
+journalctl _PID=1234
+
+# 依使用者 UID 篩選
+journalctl _UID=1000
+
+# 依執行檔名稱篩選
+journalctl _COMM=sshd
+
+# 依 systemd 單元篩選
+journalctl _SYSTEMD_UNIT=httpd.service</code></pre>
+
+                <h3>輸出格式</h3>
+                <pre><code># 詳細欄位輸出
+journalctl -o verbose
+
+# 簡短格式（傳統 syslog 風格，預設）
+journalctl -o short
+
+# JSON 格式
+journalctl -o json
+
+# 易讀縮排的 JSON 格式
+journalctl -o json-pretty
+
+# 匯出格式（適合用於備份或跨主機遷移）
+journalctl -o export
+
+# 僅顯示訊息內容本文
+journalctl -o cat</code></pre>
+
+                <h3>組合多種篩選條件</h3>
+                <pre><code># 查詢 sshd 自上次開機以來的錯誤層級日誌
+journalctl -u sshd -b -p err
+
+# 查詢 httpd 最近 20 筆錯誤日誌
+journalctl -u httpd -p err -n 20
+
+# 查詢今日的 SSH 驗證日誌，並顯示精確到微秒的時間戳記
+journalctl -u sshd --since today -o short-precise</code></pre>
+
+                <h3>磁碟空間使用量</h3>
+                <pre><code># 顯示 journal 佔用的磁碟空間
+journalctl --disk-usage
+
+# 輸出範例：
+Archived and active journals take up 512.0M in the file system.
+
+# 驗證 journal 檔案完整性
+journalctl --verify</code></pre>
+
+                <div class="procedure">
+                    <h4>操作步驟：排查服務啟動失敗問題</h4>
+                    <ol>
+                        <li>檢查服務目前狀態：
+                            <pre><code>systemctl status httpd</code></pre>
+                        </li>
+                        <li>檢視該服務最近的日誌：
+                            <pre><code>journalctl -u httpd -n 50</code></pre>
+                        </li>
+                        <li>檢查自本次開機以來的錯誤層級日誌：
+                            <pre><code>journalctl -u httpd -b -p err</code></pre>
+                        </li>
+                        <li>在重啟服務的同時即時追蹤日誌輸出：
+                            <pre><code># 終端機 1：
+journalctl -u httpd -f
+
+# 終端機 2：
+sudo systemctl restart httpd</code></pre>
+                        </li>
+                        <li>檢視特定錯誤發生的精確時間戳記：
+                            <pre><code>journalctl -u httpd --since "5 minutes ago" -o short-precise</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="persistent" class="content-section">
+                <h2>💾 持久性 Journal 儲存</h2>
+
+                <p>
+                    預設情況下，systemd journal 儲存在 <code>/run/log/journal</code>（重開機後即遺失）。
+                    啟用持久性儲存後，系統便會在重新開機後保留所有歷史日誌。
+                </p>
+
+                <h3>啟用持久性 Journal</h3>
+                <pre><code># 建立持久性 journal 儲存目錄
+sudo mkdir -p /var/log/journal
+
+# 設定正確的擁有權與權限
+sudo chown root:systemd-journal /var/log/journal
+sudo chmod 2755 /var/log/journal
+
+# 重新啟動 journald 以套用新目錄
+sudo systemctl restart systemd-journald
+
+# 或者透過修改 /etc/systemd/journald.conf 設定檔啟用：
+sudo vi /etc/systemd/journald.conf
+
+[Journal]
+Storage=persistent
+SystemMaxUse=500M
+SystemKeepFree=1G
+MaxRetentionSec=1month
+
+# 重新啟動 journald
+sudo systemctl restart systemd-journald</code></pre>
+
+                <h3>Journal 設定參數</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">設定項目</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Storage=persistent</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">將日誌儲存於 /var/log/journal</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Storage=volatile</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">將日誌儲存於 /run/log/journal（預設值）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">SystemMaxUse=</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Journal 可使用的最大磁碟空間上限</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">MaxRetentionSec=</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Journal 日誌項目的最長保留時間</td>
+                    </tr>
+                </table>
+
+                <h3>管理 Journal 容量大小</h3>
+                <pre><code># 手動輪替 journal 檔案
+sudo journalctl --rotate
+
+# 依空間上限清理舊日誌（僅保留 500MB）
+sudo journalctl --vacuum-size=500M
+
+# 依保留時間清理舊日誌（僅保留最近 2 週）
+sudo journalctl --vacuum-time=2weeks
+
+# 依檔案數量清理舊日誌（僅保留 5 個檔案）
+sudo journalctl --vacuum-files=5
+
+# 清理後檢查剩餘空間使用量
+journalctl --disk-usage</code></pre>
+
+                <div class="info-box note">
+                    <div class="info-box-title">📘 Journal 儲存位置比較</div>
+                    <p><strong>/run/log/journal：</strong>揮發性（位於 RAM 記憶體中，重開機即清空）<br>
+                    <strong>/var/log/journal：</strong>持久性（寫入實體磁碟，重開機後依然保留）<br>
+                    只要 <code>/var/log/journal</code> 目錄存在，系統便會自動啟用持久性儲存。</p>
+                </div>
+            </section>
+
+            <section id="rsyslog" class="content-section">
+                <h2>📋 rsyslog - 傳統日誌系統</h2>
+
+                <p>
+                    rsyslog 會接收來自 journald 的日誌事件，並將其寫入 <code>/var/log/</code> 目錄下的純文字日誌檔中。
+                </p>
+
+                <h3>rsyslog 設定檔</h3>
+                <pre><code># 主要設定檔
+/etc/rsyslog.conf
+
+# 額外擴充設定檔目錄
+/etc/rsyslog.d/*.conf
+
+# 設定規則語法格式範例：
+facility.priority    action
+
+# 規則範例：
+*.info;mail.none;authpriv.none;cron.none    /var/log/messages
+authpriv.*                                   /var/log/secure
+mail.*                                       /var/log/maillog
+cron.*                                       /var/log/cron</code></pre>
+
+                <h3>設備類別 (Facilities) 與優先層級 (Priorities)</h3>
+                <pre><code># 設備類別 (Facilities)：
+auth, authpriv  # 安全性與身分驗證
+cron            # Cron 排程守護行程
+daemon          # 系統背景服務 (Daemons)
+kern            # 核心訊息
+mail            # 郵件系統
+user            # 使用者層級訊息
+local0-local7   # 自訂應用程式專用
+
+# 優先層級選取器 (Priority selectors)：
+*          # 所有層級
+none       # 不記錄任何層級
+.priority  # 指定層級及以上所有層級
+.=priority # 僅記錄完全符合該層級的訊息
+.!priority # 排除該層級的訊息</code></pre>
+
+                <h3>檢視傳統文字日誌</h3>
+                <pre><code># 檢視系統一般訊息日誌
+sudo less /var/log/messages
+sudo tail -f /var/log/messages
+
+# 檢視身分驗證與安全日誌
+sudo tail -f /var/log/secure
+
+# 搜尋特定關鍵字樣式
+sudo grep "Failed password" /var/log/secure
+
+# 檢視最後 20 行日誌
+sudo tail -20 /var/log/messages
+
+# 同時即時追蹤多個日誌檔
+sudo tail -f /var/log/messages /var/log/secure</code></pre>
+
+                <h3>自訂 rsyslog 規則</h3>
+                <pre><code># 為 httpd 建立獨立的自訂日誌設定
+sudo vi /etc/rsyslog.d/httpd.conf
+
+# 新增規則：
+if $programname == 'httpd' then /var/log/httpd-custom.log
+&amp; stop
+
+# 重新啟動 rsyslog 服務
+sudo systemctl restart rsyslog
+
+# 使用 logger 測試驗證
+logger -t httpd "Test message"
+sudo tail /var/log/httpd-custom.log</code></pre>
+
+                <h3>遠端日誌傳送</h3>
+                <pre><code># 設定用戶端將日誌傳送至遠端日誌伺服器
+sudo vi /etc/rsyslog.conf
+
+# 新增規則（使用 UDP 協定）：
+*.* @192.168.1.100:514
+
+# 或（使用 TCP 協定）：
+*.* @@192.168.1.100:514
+
+# 重新啟動 rsyslog
+sudo systemctl restart rsyslog</code></pre>
+            </section>
+
+            <section id="logrotate" class="content-section">
+                <h2>🔄 日誌輪替 (Log Rotation)</h2>
+
+                <p>
+                    logrotate 負責自動化管理日誌檔案的輪替與歸檔，以防止日誌檔持續膨脹而塞滿磁碟空間。
+                </p>
+
+                <h3>logrotate 設定檔</h3>
+                <pre><code># 主要設定檔
+/etc/logrotate.conf
+
+# 各服務專屬的設定檔目錄
+/etc/logrotate.d/
+
+# 自訂應用程式的日誌輪替設定範例
+sudo vi /etc/logrotate.d/myapp
+
+/var/log/myapp/*.log {
+    daily
+    rotate 7
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create 0640 root root
+    sharedscripts
+    postrotate
+        systemctl reload myapp &gt; /dev/null 2&gt;&amp;1 || true
+    endscript
+}</code></pre>
+
+                <h3>logrotate 常用指令參數</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">參數</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">daily/weekly/monthly</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">輪替週期（每日 / 每週 / 每月）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">rotate N</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">保留最近 N 份已輪替的歷史日誌</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">compress</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">使用 gzip 壓縮已輪替的日誌檔案</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">delaycompress</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">延遲至下一次輪替時才執行壓縮</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">missingok</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">若日誌檔案遺失或不存在時不回報錯誤</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">notifempty</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">若日誌檔案為空則不執行輪替</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">create MODE OWNER GROUP</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">輪替後依指定權限與擁有者建立新的空日誌檔</td>
+                    </tr>
+                </table>
+
+                <h3>手動執行日誌輪替</h3>
+                <pre><code># 測試輪替設定（Dry run 模擬執行，不實際變更檔案）
+sudo logrotate -d /etc/logrotate.d/myapp
+
+# 強制立即執行輪替
+sudo logrotate -f /etc/logrotate.d/myapp
+
+# 依主設定檔執行所有日誌輪替
+sudo logrotate /etc/logrotate.conf
+
+# 檢視日誌輪替狀態記錄
+cat /var/lib/logrotate/logrotate.status</code></pre>
+            </section>
+
+            <section id="practice" class="content-section">
+                <div class="quiz-section">
+                    <h2>📝 練習題</h2>
+                    
+                    <div class="quiz-question">
+                        <h4>第 1 題：哪一個指令可以顯示自上次開機以來的系統日誌？</h4>
+                        <ul class="quiz-options">
+                            <li>A) journalctl --boot</li>
+                            <li>B) journalctl -b</li>
+                            <li>C) A 與 B 皆可</li>
+                            <li>D) journalctl --since boot</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) A 與 B 皆可</strong><br>
+                            <code>journalctl -b</code> 與 <code>journalctl --boot</code> 功能完全相同。
+                            使用 <code>-b -1</code> 可查看前一次開機日誌，<code>-b -2</code> 則為更前一次。
+                            使用 <code>--list-boots</code> 可列出所有可用的開機歷史紀錄。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 2 題：如何啟用持久性 journal 日誌儲存？</h4>
+                        <ul class="quiz-options">
+                            <li>A) 建立 /var/log/journal 目錄</li>
+                            <li>B) 在 journald.conf 中設定 Storage=persistent</li>
+                            <li>C) A 與 B 皆可</li>
+                            <li>D) 編輯 /etc/fstab</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) A 與 B 皆可</strong><br>
+                            兩種方式皆有效：建立 <code>/var/log/journal</code> 目錄（系統會自動啟用）或在 <code>/etc/systemd/journald.conf</code> 中設定 <code>Storage=persistent</code>。
+                            建立目錄的方法最為簡便。修改完成後切記重新啟動 <code>systemd-journald</code> 服務。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 3 題：哪一個日誌檔案會記錄使用者身分驗證失敗的訊息？</h4>
+                        <ul class="quiz-options">
+                            <li>A) /var/log/messages</li>
+                            <li>B) /var/log/secure</li>
+                            <li>C) /var/log/auth.log</li>
+                            <li>D) /var/log/faillog</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B) /var/log/secure</strong><br>
+                            在 RHEL 系統中，<code>/var/log/secure</code> 負責記錄身分驗證與授權相關日誌（如 SSH 登入、sudo 使用記錄等）。
+                            可使用 <code>grep "Failed password" /var/log/secure</code> 找出失敗的登入嘗試，或使用 <code>journalctl -u sshd</code> 查詢。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 4 題：哪一個指令可以像 "tail -f" 一樣即時追蹤最新的 journal 日誌？</h4>
+                        <ul class="quiz-options">
+                            <li>A) journalctl -f</li>
+                            <li>B) journalctl --follow</li>
+                            <li>C) A 與 B 皆可</li>
+                            <li>D) journalctl -tail</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) A 與 B 皆可</strong><br>
+                            <code>journalctl -f</code> 與 <code>journalctl --follow</code> 皆可即時追蹤日誌輸出。
+                            亦可搭配 <code>-u</code> 追蹤特定服務：<code>journalctl -u httpd -f</code>。按下 Ctrl+C 即可停止追蹤。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 5 題：如何將 journal 日誌的磁碟空間使用量限制在 500MB 以內？</h4>
+                        <ul class="quiz-options">
+                            <li>A) journalctl --vacuum-size=500M</li>
+                            <li>B) 在 journald.conf 中設定 SystemMaxUse=500M</li>
+                            <li>C) A 與 B 皆可</li>
+                            <li>D) logrotate -s 500M</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) A 與 B 皆可</strong><br>
+                            <code>--vacuum-size</code> 會立即清理舊日誌以符合容量限制；而在 <code>/etc/systemd/journald.conf</code> 中設定 <code>SystemMaxUse</code> 則可設定長期的空間上限。
+                            也可使用 <code>--vacuum-time=2weeks</code> 依時間清理舊日誌，並透過 <code>journalctl --disk-usage</code> 檢查目前佔用空間。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 6 題：哪一個優先層級參數只會顯示錯誤 (err) 及更嚴重的日誌訊息？</h4>
+                        <ul class="quiz-options">
+                            <li>A) journalctl -p warning</li>
+                            <li>B) journalctl -p err</li>
+                            <li>C) journalctl -p crit</li>
+                            <li>D) journalctl -p 3</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B 或 D（兩者皆正確）</strong><br>
+                            <code>-p err</code> 會顯示錯誤及以上嚴重程度的訊息（emerg、alert、crit、err），而層級代碼 3 正好代表 err。
+                            <code>-p warning</code> 會包含警告訊息（較寬鬆）；<code>-p crit</code> 則只顯示嚴重及更高層級（較嚴格）。
+                            層級對照：0=emerg、1=alert、2=crit、3=err、4=warning、5=notice、6=info、7=debug。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="chapter-navigation">
+                <a href="chapter11.html" class="nav-button prev">第 11 章：服務與開機流程</a>
+                <a href="chapter13.html" class="nav-button next">第 13 章：網路設定</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DevOps ni Diary</h3>
+                    <p>掌握 RHCSA 認證的完整學習指南。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

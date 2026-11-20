@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第 15 章：管理網路安全性 - RHCSA 學習指南</title>
+    <!-- Vercel Web Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+  <script type="module" crossorigin src="../assets/script-ir5N7YRr.js"></script>
+  <link rel="stylesheet" crossorigin href="../assets/script-CcFVVXfV.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">DevOps ni Diary</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="搜尋章節...">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">首頁</a>
+                <a href="../index.html#chapters" class="nav-link">課程章節</a>
+                <a href="https://youtube.com/@DevOpsniDiary" target="_blank" class="nav-link">YouTube</a>
+                <button id="themeToggle" class="theme-toggle">🌙</button>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-page">
+        <aside class="sidebar">
+            <h3 class="sidebar-title">所有章節</h3>
+            <ul class="sidebar-nav">
+                <li><a href="chapter1.html">第 1 章：存取系統</a></li>
+                <li><a href="chapter2.html">第 2 章：管理檔案</a></li>
+                <li><a href="chapter3.html">第 3 章：使用者與群組</a></li>
+                <li><a href="chapter4.html">第 4 章：檔案存取控制</a></li>
+                <li><a href="chapter5.html">第 5 章：SELinux 安全性</a></li>
+                <li><a href="chapter6.html">第 6 章：效能調校</a></li>
+                <li><a href="chapter7.html">第 7 章：排程任務</a></li>
+                <li><a href="chapter8.html">第 8 章：軟體套件管理</a></li>
+                <li><a href="chapter9.html">第 9 章：基礎儲存管理</a></li>
+                <li><a href="chapter10.html">第 10 章：進階儲存堆疊</a></li>
+                <li><a href="chapter11.html">第 11 章：服務與開機流程</a></li>
+                <li><a href="chapter12.html">第 12 章：系統日誌</a></li>
+                <li><a href="chapter13.html">第 13 章：網路設定</a></li>
+                <li><a href="chapter14.html">第 14 章：網路儲存</a></li>
+                <li><a href="chapter15.html" class="active">第 15 章：網路安全性</a></li>
+                <li><a href="chapter16.html">第 16 章：執行容器</a></li>
+                <li><a href="chapter17.html">第 17 章：綜合複習</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="chapter-header">
+                <div class="chapter-meta">
+                    <span class="meta-badge">第 15 章</span>
+                    <span class="meta-badge">⏱️ 閱讀約 50 分鐘</span>
+                    <span class="meta-badge">📚 進階</span>
+                </div>
+                <h1>管理網路安全性 (Firewalld)</h1>
+                <p class="chapter-intro">
+                    精通使用 firewalld 進行防火牆組態設定。學習如何管理區域（Zones）、服務、連接埠與進階規則（Rich Rules）
+                    以強化網路安全性，並掌握永久規則與執行時期規則的設定差異。
+                </p>
+            </div>
+
+            <div class="table-of-contents">
+                <h2>📋 本章目錄</h2>
+                <ul class="toc-list">
+                    <li><a href="#introduction">Firewalld 簡介</a></li>
+                    <li><a href="#zones">防火牆區域 (Zones)</a></li>
+                    <li><a href="#services">管理服務</a></li>
+                    <li><a href="#ports">管理連接埠</a></li>
+                    <li><a href="#rich-rules">進階規則 (Rich Rules)</a></li>
+                    <li><a href="#practice">練習題</a></li>
+                </ul>
+            </div>
+
+            <section id="introduction" class="content-section">
+                <h2>🎯 Firewalld 簡介</h2>
+                <p>
+                    Firewalld 是 RHEL 9 預設的動態防火牆管理服務。它採用「區域（Zones）」的概念來定義不同的信任等級，
+                    並且能夠在不中斷現有連線、不重新啟動服務的情況下動態套用防火牆規則。
+                </p>
+
+                <h3>Firewalld 核心元件</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">元件</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>firewalld</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">動態防火牆背景守護程式（Daemon）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>firewall-cmd</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">命令列管理工具</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Zones（區域）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">依信任等級劃分的規則容器</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>Services（服務）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">預先定義好的連接埠與通訊協定組合</td>
+                    </tr>
+                </table>
+
+                <h3>管理 Firewalld 服務</h3>
+                <pre><code># 啟動 firewalld 服務
+sudo systemctl start firewalld
+
+# 設定開機自動啟動並立即啟動
+sudo systemctl enable --now firewalld
+
+# 檢查服務與防火牆狀態
+sudo systemctl status firewalld
+sudo firewall-cmd --state
+
+# 重新載入防火牆（套用永久規則）
+sudo firewall-cmd --reload
+
+# 停止 firewalld（在正式環境中極度危險！）
+sudo systemctl stop firewalld</code></pre>
+
+                <h3>執行時期（Runtime）規則 vs 永久（Permanent）規則</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">類型</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">說明</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">指令格式</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">執行時期（Runtime）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">立即生效，但重新載入或重開機後即失效</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">firewall-cmd（不加選項）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">永久（Permanent）</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">永久儲存至設定檔，需執行 reload 後才會生效</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">firewall-cmd --permanent</td>
+                    </tr>
+                </table>
+
+                <div class="info-box tip">
+                    <div class="info-box-title">💡 提示：最佳實踐</div>
+                    <p>務必確保規則同時套用於執行時期與永久設定，或先使用 <code>--permanent</code> 新增規則後再執行
+                    <code>--reload</code>：<br>
+                    <code>sudo firewall-cmd --permanent --add-service=http</code><br>
+                    <code>sudo firewall-cmd --reload</code></p>
+                </div>
+            </section>
+
+            <section id="zones" class="content-section">
+                <h2>🛡️ 防火牆區域 (Zones)</h2>
+
+                <p>
+                    區域（Zones）用來定義不同網路連線的信任等級，每個網路介面都會被指派給一個區域。
+                </p>
+
+                <h3>預定義區域</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">區域名稱</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">信任等級</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">預設行為</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>drop</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">無</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">直接丟棄所有傳入封包，不給予任何回應</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>block</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">無</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">拒絕所有傳入連線（會回傳 ICMP 拒絕訊息）</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>public</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">低</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">預設區域，僅允許 SSH 與 cockpit</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>external</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">低</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">適用於啟用 IP 偽裝（NAT）的外部網路</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>work</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">中</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">信任工作場所中的同事電腦</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>home</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">中高</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">信任居家網路環境</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>internal</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">高</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">適用於內部區域網路</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>trusted</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">完全信任</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">允許所有網路流量通過</td>
+                    </tr>
+                </table>
+
+                <h3>管理區域</h3>
+                <pre><code># 列出所有可用區域
+sudo firewall-cmd --get-zones
+
+# 顯示目前的預設區域
+sudo firewall-cmd --get-default-zone
+
+# 設定預設區域
+sudo firewall-cmd --set-default-zone=public
+
+# 顯示目前作用中的區域（含指派的介面與來源）
+sudo firewall-cmd --get-active-zones
+
+# 顯示指定區域的所有設定
+sudo firewall-cmd --zone=public --list-all
+
+# 顯示所有區域的詳細設定
+sudo firewall-cmd --list-all-zones</code></pre>
+
+                <h3>將網路介面指派至區域</h3>
+                <pre><code># 變更網路介面所屬區域（僅執行時期有效）
+sudo firewall-cmd --zone=work --change-interface=ens33
+
+# 永久變更介面所屬區域
+sudo firewall-cmd --permanent --zone=work --change-interface=ens33
+sudo firewall-cmd --reload
+
+# 或直接使用 nmcli 設定連線所屬區域
+sudo nmcli con mod ens33 connection.zone work
+sudo nmcli con up ens33
+
+# 查詢特定介面目前所在的區域
+sudo firewall-cmd --get-zone-of-interface=ens33</code></pre>
+            </section>
+
+            <section id="services" class="content-section">
+                <h2>🔧 管理服務</h2>
+
+                <p>
+                    服務（Services）是針對常見應用程式預先定義好的連接埠與通訊協定組合。
+                </p>
+
+                <h3>列出服務</h3>
+                <pre><code># 列出所有支援的預定義服務
+sudo firewall-cmd --get-services
+
+# 列出預設區域中已允許的服務
+sudo firewall-cmd --list-services
+
+# 列出特定區域中已允許的服務
+sudo firewall-cmd --zone=public --list-services
+
+# 顯示特定服務的詳細定義（連接埠與協定）
+sudo firewall-cmd --info-service=http
+sudo firewall-cmd --info-service=ssh</code></pre>
+
+                <h3>新增與移除服務</h3>
+                <pre><code># 新增服務（僅執行時期有效）
+sudo firewall-cmd --add-service=http
+
+# 新增服務（永久設定，需重新載入生效）
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --reload
+
+# 將服務新增至特定區域
+sudo firewall-cmd --zone=public --add-service=https
+
+# 一次新增多個服務
+sudo firewall-cmd --permanent --add-service={http,https,smtp}
+sudo firewall-cmd --reload
+
+# 移除服務
+sudo firewall-cmd --remove-service=http
+sudo firewall-cmd --permanent --remove-service=http
+sudo firewall-cmd --reload</code></pre>
+
+                <h3>常見服務對照表</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">服務名稱</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">連接埠</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">通訊協定</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">ssh</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">22</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">TCP</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">http</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">80</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">TCP</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">https</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">443</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">TCP</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">nfs</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">2049</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">TCP</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">mysql</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">3306</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">TCP</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">smtp</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">25</td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">TCP</td>
+                    </tr>
+                </table>
+
+                <div class="procedure">
+                    <h4>操作步驟：開放 HTTP/HTTPS 網路流量</h4>
+                    <ol>
+                        <li>檢查目前允許的服務：
+                            <pre><code>sudo firewall-cmd --list-services</code></pre>
+                        </li>
+                        <li>永久新增 HTTP 與 HTTPS 服務：
+                            <pre><code>sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https</code></pre>
+                        </li>
+                        <li>重新載入防火牆：
+                            <pre><code>sudo firewall-cmd --reload</code></pre>
+                        </li>
+                        <li>驗證設定結果：
+                            <pre><code>sudo firewall-cmd --list-services</code></pre>
+                        </li>
+                        <li>測試服務連線存取：
+                            <pre><code>curl http://localhost
+curl https://localhost</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="ports" class="content-section">
+                <h2>🔌 管理連接埠</h2>
+
+                <p>
+                    對於自訂應用程式或非標準連接埠，可以直接針對個別連接埠進行開放或關閉管理。
+                </p>
+
+                <h3>新增與移除連接埠</h3>
+                <pre><code># 新增連接埠（執行時期）
+sudo firewall-cmd --add-port=8080/tcp
+
+# 新增連接埠（永久設定）
+sudo firewall-cmd --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+
+# 一次新增多個連接埠
+sudo firewall-cmd --permanent --add-port={8080/tcp,8443/tcp,3000/tcp}
+sudo firewall-cmd --reload
+
+# 新增連續的連接埠範圍
+sudo firewall-cmd --permanent --add-port=5000-5010/tcp
+sudo firewall-cmd --reload
+
+# 新增 UDP 連接埠
+sudo firewall-cmd --permanent --add-port=53/udp
+sudo firewall-cmd --reload
+
+# 移除連接埠
+sudo firewall-cmd --remove-port=8080/tcp
+sudo firewall-cmd --permanent --remove-port=8080/tcp
+sudo firewall-cmd --reload</code></pre>
+
+                <h3>列出已開放的連接埠</h3>
+                <pre><code># 列出預設區域中開放的連接埠
+sudo firewall-cmd --list-ports
+
+# 列出指定區域中開放的連接埠
+sudo firewall-cmd --zone=public --list-ports
+
+# 顯示所有規則（包含服務與連接埠）
+sudo firewall-cmd --list-all</code></pre>
+
+                <h3>管理方式比較：Port vs Service</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="background-color: var(--bg-secondary);">
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">方式</th>
+                        <th style="padding: 0.75rem; border: 1px solid var(--border-color);">適用時機</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>服務（Service）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">標準系統服務（http、ssh、nfs 等）—— 設定簡潔且易於識別管理</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><strong>連接埠（Port）</strong></td>
+                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">自訂應用程式或非標準連接埠（8080、3000 等）</td>
+                    </tr>
+                </table>
+
+                <div class="procedure">
+                    <h4>操作步驟：開放自訂應用程式連接埠</h4>
+                    <ol>
+                        <li>確認應用程式所需的連接埠（例如執行於 3000 埠的 Node.js）：
+                            <pre><code>ss -tulpn | grep 3000</code></pre>
+                        </li>
+                        <li>永久新增該連接埠規則：
+                            <pre><code>sudo firewall-cmd --permanent --add-port=3000/tcp</code></pre>
+                        </li>
+                        <li>重新載入防火牆：
+                            <pre><code>sudo firewall-cmd --reload</code></pre>
+                        </li>
+                        <li>驗證連接埠已開放：
+                            <pre><code>sudo firewall-cmd --list-ports</code></pre>
+                        </li>
+                        <li>從其他機器進行連線測試：
+                            <pre><code>telnet server-ip 3000
+# 或
+curl http://server-ip:3000</code></pre>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="rich-rules" class="content-section">
+                <h2>📜 進階規則 (Rich Rules)</h2>
+
+                <p>
+                    Rich Rules（進階規則）提供更精細的防火牆控制能力，包含來源 IP 過濾、日誌記錄（Logging）、連線速率限制與複雜條件設定。
+                </p>
+
+                <h3>Rich Rule 語法</h3>
+                <pre><code># 基本格式：
+rule family="ipv4" source address="IP/MASK" [service|port] [accept|reject|drop]
+
+# 範例：僅允許來自特定 IP 的 SSH 連線
+sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.1.100" service name="ssh" accept'
+
+# 重新載入生效
+sudo firewall-cmd --reload</code></pre>
+
+                <h3>Rich Rules 實用範例</h3>
+                <pre><code># 允許來自特定子網路的 HTTP 連線
+sudo firewall-cmd --permanent --add-rich-rule='
+  rule family="ipv4"
+  source address="192.168.1.0/24"
+  service name="http"
+  accept'
+
+# 封鎖特定來源 IP
+sudo firewall-cmd --permanent --add-rich-rule='
+  rule family="ipv4"
+  source address="10.0.0.50"
+  reject'
+
+# 允許特定 IP 存取連接埠並記錄日誌
+sudo firewall-cmd --permanent --add-rich-rule='
+  rule family="ipv4"
+  source address="192.168.1.10"
+  port port="3306" protocol="tcp"
+  log prefix="MySQL Access: " level="info"
+  accept'
+
+# 限制 SSH 連線速率（防止暴力破解）
+sudo firewall-cmd --permanent --add-rich-rule='
+  rule service name="ssh"
+  limit value="5/m"
+  accept'
+
+# 連接埠轉發（Port Forwarding）
+sudo firewall-cmd --permanent --add-rich-rule='
+  rule family="ipv4"
+  forward-port port="8080" protocol="tcp" to-port="80"'</code></pre>
+
+                <h3>管理 Rich Rules</h3>
+                <pre><code># 列出目前的 Rich Rules
+sudo firewall-cmd --list-rich-rules
+
+# 列出指定區域中的 Rich Rules
+sudo firewall-cmd --zone=public --list-rich-rules
+
+# 移除 Rich Rule
+sudo firewall-cmd --permanent --remove-rich-rule='
+  rule family="ipv4"
+  source address="192.168.1.100"
+  service name="ssh"
+  accept'
+
+# 變更完成後重新載入
+sudo firewall-cmd --reload</code></pre>
+
+                <h3>來源 IP 區域過濾</h3>
+                <pre><code># 將來源網段加入指定區域（例如信任特定網段）
+sudo firewall-cmd --permanent --zone=trusted --add-source=192.168.1.0/24
+sudo firewall-cmd --reload
+
+# 移除來源網段
+sudo firewall-cmd --permanent --zone=trusted --remove-source=192.168.1.0/24
+
+# 列出該區域中已加入的來源位址
+sudo firewall-cmd --zone=trusted --list-sources</code></pre>
+
+                <div class="info-box note">
+                    <div class="info-box-title">📘 注意：Rich Rules 常見應用場景</div>
+                    <p>• 僅允許來自特定 IP 或子網路存取特定服務<br>
+                    • 封鎖惡意來源 IP<br>
+                    • 記錄特定網路流量的日誌<br>
+                    • 限制連線速率（Rate limiting）<br>
+                    • 設定連接埠轉發（Port forwarding）<br>
+                    • 設定基於時間條件的進階規則</p>
+                </div>
+            </section>
+
+            <section id="practice" class="content-section">
+                <div class="quiz-section">
+                    <h2>📝 練習題</h2>
+                    
+                    <div class="quiz-question">
+                        <h4>第 1 題：如何讓防火牆規則永久生效？</h4>
+                        <ul class="quiz-options">
+                            <li>A) 加上 --permanent 參數後執行 --reload</li>
+                            <li>B) 規則預設即為永久生效</li>
+                            <li>C) 執行 firewall-cmd --save</li>
+                            <li>D) 重新啟動 firewalld 服務</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：A) 加上 --permanent 參數後執行 --reload</strong><br>
+                            先執行 <code>sudo firewall-cmd --permanent --add-service=http</code>，再執行
+                            <code>sudo firewall-cmd --reload</code>。若未加上 <code>--permanent</code>，規則僅於執行時期生效
+                            （在 reload 或重開機後就會消失）；執行 reload 則會將永久設定載入套用。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 2 題：RHEL 9 的預設防火牆區域（Zone）為何？</h4>
+                        <ul class="quiz-options">
+                            <li>A) trusted</li>
+                            <li>B) home</li>
+                            <li>C) public</li>
+                            <li>D) work</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) public</strong><br>
+                            <code>public</code> 為預設區域，預設情況下僅開放 SSH 與 cockpit 服務。
+                            可使用 <code>firewall-cmd --get-default-zone</code> 查看預設區域，或透過
+                            <code>firewall-cmd --set-default-zone=home</code> 進行修改。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 3 題：哪個指令可以永久開放 HTTP 與 HTTPS 服務？</h4>
+                        <ul class="quiz-options">
+                            <li>A) firewall-cmd --add-service=http,https</li>
+                            <li>B) firewall-cmd --permanent --add-service={http,https}</li>
+                            <li>C) firewall-cmd --add-port=80,443/tcp</li>
+                            <li>D) firewall-cmd --open http https</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B)</strong><br>
+                            執行 <code>sudo firewall-cmd --permanent --add-service={http,https}</code> 後，再執行
+                            <code>sudo firewall-cmd --reload</code>。大括號語法可一次指定多個服務。
+                            對於標準應用程式，建議優先使用服務名稱而非連接埠號。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 4 題：如何永久開放自訂連接埠 8080/tcp？</h4>
+                        <ul class="quiz-options">
+                            <li>A) firewall-cmd --permanent --add-port=8080/tcp</li>
+                            <li>B) firewall-cmd --permanent --add-service=8080</li>
+                            <li>C) firewall-cmd --permanent --open-port=8080</li>
+                            <li>D) firewall-cmd --port 8080 --allow</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：A)</strong><br>
+                            執行 <code>sudo firewall-cmd --permanent --add-port=8080/tcp</code> 後，再執行
+                            <code>sudo firewall-cmd --reload</code>。開放連接埠時必須指定通訊協定（tcp 或 udp）。
+                            自訂連接埠請使用 <code>--add-port</code>，預定義服務則使用 <code>--add-service</code>。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 5 題：哪一個區域預設會允許「所有」網路流量通過？</h4>
+                        <ul class="quiz-options">
+                            <li>A) public</li>
+                            <li>B) home</li>
+                            <li>C) trusted</li>
+                            <li>D) internal</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：C) trusted</strong><br>
+                            <code>trusted</code> 區域會放行所有流量，請謹慎使用！可將受信任的 IP 指派至該區域：
+                            <code>firewall-cmd --permanent --zone=trusted --add-source=192.168.1.10</code>。
+                            <code>drop</code> 區域最嚴格（阻擋一切），而 <code>trusted</code> 則是最寬鬆（允許一切）。
+                        </div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>第 6 題：哪一項是僅允許 192.168.1.100 連線至 SSH 的正確 Rich Rule 語法？</h4>
+                        <ul class="quiz-options">
+                            <li>A) --add-rich-rule='rule source address="192.168.1.100" service="ssh" accept'</li>
+                            <li>B) --add-rich-rule='rule family="ipv4" source address="192.168.1.100" service name="ssh" accept'</li>
+                            <li>C) --add-source=192.168.1.100 --add-service=ssh</li>
+                            <li>D) B 與 C 皆可</li>
+                        </ul>
+                        <div class="quiz-answer">
+                            <strong>解答：B)</strong><br>
+                            正確語法為：<code>sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" 
+                            source address="192.168.1.100" service name="ssh" accept'</code>。必須完整指定 <code>family</code> 與
+                            <code>service name="..."</code> 語法。選項 C 的作法會對整個區域套用設定，而非僅針對該 IP 限定 SSH 存取。
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="chapter-navigation">
+                <a href="chapter14.html" class="nav-button prev">第 14 章：網路儲存</a>
+                <a href="chapter16.html" class="nav-button next">第 16 章：執行容器</a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DevOps ni Diary</h3>
+                    <p>您精通 RHCSA 認證的完整學習指南。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevOps ni Diary. RHCSA 認證備考教學資源。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
